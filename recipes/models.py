@@ -47,6 +47,17 @@ class Recipe(models.Model):
     def average_rating(self):
         return self.rating
 
+    def get_adjusted_ingredients(self, desired_servings):
+        adjusted_ingredients = []
+        for ingredient in self.ingredients.all():
+            adjusted_quantity = (ingredient.quantity / self.servings) * desired_servings
+            adjusted_ingredients.append({
+                'name': ingredient.name,
+                'quantity': adjusted_quantity,
+                'unit': ingredient.unit,
+            })
+        return adjusted_ingredients
+
 
 class Review(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='reviews')
@@ -61,3 +72,14 @@ class Review(models.Model):
 
     def __str__(self):
         return f"Review {self.body} by {self.name}"
+
+
+class RecipeIngredient(models.Model):
+    recipe = models.ForeignKey(Recipe, related_name='ingredients', on_delete=models.CASCADE)
+    name = models.CharField(max_length=300)
+    quantity=models.DecimalField(max_digits=6, decimal_places=2)
+    unit = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.quantity} {self.unit} {self.name}"
+
