@@ -32,8 +32,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     os.environ.get('LOCAL_HOST'),
-    os.environ.get('HEROKU_HOST')
-    ]
+    os.environ.get('HEROKU_HOST'),
+]
 
 
 # Application definition
