@@ -32,7 +32,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     os.environ.get('LOCAL_HOST'),
-    os.environ.get('HEROKU_HOST'),
+    'django-chefs-helper-90ca65af05b0.herokuapp.com',
 ]
 
 
