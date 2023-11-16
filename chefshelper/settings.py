@@ -33,7 +33,6 @@ DEBUG = True
 ALLOWED_HOSTS = [
     os.environ.get('LOCAL_HOST'),
     'django-chefs-helper-90ca65af05b0.herokuapp.com',
-    '8000-obione84-djangochefshel-6e3rdq0l09l.ws-eu106.gitpod.io/admin/recipes/recipe/',
 ]
 
 
