@@ -15,9 +15,9 @@ class Recipe(models.Model):
     instructions = models.TextField()
     featured_image = CloudinaryField('image', default='placeholder')
     excerpt = models.TextField(blank=True)
-    likes = models.ManyToManyField(User, related_name="liked_recipes")
-    prep_time = models.IntegerField()
-    cook_time = models.IntegerField()
+    likes = models.ManyToManyField(User, related_name="liked_recipes", blank=True)
+    prep_time = models.IntegerField(blank=True, null=True)
+    cook_time = models.IntegerField(blank=True, null=True)
     servings = models.IntegerField(default=1)
     rating = models.IntegerField(default=0)
     total_ratings = models.IntegerField(default=0)
@@ -39,7 +39,7 @@ class Recipe(models.Model):
         # ensuring the rating is between 1 and 5
         rating = max(1, min(5, rating))
         # Update the rating and total_ratings
-        self.rating = (self.rating * self.total_ratings + rating) // (self.total_ratings + 1)
+        self.rating = (self.rating * self.total_ratings + rating) / (self.total_ratings + 1)
         self.total_ratings += 1
         # save the changes
         self.save()
@@ -82,4 +82,5 @@ class RecipeIngredient(models.Model):
 
     def __str__(self):
         return f"{self.quantity} {self.unit} {self.name}"
+
 
