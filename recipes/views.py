@@ -6,6 +6,6 @@ from .models import Recipe
 # Create your views here.
 class RecipeList(generic.ListView):
     model = Recipe
-    queryset = Post.objects.filter(status=1).order_by('-created_on')
+    queryset = Recipe.objects.filter(status=1).order_by('-created_on')
     template_name = 'index.html'
     paginate_by = 6
