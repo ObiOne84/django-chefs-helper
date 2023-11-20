@@ -11,3 +11,12 @@ h1, h2, h3 {
 .special-text {
     font-family: 'Pacifico', cursive;
 }
+
+footer ul {
+    margin: 0;
+    padding-top: 1rem;
+}
+
+.copyright-text {
+    padding-bottom: 1rem;
+}

@@ -1,1 +1,1 @@
-console.log('Hello World!')
+$('#copyright').text(new Date().getFullYear());
