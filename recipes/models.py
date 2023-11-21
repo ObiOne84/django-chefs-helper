@@ -39,7 +39,7 @@ class Recipe(models.Model):
         # ensuring the rating is between 1 and 5
         rating = max(1, min(5, rating))
         # Update the rating and total_ratings
-        self.rating = (self.rating * self.total_ratings + rating) / (self.total_ratings + 1)
+        self.rating = round((self.rating * self.total_ratings + rating) / (self.total_ratings + 1), 2)
         self.total_ratings += 1
         # save the changes
         self.save()

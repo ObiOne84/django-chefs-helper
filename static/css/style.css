@@ -3,7 +3,7 @@ p {
     font-family: 'Lato', sans-serif;
 }
 
-h1, h2, h3 {
+h1, h2, h3, .heading-one {
     font-family: 'Roboto Slab', serif;
 }
 
@@ -19,4 +19,10 @@ footer ul {
 
 .copyright-text {
     padding-bottom: 1rem;
+}
+
+.author {
+    color: red;
+    margin: 4px;
+    text-transform: uppercase;
 }

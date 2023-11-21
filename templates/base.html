@@ -1,19 +1,17 @@
 {% load static %}
-
-<!-- {% load cloudinary %} -->
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Chef's Helper</title>
     <!-- Google Fonts -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Lato:wght@400&family=Pacifico&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Lato:wght@400&family=Pacifico&display=swap">
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/d46864ea4e.js" crossorigin="anonymous"></script>
+    <!-- Web Icon -->
+    <link rel="icon" type="image/x-icon" href="https://res.cloudinary.com/dcrbeonr9/image/upload/v1700595780/favicon-logo_ydwcsd.ico">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -24,8 +22,8 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="mainNav">
         <div class="container-fluid px-4 px-lg-5">
-            <a class="navbar-brand px-lg-3 py-3 py-lg-4" href="{% url 'home' %}">
-                <img src="https://res.cloudinary.com/dcrbeonr9/image/upload/v1700428744/favicon_ycmtbd.ico" alt="">
+            <a class="navbar-brand px-lg-3 py-3 py-lg-4 heading-one" href="{% url 'home' %}">
+                <img src="https://res.cloudinary.com/dcrbeonr9/image/upload/v1700595942/favicon_lr4ymg.ico" alt="">
                 Chef's Helper
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
@@ -48,14 +46,14 @@
         </div>
     </nav>
 
-    <!-- main body -->
+    <!-- Main body -->
     <main class="container-fluid">
         {% block content %}
         <!-- Content Goes here -->
         {% endblock content %}
     </main>
 
-    <!-- footer -->
+    <!-- Footer -->
     <footer class="border-top mt-auto bg-body-tertiary">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -80,7 +78,8 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="small text-center text-muted fst-italic copyright-text">Copyright &copy; Chef's Helper <span id="copyright"></span></div>
+                    <div class="small text-center text-muted fst-italic copyright-text">Copyright &copy; Chef's Helper
+                        <span id="copyright"></span></div>
                 </div>
             </div>
         </div>
