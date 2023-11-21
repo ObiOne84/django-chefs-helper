@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -19,7 +20,12 @@ class Recipe(models.Model):
     prep_time = models.IntegerField(blank=True, null=True)
     cook_time = models.IntegerField(blank=True, null=True)
     servings = models.IntegerField(default=1)
-    rating = models.IntegerField(default=0)
+    rating = models.IntegerField(
+        default=0,
+        validators=[
+            MinValueValidator(1, message="Rating must be at least 1."),
+            MaxValueValidator(5, message="Rating must be at most 5."),
+        ])
     total_ratings = models.IntegerField(default=0)
     status = models.IntegerField(choices=STATUS, default=0)
 
