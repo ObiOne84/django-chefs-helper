@@ -26,3 +26,14 @@ footer ul {
     margin: 4px;
     text-transform: uppercase;
 }
+
+.aspect-ratio-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.aspect-ratio-item {
+    display: block;
+    width: 100%;
+    height: auto;
+}
