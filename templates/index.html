@@ -28,7 +28,7 @@
                                 {% endif %}
                             </div>
 
-                            <a href="#" class="post-link">
+                            <a href="{% url 'recipe_detail' recipe.slug %}" class="post-link">
                                 <h3 class="card-title">{{ recipe.title }}</h3>
                                 <p class="card-text"> {{ recipe.excerpt }}</p>
                             </a>
@@ -76,4 +76,4 @@
     {% endif %}
 </div>
 
-{%endblock%}
+{% endblock content %}

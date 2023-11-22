@@ -1,55 +1,64 @@
 {% extends "base.html" %}
+{% block content %}
 
-<div class="container">
-    <div class="row">
-        <div class="co-12">
-            <h1>{{ recipe.title }}</h1>
-            <p>{{ recipe.author }} | {{ recipe.created_on }}</p>
-            <div class="col-6">
-                {% if "placeholder" in recipe.featured_image.url %}
-                <img src="https://res.cloudinary.com/dcrbeonr9/image/upload/v1700598678/image-placeholder_gmlf30.png"
-                    alt="Image coming soon placeholder" width="100%">
-                {% else %}
-                <img src="{{ recipe.featured_image.url }}" alt="Image of {{ recipe.title }}" width="100%">
-                {% endif %}
-            </div>
-        </div>
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <p><i class="far fa-heart"> {{ recipe.number_of_likes }}</i></p>
-            <strong><i class="far fa-comments"> Reviews</i>{{ recipe.number_of_reviews }}</strong>
-        </div>
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-6">
-            {{ recipe.instructions | safe }}
-        </div>
-        <div class="col-6">
-            {{ recipe.ingredients | safe }}
-        </div>
-    </div>
-</div>
-<div>
-    <div class="row">
-        <div class="col-12">
-            <h3>Reviews</h3>
-            <div class="car-body">
-                {% for review in reviews %}
-                <div>
-                    <p>{{ review.name }}
-                        <span>{{ review.created_on }}</span>
-                    </p>
-                    {{ review.body | linebreaks }}
+<div class="container-lg">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>{{ recipe.title }}</h1>
+                <p>{{ recipe.author }} | {{ recipe.created_on }}</p>
+                <div class="col-6">
+                    {% if "placeholder" in recipe.featured_image.url %}
+                    <img src="https://res.cloudinary.com/dcrbeonr9/image/upload/v1700598678/image-placeholder_gmlf30.png"
+                        alt="Image coming soon placeholder" width="100%">
+                    {% else %}
+                    <img src="{{ recipe.featured_image.url }}" alt="Image of {{ recipe.title }}" width="100%">
+                    {% endif %}
                 </div>
-                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <p><i class="far fa-heart"> {{ recipe.number_of_likes }}</i></p>
+                <strong><i class="far fa-comments"> Reviews</i>{{ recipe.number_of_reviews }}</strong>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h3>Instructions:</h3>
+                {{ recipe.instructions | safe }}
+            </div>
+            <div class="col-6">
+                <h3>Ingredients:</h3>
+                <ul>
+                    {% for ingredient in recipe.ingredients.all %}
+                    <li>{{ ingredient.quantity }} {{ ingredient.unit }} {{ ingredient.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="row">
+            <div class="col-12">
+                <h3>Reviews</h3>
+                <div class="card-body">
+                    {% for review in reviews %}
+                    <div>
+                        <p>{{ review.name }}
+                            <span>{{ review.created_on }}</span>
+                        </p>
+                        <p>{{ review.body | safe }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-{% endblock %}
+{% endblock content %}
