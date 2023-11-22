@@ -8,43 +8,38 @@
 
 {% block content %}
 
-<div class="container-lg">
+<div class="container">
     <div class="row">
-        <div class="col12 mt-3 left">
+        <div class="col-12 mt-3 left">
             <h2> Body - Index Page! <i class="fa-solid fa-utensils"></i></h2>
             <div class="row">
                 {% for recipe in recipe_list %}
                 <!-- Recipe entries columns -->
                 <div class="col-lg-4 col-md-6 col-12">
                     <div class="card mb-4">
-                        <div class="card-group">
-                            <div class="card-body">
-                                <div class="image-container">
-                                    {% if "placeholder" in recipe.featured_image.url %}
-                                    <img src="https://res.cloudinary.com/dcrbeonr9/image/upload/v1700598678/image-placeholder_gmlf30.png"
-                                        alt="Image coming soon placeholder" class="card-img-top">
-                                    {% else %}
-                                    <img src="{{ recipe.featured_image.url }}" alt="Image coming soon placeholder"
-                                        class="card-img-top">
-                                    {% endif %}
-                                    <div class="image-flash">
-                                        <p class="author">Author: {{ recipe.author }}</p>
-                                    </div>
-                                </div>
+                        <div class="card-body">
+                            <div class="image-container">
+                                {% if "placeholder" in recipe.featured_image.url %}
+                                <img src="https://res.cloudinary.com/dcrbeonr9/image/upload/v1700598678/image-placeholder_gmlf30.png"
+                                    alt="Image coming soon placeholder" class="card-img">
+                                {% else %}
+                                <img src="{{ recipe.featured_image.url }}" alt="Image of {{ recipe.title}}"
+                                    class="card-img-top">
+                                {% endif %}
+                            </div>
 
-                                <a href="#" class="post-link">
-                                    <h2 class="card-title">{{ recipe.title }}</h2>
-                                    <p class="card-text"> {{ recipe.excerpt }}</p>
-                                </a>
-                                <hr />
-                                <div class="card-footer   ">
-                                    <p class="card-text text-muted h6 d-inline">
-                                        {{ recipe.created_on}} <i class="far fa-heart"> {{ recipe.number_of_likes }}</i>
-                                    </p>
-                                    <span class="d-inline">
-                                        <i class="fa-regular fa-star"> {{ recipe.average_rating }}</i>
-                                    </span>
-                                </div>
+                            <a href="#" class="post-link">
+                                <h3 class="card-title">{{ recipe.title }}</h3>
+                                <p class="card-text"> {{ recipe.excerpt }}</p>
+                            </a>
+                            <p class="author">Author: {{ recipe.author }}</p>
+                            <div class="card-footer">
+                                <p class="card-text text-muted h6 d-inline">
+                                    {{ recipe.created_on}} <i class="far fa-heart"> {{ recipe.number_of_likes }}</i>
+                                </p>
+                                <span class="d-inline">
+                                    <i class="fa-regular fa-star"> {{ recipe.average_rating }}</i>
+                                </span>
                             </div>
                         </div>
                     </div>

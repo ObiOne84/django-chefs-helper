@@ -1,9 +1,14 @@
-body, 
+body,
 p {
     font-family: 'Lato', sans-serif;
+    padding: 0;
+    margin: 0;
 }
 
-h1, h2, h3, .heading-one {
+h1,
+h2,
+h3,
+.heading-one {
     font-family: 'Roboto Slab', serif;
 }
 
@@ -21,19 +26,15 @@ footer ul {
     padding-bottom: 1rem;
 }
 
-.author {
+.author,
+a {
     color: red;
     margin: 4px;
     text-transform: uppercase;
+    text-decoration: none;
 }
 
-.aspect-ratio-container {
-    position: relative;
-    overflow: hidden;
-}
-
-.aspect-ratio-item {
-    display: block;
-    width: 100%;
-    height: auto;
+.no-margin-or-padding {
+    margin: 0;
+    padding: 0;
 }
