@@ -2,63 +2,134 @@
 {% block content %}
 
 <div class="container-lg">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
+
+    <div class="row">
+        <div class="col-md-6 col-12 bg-info">
+            <div>
+                {% if "placeholder" in recipe.featured_image.url %}
+                <img src="https://res.cloudinary.com/dcrbeonr9/image/upload/v1700598678/image-placeholder_gmlf30.png"
+                    alt="Image coming soon placeholder" width="100%">
+                {% else %}
+                <img src="{{ recipe.featured_image.url }}" alt="Image of {{ recipe.title }}" width="100%">
+                {% endif %}
+                <div class="col-12 d-flex justify-content-between">
+                    <p class="d-inline">
+                        <i class="far fa-heart"> {{ recipe.number_of_likes }}</i>
+                    </p>
+                    <!-- Source: https://docs.djangoproject.com/en/4.2/ref/templates/builtins/#floatformat -->
+                    <p class="d-inline">
+                        <span class="d-inline">
+                            <i class="fa-regular fa-star"></i>
+                            {{ recipe.average_rating }}
+                        </span>
+                    </p>
+                </div>
+                <hr class="d-block d-md-none">
+            </div>
+        </div>
+        <div class="col-md-6 col-12 bg-danger">
+            <div>
                 <h1>{{ recipe.title }}</h1>
-                <p>{{ recipe.author }} | {{ recipe.created_on }}</p>
-                <div class="col-6">
-                    {% if "placeholder" in recipe.featured_image.url %}
-                    <img src="https://res.cloudinary.com/dcrbeonr9/image/upload/v1700598678/image-placeholder_gmlf30.png"
-                        alt="Image coming soon placeholder" width="100%">
-                    {% else %}
-                    <img src="{{ recipe.featured_image.url }}" alt="Image of {{ recipe.title }}" width="100%">
-                    {% endif %}
-                </div>
+                <p>By: {{ recipe.author }} |
+                    {% if recipe.updated_on %}
+                    Updated on: {{ recipe.updated_on }}
+                </p>
+                {% else %}
+                Added on: {{ recipe.created_on }}
+                </p>
+                {% endif %}
+            </div>
+            <div>
+                <h3><i class="fa-regular fa-file-lines"></i> Description:</h3>
+                <span>{{ recipe.excerpt }}</span>
+            </div>
+            <div>
+                <h3 class="d-inline"><i class="fa-solid fa-clock"></i> Prep Time:
+                    <span class="d-inline">{{ recipe.prep_time }}</span>
+                </h3>
+            </div>
+            <div>
+                <h3 class="d-inline"><i class="fa-solid fa-fire-burner"></i> Cooking Time:
+                    <span class="d-inline">{{ recipe.cook_time }}</span>
+                </h3>
+            </div>
+            <div>
+                <h3 class="d-inline"><i class="fa-solid fa-users"></i> Servings:
+                    <span class="d-inline">{{ recipe.servings }}</span>
+                </h3>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <p><i class="far fa-heart"> {{ recipe.number_of_likes }}</i></p>
-                <strong><i class="far fa-comments"> Reviews</i>{{ recipe.number_of_reviews }}</strong>
-            </div>
+
+    <hr>
+    <div class="row">
+        <div class="col-md-6 col-12 bg-secondary">
+            <h3><i class="fa-solid fa-list-check"></i> Instructions:</h3>
+            {{ recipe.instructions | safe }}
         </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-6">
-                <h3>Instructions:</h3>
-                {{ recipe.instructions | safe }}
-            </div>
-            <div class="col-6">
-                <h3>Ingredients:</h3>
-                <ul>
+        <hr class="d-block d-md-none">
+        <div class="col-md-6 col-12 bg-primary">
+            <h3><i class="fa-solid fa-file-pen"></i> Ingredients:</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Ingredient Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Units</th>
+                    </tr>
+                </thead>
+                <tbody>
+
                     {% for ingredient in recipe.ingredients.all %}
-                    <li>{{ ingredient.quantity }} {{ ingredient.unit }} {{ ingredient.name }}</li>
+                    <!-- <li>{{ ingredient.name }} {{ ingredient.quantity }} {{ ingredient.unit }}</li> -->
+                    <tr>
+
+                        <th scope="row"></th>
+                        <td>{{ ingredient.name }}</td>
+                        <td>{{ ingredient.quantity|floatformat:"-2" }}</td>
+                        <td>{{ ingredient.unit }}</td>
+
+                    </tr>
+                    <!-- <li>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-8 col-6 d-inline">
+                                {{ ingredient.name }}
+                            </div>
+                            <div class="col-sm-2 col-3 d-inline">
+                                {{ ingredient.quantity|floatformat:"-2" }}
+                            </div>
+                            <div class="col-sm-2 col-3 d-inline">
+                                {{ ingredient.unit }}
+                            </div>
+                        </div>
+                    </div>
+                </li> -->
                     {% endfor %}
-                </ul>
-            </div>
+                </tbody>
+            </table>
+
         </div>
     </div>
-    <div>
-        <div class="row">
-            <div class="col-12">
-                <h3>Reviews</h3>
-                <div class="card-body">
-                    {% for review in reviews %}
-                    <div>
-                        <p>{{ review.name }}
-                            <span>{{ review.created_on }}</span>
-                        </p>
-                        <p>{{ review.body | safe }}</p>
-                    </div>
-                    {% endfor %}
+
+    <hr>
+    <div class="row">
+        <div class="col-12 bg-success">
+            <h3><i class="far fa-comments"></i> Reviews ({{ recipe.number_of_reviews }})</h3>
+            <div class="card-body">
+                {% for review in reviews %}
+                <div>
+                    <p>{{ review.name }}
+                        <span>{{ review.created_on }}</span>
+                    </p>
+                    <p>{{ review.body | safe }}</p>
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>
 </div>
+
 
 {% endblock content %}
