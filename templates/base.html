@@ -35,12 +35,17 @@
                 <ul class="navbar-nav nav-underline ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link px-lg-3 py-lg-1 active" href="{% url 'home' %}"
                             aria-current="page"><i class="fa-solid fa-house"></i> Home</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-lg-1" href="about.html"><i
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-lg-1" href="#"><i
                                 class="fa-solid fa-book"></i> Recipes</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-lg-1" href="post.html"><i
+                    {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-lg-1" href="{% url 'account_logout' %}"><i
+                        class="fa-solid fa-right-to-bracket"></i> Logout</a></li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-lg-1" href="{% url 'account_login' %}"><i
                                 class="fa-solid fa-right-to-bracket"></i> Login</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-lg-1" href="contact.html"><i
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-lg-1" href="{% url 'account_signup' %}"><i
                                 class="fa-solid fa-user-plus"></i> Register</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
