@@ -38,3 +38,32 @@ a {
     margin: 0;
     padding: 0;
 }
+
+/* Styles for the printed version */
+
+@media print {
+
+    .no-print {
+        display: none;
+    }
+
+    .print-size {
+        width: 50%;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2,
+    h3 {
+        font-size: 16px;
+    }
+
+    p,
+    li,
+    td,
+    th {
+        font-size: 12px;
+    }
+}
