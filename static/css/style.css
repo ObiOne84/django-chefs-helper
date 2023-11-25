@@ -39,6 +39,43 @@ a {
     padding: 0;
 }
 
+/* Style login page */
+.helptext {
+    display: none;
+}
+
+form.login {
+    width: 100%;
+}
+form p {
+    padding-top: 10px;
+}
+
+form.login p label {
+    /* width: 25%; */
+    box-sizing: border-box;
+}
+
+#id_login,
+#id_password {
+    width: 100%;
+    padding: 5px;
+}
+
+.form-button {
+    width: 100%;
+}
+
+ul.errorlist {
+    color: blue;
+    background-color: lightgreen;
+    width: inherit;
+    text-align: left;
+    border: 1px solid green;
+    border-radius: 4px;
+    list-style-type: none;
+}
+
 /* Styles for the printed version */
 
 @media print {
