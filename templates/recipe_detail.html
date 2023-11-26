@@ -22,7 +22,7 @@
                     <p class="d-inline">
                         <span class="d-inline">
                             <i class="fa-regular fa-star"></i>
-                            {{ recipe.average_rating }}
+                            {{ recipe.rating }} {{ recipe.total_ratings }}
                         </span>
                     </p>
                 </div>
@@ -134,17 +134,48 @@
                 </div>
                 {% endfor %}
             </div>
-            <div class="card-body">
-                {% if user.is_authenticated %}
-                <h3>Leave a review:</h3>
-                <p>Reviewed by: {{ user.username }}</p>
-                <form method="post" style="margin-top: 1.3em;">
-                    {{ review_form | crispy }}
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
-                </form>
 
-                {% endif %}
+            <div class="row">
+                <div class="col-md-6 col-12 offset-md-6">
+                    <div class="card-body">
+                        {% if reviewed %}
+                        <div class="alert alert-success" role="alert">
+                            Your review is awaiting approval.
+                        </div>
+                        {% else %}
+                        {% if user.is_authenticated %}
+                        <h3>Leave a review:</h3>
+                        <p>Reviewed by: {{ user.username }}</p>
+                        <form method="post" style="margin-top: 1.3em;">
+                            {% csrf_token %}
+                            {% if rated %}
+                            <div class="alert alert-warning" role="alert">
+                                You have already rated this recipe.
+                            </div>
+                            {% else %}
+                            <div id="div_id_rating" class="form-group">
+                                <label for="id_rating" class=" requiredField">Rating<span
+                                        class="asteriskField">*</span></label>
+                                <div class="star-rating">
+                                    <input name="rating" type="hidden" value="0" required="" id="id_rating"
+                                        fdprocessedid="t2k2ph" class="fa-regular fa-star">
+                                    <i class="fa-regular fa-star" data-value="1"></i>
+                                    <i class="fa-regular fa-star" data-value="2"></i>
+                                    <i class="fa-regular fa-star" data-value="3"></i>
+                                    <i class="fa-regular fa-star" data-value="4"></i>
+                                    <i class="fa-regular fa-star" data-value="5"></i>
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            {{ review_form | crispy }}
+                            
+                            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                        </form>
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>

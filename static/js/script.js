@@ -18,4 +18,16 @@ $(document).ready(function () {
     setTimeout(function() {
         $('#msg').hide();
     }, 3000);
+
+    // setting star rating 
+    $('.star-rating i').on('click', function () {
+        let value = $(this).data('value');
+        // source: https://api.jquery.com/val/#val
+        $('#id_rating').val(value);
+
+        $(this).addClass('active fa-solid').removeClass('fa-regular');
+        $(this).prevAll().addClass('active fa-solid').removeClass('fa-regular');
+        $(this).nextAll().addClass('fa-regular').removeClass('active fa-solid');
+    });
+
 });

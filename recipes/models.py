@@ -28,6 +28,7 @@ class Recipe(models.Model):
         ])
     total_ratings = models.IntegerField(default=0)
     status = models.IntegerField(choices=STATUS, default=0)
+    rated_users = models.ManyToManyField(User, related_name="rated_recipes", blank=True)
 
     class Meta:
         ordering = ['-title']
@@ -42,13 +43,16 @@ class Recipe(models.Model):
         return self.reviews.count()
 
     def rate_recipe(self, user, rating):
-        # ensuring the rating is between 1 and 5
-        rating = max(1, min(5, rating))
-        # Update the rating and total_ratings
-        self.rating = round((self.rating * self.total_ratings + rating) / (self.total_ratings + 1), 1)
-        self.total_ratings += 1
-        # save the changes
-        self.save()
+        if user not in self.rated_users.all():
+            # ensuring the rating is between 1 and 5
+            rating = max(1, min(5, rating))
+            # Update the rating and total_ratings
+            self.rating = round((self.rating * self.total_ratings + rating) / (self.total_ratings + 1), 1)
+            self.total_ratings += 1
+            # Add user to rated_users
+            self.rated_users.add(user)
+            # save the changes
+            self.save()
 
     def average_rating(self):
         return self.rating
