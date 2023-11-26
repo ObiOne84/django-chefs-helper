@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% load crispy_forms_tags %}
+
 <div class="container-lg">
 
     <div class="row">
@@ -131,6 +133,18 @@
                     <p>{{ review.body | safe }}</p>
                 </div>
                 {% endfor %}
+            </div>
+            <div class="card-body">
+                {% if user.is_authenticated %}
+                <h3>Leave a review:</h3>
+                <p>Reviewed by: {{ user.username }}</p>
+                <form method="post" style="margin-top: 1.3em;">
+                    {{ review_form | crispy }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                </form>
+
+                {% endif %}
             </div>
         </div>
     </div>
