@@ -15,7 +15,7 @@ $(document).ready(function () {
     })
 
     // django messages timeout source:https://api.jquery.com/hide/#hide
-    setTimeout(function() {
+    setTimeout(function () {
         $('#msg').hide();
     }, 3000);
 
@@ -29,5 +29,20 @@ $(document).ready(function () {
         $(this).prevAll().addClass('active fa-solid').removeClass('fa-regular');
         $(this).nextAll().addClass('fa-regular').removeClass('active fa-solid');
     });
+
+    // Add rating form validation
+    // $('#review-form').submit(function (e) {
+    //     e.preventDefault();
+    //     let rating = $('#id_rating').data('value');
+    //     let range = [1, 2, 3, 4, 5];
+    //     let rated = $('#rated-alert').css('display');
+    //     let rate = $('#rating-alert').css('display', 'block');
+
+    //     if (!(range.includes(rating)) || rated === 'none') {
+    //         alert("please rate the recipe");
+    //     } else {
+    //         $(this).submit();
+    //     }
+    // });
 
 });

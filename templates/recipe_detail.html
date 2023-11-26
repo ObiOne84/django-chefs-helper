@@ -22,7 +22,7 @@
                     <p class="d-inline">
                         <span class="d-inline">
                             <i class="fa-regular fa-star"></i>
-                            {{ recipe.rating }} {{ recipe.total_ratings }}
+                            {{ recipe.rating|floatformat }} {{ recipe.total_ratings }}
                         </span>
                     </p>
                 </div>
@@ -121,6 +121,8 @@
     </div>
 
     <hr>
+
+    <!-- Review section -->
     <div class="row no-print">
         <div class="col-12 bg-success">
             <h3><i class="far fa-comments"></i> Reviews ({{ recipe.number_of_reviews }})</h3>
@@ -146,19 +148,19 @@
                         {% if user.is_authenticated %}
                         <h3>Leave a review:</h3>
                         <p>Reviewed by: {{ user.username }}</p>
-                        <form method="post" style="margin-top: 1.3em;">
+                        <form method="post" style="margin-top: 1.3em;" id="review-form">
                             {% csrf_token %}
                             {% if rated %}
-                            <div class="alert alert-warning" role="alert">
+                            <div class="alert alert-warning" role="alert" id="alert-rated">
                                 You have already rated this recipe.
                             </div>
                             {% else %}
                             <div id="div_id_rating" class="form-group">
-                                <label for="id_rating" class=" requiredField">Rating<span
+                                <label for="id_rating" class="requiredField">Rating<span
                                         class="asteriskField">*</span></label>
                                 <div class="star-rating">
-                                    <input name="rating" type="hidden" value="0" required="" id="id_rating"
-                                        fdprocessedid="t2k2ph" class="fa-regular fa-star">
+                                    <input name="rating" type="hidden" value="0" required id="id_rating"
+                                        fdprocessedid="t2k2ph">
                                     <i class="fa-regular fa-star" data-value="1"></i>
                                     <i class="fa-regular fa-star" data-value="2"></i>
                                     <i class="fa-regular fa-star" data-value="3"></i>
@@ -169,8 +171,8 @@
                             {% endif %}
 
                             {{ review_form | crispy }}
-                            
-                            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+
+                            <button type="submit" class="btn btn-primary btn-lg" id="review-button">Submit</button>
                         </form>
                         {% endif %}
                         {% endif %}

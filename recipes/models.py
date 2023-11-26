@@ -21,7 +21,6 @@ class Recipe(models.Model):
     cook_time = models.IntegerField(blank=True, null=True)
     servings = models.IntegerField(default=1)
     rating = models.IntegerField(
-        default=0,
         validators=[
             MinValueValidator(1, message="Rating must be at least 1."),
             MaxValueValidator(5, message="Rating must be at most 5."),
@@ -73,7 +72,7 @@ class Review(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='reviews')
     name = models.CharField(max_length=80)
     email = models.EmailField()
-    body = models.TextField()
+    body = models.TextField(max_length=500)
     created_on = models.DateTimeField(auto_now=True)
     approved = models.BooleanField(default=False)
 

@@ -62,12 +62,7 @@ class RecipeDetails(View):
             review.save()
         else:
             review_form = ReviewForm()
-        
-        # checking if user already rate the recipe
-        # source: https://docs.djangoproject.com/en/4.2/topics/db/queries/#lookups-that-span-relationships
-        # source: https://docs.djangoproject.com/en/4.2/topics/db/queries/
-        
-        
+      
         recipe_form = RecipeForm(data=request.POST, instance=recipe)
 
         if recipe_form.is_valid():

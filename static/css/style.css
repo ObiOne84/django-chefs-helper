@@ -95,6 +95,14 @@ form.signup ul li {
     color: #f8d017;
 }
 
+#id_body {
+    max-height: 150px;
+    margin-bottom: 1rem;
+}
+
+#review-button {
+    margin-bottom: 2rem;
+}
 /* Styles for the printed version */
 
 @media print {
