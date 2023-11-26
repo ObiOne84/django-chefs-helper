@@ -44,9 +44,11 @@ form.login span.helptext {
     display: none;
 }
 
-form.login, form.singup {
+form.login,
+form.singup {
     width: 100%;
 }
+
 form p {
     padding-top: 10px;
 }
@@ -85,6 +87,12 @@ form.signup p input {
 form.signup ul li {
     font-size: small;
     list-style-type: none;
+}
+
+/* Rating stars style */
+.star-rating i:hover,
+.star-rating i.active {
+    color: #f8d017;
 }
 
 /* Styles for the printed version */

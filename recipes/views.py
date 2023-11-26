@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
 from .models import Recipe, Review, RecipeIngredient
+from .forms import ReviewForm, RecipeForm
 
 
 # Create your views here.
@@ -20,6 +21,9 @@ class RecipeDetails(View):
         liked = False
         if recipe.likes.filter(id=self.request.user.id).exists():
             liked = True
+        rated = False
+        if recipe.rated_users.filter(id=request.user.id).exists():
+            rated = True
         
         return render(
             request,
@@ -27,7 +31,74 @@ class RecipeDetails(View):
             {
                 "recipe": recipe,
                 "reviews": reviews,
+                "reviewed": False,
+                "rated": rated,
                 "liked": liked,
                 "ingredients": ingredients,
+                'review_form': ReviewForm(),
+                'recipe_form': RecipeForm(instance=recipe),
             },
         )
+    
+    def post(self, request, slug, *arg, **kwargs):
+        queryset = Recipe.objects.filter(status=1)
+        recipe = get_object_or_404(queryset, slug=slug)
+        reviews = recipe.reviews.filter(approved=True).order_by('created_on')
+        ingredients = recipe.ingredients
+        liked = False
+        if recipe.likes.filter(id=self.request.user.id).exists():
+            liked = True
+        rated = False
+        if recipe.rated_users.filter(id=request.user.id).exists():
+            rated = True
+
+        review_form = ReviewForm(data=request.POST)
+
+        if review_form.is_valid():
+            review_form.instance.email = request.user.email
+            review_form.instance.name = request.user.username
+            review = review_form.save(commit=False)
+            review.recipe = recipe
+            review.save()
+        else:
+            review_form = ReviewForm()
+        
+        # checking if user already rate the recipe
+        # source: https://docs.djangoproject.com/en/4.2/topics/db/queries/#lookups-that-span-relationships
+        # source: https://docs.djangoproject.com/en/4.2/topics/db/queries/
+        
+        
+        recipe_form = RecipeForm(data=request.POST, instance=recipe)
+
+        if recipe_form.is_valid():
+            rating_value = recipe_form.cleaned_data.get('rating')
+            recipe.rate_recipe(request.user.id, rating_value)
+            rating = recipe_form.save(commit=False)
+            rating.recipe = recipe
+            rating.save()
+        else:
+            recipe_form = RecipeForm()
+
+        return render(
+            request,
+            "recipe_detail.html",
+            {
+                "recipe": recipe,
+                "reviews": reviews,
+                "reviewed": True,
+                "rated": rated,
+                "liked": liked,
+                "ingredients": ingredients,
+                'review_form': ReviewForm(),
+                'recipe_form': RecipeForm(instance=recipe),
+            },
+        )
+
+
+
+
+
+
+
+
+    
