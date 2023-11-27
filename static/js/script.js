@@ -17,6 +17,7 @@ $(document).ready(function () {
     // django messages timeout source:https://api.jquery.com/hide/#hide
     setTimeout(function () {
         $('#msg').hide();
+        $('#alert-rated').hide();
     }, 3000);
 
     // setting star rating 
