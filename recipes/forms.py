@@ -5,7 +5,7 @@ from django import forms
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
-        fields = ('name', 'body',)
+        fields = ('body',)
 
 class RecipeForm(forms.ModelForm):
     class Meta:

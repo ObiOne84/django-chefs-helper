@@ -91,8 +91,11 @@ form.signup ul li {
 
 /* Rating stars style */
 .star-rating i:hover,
-.star-rating i.active {
-    color: #f8d017;
+.star-rating i.active,
+.full-stars,
+.half-stars {
+    color: #dfb705;
+    text-shadow: 0 0 3px #000;
 }
 
 #id_body {
@@ -103,6 +106,8 @@ form.signup ul li {
 #review-button {
     margin-bottom: 2rem;
 }
+
+
 /* Styles for the printed version */
 
 @media print {

@@ -30,6 +30,43 @@ $(document).ready(function () {
         $(this).nextAll().addClass('fa-regular').removeClass('active fa-solid');
     });
 
+    // Display average rating as starts
+    let aveRating = $('#average-rating').html();
+    let aveRatingNum = parseFloat(aveRating);
+    // Check if the conversion was successful
+    if (!isNaN(aveRatingNum)) {
+        // Round the average rating to the nearest 0.5
+        let roundedRating = Math.round(aveRatingNum * 2) / 2;
+
+        // Clear existing stars
+        // $('#rating-container').html('');
+
+        // Add full stars
+        for (let i = 0; i < Math.floor(roundedRating); i++) {
+            $('#rating-container').append('<i class="fa-solid fa-star full-stars"></i> ');
+        }
+
+        // Add half star if needed
+        if (roundedRating % 1 !== 0) {
+            $('#rating-container').append('<i class="fa-solid fa-star-half-stroke"></i> ');
+        }
+
+        // Add empty stars
+        for (let i = Math.ceil(roundedRating); i < 5; i++) {
+            $('#rating-container').append('<i class="fa-regular fa-star empty-stars"></i> ');
+        }
+
+        console.log("Numeric Value:", aveRatingNum);
+    } else {
+        console.log("It's not a number");
+    }
+
+    // Dark mode
+    // Toggle dark mode when the button is clicked
+    document.getElementById('toggleDarkMode').addEventListener('click', function () {
+        document.body.classList.toggle('dark-mode');
+    });
+
     // Add rating form validation
     // $('#review-form').submit(function (e) {
     //     e.preventDefault();
