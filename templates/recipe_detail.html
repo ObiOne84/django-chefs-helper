@@ -15,13 +15,25 @@
                 <img src="{{ recipe.featured_image.url }}" alt="Image of {{ recipe.title }}" width="100%">
                 {% endif %}
                 <div class="col-12 d-flex justify-content-between">
-                    <p class="d-inline">
-                        <i class="far fa-heart"> {{ recipe.number_of_likes }}</i>
-                    </p>
+                    {% if user.is_authenticated %}
+                    <form action="{% url 'recipe_like' recipe.slug %}" class="d-inline" method="POST">
+                        {% csrf_token %}
+                        {% if liked %}
+                        <button type="submit" name="recipelike_id" value="{{ recipe.slug }}" class="btn-like"><i class="fa-solid fa-heart like-heart"></i></button>
+                        {% else %}
+                        <button type="submit" name="recipelike_id" value="{{ recipe.slug }}" class="btn-like"><i class="fa-regular fa-heart"></i></button>
+                        {% endif %}
+                        {{ recipe.number_of_likes }}
+                    </form>
+                    {% else %}
+                    <div class="d-inline">
+                        <i class="fa-solid fa-heart"></i> {{ recipe.number_of_likes }}
+                    </div>
+                    {% endif %}
                     <!-- Source: https://docs.djangoproject.com/en/4.2/ref/templates/builtins/#floatformat -->
                     <p class="d-inline">
-                        <span id="rating-container">                            
-                        </span>  
+                        <span id="rating-container">
+                        </span>
                         <span id="average-rating" style="font-size: large;">{{ recipe.rating|floatformat }}</span>
                     </p>
                 </div>
@@ -123,12 +135,12 @@
 
     <!-- Review section -->
     <div class="row no-print">
-        <div class="col-12">
+        <div class="col-12 mb-3">
             <h3><i class="far fa-comments"></i> Reviews ({{ recipe.number_of_reviews }})</h3>
-            <div class="card-body">
+            <div class="col-md-6 col-12 card-body">
                 {% for review in reviews %}
-                <div>
-                    <p>By: <strong>{{ review.name }}</strong>, on: 
+                <div class="mb-2">
+                    <p>By: <strong>{{ review.name }}</strong>, on:
                         <span>{{ review.created_on }}</span>
                     </p>
                     <p>{{ review.body | safe }}</p>
@@ -138,7 +150,7 @@
 
             <div class="row">
                 <div class="col-md-6 col-12 offset-md-6">
-                    <div class="card-body">
+                    <div class="card-body mb-3`">
                         {% if reviewed %}
                         <div class="alert alert-success" role="alert">
                             Your review is awaiting approval.

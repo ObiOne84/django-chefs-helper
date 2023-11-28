@@ -95,6 +95,14 @@ form.signup ul li {
 .full-stars,
 .half-stars {
     color: #dfb705;
+    transition: all 3s ease-in-out;
+    opacity: 1;
+    
+}
+
+.full-stars,
+.half-stars {
+    color: #dfb705;
     text-shadow: 0 0 3px #000;
 }
 
@@ -105,6 +113,20 @@ form.signup ul li {
 
 #review-button {
     margin-bottom: 2rem;
+}
+
+/* Style likes */
+.btn-like {
+    border: none;
+    background: transparent;
+}
+
+.like-heart {
+    text-shadow: 0 0 3px #000;
+}
+
+.fa-heart {
+    color: rgb(233, 6, 6);
 }
 
 

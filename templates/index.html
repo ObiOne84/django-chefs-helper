@@ -16,15 +16,15 @@
                 {% for recipe in recipe_list %}
                 <!-- Recipe entries columns -->
                 <div class="col-lg-4 col-md-6 col-12">
-                    <div class="card mb-4">
+                    <div class="card mb-4 recipe-card">
                         <div class="card-body">
                             <div class="image-container">
                                 {% if "placeholder" in recipe.featured_image.url %}
                                 <img src="https://res.cloudinary.com/dcrbeonr9/image/upload/v1700598678/image-placeholder_gmlf30.png"
-                                    alt="Image coming soon placeholder" class="card-img">
+                                    alt="Image coming soon placeholder" class="card-img-top image-fluid">
                                 {% else %}
                                 <img src="{{ recipe.featured_image.url }}" alt="Image of {{ recipe.title}}"
-                                    class="card-img-top">
+                                    class="card-img-top image-fluid">
                                 {% endif %}
                             </div>
 
@@ -35,10 +35,10 @@
                             <p class="author">Author: {{ recipe.author }}</p>
                             <div class="card-footer">
                                 <p class="card-text text-muted h6 d-inline">
-                                    {{ recipe.created_on}} <i class="far fa-heart"> {{ recipe.number_of_likes }}</i>
+                                    {{ recipe.created_on}} <i class="fa-solid fa-heart like-heart"></i> {{ recipe.number_of_likes }}
                                 </p>
                                 <span class="d-inline">
-                                    <i class="fa-regular fa-star"> {{ recipe.average_rating }}</i>
+                                    <i class="fa-solid fa-star full-stars"></i> {{ recipe.average_rating }}
                                 </span>
                             </div>
                         </div>
