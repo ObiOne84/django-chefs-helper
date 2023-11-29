@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.utils.text import slugify
 
 
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -9,7 +10,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 class Recipe(models.Model):
     title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="recipes")
     created_on = models.DateTimeField(auto_now=True)
     updated_on = models.DateTimeField(auto_now=True)
@@ -24,7 +25,9 @@ class Recipe(models.Model):
         validators=[
             MinValueValidator(1, message="Rating must be at least 1."),
             MaxValueValidator(5, message="Rating must be at most 5."),
-        ])
+        ],
+        default=0
+        )
     total_ratings = models.IntegerField(default=0)
     status = models.IntegerField(choices=STATUS, default=0)
     rated_users = models.ManyToManyField(User, related_name="rated_recipes", blank=True)
@@ -66,6 +69,19 @@ class Recipe(models.Model):
                 'unit': ingredient.unit,
             })
         return adjusted_ingredients
+
+    
+    # Source: https://studygyaan.com/django/how-to-create-a-unique-slug-in-django 
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+            original_slug = self.slug
+            count = 1
+            while Recipe.objects.filter(slug=self.slug).exists():
+                self.slug = f"{original_slug}-{count}"
+                count += 1
+
+        super().save(*args, **kwargs)
 
 
 class Review(models.Model):

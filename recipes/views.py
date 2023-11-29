@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
+from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
+from django.views.generic.edit import FormView
 from .models import Recipe, Review, RecipeIngredient
-from .forms import ReviewForm, RecipeForm
+from .forms import ReviewForm, RecipeForm, AddRecipeForm
 
 
 # Create your views here.
@@ -103,7 +105,32 @@ class RecipeLike(View):
         return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
 
+class AddRecipeView(FormView):
+    model = Recipe
+    form_class = AddRecipeForm
+    template_name = 'add_recipe.html'
+    success_url = reverse_lazy('home')
 
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        form.instance.email = self.request.user.email
+        form.instance.name = self.request.user.username
+        return super().form_valid(form)
 
+    def form_invalid(self, form):
+        return self.render_to_response(self.get_context_data(form=form))
+
+    def post(self, request, *args, **kwargs):
+        print("Entering post method")
+        form = self.get_form()
+        if form.is_valid():
+            form.instance.author = self.request.user
+            form.instance.email = self.request.user.email
+            form.instance.name = self.request.user.username
+            form.save()
+            return self.form_valid(form)
+        else:
+            print("Form is invalid")
+            return self.form_invalid(form)
 
     

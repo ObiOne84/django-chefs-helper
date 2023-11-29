@@ -129,6 +129,13 @@ form.signup ul li {
     color: rgb(233, 6, 6);
 }
 
+/* index page styles */
+/* recipe card */
+.recipe-card:hover {
+    transform: scale(1.025);
+    filter: drop-shadow(0 0 8px #2759fc);
+    opacity: 1;
+}
 
 /* Styles for the printed version */
 

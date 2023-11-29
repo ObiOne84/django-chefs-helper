@@ -37,7 +37,6 @@
                         <span id="average-rating" style="font-size: large;">{{ recipe.rating|floatformat }}</span>
                     </p>
                 </div>
-                <!-- <hr class="d-block d-md-none no-print"> -->
             </div>
         </div>
         <div class="col-md-6 col-12 print-size">
@@ -100,30 +99,13 @@
                 <tbody>
 
                     {% for ingredient in recipe.ingredients.all %}
-                    <!-- <li>{{ ingredient.name }} {{ ingredient.quantity }} {{ ingredient.unit }}</li> -->
                     <tr>
-
                         <th scope="row"></th>
                         <td>{{ ingredient.name }}</td>
                         <td>{{ ingredient.quantity|floatformat:"-2" }}</td>
                         <td>{{ ingredient.unit }}</td>
 
                     </tr>
-                    <!-- <li>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-8 col-6 d-inline">
-                                {{ ingredient.name }}
-                            </div>
-                            <div class="col-sm-2 col-3 d-inline">
-                                {{ ingredient.quantity|floatformat:"-2" }}
-                            </div>
-                            <div class="col-sm-2 col-3 d-inline">
-                                {{ ingredient.unit }}
-                            </div>
-                        </div>
-                    </div>
-                </li> -->
                     {% endfor %}
                 </tbody>
             </table>
@@ -158,7 +140,6 @@
                         {% else %}
                         {% if user.is_authenticated %}
                         <h3>Leave a review:</h3>
-                        <!-- <p>Reviewed by: {{ user.username }}</p> -->
                         <form method="post" style="margin-top: 1.3em;" id="review-form">
                             {% csrf_token %}
                             {% if rated %}

@@ -11,8 +11,15 @@
 <div class="container">
     <div class="row">
         <div class="col-12 mt-3 left">
-            <h2> Body - Index Page! <i class="fa-solid fa-utensils"></i></h2>
             <div class="row">
+                <div class="col-12 mb-3">
+                    <h2 class="d-inline"> Body - Index Page! <i class="fa-solid fa-utensils"></i></h2>
+                    {% if user.is_authenticated %}
+                    <span><a href="{% url 'add_recipe' %}"><i class="fa-solid fa-square-plus"></i> Add Recipe</a></span>
+                    {% endif %}
+                </div>
+
+
                 {% for recipe in recipe_list %}
                 <!-- Recipe entries columns -->
                 <div class="col-lg-4 col-md-6 col-12">
@@ -35,7 +42,8 @@
                             <p class="author">Author: {{ recipe.author }}</p>
                             <div class="card-footer">
                                 <p class="card-text text-muted h6 d-inline">
-                                    {{ recipe.created_on}} <i class="fa-solid fa-heart like-heart"></i> {{ recipe.number_of_likes }}
+                                    {{ recipe.created_on}} <i class="fa-solid fa-heart like-heart"></i>
+                                    {{ recipe.number_of_likes }}
                                 </p>
                                 <span class="d-inline">
                                     <i class="fa-solid fa-star full-stars"></i> {{ recipe.average_rating }}
