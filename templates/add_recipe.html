@@ -2,6 +2,91 @@
 {% block content %}
 
 {% load crispy_forms_tags %}
+<div class="container-lg">
+    <form action="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6 col-12 print-size">
+
+                <div>
+                    <!-- add image area -->
+                    {{ form.featured_image }}
+                    <img src="https://res.cloudinary.com/dcrbeonr9/image/upload/v1700598678/image-placeholder_gmlf30.png"
+                        alt="Image coming soon placeholder" width="60%">
+                </div>
+            </div>
+            <div class="col-md-6 col-12 print-size">
+                <div>
+                    <h1 class="d-inline">Recipe Name: {{ form.title }}</h1>
+                    <!-- add recipe title here input -->
+                </div>
+                <div>
+                    <h3><i class="fa-regular fa-file-lines"></i> Description:</h3>
+                    <!-- add recipe excerpt here -->
+                    <span>{{ form.excerpt }}</span>
+                </div>
+                <div>
+                    <h3 class="d-inline"><i class="fa-solid fa-clock"></i> Prep Time:
+                        <!-- add prep time below -->
+                        <span class="d-inline">{{ form.prep_time }}</span>
+                    </h3>
+                </div>
+                <div>
+                    <h3 class="d-inline"><i class="fa-solid fa-fire-burner"></i> Cooking Time:
+                        <!-- add cooking time below -->
+                        <span class="d-inline">{{ form.cook_time }}</span>
+                    </h3>
+                </div>
+                <div>
+                    <h3 class="d-inline"><i class="fa-solid fa-users"></i> Servings:
+                        <!-- add number of servings below -->
+                        <span class="d-inline">{{ form.servings }}</span>
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <div class="row">
+            <div class="col-md-6 col-12 print-size">
+                <h3><i class="fa-solid fa-list-check"></i> Instructions:</h3>
+                {{ form.instructions }}
+                <span>instruction go here as ordered list</span>
+            </div>
+            <hr class="d-block d-md-none">
+            <div class="col-md-6 col-12 print-size">
+                <h3><i class="fa-solid fa-file-pen"></i> Ingredients:</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Ingredient Name</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Units</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <!-- ingredients go here as a table -->
+                        <tr>
+                            <th scope="row"></th>
+                            <td>{{ ingredient.name }}</td>
+                            <td>{{ ingredient.quantity|floatformat:"-2" }}</td>
+                            <td>{{ ingredient.unit }}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <button type="submit">Add Recipe</button>
+    </form>
+</div>
+
+<hr>
+<hr>
+<hr>
 
 <div class="container-lg">
 
@@ -18,6 +103,19 @@
 
         </div>
     </div>
+
 </div>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div id="steps-container">
+        <div class="step-container">
+            {{ form.instructions }}
+            <button type="button" class="add-step">+</button>
+        </div>
+    </div>
+    <input type="submit" value="Submit">
+</form>
 
 {% endblock content %}
