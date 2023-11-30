@@ -1,5 +1,6 @@
 from .models import Review, Recipe
 from django import forms
+from django.core.exceptions import ValidationError
 
 
 class ReviewForm(forms.ModelForm):
@@ -39,6 +40,12 @@ class AddRecipeForm(forms.ModelForm):
         min_value=0
     )
 
+    # title =  forms.CharField(
+    #     widget=forms.TextInput(attrs={
+    #     'unique': "The recipe name already exists. Please provide a different name!"
+    #     })
+    # )
+
     def clean_prep_time(self):
         prep_time = self.cleaned_data['prep_time']
         if prep_time < 0:
@@ -56,3 +63,10 @@ class AddRecipeForm(forms.ModelForm):
         if servings < 0:
             raise forms.ValidationError("Servings must be a positive number.")
         return servings
+    
+    def clean_title(self):
+        title = self.cleaned_data.get('title')
+        if Recipe.objects.filter(title=title).exists():
+            raise ValidationError("The recipe name already exists. Please provide a different name!")
+
+        return title
