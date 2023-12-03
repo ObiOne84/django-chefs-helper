@@ -19,9 +19,11 @@
                     <form action="{% url 'recipe_like' recipe.slug %}" class="d-inline" method="POST">
                         {% csrf_token %}
                         {% if liked %}
-                        <button type="submit" name="recipelike_id" value="{{ recipe.slug }}" class="btn-like"><i class="fa-solid fa-heart like-heart"></i></button>
+                        <button type="submit" name="recipelike_id" value="{{ recipe.slug }}" class="btn-like"><i
+                                class="fa-solid fa-heart like-heart"></i></button>
                         {% else %}
-                        <button type="submit" name="recipelike_id" value="{{ recipe.slug }}" class="btn-like"><i class="fa-regular fa-heart"></i></button>
+                        <button type="submit" name="recipelike_id" value="{{ recipe.slug }}" class="btn-like"><i
+                                class="fa-regular fa-heart"></i></button>
                         {% endif %}
                         {{ recipe.number_of_likes }}
                     </form>
@@ -90,25 +92,22 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col"></th>
                         <th scope="col">Ingredient Name</th>
                         <th scope="col">Quantity</th>
                         <th scope="col">Units</th>
                     </tr>
                 </thead>
                 <tbody>
-
-                    {% for ingredient in recipe.ingredients.all %}
+                    {% for form in ingredient_formset %}
                     <tr>
-                        <th scope="row"></th>
-                        <td>{{ ingredient.name }}</td>
-                        <td>{{ ingredient.quantity|floatformat:"-2" }}</td>
-                        <td>{{ ingredient.unit }}</td>
-
+                        <td>{{ form.name.value }}</td>
+                        <td>{{ form.quantity.value }}</td>
+                        <td>{{ form.unit.value }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
+
 
         </div>
     </div>
