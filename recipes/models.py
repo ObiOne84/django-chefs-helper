@@ -5,7 +5,18 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.text import slugify
 
 
+
 STATUS = ((0, "Draft"), (1, "Published"))
+
+class RecipeIngredient(models.Model):
+    name = models.CharField(max_length=300)
+    quantity=models.DecimalField(max_digits=6, decimal_places=2)
+    unit = models.CharField(max_length=50)
+    recipe = models.ForeignKey('Recipe', on_delete=models.CASCADE)  # Change related_name
+
+
+    def __str__(self):
+        return f"{self.quantity} {self.unit} {self.name}"
 
 
 class Recipe(models.Model):
@@ -15,6 +26,7 @@ class Recipe(models.Model):
     created_on = models.DateTimeField(auto_now=True)
     updated_on = models.DateTimeField(auto_now=True)
     instructions = models.TextField()
+    ingredients = models.ManyToManyField(RecipeIngredient, related_name='ingredients')
     featured_image = CloudinaryField('image', default='placeholder')
     excerpt = models.TextField(blank=True)
     likes = models.ManyToManyField(User, related_name="liked_recipes", blank=True)
@@ -99,13 +111,6 @@ class Review(models.Model):
         return f"Review {self.body} by {self.name}"
 
 
-class RecipeIngredient(models.Model):
-    recipe = models.ForeignKey(Recipe, related_name='ingredients', on_delete=models.CASCADE)
-    name = models.CharField(max_length=300)
-    quantity=models.DecimalField(max_digits=6, decimal_places=2)
-    unit = models.CharField(max_length=50)
 
-    def __str__(self):
-        return f"{self.quantity} {self.unit} {self.name}"
 
 

@@ -1,10 +1,13 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.urls import reverse_lazy
+from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.views.generic.edit import FormView
+from django.views.generic.edit import FormView, CreateView
 from .models import Recipe, Review, RecipeIngredient
-from .forms import ReviewForm, RecipeForm, AddRecipeForm
+from .forms import ReviewForm, RecipeForm, AddRecipeForm, AddIngredientForm
+import logging
+from django.forms import inlineformset_factory
 
 
 # Create your views here.
@@ -21,6 +24,10 @@ class RecipeDetails(View):
         recipe = get_object_or_404(queryset, slug=slug)
         reviews = recipe.reviews.filter(approved=True).order_by('created_on')
         ingredients = recipe.ingredients
+        # added here
+        IngredientFormSet = inlineformset_factory(Recipe, RecipeIngredient, form=AddIngredientForm, extra=0)
+        ingredient_formset = IngredientFormSet(instance=recipe)
+        
         liked = False
         if recipe.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -40,6 +47,7 @@ class RecipeDetails(View):
                 "ingredients": ingredients,
                 'review_form': ReviewForm(),
                 'recipe_form': RecipeForm(instance=recipe),
+                "ingredient_formset": ingredient_formset,
             },
         )
     
@@ -56,6 +64,10 @@ class RecipeDetails(View):
             rated = True
 
         review_form = ReviewForm(data=request.POST)
+
+        # Create an instance of the inline formset for RecipeIngredient
+        IngredientFormSet = inlineformset_factory(Recipe, RecipeIngredient, form=AddIngredientForm, extra=0)
+        ingredient_formset = IngredientFormSet(request.POST, instance=recipe)
 
         if review_form.is_valid():
             review_form.instance.email = request.user.email
@@ -89,6 +101,7 @@ class RecipeDetails(View):
                 "ingredients": ingredients,
                 'review_form': ReviewForm(),
                 'recipe_form': RecipeForm(instance=recipe),
+                "ingredient_formset": ingredient_formset,
             },
         )
 
@@ -115,22 +128,41 @@ class AddRecipeView(FormView):
         form.instance.author = self.request.user
         form.instance.email = self.request.user.email
         form.instance.name = self.request.user.username
+        self.formset = form.ingredient_formset
         return super().form_valid(form)
 
     def form_invalid(self, form):
+        print("Form or Formset is invalid")
+        print("Form errors:", form.errors)
+        print("Formset errors:", self.formset.errors)
         return self.render_to_response(self.get_context_data(form=form))
 
     def post(self, request, *args, **kwargs):
         print("Entering post method")
         form = self.get_form()
-        if form.is_valid():
+        self.formset = form.ingredient_formset
+
+        if form.is_valid() and self.formset.is_valid():
             form.instance.author = self.request.user
             form.instance.email = self.request.user.email
             form.instance.name = self.request.user.username
             form.save()
+
+            self.formset.instance = form.instance
+
+            # Save the formset with commit=False to delay saving to the database
+            instances = self.formset.save(commit=False)
+
+            for instance in instances:
+                instance.recipe = form.instance
+                instance.save()
+
+            # Save the formset again with the correct recipe instance
+            self.formset.save()
+
             return self.form_valid(form)
         else:
             print("Form is invalid")
             return self.form_invalid(form)
 
-    
+
