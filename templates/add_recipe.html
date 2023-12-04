@@ -10,13 +10,43 @@
 
          <form method="post" enctype="multipart/form-data" action="{% url 'add_recipe' %}">
             {% csrf_token %}
-            {{ form.as_p }}
+
+            {{ form.as_table }}
+            <!-- {{ form.title }}
+            {{ form.title }}
+            {{ form.instructions }}
+            {{ form.featured_image }}
+            {{ form.excerpt }}
+            {{ form.prep_time }}
+            {{ form.cook_time }}
+            {{ form.servings }}
+            {{ form.status }}
+            {% if form.errors %} -->
+            <div class="alert alert-danger" role="alert">
+               <strong>Form Errors:</strong>
+               <ul>
+                  {% for field, errors in form.errors.items %}
+                  {% for error in errors %}
+                  <li>{{ error }}</li>
+                  {% endfor %}
+                  {% endfor %}
+               </ul>
+            </div>
+            {% endif %}
             <div>
                <!-- Ingredient formset -->
                {{ form.ingredient_formset.management_form }}
 
                {% for form in form.ingredient_formset %}
-               {{ form.as_table }}
+               {{ form.name.label_tag }}
+               {{ form.name }}
+               {{ form.name.errors }}
+               {{ form.quantity.label_tag }}
+               {{ form.quantity }}
+               {{ form.quantity.errors }}
+               {{ form.unit.label_tag }}
+               {{ form.unit }}
+               {{ form.unit.errors }}
                {% endfor %}
             </div>
 

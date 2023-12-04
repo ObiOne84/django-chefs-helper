@@ -3,9 +3,10 @@ from django.views import generic, View
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.views.generic.edit import FormView, CreateView
+from django.views.generic.edit import FormView, CreateView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Recipe, Review, RecipeIngredient
-from .forms import ReviewForm, RecipeForm, AddRecipeForm, AddIngredientForm
+from .forms import ReviewForm, RecipeForm, AddRecipeForm, AddIngredientForm, UpdateRecipeForm
 import logging
 from django.forms import inlineformset_factory
 
@@ -164,5 +165,22 @@ class AddRecipeView(FormView):
         else:
             print("Form is invalid")
             return self.form_invalid(form)
+
+
+class UpdateRecipeView(LoginRequiredMixin, UpdateView):
+    model = Recipe
+    form_class = UpdateRecipeForm
+    template_name = 'update_recipe.html'
+    success_url = reverse_lazy('home')    
+
+    def get_object(self, queryset=None):
+        # Ensure that only the user who created the recipe can update it
+        slug = self.kwargs.get('slug')
+        obj = get_object_or_404(Recipe, slug=slug)
+        if obj.author != self.request.user:
+            
+            # You can customize the response or raise PermissionDenied if needed
+            raise PermissionError("You don't have permission to update this recipe.")
+        return obj
 
 

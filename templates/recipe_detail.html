@@ -7,7 +7,11 @@
 
     <div class="row">
         <div class="col-md-6 col-12 print-size">
-            <div>
+            <div>{% if request.user == recipe.author %}
+                <a href="{% url 'update_recipe' slug=recipe.slug %}">Edit Recipe</a>
+                <button>Delete Recipe</button>
+                {% endif %}
+
                 {% if "placeholder" in recipe.featured_image.url %}
                 <img src="https://res.cloudinary.com/dcrbeonr9/image/upload/v1700598678/image-placeholder_gmlf30.png"
                     alt="Image coming soon placeholder" width="100%">

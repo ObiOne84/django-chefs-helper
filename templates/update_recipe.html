@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<div class="container-lg">
+
+    <div class="row">
+        <div class="col-md-6 col-12 print-size">
+
+            <form method="post" enctype="multipart/form-data" action="{% url 'update_recipe' slug=recipe.slug %}">
+                {% csrf_token %}
+
+                {{ form.as_p }}
+       
+                <button type="submit">Submit</button>
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

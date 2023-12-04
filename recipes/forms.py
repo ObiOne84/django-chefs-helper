@@ -123,3 +123,17 @@ class AddRecipeForm(forms.ModelForm):
 
     #     return cleaned_data
 
+
+class UpdateRecipeForm(forms.ModelForm):
+    class Meta:
+        model = Recipe
+        fields = [
+            'title',
+            'instructions',
+            'featured_image',
+            'excerpt',
+            'prep_time',
+            'cook_time',
+            'servings',
+            'status',
+            ]
