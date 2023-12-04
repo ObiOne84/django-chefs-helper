@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.urls import reverse_lazy
 from django.contrib import messages
@@ -24,7 +24,7 @@ class RecipeDetails(View):
         queryset = Recipe.objects.filter(status=1)
         recipe = get_object_or_404(queryset, slug=slug)
         reviews = recipe.reviews.filter(approved=True).order_by('created_on')
-        ingredients = recipe.ingredients
+        # ingredients = recipe.ingredients
         # added here
         IngredientFormSet = inlineformset_factory(Recipe, RecipeIngredient, form=AddIngredientForm, extra=0)
         ingredient_formset = IngredientFormSet(instance=recipe)
@@ -45,7 +45,7 @@ class RecipeDetails(View):
                 "reviewed": False,
                 "rated": rated,
                 "liked": liked,
-                "ingredients": ingredients,
+                # "ingredients": ingredients,
                 'review_form': ReviewForm(),
                 'recipe_form': RecipeForm(instance=recipe),
                 "ingredient_formset": ingredient_formset,
@@ -56,7 +56,7 @@ class RecipeDetails(View):
         queryset = Recipe.objects.filter(status=1)
         recipe = get_object_or_404(queryset, slug=slug)
         reviews = recipe.reviews.filter(approved=True).order_by('created_on')
-        ingredients = recipe.ingredients
+        # ingredients = recipe.ingredients
         liked = False
         if recipe.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -99,7 +99,7 @@ class RecipeDetails(View):
                 "reviewed": True,
                 "rated": rated,
                 "liked": liked,
-                "ingredients": ingredients,
+                # "ingredients": ingredients,
                 'review_form': ReviewForm(),
                 'recipe_form': RecipeForm(instance=recipe),
                 "ingredient_formset": ingredient_formset,
@@ -167,20 +167,59 @@ class AddRecipeView(FormView):
             return self.form_invalid(form)
 
 
-class UpdateRecipeView(LoginRequiredMixin, UpdateView):
-    model = Recipe
-    form_class = UpdateRecipeForm
-    template_name = 'update_recipe.html'
-    success_url = reverse_lazy('home')    
+# class UpdateRecipeView(LoginRequiredMixin, UpdateView):
+#     model = Recipe
+#     form_class = UpdateRecipeForm
+#     template_name = 'update_recipe.html'
+#     success_url = reverse_lazy('home')
 
-    def get_object(self, queryset=None):
-        # Ensure that only the user who created the recipe can update it
-        slug = self.kwargs.get('slug')
-        obj = get_object_or_404(Recipe, slug=slug)
-        if obj.author != self.request.user:
+#     def get_object(self, queryset=None):
+#         # Ensure that only the user who created the recipe can update it
+#         slug = self.kwargs.get('slug')
+#         recipe = get_object_or_404(Recipe, slug=slug)
+#         if recipe.author != self.request.user:
             
-            # You can customize the response or raise PermissionDenied if needed
-            raise PermissionError("You don't have permission to update this recipe.")
-        return obj
+#             # You can customize the response or raise PermissionDenied if needed
+#             raise PermissionError("You don't have permission to update this recipe.")
+#         return recipe
 
 
+class UpdateRecipeView(View):
+    template_name = 'update_recipe.html'
+    IngredientFormSet = inlineformset_factory(Recipe, RecipeIngredient, form=AddIngredientForm, extra=1)
+
+    def get(self, request, slug):
+        recipe = get_object_or_404(Recipe, slug=slug)
+        update_recipe_form = UpdateRecipeForm(instance=recipe)
+        ingredient_formset = self.IngredientFormSet(instance=recipe)
+
+        return render(
+            request,
+            self.template_name,
+            {
+                'update_recipe_form': update_recipe_form,
+                'ingredient_formset': ingredient_formset,
+                'recipe': recipe,
+   
+            }
+        )
+
+    def post(self, request, slug):
+        recipe = get_object_or_404(Recipe, slug=slug)
+        update_recipe_form = UpdateRecipeForm(request.POST, instance=recipe)
+        ingredient_formset = self.IngredientFormSet(request.POST, instance=recipe)
+
+        if update_recipe_form.is_valid() and ingredient_formset.is_valid():
+            update_recipe_form.save()
+            ingredient_formset.save()
+            return redirect('home')
+        else:
+            return render(
+                request,
+                self.template_name,
+                {
+                    'update_recipe_form': update_recipe_form,
+                    'ingredient_formset': ingredient_formset,
+                    'recipe': recipe,
+                }
+            )

@@ -83,4 +83,15 @@ $(document).ready(function () {
     //     }
     // });
 
+
+    $(document).ready(function () {
+        $('#add-ingredient').click(function () {
+            // Clone the last form and append it to the formset
+            var newForm = $('#update-recipe-form .formset:last').clone(true);
+            newForm.find(':input').val('');
+            $('#update-recipe-form .formset:last').after(newForm);
+        });
+    });
+
+
 });

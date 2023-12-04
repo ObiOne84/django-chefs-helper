@@ -54,6 +54,7 @@ class AddRecipeForm(forms.ModelForm):
 
         # Use inlineformset_factory to create the formset
         IngredientFormSet = inlineformset_factory(Recipe, RecipeIngredient, form=AddIngredientForm, extra=1)
+        # min_num=1, validate_min=True
 
         # Pass instance=self.instance to formset to link it to the Recipe instance
         self.ingredient_formset = IngredientFormSet(*args, **kwargs, instance=self.instance)
@@ -137,3 +138,6 @@ class UpdateRecipeForm(forms.ModelForm):
             'servings',
             'status',
             ]
+
+
+
