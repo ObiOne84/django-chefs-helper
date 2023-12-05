@@ -14,14 +14,29 @@ from django.forms import inlineformset_factory
 # Create your views here.
 class RecipeList(generic.ListView):
     model = Recipe
-    queryset = Recipe.objects.filter(status=1).order_by('-created_on')
+    
+    # queryset = Recipe.objects.filter(status=1).order_by('-created_on')
     template_name = 'index.html'
     paginate_by = 6
 
+    def get_queryset(self):
+        user = self.request.user
+        queryset_published = Recipe.objects.filter(status=1).order_by('-created_on')
+        
+        if user.is_authenticated:
+            queryset_user_draft = Recipe.objects.filter(status=0, author=user)
+            queryset = queryset_published | queryset_user_draft
+        else:
+            queryset = queryset_published
 
-class RecipeDetails(View):
+        return queryset.order_by('-status', '-created_on')
+
+
+class RecipeDetails(LoginRequiredMixin, View):
     def get(self, request, slug, *arg, **kwargs):
-        queryset = Recipe.objects.filter(status=1)
+
+        queryset = Recipe.objects.all()
+        # queryset = Recipe.objects.filter(status=1)
         recipe = get_object_or_404(queryset, slug=slug)
         reviews = recipe.reviews.filter(approved=True).order_by('created_on')
         # ingredients = recipe.ingredients
@@ -53,7 +68,8 @@ class RecipeDetails(View):
         )
     
     def post(self, request, slug, *arg, **kwargs):
-        queryset = Recipe.objects.filter(status=1)
+        queryset = Recipe.objects.all()
+        # queryset = Recipe.objects.filter(status=1)
         recipe = get_object_or_404(queryset, slug=slug)
         reviews = recipe.reviews.filter(approved=True).order_by('created_on')
         # ingredients = recipe.ingredients

@@ -107,3 +107,16 @@
 </div>
 
 {% endblock content %}
+
+{% for recipe in recipe_list %}
+    <!-- Recipe entries columns -->
+    <div class="col-lg-4 col-md-6 col-12">
+        <div class="card mb-4 recipe-card">
+            <!-- your card content here -->
+        </div>
+    </div>
+    {% if forloop.counter|divisibleby:2 and not forloop.last %}
+        </div><!-- close the row every 2 recipes for medium and small screens -->
+        <div class="row">
+    {% endif %}
+{% endfor %}
