@@ -4,12 +4,37 @@
 {% load crispy_forms_tags %}
 
 <div class="container-lg">
+    <!-- Logout modal -->
+    <div id="deleteRecipeModal" class="modal" tabindex="-1" aria-labelledby="deleteRecipeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteRecipeModalLabel">Delete Recipe Confirmation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete {{ recipe.title}} recpie?</p>
+                    <p>This action is irreversible!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <form method="post" action="{% url 'delete' slug=recipe.slug %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">
+                            Delete
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-md-6 col-12 print-size">
             <div>{% if request.user == recipe.author %}
                 <a href="{% url 'update_recipe' slug=recipe.slug %}">Edit Recipe</a>
-                <button>Delete Recipe</button>
+                <a href="#" id="delete-recipe-link">Delete Recipe</a>
                 {% endif %}
 
                 {% if "placeholder" in recipe.featured_image.url %}

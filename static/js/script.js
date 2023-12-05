@@ -9,10 +9,22 @@ $(document).ready(function () {
     });
 
     // activate logout modal
-    $('#logout-link').on("click", function () {
-        let myModal = new bootstrap.Modal(document.getElementById('logoutModal'));
-        myModal.show();
-    })
+    // $('#logout-link').on("click", function () {
+    //     let myModal = new bootstrap.Modal(document.getElementById('logoutModal'));
+    //     myModal.show();
+    // })
+    // function to show 
+    const showModal = (object, event, modal) => {
+        $(object).on(event, function () {
+            let myModal = new bootstrap.Modal(document.getElementById(modal));
+            myModal.show();
+        });
+    };
+
+    showModal('#logout-link', 'click', 'logoutModal');
+    showModal('#delete-recipe-link', 'click', 'deleteRecipeModal');
+
+
 
     // django messages timeout source:https://api.jquery.com/hide/#hide
     setTimeout(function () {

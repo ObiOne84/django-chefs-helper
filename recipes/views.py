@@ -186,7 +186,7 @@ class AddRecipeView(FormView):
 
 class UpdateRecipeView(View):
     template_name = 'update_recipe.html'
-    IngredientFormSet = inlineformset_factory(Recipe, RecipeIngredient, form=AddIngredientForm, extra=1)
+    IngredientFormSet = inlineformset_factory(Recipe, RecipeIngredient, form=AddIngredientForm, extra=0)
 
     def get(self, request, slug):
         recipe = get_object_or_404(Recipe, slug=slug)
@@ -223,3 +223,12 @@ class UpdateRecipeView(View):
                     'recipe': recipe,
                 }
             )
+
+
+class DeleteRecipeView(View):
+    template_name = 'recipe_detail.html'
+    def get(self, request, slug):
+        recipe = get_object_or_404(Recipe, slug=slug)
+        recipe.delete()
+
+        return redirect('home')
