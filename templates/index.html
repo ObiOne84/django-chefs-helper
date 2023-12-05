@@ -18,7 +18,7 @@
                     <span><a href="{% url 'add_recipe' %}"><i class="fa-solid fa-square-plus"></i> Add Recipe</a></span>
                     {% endif %}
                 </div>
-                
+
                 {% if is_paginated %}
                 <nav aria-label="Page navigation">
                     <ul class="pagination justify-content-center">
@@ -33,10 +33,10 @@
                             <a href="?page={{ i }}" class="page-link">{{ i }}</a>
                         </li>
                         {% endfor %}
-            
+
                         {% if page_obj.has_next %}
                         <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-            
+
                         {% endif %}
                     </ul>
                 </nav>
@@ -58,7 +58,12 @@
                             </div>
 
                             <a href="{% url 'recipe_detail' recipe.slug %}" class="post-link">
-                                <h3 class="card-title">{{ recipe.title }}</h3>
+                                <h3 class="card-title">
+                                    {{ recipe.title }}
+                                    {% if recipe.status == 0 %}
+                                    <span class="badge bg-warning text-dark">Draft</span>
+                                    {% endif %}
+                                </h3>
                                 <p class="card-text"> {{ recipe.excerpt }}</p>
                             </a>
                             <p class="author">Author: {{ recipe.author }}</p>
@@ -109,14 +114,14 @@
 {% endblock content %}
 
 {% for recipe in recipe_list %}
-    <!-- Recipe entries columns -->
-    <div class="col-lg-4 col-md-6 col-12">
-        <div class="card mb-4 recipe-card">
-            <!-- your card content here -->
-        </div>
+<!-- Recipe entries columns -->
+<div class="col-lg-4 col-md-6 col-12">
+    <div class="card mb-4 recipe-card">
+        <!-- your card content here -->
     </div>
-    {% if forloop.counter|divisibleby:2 and not forloop.last %}
-        </div><!-- close the row every 2 recipes for medium and small screens -->
-        <div class="row">
+</div>
+{% if forloop.counter|divisibleby:2 and not forloop.last %}
+</div><!-- close the row every 2 recipes for medium and small screens -->
+<div class="row">
     {% endif %}
-{% endfor %}
+    {% endfor %}

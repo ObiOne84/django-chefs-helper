@@ -4,7 +4,7 @@
 {% load crispy_forms_tags %}
 
 <div class="container-lg">
-    <!-- Logout modal -->
+    <!-- Delete recipe modal -->
     <div id="deleteRecipeModal" class="modal" tabindex="-1" aria-labelledby="deleteRecipeModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -27,7 +27,7 @@
             </div>
         </div>
     </div>
-    
+
 
     <div class="row">
         <div class="col-md-6 col-12 print-size">
@@ -71,7 +71,12 @@
         </div>
         <div class="col-md-6 col-12 print-size">
             <div>
-                <h1>{{ recipe.title }}</h1>
+                <h1>
+                    {{ recipe.title }}
+                    {% if recipe.status == 0 %}
+                    <span class="badge bg-warning text-dark">Draft</span>
+                    {% endif %}
+                </h1>
                 <p>By: {{ recipe.author }} |
                     {% if recipe.updated_on %}
                     Updated on: {{ recipe.updated_on }}
