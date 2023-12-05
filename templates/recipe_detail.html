@@ -18,17 +18,16 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <form method="post" action="{% url 'delete' slug=recipe.slug %}">
-                        {% csrf_token %}
+                    <a href="{% url 'delete' slug=recipe.slug %}">
                         <button type="submit" class="btn btn-danger">
                             Delete
                         </button>
-
-                    </form>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
+    
 
     <div class="row">
         <div class="col-md-6 col-12 print-size">

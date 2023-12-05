@@ -130,6 +130,7 @@ class AddRecipeView(FormView):
         form.instance.email = self.request.user.email
         form.instance.name = self.request.user.username
         self.formset = form.ingredient_formset
+        messages.success(self.request, f'Recipe "{form.instance.title}" added successfully.')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -212,6 +213,8 @@ class UpdateRecipeView(View):
         if update_recipe_form.is_valid() and ingredient_formset.is_valid():
             update_recipe_form.save()
             ingredient_formset.save()
+
+            messages.success(request, f'Recipe "{recipe.title}" updated successfully.')
             return redirect('home')
         else:
             return render(
@@ -229,6 +232,9 @@ class DeleteRecipeView(View):
     template_name = 'recipe_detail.html'
     def get(self, request, slug):
         recipe = get_object_or_404(Recipe, slug=slug)
+        recipe_name = recipe.title
         recipe.delete()
+
+        messages.success(request, f'Recipe "{recipe_name}" deleted successfully.')
 
         return redirect('home')

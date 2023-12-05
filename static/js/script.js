@@ -8,12 +8,7 @@ $(document).ready(function () {
         print(body);
     });
 
-    // activate logout modal
-    // $('#logout-link').on("click", function () {
-    //     let myModal = new bootstrap.Modal(document.getElementById('logoutModal'));
-    //     myModal.show();
-    // })
-    // function to show 
+    // function to activate modal
     const showModal = (object, event, modal) => {
         $(object).on(event, function () {
             let myModal = new bootstrap.Modal(document.getElementById(modal));
@@ -23,8 +18,6 @@ $(document).ready(function () {
 
     showModal('#logout-link', 'click', 'logoutModal');
     showModal('#delete-recipe-link', 'click', 'deleteRecipeModal');
-
-
 
     // django messages timeout source:https://api.jquery.com/hide/#hide
     setTimeout(function () {

@@ -11,6 +11,10 @@ class RecipeAdmin(SummernoteModelAdmin):
     list_display = ('title', 'slug', 'status', 'created_on', 'updated_on')
     search_fields = ['title']
     summernote_fields = ('instructions')
+    actions = ['change_to_published']
+
+    def change_to_published(self, request, queryset):
+        queryset.update(status=1)
 
 
 @admin.register(Review)
