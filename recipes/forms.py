@@ -57,7 +57,7 @@ class AddRecipeForm(forms.ModelForm):
             Recipe,
             RecipeIngredient,
             form=AddIngredientForm,
-            extra=3,
+            extra=25,
             min_num=1,
             validate_min=True,
             can_delete=True,

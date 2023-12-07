@@ -67,74 +67,39 @@ $(document).ready(function () {
         console.log("It's not a number");
     }
 
-    // Dark mode
-    // Toggle dark mode when the button is clicked
-    // document.getElementById('toggleDarkMode').addEventListener('click', function () {
-    //     document.body.classList.toggle('dark-mode');
-    // });
+    $(".formset-row").not(":first").removeClass('show').addClass('hide');
+    $(".formset-row").not(":first").find("[name$='-DELETE']").prop('checked', true);
 
-    // Add rating form validation
-    // $('#review-form').submit(function (e) {
-    //     e.preventDefault();
-    //     let rating = $('#id_rating').data('value');
-    //     let range = [1, 2, 3, 4, 5];
-    //     let rated = $('#rated-alert').css('display');
-    //     let rate = $('#rating-alert').css('display', 'block');
+    // // Add ingredient
+    $("#ingredient-formset-container").on("click", ".add-ingredient", function () {
+        console.log("Clicked plus");
+        var formsetContainer = $("#ingredient-formset-container");
+        var formsetRow = formsetContainer.find(".formset-row.hide:first");
 
-    //     if (!(range.includes(rating)) || rated === 'none') {
-    //         alert("please rate the recipe");
-    //     } else {
-    //         $(this).submit();
-    //     }
-    // });
-
-    function updateFormset() {
-
-        // Loop through each form in the formset
-        $('form[name="ingredient_formset"]').find('.formset-row').each(function () {
-            var nameField = $(this).find('input[name$="name"]');
-            var quantityField = $(this).find('input[name$="quantity"]');
-            var unitField = $(this).find('select[name$="unit"]');
-
-            // Check if both name and quantity are empty
-            if (!nameField.val() && !quantityField.val()) {
-                // Remove the formset row from the DOM
-                $(this).remove();
-
-            }
-        });
-
-        // Check the number of remaining visible formset rows
-        var remainingVisibleRows = $('form[name="ingredient_formset"]').find('.formset-row:visible').length;
-        console.log('here is:' + remainingVisibleRows);
-
-        // Disable the minus button if there is only one row left
-        if (remainingVisibleRows === 1) {
-            $('form[name="ingredient_formset"]').find('.remove-ingredient').prop('disabled', true);
+        if (formsetRow.length) {
+            formsetRow.removeClass('hide');
+            formsetRow.addClass('show');
+            formsetRow.find("[name$='-DELETE']").prop('checked', false);
         } else {
-            $('form[name="ingredient_formset"]').find('.remove-ingredient').prop('disabled', false);
+            // If no hidden rows are available, you can choose to do nothing or provide some feedback
+            console.log("No hidden rows available");
         }
-    }
-
-    $('.formset').on('input', 'input, select', function () {
-        updateFormset($('.formset-row'));
     });
 
-    $('.add-ingredient').on('click', function () {
-        alert('You clicked plus');
 
-        updateFormset($('.formset-row'));
-
+    $("#ingredient-formset-container").on("click", ".remove-ingredient", function () {
+        console.log("Clicked minus");
+        var formsetRow = $(this).closest(".formset-row");
+        var formsetRows = $('.formset-row.show'); // Get all visible rows
+    
+        if (formsetRows.length > 1) {
+            formsetRow.removeClass('show');
+            formsetRow.addClass('hide');
+            formsetRow.find("[name$='-DELETE']").prop('checked', true);
+        } else {
+            console.log("Cannot hide the last row");
+        }
     });
-
-    $(document).ready(function () {
-        $(".remove-ingredient").click(function () {
-            // Find the closest formset row and set the DELETE input value to true
-            $(this).closest(".formset-row").find("[name$='-DELETE']").prop('checked', true);
-
-            // Hide the formset row (optional, you may want to animate this)
-            $(this).closest(".formset-row").hide();
-        });
-    });
+    
 
 });

@@ -139,8 +139,19 @@ form.signup ul li {
 
 /* Add recipe style */
 /* Hide the checkbox */
-.formset-row input[type="checkbox"] {
+/* .formset-row input[type="checkbox"] {
     display: none;
+} */
+#always-on {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
 }
 
 

@@ -40,7 +40,7 @@
                   {{ form.ingredient_formset.management_form }}
 
                   {% for form in form.ingredient_formset %}
-                  <div class="formset-row">
+                  <div class="formset-row show">
                      {{ form.name.label_tag }}
                      {{ form.name }}
                      {{ form.name.errors }}
