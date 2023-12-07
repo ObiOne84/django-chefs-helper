@@ -63,10 +63,17 @@ class AddRecipeForm(forms.ModelForm):
             can_delete=True,
             can_delete_extra = True,
         )
-        # min_num=1, validate_min=True
 
         # Pass instance=self.instance to formset to link it to the Recipe instance
         self.ingredient_formset = IngredientFormSet(*args, **kwargs, instance=self.instance)
+
+         # Add class to the formset fields
+        for form in self.ingredient_formset.forms:
+            form.fields['name'].widget.attrs['class'] = 'ingredient-name'
+            form.fields['quantity'].widget.attrs['class'] = 'ingredient-quantity'
+            form.fields['unit'].widget.attrs['class'] = 'ingredient-unit'
+            form.fields['DELETE'].required = False
+        
 
     # instruction_step = forms.CharField(
     #     widget=forms.TextInput(attrs={'class': 'steps'})

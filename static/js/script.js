@@ -69,8 +69,19 @@ $(document).ready(function () {
 
 
     // Hides all ingredient fields, and marke them for delegit co
-    $(".formset-row").not(":first").removeClass('show').addClass('hide');
-    $(".formset-row").not(":first").find("[name$='-DELETE']").prop('checked', true);
+    // $(".formset-row").not(":first").removeClass('show').addClass('hide');
+    // $(".formset-row").not(":first").find("[name$='-DELETE']").prop('checked', true);
+    $("#ingredient-formset-container").find('.formset-row').each(function () {
+        var nameField = $(this).find('input[name$="name"]');
+        var quantityField = $(this).find('input[name$="quantity"]');
+        var unitField = $(this).find('select[name$="unit"]');
+
+        if (!nameField.val() && !quantityField.val()) {
+            console('some value is here');
+        } else {
+            console.log('Some data');
+        }
+    });
 
     // // Add ingredient
     $("#ingredient-formset-container").on("click", ".add-ingredient", function () {
@@ -85,6 +96,7 @@ $(document).ready(function () {
         } else {
             // If no hidden rows are available, you can choose to do nothing or provide some feedback
             console.log("No hidden rows available");
+            formsetRow.find("[name$='-DELETE']").prop('checked', true);
         }
     });
 
@@ -93,7 +105,7 @@ $(document).ready(function () {
         console.log("Clicked minus");
         var formsetRow = $(this).closest(".formset-row");
         var formsetRows = $('.formset-row.show'); // Get all visible rows
-    
+
         if (formsetRows.length > 1) {
             formsetRow.removeClass('show');
             formsetRow.addClass('hide');
@@ -102,6 +114,6 @@ $(document).ready(function () {
             console.log("Cannot hide the last row");
         }
     });
-    
+
 
 });

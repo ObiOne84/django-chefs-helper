@@ -12,40 +12,52 @@
                 {% csrf_token %}
 
                 {{ update_recipe_form.as_p }}
-
-                <div>
+                <hr>
+                <div id="ingredient-formset-container">
 
                     {{ ingredient_formset.management_form }}
-                    {{ ingredient_formset.non_form_errors }}
-                    {{ recipe.title }} Ingredients:
-                    {{ ingredient_formset.as_table }}
-                    <!-- Add a button to dynamically add new forms -->
-                    <button type="button" id="add-ingredient">Add Ingredient</button>
-                </div>
 
-                <button type="submit">Submit</button>
+                    {% for form in ingredient_formset %}
+                    <div class="formset-row show">
+                        {{ form.name.label_tag }}
+                        {{ form.name }}
+                        {{ form.name.errors }}
+                        {{ form.quantity.label_tag }}
+                        {{ form.quantity }}
+                        {{ form.quantity.errors }}
+                        {{ form.unit.label_tag }}
+                        {{ form.unit }}
+                        {{ form.unit.errors }}
+                        {{ form.DELETE }} {# Include the DELETE input for each formset row #}
+                        {{ form.id }}
+                        </div>
+                        {% endfor %}
+                    
+
+                        Ingredients:
+                        <!-- {{ ingredient_formset.as_p }} -->
+
+                        <div>
+                            {% if ingredient_formset.errors %}
+
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Formset Errors:</strong>
+                                <ul>
+                                    {% for error in ingredient_formset.errors %}
+                                    <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <button type="submit">Submit</button>
             </form>
-
-            <!-- <hr>
-            <h1>Update Recipe</h1>
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ update_recipe_form.as_p }}
-                {{ ingredient_formset.as_p }} -->
-
-            <!-- Display the formset using a loop -->
-            <!-- {% for form in update_form.ingredient_formset %}
-                {{ form.as_table }}
-                {% endfor %} -->
-
-            <!-- {{ update_form.ingredient_formset.management_form }} {# Include the management form for the formset #} -->
-            <!-- 
-                <button type="submit">Update Recipe</button>
-            </form> -->
-
 
         </div>
     </div>
 </div>
+
+
 
 {% endblock content %}

@@ -203,7 +203,7 @@ class AddRecipeView(FormView):
 
 class UpdateRecipeView(View):
     template_name = 'update_recipe.html'
-    IngredientFormSet = inlineformset_factory(Recipe, RecipeIngredient, form=AddIngredientForm, extra=0)
+    IngredientFormSet = inlineformset_factory(Recipe, RecipeIngredient, form=AddIngredientForm, extra=3)
 
     def get(self, request, slug):
         recipe = get_object_or_404(Recipe, slug=slug)
@@ -224,7 +224,15 @@ class UpdateRecipeView(View):
     def post(self, request, slug):
         recipe = get_object_or_404(Recipe, slug=slug)
         update_recipe_form = UpdateRecipeForm(request.POST, instance=recipe)
-        ingredient_formset = self.IngredientFormSet(request.POST, instance=recipe)
+        ingredient_formset = self.IngredientFormSet(
+            request.POST, instance=recipe, queryset=RecipeIngredient.objects.none()
+            )
+
+        for form in ingredient_formset:
+            form.fields['name'].widget.attrs['class'] = 'ingredient-name'
+            form.fields['quantity'].widget.attrs['class'] = 'ingredient-quantity'
+            form.fields['unit'].widget.attrs['class'] = 'ingredient-unit'
+            form.fields['DELETE'].required = False
 
         if update_recipe_form.is_valid() and ingredient_formset.is_valid():
             update_recipe_form.save()
