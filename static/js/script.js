@@ -67,6 +67,8 @@ $(document).ready(function () {
         console.log("It's not a number");
     }
 
+
+    // Hides all ingredient fields, and marke them for delegit co
     $(".formset-row").not(":first").removeClass('show').addClass('hide');
     $(".formset-row").not(":first").find("[name$='-DELETE']").prop('checked', true);
 
