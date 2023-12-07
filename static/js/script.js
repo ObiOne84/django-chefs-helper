@@ -127,10 +127,14 @@ $(document).ready(function () {
 
     });
 
-    $('.remove-ingredient').on('click', function () {
+    $(document).ready(function () {
+        $(".remove-ingredient").click(function () {
+            // Find the closest formset row and set the DELETE input value to true
+            $(this).closest(".formset-row").find("[name$='-DELETE']").prop('checked', true);
 
-        updateFormset($('.formset-row'));
-        $(this).closest('.formset-row').hide();
+            // Hide the formset row (optional, you may want to animate this)
+            $(this).closest(".formset-row").hide();
+        });
     });
 
 });
