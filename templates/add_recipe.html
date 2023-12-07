@@ -6,7 +6,7 @@
 <div class="container-lg">
 
    <div class="row">
-      <div class="col-md-6 col-12 print-size">
+      <div class="col-6 print-size">
 
          <form method="post" enctype="multipart/form-data" action="{% url 'add_recipe' %}">
             {% csrf_token %}
@@ -20,8 +20,8 @@
             {{ form.prep_time }}
             {{ form.cook_time }}
             {{ form.servings }}
-            {{ form.status }}
-            {% if form.errors %} -->
+            {{ form.status }} -->
+            {% if form.errors %}
             <div class="alert alert-danger" role="alert">
                <strong>Form Errors:</strong>
                <ul>
@@ -33,23 +33,38 @@
                </ul>
             </div>
             {% endif %}
+            <p>Inngredients here:</p>
             <div>
-               <!-- Ingredient formset -->
-               {{ form.ingredient_formset.management_form }}
+               <div id="ingredient-formset-container">
+                  <!-- Ingredient formset -->
+                  {{ form.ingredient_formset.management_form }}
 
-               {% for form in form.ingredient_formset %}
-               {{ form.name.label_tag }}
-               {{ form.name }}
-               {{ form.name.errors }}
-               {{ form.quantity.label_tag }}
-               {{ form.quantity }}
-               {{ form.quantity.errors }}
-               {{ form.unit.label_tag }}
-               {{ form.unit }}
-               {{ form.unit.errors }}
-               {% endfor %}
+                  {% for form in form.ingredient_formset %}
+                  <div class="formset-row">
+                     {{ form.name.label_tag }}
+                     {{ form.name }}
+                     {{ form.name.errors }}
+                     {{ form.quantity.label_tag }}
+                     {{ form.quantity }}
+                     {{ form.quantity.errors }}
+                     {{ form.unit.label_tag }}
+                     {{ form.unit }}
+                     {{ form.unit.errors }}
+                     {{ form.DELETE }} {# Include the DELETE input for each formset row #}
+
+                     <button type="button" name="remove-ingredient" class="btn-like remove-ingredient">
+                        <i class="fa-solid fa-circle-minus"></i>
+                     </button>
+                     <button type="button" name="add-ingredient" class="btn-like add-ingredient">
+                        <i class="fa-solid fa-circle-plus"></i>
+                     </button>
+                  </div>
+                  {% endfor %}
+                  <button type="button" name="add-ingredient" class="btn-like add-ingredient">
+                     <i class="fa-solid fa-circle-plus"></i>
+                  </button>
+               </div>
             </div>
-
             {% if form.ingredient_formset.errors %}
 
             <div class="alert alert-danger" role="alert">

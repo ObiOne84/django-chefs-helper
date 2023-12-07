@@ -137,6 +137,13 @@ form.signup ul li {
     opacity: 1;
 }
 
+/* Add recipe style */
+/* Hide the checkbox */
+.formset-row input[type="checkbox"] {
+    display: none;
+}
+
+
 /* Styles for the printed version */
 
 @media print {

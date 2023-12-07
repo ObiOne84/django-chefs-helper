@@ -69,9 +69,9 @@ $(document).ready(function () {
 
     // Dark mode
     // Toggle dark mode when the button is clicked
-    document.getElementById('toggleDarkMode').addEventListener('click', function () {
-        document.body.classList.toggle('dark-mode');
-    });
+    // document.getElementById('toggleDarkMode').addEventListener('click', function () {
+    //     document.body.classList.toggle('dark-mode');
+    // });
 
     // Add rating form validation
     // $('#review-form').submit(function (e) {
@@ -88,15 +88,49 @@ $(document).ready(function () {
     //     }
     // });
 
+    function updateFormset() {
 
-    $(document).ready(function () {
-        $('#add-ingredient').click(function () {
-            // Clone the last form and append it to the formset
-            var newForm = $('#update-recipe-form .formset:last').clone(true);
-            newForm.find(':input').val('');
-            $('#update-recipe-form .formset:last').after(newForm);
+        // Loop through each form in the formset
+        $('form[name="ingredient_formset"]').find('.formset-row').each(function () {
+            var nameField = $(this).find('input[name$="name"]');
+            var quantityField = $(this).find('input[name$="quantity"]');
+            var unitField = $(this).find('select[name$="unit"]');
+
+            // Check if both name and quantity are empty
+            if (!nameField.val() && !quantityField.val()) {
+                // Remove the formset row from the DOM
+                $(this).remove();
+
+            }
         });
+
+        // Check the number of remaining visible formset rows
+        var remainingVisibleRows = $('form[name="ingredient_formset"]').find('.formset-row:visible').length;
+        console.log('here is:' + remainingVisibleRows);
+
+        // Disable the minus button if there is only one row left
+        if (remainingVisibleRows === 1) {
+            $('form[name="ingredient_formset"]').find('.remove-ingredient').prop('disabled', true);
+        } else {
+            $('form[name="ingredient_formset"]').find('.remove-ingredient').prop('disabled', false);
+        }
+    }
+
+    $('.formset').on('input', 'input, select', function () {
+        updateFormset($('.formset-row'));
     });
 
+    $('.add-ingredient').on('click', function () {
+        alert('You clicked plus');
+
+        updateFormset($('.formset-row'));
+
+    });
+
+    $('.remove-ingredient').on('click', function () {
+
+        updateFormset($('.formset-row'));
+        $(this).closest('.formset-row').hide();
+    });
 
 });
