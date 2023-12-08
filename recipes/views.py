@@ -225,9 +225,8 @@ class UpdateRecipeView(View):
         recipe = get_object_or_404(Recipe, slug=slug)
         update_recipe_form = UpdateRecipeForm(request.POST, instance=recipe)
         ingredient_formset = self.IngredientFormSet(
-            request.POST, instance=recipe, queryset=RecipeIngredient.objects.none()
-            )
-
+            request.POST, instance=recipe, queryset=RecipeIngredient.objects.filter(recipe=recipe)
+        )
         for form in ingredient_formset:
             form.fields['name'].widget.attrs['class'] = 'ingredient-name'
             form.fields['quantity'].widget.attrs['class'] = 'ingredient-quantity'
