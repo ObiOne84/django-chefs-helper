@@ -30,32 +30,41 @@
                         {{ form.unit.errors }}
                         {{ form.DELETE }} {# Include the DELETE input for each formset row #}
                         {{ form.id }}
-                        </div>
-                        {% endfor %}
-                    
 
-                        Ingredients:
-                        <!-- {{ ingredient_formset.as_p }} -->
+                        <button type="button" name="remove-ingredient" class="btn-like remove-ingredient">
+                            <i class="fa-solid fa-circle-minus"></i>
+                        </button>
+                        <button type="button" name="add-ingredient" class="btn-like add-ingredient">
+                            <i class="fa-solid fa-circle-plus"></i>
+                        </button>
+                    </div>
+                    {% endfor %}
+                </div>
 
-                        <div>
-                            {% if ingredient_formset.errors %}
 
-                            <div class="alert alert-danger" role="alert">
-                                <strong>Formset Errors:</strong>
-                                <ul>
-                                    {% for error in ingredient_formset.errors %}
-                                    <li>{{ error }}</li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                            {% endif %}
-                        </div>
+                Ingredients:
+                <!-- {{ ingredient_formset.as_p }} -->
 
-                        <button type="submit">Submit</button>
-            </form>
+                <div>
+                    {% if ingredient_formset.errors %}
 
+                    <div class="alert alert-danger" role="alert">
+                        <strong>Formset Errors:</strong>
+                        <ul>
+                            {% for error in ingredient_formset.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <button type="submit">Submit</button>
         </div>
+        </form>
+
     </div>
+</div>
 </div>
 
 

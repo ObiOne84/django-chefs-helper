@@ -67,21 +67,26 @@ $(document).ready(function () {
         console.log("It's not a number");
     }
 
-
-    // Hides all ingredient fields, and marke them for delegit co
-    // $(".formset-row").not(":first").removeClass('show').addClass('hide');
-    // $(".formset-row").not(":first").find("[name$='-DELETE']").prop('checked', true);
-    $("#ingredient-formset-container").find('.formset-row').each(function () {
-        var nameField = $(this).find('input[name$="name"]');
-        var quantityField = $(this).find('input[name$="quantity"]');
-        var unitField = $(this).find('select[name$="unit"]');
-
-        if (!nameField.val() && !quantityField.val()) {
-            console('some value is here');
-        } else {
-            console.log('Some data');
-        }
+    // Hides empty ingredient fields except the first row or fields with values
+    $(document).ready(function () {
+        $("#ingredient-formset-container").find('.formset-row').each(function () {
+            var nameField = $(this).find('input[name$="name"]');
+            var quantityField = $(this).find('input[name$="quantity"]');
+    
+            console.log('nameField value:', nameField.val());
+            console.log('quantityField value:', quantityField.val());
+    
+            if (!quantityField.val()) {
+                console.log('No data');
+                $(this).removeClass('show').addClass('hide');
+                $(this).find("[name$='-DELETE']").prop('checked', true);
+            } else {
+                console.log('Some data');
+                $(this).removeClass('hide').addClass('show');
+            }
+        });
     });
+
 
     // // Add ingredient
     $("#ingredient-formset-container").on("click", ".add-ingredient", function () {

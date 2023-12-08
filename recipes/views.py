@@ -203,7 +203,7 @@ class AddRecipeView(FormView):
 
 class UpdateRecipeView(View):
     template_name = 'update_recipe.html'
-    IngredientFormSet = inlineformset_factory(Recipe, RecipeIngredient, form=AddIngredientForm, extra=3)
+    IngredientFormSet = inlineformset_factory(Recipe, RecipeIngredient, form=AddIngredientForm, extra=25, max_num=25)
 
     def get(self, request, slug):
         recipe = get_object_or_404(Recipe, slug=slug)
