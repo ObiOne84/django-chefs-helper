@@ -82,6 +82,9 @@ class AddRecipeForm(forms.ModelForm):
     # instructions = forms.CharField(
     #     widget=forms.TextInput(attrs={'class': 'instruction-steps', 'type': 'hidden'})
     # )
+    # instructions = forms.CharField(
+    #     widget=forms.Textarea(attrs={'class': 'instruction-steps hide'})
+    # )
 
     # def clean_instructions(self):
     #     instruction_step = self.cleaned_data['instruction_step']

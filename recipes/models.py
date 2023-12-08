@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.text import slugify
-
+from django.db.models import Avg
 
 
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -43,6 +43,7 @@ class Recipe(models.Model):
     total_ratings = models.IntegerField(default=0)
     status = models.IntegerField(choices=STATUS, default=0)
     rated_users = models.ManyToManyField(User, related_name="rated_recipes", blank=True)
+    average_rating = models.FloatField(default=0)
 
     class Meta:
         ordering = ['-title']
@@ -61,7 +62,7 @@ class Recipe(models.Model):
             # ensuring the rating is between 1 and 5
             rating = max(1, min(5, rating))
             # Update the rating and total_ratings
-            self.rating = round((self.rating * self.total_ratings + rating) / (self.total_ratings + 1), 1)
+            # self.rating = round((self.rating * self.total_ratings + rating) / (self.total_ratings + 1), 1)
             self.total_ratings += 1
             # Add user to rated_users
             self.rated_users.add(user)
@@ -69,7 +70,7 @@ class Recipe(models.Model):
             self.save()
 
     def average_rating(self):
-        return self.rating
+        return self.rated_users.aggregate(Avg('rating'))['rating__avg'] or 0
 
     def get_adjusted_ingredients(self, desired_servings):
         adjusted_ingredients = []

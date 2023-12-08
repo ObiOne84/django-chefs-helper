@@ -97,7 +97,7 @@ form.signup ul li {
     color: #dfb705;
     transition: all 3s ease-in-out;
     opacity: 1;
-    
+
 }
 
 .full-stars,
@@ -142,6 +142,7 @@ form.signup ul li {
 .formset-row input[type="checkbox"] {
     display: none;
 }
+
 #always-on {
     display: block;
 }
@@ -158,6 +159,13 @@ form.signup ul li {
 .ingredient-quantity,
 .ingredient-unit {
     background-color: red;
+}
+
+/* style recipe instructions */
+.steps {
+    font-size: large;
+
+    font-weight: bold;
 }
 
 /* Styles for the printed version */

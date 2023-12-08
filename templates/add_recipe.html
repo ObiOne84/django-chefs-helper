@@ -8,19 +8,35 @@
    <div class="row">
       <div class="col-6 print-size">
 
-         <form method="post" enctype="multipart/form-data" action="{% url 'add_recipe' %}">
+         <form method="post" enctype="multipart/form-data" action="{% url 'add_recipe' %}" id="add-recipe-form">
             {% csrf_token %}
 
-            {{ form.as_table }}
-            <!-- {{ form.title }}
+            <!-- {{ form.as_table }} -->
+            {{ form.title.label_tag }}
             {{ form.title }}
-            {{ form.instructions }}
+     
+            <!-- {{ form.instructions }} -->
+            <p>Instructions:</p>
+            <!-- {{ form.instructions }} -->
+            <textarea name="instructions" cols="40" rows="10" class="instruction-steps" id="id_instructions" style="display: none;"></textarea>
+                <ol id="instruction-list">
+                        <li class="instruction-list-item">
+                           <input type="text" style="width: 80%;" class="d-inline">
+                            <button type="button" class="btn-like remove-instruction">
+                                <i class="fa-solid fa-circle-minus"></i>
+                            </button>
+                            <button type="button" name="add-instruction" class="btn-like add-instruction">
+                              <i class="fa-solid fa-circle-plus d-inline"></i>
+                          </button>
+                        </li>
+                </ol>
+                
             {{ form.featured_image }}
             {{ form.excerpt }}
             {{ form.prep_time }}
             {{ form.cook_time }}
             {{ form.servings }}
-            {{ form.status }} -->
+            {{ form.status }}
             {% if form.errors %}
             <div class="alert alert-danger" role="alert">
                <strong>Form Errors:</strong>

@@ -72,10 +72,10 @@ $(document).ready(function () {
         $("#ingredient-formset-container").find('.formset-row:not(:first)').each(function () {
             var nameField = $(this).find('input[name$="name"]');
             var quantityField = $(this).find('input[name$="quantity"]');
-    
-            console.log('nameField value:', nameField.val());
-            console.log('quantityField value:', quantityField.val());
-    
+
+            // console.log('nameField value:', nameField.val());
+            // console.log('quantityField value:', quantityField.val());
+
             if (!quantityField.val()) {
                 console.log('No data');
 
@@ -121,5 +121,39 @@ $(document).ready(function () {
         }
     });
 
+    // Add instruction
+    $(document).on('click', '.add-instruction', function () {
+        // Clone the first list item
+        var newItem = $(this).closest('.instruction-list-item').clone();
+
+        // Clear the input field in the new item
+        newItem.find('input').val('');
+
+        // Append the new item to the list
+        $('#instruction-list').append(newItem);
+    });
+
+    // Remove instruction
+    $(document).on('click', '.remove-instruction', function () {
+        // Remove the clicked list item
+        $(this).closest('.instruction-list-item:not(:first-child)').remove();
+    });
+
+    // Add instruction list to instruction field
+    $('#add-recipe-form').submit(function (event) {
+        console.log('Not submitted');
+        event.preventDefault();
+        let instructionValue = '';
+        let x = 1;
+        $('.instruction-list-item').each(function () {
+            let inputValue = $(this).find('input').val();
+            let step ='<p class="steps">' + 'Step ' + x + '. ' + inputValue + '</p>';
+            instructionValue += step;
+            x +=1
+        });
+
+        $('textarea[name="instructions"]').val(instructionValue.trim());
+        $(this).unbind('submit').submit();
+    });
 
 });
