@@ -69,7 +69,7 @@ $(document).ready(function () {
 
     // Hides empty ingredient fields except the first row or fields with values
     $(document).ready(function () {
-        $("#ingredient-formset-container").find('.formset-row').each(function () {
+        $("#ingredient-formset-container").find('.formset-row:not(:first)').each(function () {
             var nameField = $(this).find('input[name$="name"]');
             var quantityField = $(this).find('input[name$="quantity"]');
     
@@ -78,6 +78,7 @@ $(document).ready(function () {
     
             if (!quantityField.val()) {
                 console.log('No data');
+
                 $(this).removeClass('show').addClass('hide');
                 $(this).find("[name$='-DELETE']").prop('checked', true);
             } else {
