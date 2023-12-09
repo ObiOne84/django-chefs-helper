@@ -130,7 +130,7 @@ $(document).ready(function () {
         newItem.find('input').val('');
 
         // Append the new item to the list
-        $('#instruction-list').append(newItem);
+        $('.instruction-list').append(newItem);
     });
 
     // Remove instruction
@@ -147,13 +147,109 @@ $(document).ready(function () {
         let x = 1;
         $('.instruction-list-item').each(function () {
             let inputValue = $(this).find('input').val();
-            let step ='<p class="steps">' + 'Step ' + x + '. ' + inputValue + '</p>';
+            let step = '<p class="steps">' + 'Step ' + x + '. ' + inputValue + '</p>';
             instructionValue += step;
-            x +=1
+            x += 1
         });
 
         $('textarea[name="instructions"]').val(instructionValue.trim());
         $(this).unbind('submit').submit();
     });
+
+    // function creates an input field with defined value
+    function createInputField(data) {
+        return `<li class="instruction-list-item">
+        <input type="text" style="width: 80%;" class="d-inline" required value="${data}">
+        <button type="button" class="btn-like remove-instruction">
+            <i class="fa-solid fa-circle-minus"></i>
+        </button>
+        <button type="button" name="add-instruction" class="btn-like add-instruction">
+            <i class="fa-solid fa-circle-plus d-inline"></i>
+        </button>
+    </li>`;
+    }
+
+    // Edit user instructions
+    let textareaContent = $('#id_instructions').html();
+    let decodedContent = $('<div/>').html(textareaContent).text();
+    console.log(decodedContent);
+    let $textInstruction = $(decodedContent);
+
+    // Check if $textInstruction contains any content
+    if ($textInstruction.length > 0) {
+        let instructionList = $('#update-instruction-list');
+        let instructionText = $textInstruction.filter('p.steps').map(function () {
+            console.log("Success");
+            let text = $(this).text();
+            let insText = text.replace(/^Step \d+\. /, '');
+            return insText
+        }).get();
+
+        // Loop through each element in the instructionText array
+        $.each(instructionText, function (index, value) {
+            let instruction = value;
+            let inputField = createInputField(instruction);
+            instructionList.append(inputField);
+
+            console.log(instruction);
+        });
+    } else {
+        console.log('No content found in #id_instructions');
+    }
+
+    // $('#update-recipe-form').submit(function (event) {
+    //     console.log('Not submitted');
+    //     event.preventDefault();
+
+    //     $('#update-instruction-text textarea').val('');
+
+    //     let instructionValue = '';
+    //     let x = 1;
+    //     $('.instruction-list-item').each(function () {
+    //         let inputValue = $(this).find('input').val();
+    //         let step = '<p class="steps">' + 'Step ' + x + '. ' + inputValue + '</p>';
+    //         instructionValue += step;
+    //         $('#update-instruction-text textarea').val(instructionValue.trim());
+    //         x += 1
+    //     });
+
+
+    //     $(this).unbind('submit').submit();
+    // });
+
+
+    $('#update-recipe-form').submit(function (event) {
+        console.log('Form submitted');
+        event.preventDefault();
+
+        // Clear the current textarea content
+        $('#update-instruction-text textarea').val('');
+
+        let x = 1;
+        $('.instruction-list-item input').each(function () {
+            let inputValue = $(this).val();
+            console.log(inputValue);
+            let step = '<p class="steps">' + 'Step ' + x + '. ' + inputValue + '</p>';
+
+            // Append the new content to the textarea
+            $('#update-instruction-text textarea').val(function (index, value) {
+                return value + step;
+            });
+
+            console.log(step);
+            x += 1;
+        });
+
+        // Log the final textarea content
+        console.log($('#update-instruction-text textarea').val());
+
+        // Uncomment the line below to submit the form
+        // $(this).unbind('submit').submit();
+    });
+
+
+
+
+
 
 });

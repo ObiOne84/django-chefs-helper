@@ -8,11 +8,71 @@
     <div class="row">
         <div class="col-md-6 col-12 print-size">
 
-            <form method="post" enctype="multipart/form-data" action="{% url 'update_recipe' slug=recipe.slug %}">
+            <form method="post" enctype="multipart/form-data" action="{% url 'update_recipe' slug=recipe.slug %}"
+                id="udpate-recipe-form">
                 {% csrf_token %}
+                <p>
+                    {{ update_recipe_form.title.label_tag }}
+                    {{ update_recipe_form.title }}
+                </p>
 
-                {{ update_recipe_form.as_p }}
+
+                <p>Instructions:</p>
+
+                <div class="#" id="update-instruction-text">
+                    <textarea name="instructions" cols="40" rows="10" required id="id_instructions" value="{{ update_recipe_form.instructions|safe }}">
+                        
+                    </textarea>
+                    
+
+
+                    <ol class="instruction-list" id="update-instruction-list">
+
+                    </ol>
+                </div>
+
+                <div>
+
+                    <p>
+                        {{ update_recipe_form.featured_image.label_tag }}
+                        {{ update_recipe_form.featured_image }}
+                    </p>
+                    <p>
+                        {{ update_recipe_form.excerpt.label_tag }}
+                    </p>
+                    <p>
+                        {{ update_recipe_form.excerpt }}
+                    </p>
+                    <p>
+                        {{ update_recipe_form.prep_time.label_tag }}
+                        {{ update_recipe_form.prep_time }}
+                        {{ update_recipe_form.cook_time.label_tag }}
+                        {{ update_recipe_form.cook_time }}
+                    </p>
+                    <p>
+                        {{ update_recipe_form.servings.label_tag }}
+                        {{ update_recipe_form.servings }}
+                        {{ update_recipe_form.status }}
+                    </p>
+                </div>
+
+                {% if update_recipe_form.errors %}
+                <div class="alert alert-danger" role="alert">
+                    <strong>Form Errors:</strong>
+                    <ul>
+                        {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                <!-- {{ update_recipe_form.as_p }} -->
+
                 <hr>
+                Ingredients:
                 <div id="ingredient-formset-container">
 
                     {{ ingredient_formset.management_form }}
@@ -42,7 +102,7 @@
                 </div>
 
 
-                Ingredients:
+
                 <!-- {{ ingredient_formset.as_p }} -->
 
                 <div>

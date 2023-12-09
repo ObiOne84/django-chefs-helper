@@ -15,13 +15,12 @@
             {{ form.title.label_tag }}
             {{ form.title }}
      
-            <!-- {{ form.instructions }} -->
+ 
             <p>Instructions:</p>
-            <!-- {{ form.instructions }} -->
             <textarea name="instructions" cols="40" rows="10" class="instruction-steps" id="id_instructions" style="display: none;"></textarea>
-                <ol id="instruction-list">
+                <ol class="instruction-list">
                         <li class="instruction-list-item">
-                           <input type="text" style="width: 80%;" class="d-inline">
+                           <input type="text" style="width: 80%;" class="d-inline" required>
                             <button type="button" class="btn-like remove-instruction">
                                 <i class="fa-solid fa-circle-minus"></i>
                             </button>
@@ -37,6 +36,7 @@
             {{ form.cook_time }}
             {{ form.servings }}
             {{ form.status }}
+            
             {% if form.errors %}
             <div class="alert alert-danger" role="alert">
                <strong>Form Errors:</strong>
