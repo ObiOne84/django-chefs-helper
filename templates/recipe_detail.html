@@ -28,136 +28,149 @@
         </div>
     </div>
 
-
+    <!-- Update or Delete recipe navigation -->
     <div class="row">
-        <div class="col-md-6 col-12 print-size">
-            <div>{% if request.user == recipe.author %}
-                <a href="{% url 'update_recipe' slug=recipe.slug %}">Edit Recipe</a>
-                <a href="#" id="delete-recipe-link">Delete Recipe</a>
-                {% endif %}
+        <div class="col-md-6 offset-md-6 col-12 py-2 no-print">
+            {% if request.user == recipe.author %}
+            <a class="btn btn-outline-primary" role="button" href="{% url 'update_recipe' slug=recipe.slug %}">Edit
+                Recipe</a>
+            <a class="btn btn-outline-danger" role="button" href="#" id="delete-recipe-link">Delete Recipe</a>
+            {% endif %}
+        </div>
+    </div>
 
-                {% if "placeholder" in recipe.featured_image.url %}
-                <img src="https://res.cloudinary.com/dcrbeonr9/image/upload/v1700598678/image-placeholder_gmlf30.png"
-                    alt="Image coming soon placeholder" width="100%">
-                {% else %}
-                <img src="{{ recipe.featured_image.url }}" alt="Image of {{ recipe.title }}" width="100%">
-                {% endif %}
-                <div class="col-12 d-flex justify-content-between">
-                    {% if user.is_authenticated %}
-                    <form action="{% url 'recipe_like' recipe.slug %}" class="d-inline" method="POST">
-                        {% csrf_token %}
-                        {% if liked %}
-                        <button type="submit" name="recipelike_id" value="{{ recipe.slug }}" class="btn-like"><i
-                                class="fa-solid fa-heart like-heart"></i></button>
-                        {% else %}
-                        <button type="submit" name="recipelike_id" value="{{ recipe.slug }}" class="btn-like"><i
-                                class="fa-regular fa-heart"></i></button>
-                        {% endif %}
-                        {{ recipe.number_of_likes }}
-                    </form>
+    <!-- Recipe card details -->
+    <div class="row box-holder-background round-border">
+        <div class="col-md-6 col-12 print-size py-3">
+            <!-- <div class="recipe-card-info bg-info"> -->
+            {% if "placeholder" in recipe.featured_image.url %}
+            <img src="https://res.cloudinary.com/dcrbeonr9/image/upload/v1700598678/image-placeholder_gmlf30.png"
+                alt="Image coming soon placeholder" class="dish-image round-border">
+            {% else %}
+            <img src="{{ recipe.featured_image.url }}" alt="Image of {{ recipe.title }}"
+                class="dish-image round-border">
+            {% endif %}
+            <div class="col-12 d-flex justify-content-between">
+                {% if user.is_authenticated %}
+                <form action="{% url 'recipe_like' recipe.slug %}" class="d-inline" method="POST">
+                    {% csrf_token %}
+                    {% if liked %}
+                    <button type="submit" name="recipelike_id" value="{{ recipe.slug }}" class="btn-like"><i
+                            class="fa-solid fa-heart like-heart"></i></button>
                     {% else %}
-                    <div class="d-inline">
-                        <i class="fa-solid fa-heart"></i> {{ recipe.number_of_likes }}
-                    </div>
+                    <button type="submit" name="recipelike_id" value="{{ recipe.slug }}" class="btn-like"><i
+                            class="fa-regular fa-heart"></i></button>
                     {% endif %}
-                    <!-- Source: https://docs.djangoproject.com/en/4.2/ref/templates/builtins/#floatformat -->
-                    <p class="d-inline">
-                        <span id="rating-container">
-                        </span>
-                        <span id="average-rating" style="font-size: large;">{{ recipe.rating|floatformat }}</span>
-                    </p>
+                    {{ recipe.number_of_likes }}
+                </form>
+                {% else %}
+                <div class="d-inline">
+                    <i class="fa-solid fa-heart"></i> {{ recipe.number_of_likes }}
                 </div>
+                {% endif %}
+                <!-- Source: https://docs.djangoproject.com/en/4.2/ref/templates/builtins/#floatformat -->
+                <p class="d-inline">
+                    <span id="rating-container">
+                    </span>
+                    <span id="average-rating" style="font-size: large;">{{ recipe.rating|floatformat }}</span>
+                </p>
             </div>
+            <!-- </div> -->
         </div>
         <div class="col-md-6 col-12 print-size">
-            <div>
-                <h1>
+            <div class="pt-2 my-1">
+                <h1 class="special-text">
                     {{ recipe.title }}
                     {% if recipe.status == 0 %}
                     <span class="badge bg-warning text-dark">Draft</span>
                     {% endif %}
                 </h1>
-                <p>By: {{ recipe.author }} |
+                <p class="p-1 mt-3 small text-muted bg-primary-subtle round-border">By:
+                    {{ recipe.author }} |
                     {% if recipe.updated_on %}
                     Updated on: {{ recipe.updated_on }}
                 </p>
-                {% else %}
-                Added on: {{ recipe.created_on }}
+                    {% else %}
+                    Added on: {{ recipe.created_on }}
                 </p>
                 {% endif %}
             </div>
-            <div>
-                <h3><i class="fa-regular fa-file-lines"></i> Description:</h3>
-                <span>{{ recipe.excerpt }}</span>
+            <div class="mt-2">
+                <h4><i class="fa-regular fa-file-lines"></i> Description:</h4>
+                <div class="p-1 inner-holder-box round-border">{{ recipe.excerpt }}</div>
             </div>
-            <div>
-                <h3 class="d-inline"><i class="fa-solid fa-clock"></i> Prep Time:
-                    <span class="d-inline">{{ recipe.prep_time }}</span>
-                </h3>
+            <div class="mt-2 py-2">
+                <h5 class="d-inline"><i class="fa-regular fa-clock"></i> Prep Time:
+                    <span class="d-inline">{{ recipe.prep_time }} minutes</span>
+                </h5>
             </div>
-            <div>
-                <h3 class="d-inline"><i class="fa-solid fa-fire-burner"></i> Cooking Time:
-                    <span class="d-inline">{{ recipe.cook_time }}</span>
-                </h3>
+            <div class="mt-2 pb-2">
+                <h5 class="d-inline"><i class="fa-solid fa-fire-burner"></i> Cooking Time:
+                    <span class="d-inline">{{ recipe.cook_time }} minutes</span>
+                </h5>
             </div>
-            <div>
-                <h3 class="d-inline"><i class="fa-solid fa-users"></i> Servings:
+            <div class="mt-2 pb-2">
+                <h5 class="d-inline"><i class="fa-solid fa-users"></i> Servings:
                     <span class="d-inline">{{ recipe.servings }}</span>
-                </h3>
+                </h5>
             </div>
-            <div>
-                <h3 class="d-inline">
+            <div class="mt-2 pb-4">
+                <h5 class="d-inline">
                     <i class="fa-solid fa-print no-print" type="button" id="print-button"></i>
-                </h3>
+                </h5>
             </div>
         </div>
     </div>
 
     <hr>
-    <div class="row">
-        <div class="col-md-6 col-12 print-size">
+    <div class="row box-holder-background round-border d-flex">
+        <div class="col-md-6 col-12 print-size py-3 d-flex flex-column">
             <h3><i class="fa-solid fa-list-check"></i> Instructions:</h3>
-            {{ recipe.instructions | safe }}
+            <div class="p-2 inner-holder-box round-border flex-fill">
+                {{ recipe.instructions | safe }}
+            </div>
         </div>
         <hr class="d-block d-md-none">
-        <div class="col-md-6 col-12 print-size">
+        <div class="col-md-6 col-12 print-size py-3 d-flex flex-column">
             <h3><i class="fa-solid fa-file-pen"></i> Ingredients:</h3>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Ingredient Name</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Units</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for form in ingredient_formset %}
-                    <tr>
-                        <td>{{ form.name.value }}</td>
-                        <td>{{ form.quantity.value }}</td>
-                        <td>{{ form.unit.value }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-
-
+            <div class="p-2 inner-holder-box round-border flex-fill">
+                <div class="table-responsive">
+                    <table class="table-secondary">
+                        <thead>
+                            <tr>
+                                <th class="px-2" scope="col">Ingredient Name</th>
+                                <th class="px-2" scope="col">Quantity</th>
+                                <th class="px-2" scope="col">Units</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for form in ingredient_formset %}
+                            <tr>
+                                <td class="px-2">{{ form.name.value }}</td>
+                                <td class="px-2">{{ form.quantity.value }}</td>
+                                <td class="px-2">{{ form.unit.value }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
     <hr>
 
     <!-- Review section -->
-    <div class="row no-print">
-        <div class="col-12 mb-3">
-            <h3><i class="far fa-comments"></i> Reviews ({{ recipe.number_of_reviews }})</h3>
+    <div class="row no-print box-holder-background round-border mb-4">
+        <div class="col-12 mb-3 py-3">
+            <h3><i class="far fa-comments "></i> Reviews ({{ recipe.number_of_reviews }})</h3>
             <div class="col-md-6 col-12 card-body">
                 {% for review in reviews %}
-                <div class="mb-2">
+                <div class="mb-2 p-2 round-border" style="border: 1px solid #929292;">
                     <p>By: <strong>{{ review.name }}</strong>, on:
                         <span>{{ review.created_on }}</span>
                     </p>
-                    <p>{{ review.body | safe }}</p>
+                    <p class="p-2 round-border inner-holder-box">{{ review.body | safe }}</p>
                 </div>
                 {% endfor %}
             </div>
@@ -196,7 +209,7 @@
 
                             {{ review_form | crispy }}
 
-                            <button type="submit" class="btn btn-primary btn-lg" id="review-button">Submit</button>
+                            <button type="submit" class="btn btn-primary" id="review-button">SUBMIT</button>
                         </form>
                         {% endif %}
                         {% endif %}

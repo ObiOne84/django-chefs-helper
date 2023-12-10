@@ -18,10 +18,11 @@ class RecipeForm(forms.ModelForm):
 class AddIngredientForm(forms.ModelForm):
 
     UNIT_CHOICES = [
-        ("gram", "gram"),
-        ("kilogram", "kg"),
-        ("mililiter", "ml"),
-        ("liter", "ltr"),
+        ("gram", "GM"),
+        ("kilogram", "KG"),
+        ("mililiter", "ML"),
+        ("liter", "LTR"),
+        ("unit", "UNIT"),
     ]
     class Meta:
         model = RecipeIngredient

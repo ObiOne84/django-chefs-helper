@@ -8,6 +8,7 @@ p {
 h1,
 h2,
 h3,
+h4,
 .heading-one {
     font-family: 'Roboto Slab', serif;
 }
@@ -17,6 +18,7 @@ h3,
     font-family: 'Pacifico', cursive;
 }
 
+/* Footer */
 footer ul {
     margin: 0;
     padding-top: 1rem;
@@ -54,7 +56,6 @@ form p {
 }
 
 form.login p label {
-    /* width: 25%; */
     box-sizing: border-box;
 }
 
@@ -87,6 +88,25 @@ form.signup p input {
 form.signup ul li {
     font-size: small;
     list-style-type: none;
+}
+
+/* ----STYLE RECIPE DETAIL PAGE ---------- */
+/* General recipe detail styles */
+.box-holder-background {
+    background-color: white;
+}
+
+.inner-holder-box {
+    background-color: lightgray;
+    height: inherit;
+}
+
+.round-border {
+    border-radius: 8px;
+}
+
+.dish-image {
+    width: 100%;
 }
 
 /* Rating stars style */
@@ -129,7 +149,7 @@ form.signup ul li {
     color: rgb(233, 6, 6);
 }
 
-/* index page styles */
+/* -------- STYLE INDEX PAGE ---------- */
 /* recipe card */
 .recipe-card:hover {
     transform: scale(1.025);
