@@ -18,14 +18,8 @@
 
 
                 <p>Instructions:</p>
-
                 <div class="#" id="update-instruction-text">
-                    <textarea name="instructions" cols="40" rows="10" required id="id_instructions" value="{{ update_recipe_form.instructions|safe }}">
-                        
-                    </textarea>
-                    
-
-
+                    {{ update_recipe_form.instructions|safe }}
                     <ol class="instruction-list" id="update-instruction-list">
 
                     </ol>

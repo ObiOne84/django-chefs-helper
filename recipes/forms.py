@@ -157,6 +157,5 @@ class UpdateRecipeForm(forms.ModelForm):
             'servings',
             'status',
             ]
-
-
-
+    
+    instructions = forms.CharField(widget=forms.Textarea(attrs={'class': 'instruction-steps hide'}))

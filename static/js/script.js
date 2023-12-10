@@ -159,7 +159,7 @@ $(document).ready(function () {
     // function creates an input field with defined value
     function createInputField(data) {
         return `<li class="instruction-list-item">
-        <input type="text" style="width: 80%;" class="d-inline" required value="${data}">
+        <input type="text" style="width: 80%;" class="d-inline instruction-steps" required value="${data}">
         <button type="button" class="btn-like remove-instruction">
             <i class="fa-solid fa-circle-minus"></i>
         </button>
@@ -195,6 +195,7 @@ $(document).ready(function () {
         });
     } else {
         console.log('No content found in #id_instructions');
+
     }
 
     // $('#update-recipe-form').submit(function (event) {
@@ -218,36 +219,29 @@ $(document).ready(function () {
     // });
 
 
-    $('#update-recipe-form').submit(function (event) {
+    $('#udpate-recipe-form').submit(function (event) {
         console.log('Form submitted');
         event.preventDefault();
 
         // Clear the current textarea content
-        $('#update-instruction-text textarea').val('');
-
+        $('textarea[name="instructions"]').val('');
+        let instructionValue = '';
         let x = 1;
-        $('.instruction-list-item input').each(function () {
-            let inputValue = $(this).val();
-            console.log(inputValue);
+        $('.instruction-list-item').each(function () {
+            let inputValue = $(this).find('input').val();
             let step = '<p class="steps">' + 'Step ' + x + '. ' + inputValue + '</p>';
-
-            // Append the new content to the textarea
-            $('#update-instruction-text textarea').val(function (index, value) {
-                return value + step;
-            });
-
-            console.log(step);
-            x += 1;
+            instructionValue += step;
+            x += 1
+            console.log(inputValue);
+            console.log(instructionValue);
         });
-
-        // Log the final textarea content
-        console.log($('#update-instruction-text textarea').val());
-
-        // Uncomment the line below to submit the form
-        // $(this).unbind('submit').submit();
+        
+        // $('textarea[name="instructions"]').val('');
+        console.log(instructionValue);
+        $('textarea[name="instructions"]').val(instructionValue.trim());
+        console.log(instructionValue);
+        $(this).unbind('submit').submit();
     });
-
-
 
 
 
