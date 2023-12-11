@@ -6,37 +6,68 @@
 <div class="container-lg">
 
    <div class="row">
-      <div class="col-6 print-size">
-
-         <form method="post" enctype="multipart/form-data" action="{% url 'add_recipe' %}" id="add-recipe-form">
+      <div class="col-12 text-center py-4">
+         <h1 class="special-text">Add New Recipe Here</h1>
+      </div>
+      <div class="col-md-8 offset-md-2 col-12 print-size">
+         <form method="post" enctype="multipart/form-data" action="{% url 'add_recipe' %}" id="add-recipe-form"
+            class="recipe-form">
             {% csrf_token %}
-
-            <!-- {{ form.as_table }} -->
-            {{ form.title.label_tag }}
-            {{ form.title }}
-     
- 
-            <p>Instructions:</p>
-            <textarea name="instructions" cols="40" rows="10" class="instruction-steps" id="id_instructions" style="display: none;"></textarea>
-                <ol class="instruction-list">
-                        <li class="instruction-list-item">
-                           <input type="text" style="width: 80%;" class="d-inline" required>
-                            <button type="button" class="btn-like remove-instruction">
-                                <i class="fa-solid fa-circle-minus"></i>
-                            </button>
-                            <button type="button" name="add-instruction" class="btn-like add-instruction">
-                              <i class="fa-solid fa-circle-plus d-inline"></i>
-                          </button>
-                        </li>
-                </ol>
-                
-            {{ form.featured_image }}
-            {{ form.excerpt }}
-            {{ form.prep_time }}
-            {{ form.cook_time }}
-            {{ form.servings }}
-            {{ form.status }}
-            
+            <div class="row">
+               <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 title-box">
+                  <h2>{{ form.title.label_tag }}</h2>
+                  {{ form.title }}
+               </div>
+               <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 form-group instruction-box flex-fill">
+                  <h2>Instructions:</h2>
+                  <textarea name="instructions" cols="40" rows="10" class="instruction-steps" id="id_instructions"
+                     style="display: none;"></textarea>
+                  <ol class="instruction-list">
+                     <li class="my-1 instruction-list-item">
+                        <input type="text" class="d-inline form-control instruction-input-field" required
+                           placeholder="Enter cooking instruction here.">
+                        <button type="button" class="btn-like list-button remove-instruction">
+                           <i class="fa-solid fa-circle-minus"></i>
+                        </button>
+                        <button type="button" name="add-instruction" class="btn-like list-button add-instruction">
+                           <i class="fa-solid fa-circle-plus"></i>
+                        </button>
+                     </li>
+                  </ol>
+               </div>
+               <!-- Recipe image section -->
+               <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 position-relative">
+                  <!-- <img src="https://res.cloudinary.com/dcrbeonr9/image/upload/v1700598678/image-placeholder_gmlf30.png"
+                     alt="Image coming soon placeholder" class="dish-image round-border transparent-image"> -->
+                  <!-- <div class="position-absolute top-50 start-0 translate-middle-y text-center">{{ form.featured_image }}</div> -->
+                  <h2>Featured Image:</h2>
+                  {{ form.featured_image }}
+               </div>
+               <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2">
+                  <h2>Provide Short Description:</h2>
+                  {{ form.excerpt }}
+               </div>
+               <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2">
+                  <div class="row">
+                     <div class="col-md-6 col-12">
+                        <h2>Prep Time:</h2>
+                        {{ form.prep_time }} <span>minutes</span>
+                     </div>
+                     <div class="col-md-6 col-12">
+                        <h2>Cook Time: </h2>
+                        {{ form.cook_time }} <span>minutes</span>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2">
+                  <h2>Number Of Servings:</h2>
+                  {{ form.servings }}
+               </div>
+               <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2">
+                  <h2>Publish or Save as Draft:</h2>
+                  {{ form.status }}
+               </div>     
+            </div>
             {% if form.errors %}
             <div class="alert alert-danger" role="alert">
                <strong>Form Errors:</strong>
@@ -49,51 +80,57 @@
                </ul>
             </div>
             {% endif %}
-            <p>Inngredients here:</p>
-            <div>
-               <div id="ingredient-formset-container">
-                  <!-- Ingredient formset -->
-                  {{ form.ingredient_formset.management_form }}
+            <div class="col-lg-8 offset-lg-2 col-12 my-lg-4 my-2">
+               <h2>Inngredients here:</h2>
+               <div>
+                  <div id="ingredient-formset-container">
+                     
+                     <!-- Ingredient formset -->
+                     {{ form.ingredient_formset.management_form }}
+                     <h3>{{ ingredient_formset.name.label_tag }} {{ form.quantity.label_tag }} {{ form.unit.label_tag }}</h3>
+                     {% for form in form.ingredient_formset %}
+                     <div class="formset-row show">
 
-                  {% for form in form.ingredient_formset %}
-                  <div class="formset-row show">
-                     {{ form.name.label_tag }}
-                     {{ form.name }}
-                     {{ form.name.errors }}
-                     {{ form.quantity.label_tag }}
-                     {{ form.quantity }}
-                     {{ form.quantity.errors }}
-                     {{ form.unit.label_tag }}
-                     {{ form.unit }}
-                     {{ form.unit.errors }}
-                     {{ form.DELETE }} {# Include the DELETE input for each formset row #}
+                        <!-- {{ form.name.label_tag }} -->
+                        {{ form.name }}
+                        {{ form.name.errors }}
+                        <!-- {{ form.quantity.label_tag }} -->
+                        {{ form.quantity }}
+                        {{ form.quantity.errors }}
+                        <!-- {{ form.unit.label_tag }} -->
+                        {{ form.unit }}
+                        {{ form.unit.errors }}
+                        {{ form.DELETE }} {# Include the DELETE input for each formset row #}
 
-                     <button type="button" name="remove-ingredient" class="btn-like remove-ingredient">
-                        <i class="fa-solid fa-circle-minus"></i>
-                     </button>
-                     <button type="button" name="add-ingredient" class="btn-like add-ingredient">
-                        <i class="fa-solid fa-circle-plus"></i>
-                     </button>
-                  </div>
-                  {% endfor %}
-                  <button type="button" name="add-ingredient" class="btn-like add-ingredient">
+                        <button type="button" name="remove-ingredient" class="btn-like list-button remove-ingredient">
+                           <i class="fa-solid fa-circle-minus"></i>
+                        </button>
+                        <button type="button" name="add-ingredient" class="btn-like list-button add-ingredient">
+                           <i class="fa-solid fa-circle-plus"></i>
+                        </button>
+                     </div>
+                     {% endfor %}
+                     <!-- <button type="button" name="add-ingredient" class="btn-like list-button add-ingredient">
                      <i class="fa-solid fa-circle-plus"></i>
-                  </button>
+                  </button> -->
+                  </div>
                </div>
-            </div>
-            {% if form.ingredient_formset.errors %}
+               {% if form.ingredient_formset.errors %}
 
-            <div class="alert alert-danger" role="alert">
-               <strong>Formset Errors:</strong>
-               <ul>
-                  {% for error in form.ingredient_formset.errors %}
-                  <li>{{ error }}</li>
-                  {% endfor %}
-               </ul>
+               <div class="alert alert-danger" role="alert">
+                  <strong>Formset Errors:</strong>
+                  <ul>
+                     {% for error in form.ingredient_formset.errors %}
+                     <li>{{ error }}</li>
+                     {% endfor %}
+                  </ul>
+               </div>
+               {% endif %}
             </div>
-            {% endif %}
-
-            <button type="submit">Submit</button>
+            <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 py-4">
+               <button class="btn btn-primary btn-lg" type="submit">Submit</button>
+            </div>
+            
          </form>
 
 

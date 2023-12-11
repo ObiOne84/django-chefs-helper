@@ -1,3 +1,4 @@
+/* --------- GENERAL STYLE ---------- */
 body,
 p {
     font-family: 'Lato', sans-serif;
@@ -82,7 +83,7 @@ form.login p label {
 }
 
 form.signup p input {
-    width: 100%;
+    width: 80%;
 }
 
 form.signup ul li {
@@ -114,18 +115,23 @@ form.signup ul li {
 }
 
 .taskbar {
-    background-color: #3b3a3a; /* Dark color for taskbar background */
-    color: white; /* Light color for text/icons */
+    background-color: #3b3a3a;
+    /* Dark color for taskbar background */
+    color: white;
+    /* Light color for text/icons */
 }
 
 .control-button {
     border: 2px solid;
     font-weight: bold;
     letter-spacing: 1px;
-    width: 30%; /* Set the width to 33% of the parent container */
-    box-sizing: border-box; /* Include border in the width calculation */
-    display: inline-block; /* Ensure the buttons appear on the same line */
-    margin-right: 1%; 
+    width: 30%;
+    /* Set the width to 33% of the parent container */
+    box-sizing: border-box;
+    /* Include border in the width calculation */
+    display: inline-block;
+    /* Ensure the buttons appear on the same line */
+    margin-right: 1%;
 }
 
 /* Rating stars style */
@@ -157,11 +163,12 @@ form.signup ul li {
 #review-form {
     margin-top: 2rem;
 }
+
 .review-body-holder textarea:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Adjust values as needed */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    /* Adjust values as needed */
     transition: box-shadow 0.3s ease;
 }
-
 
 /* Style likes */
 .btn-like {
@@ -203,17 +210,81 @@ form.signup ul li {
     display: block;
 }
 
-.ingredient-name,
-.ingredient-quantity,
-.ingredient-unit {
-    background-color: red;
-}
+
 
 /* style recipe instructions */
 .steps {
     font-size: large;
-
     font-weight: bold;
+}
+
+/* -----STYLE ADD RECIPE PAGE ---------- */
+
+.title-box input {
+    font-family: 'Pacifico', cursive;
+    padding: 5px;
+    display: block;
+}
+
+.recipe-form input,
+.recipe-form textarea,
+.recipe-form select {
+    border-radius: 8px;
+    padding: 5px;
+    resize: vertical;
+}
+
+.instruction-input-field {
+    width: 80%;
+    border: 1px solid gray;
+}
+
+.title-box input {
+    width: 100%;
+}
+
+.transparent-image {
+    opacity: 0.3;
+}
+
+.recipe-form textarea {
+    width: 100%;
+    max-height: 75px;
+}
+
+.list-button {
+    font-size: x-large
+}
+
+ol {
+    list-style-type: none;
+    padding: 0;
+}
+
+.remove-instruction,
+.remove-ingredient {
+    color: red;
+}
+
+.add-instruction,
+.add-ingredient {
+    color: green;
+}
+
+/* .instruction-box>input[name="featured_image"] {
+    border-radius: 8px;
+    padding: 5px;
+    color: blue;
+    height: 25px;
+} */
+
+.ingredient-name {
+    color: #000
+}
+
+.ingredient-quantity,
+.ingredient-unit {
+    color: #000;
 }
 
 /* Styles for the printed version */
