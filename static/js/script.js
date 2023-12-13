@@ -158,12 +158,12 @@ $(document).ready(function () {
 
     // function creates an input field with defined value
     function createInputField(data) {
-        return `<li class="instruction-list-item">
-        <input type="text" style="width: 80%;" class="d-inline instruction-steps" required value="${data}">
-        <button type="button" class="btn-like remove-instruction">
+        return `<li class="my-1 instruction-list-item">
+        <input type="text" class="d-inline form-control instruction-input-field instruction-steps" required value="${data}">
+        <button type="button" class="btn-like list-button remove-instruction">
             <i class="fa-solid fa-circle-minus"></i>
         </button>
-        <button type="button" name="add-instruction" class="btn-like add-instruction">
+        <button type="button" name="add-instruction" class="btn-like list-button add-instruction">
             <i class="fa-solid fa-circle-plus d-inline"></i>
         </button>
     </li>`;

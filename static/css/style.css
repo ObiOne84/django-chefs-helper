@@ -253,7 +253,8 @@ form.signup ul li {
 }
 
 .list-button {
-    font-size: x-large
+    font-size: x-large;
+    margin-bottom: 5px;
 }
 
 ol {
@@ -278,13 +279,17 @@ ol {
     height: 25px;
 } */
 
-/* .ingredient-name {
+.ingredient-name-field {
     width: 50%;
-} */
+}
 
 .ingredient-quantity,
 .ingredient-unit {
     color: #000;
+}
+
+.time-field {
+    width: 25%;
 }
 
 

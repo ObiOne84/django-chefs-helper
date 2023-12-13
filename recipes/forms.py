@@ -32,18 +32,24 @@ class AddIngredientForm(forms.ModelForm):
         max_length=50,
         required=True,
         widget=forms.TextInput(attrs={
-            'class': 'add-recipe-fields ingredient-name-field'
+            'class': 'add-recipe-fields ingredient-name-field bm-1',
+            'placeholder': 'Ingredient name...'
         }),
     )
 
     unit = forms.ChoiceField(
         required=True,
-        widget=forms.Select,
+        widget=forms.Select(attrs={
+            'class': 'unit-field bm-2',
+        }),
         choices=UNIT_CHOICES,
     )
 
     quantity = forms.DecimalField(
-        widget=forms.NumberInput(attrs={'class': 'positive-number'}),
+        widget=forms.NumberInput(attrs={
+            'class': 'positive-number bm-1',
+            'placeholder': 'Quantity...'
+        }),
         min_value=0,
         max_digits=6,
         max_value=9999.99,
@@ -76,9 +82,18 @@ class AddRecipeForm(forms.ModelForm):
             'class': 'add-recipe-fields title-field',
         })
         self.fields['excerpt'].widget.attrs.update({
-            'placeholder': 'Provide short dish description...',
+            'placeholder': 'Provide short description...',
             'maxlength': 500,
             'class': 'add-recipe-fields description-field',
+        })
+        self.fields['prep_time'].widget.attrs.update({
+            'class': 'add-recipe-fields time-field',
+        })
+        self.fields['cook_time'].widget.attrs.update({
+            'class': 'add-recipe-fields time-field',
+        })
+        self.fields['servings'].widget.attrs.update({
+            'class': 'add-recipe-fields time-field',
         })
 
         # Use inlineformset_factory to create the formset
@@ -194,6 +209,25 @@ class UpdateRecipeForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
         self.fields['featured_image'].widget.attrs['accept'] = 'image/*'
+        self.fields['title'].widget.attrs.update({
+            'placeholder': 'Add unique recipe title...',
+            'maxlength': 50,
+            'class': 'add-recipe-fields title-field',
+        })
+        self.fields['excerpt'].widget.attrs.update({
+            'placeholder': 'Provide short description...',
+            'maxlength': 500,
+            'class': 'add-recipe-fields description-field',
+        })
+        self.fields['prep_time'].widget.attrs.update({
+            'class': 'add-recipe-fields time-field',
+        })
+        self.fields['cook_time'].widget.attrs.update({
+            'class': 'add-recipe-fields time-field',
+        })
+        self.fields['servings'].widget.attrs.update({
+            'class': 'add-recipe-fields time-field',
+        })
     
     def clean_featured_image(self):
         featured_image = self.cleaned_data.get('featured_image', False)
@@ -206,16 +240,19 @@ class UpdateRecipeForm(forms.ModelForm):
 
     prep_time = forms.IntegerField(
         widget=forms.NumberInput(attrs={'class': 'positive-number'}),
-        min_value=0
+        min_value=0,
+        max_value = 600,
     )
     cook_time = forms.IntegerField(
         widget=forms.NumberInput(attrs={'class': 'positive-number'}),
-        min_value=0
+        min_value=0,
+        max_value = 600,
     )
 
     servings = forms.IntegerField(
         widget=forms.NumberInput(attrs={'class': 'positive-number'}),
-        min_value=0
+        min_value=1,
+        max_value = 10,
     )
 
 

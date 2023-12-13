@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<div class="container-lg">
+
+    <div class="row">
+        <div class="col-md-6 col-12 print-size">
+
+            <form method="post" enctype="multipart/form-data" action="{% url 'update_recipe' slug=recipe.slug %}"
+                id="udpate-recipe-form">
+                {% csrf_token %}
+
+                <p>
+                    {{ update_recipe_form.title.label_tag }}
+                    {{ update_recipe_form.title }}
+                </p>
+
+
+                <p>Instructions:</p>
+                <div class="#" id="update-instruction-text">
+                    {{ update_recipe_form.instructions|safe }}
+                    <ol class="instruction-list" id="update-instruction-list">
+
+                    </ol>
+                </div>
+
+                <div>
+
+                    <p>
+                        <img src="{{ image.url }}" alt="{{ recipe.title }} image" class="img-fluid d-block">
+                        {{ update_recipe_form.featured_image.label_tag }}
+                        {{ update_recipe_form.featured_image }}
+                    </p>
+                    <p>
+                        {{ update_recipe_form.excerpt.label_tag }}
+                    </p>
+                    <p>
+                        {{ update_recipe_form.excerpt }}
+                    </p>
+                    <p>
+                        {{ update_recipe_form.prep_time.label_tag }}
+                        {{ update_recipe_form.prep_time }}
+                        {{ update_recipe_form.cook_time.label_tag }}
+                        {{ update_recipe_form.cook_time }}
+                    </p>
+                    <p>
+                        {{ update_recipe_form.servings.label_tag }}
+                        {{ update_recipe_form.servings }}
+                        {{ update_recipe_form.status }}
+                    </p>
+                </div>
+
+                {% if update_recipe_form.errors %}
+                <div class="alert alert-danger" role="alert">
+                    <strong>Form Errors:</strong>
+                    <ul>
+                        {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                <!-- {{ update_recipe_form.as_p }} -->
+
+                <hr>
+                Ingredients:
+                <div id="ingredient-formset-container">
+
+                    {{ ingredient_formset.management_form }}
+
+                    {% for form in ingredient_formset %}
+                    <div class="formset-row show">
+                        {{ form.name.label_tag }}
+                        {{ form.name }}
+                        {{ form.name.errors }}
+                        {{ form.quantity.label_tag }}
+                        {{ form.quantity }}
+                        {{ form.quantity.errors }}
+                        {{ form.unit.label_tag }}
+                        {{ form.unit }}
+                        {{ form.unit.errors }}
+                        {{ form.DELETE }} {# Include the DELETE input for each formset row #}
+                        {{ form.id }}
+
+                        <button type="button" name="remove-ingredient" class="btn-like remove-ingredient">
+                            <i class="fa-solid fa-circle-minus"></i>
+                        </button>
+                        <button type="button" name="add-ingredient" class="btn-like add-ingredient">
+                            <i class="fa-solid fa-circle-plus"></i>
+                        </button>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div>
+                    {% if ingredient_formset.errors %}
+
+                    <div class="alert alert-danger" role="alert">
+                        <strong>Formset Errors:</strong>
+                        <ul>
+                            {% for error in ingredient_formset.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <button type="submit">Submit</button>
+        </div>
+        </form>
+
+    </div>
+</div>
+</div>
+
+
+
+{% endblock content %}

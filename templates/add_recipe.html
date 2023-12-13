@@ -7,7 +7,7 @@
 
    <div class="row">
       <div class="col-12 text-center py-4">
-         <h1 class="special-text">Add New Recipe Here</h1>
+         <h1 class="special-text">Add New Recipe:</h1>
       </div>
       <div class="col-md-8 offset-md-2 col-12 print-size">
          <form method="post" enctype="multipart/form-data" action="{% url 'add_recipe' %}" id="add-recipe-form"
@@ -36,12 +36,19 @@
                   </ol>
                </div>
                <!-- Recipe image section -->
-               <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 position-relative">
-                  <!-- <img src="https://res.cloudinary.com/dcrbeonr9/image/upload/v1700598678/image-placeholder_gmlf30.png"
-                     alt="Image coming soon placeholder" class="dish-image round-border transparent-image"> -->
-                  <!-- <div class="position-absolute top-50 start-0 translate-middle-y text-center">{{ form.featured_image }}</div> -->
-                  <h2>Featured Image:</h2>
-                  {{ form.featured_image }}
+               <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 add-image">
+                  <div class="row">
+                     <div class="col-md-8 offset-md-2 col-12 my-2">
+                        <img
+                           src="https://res.cloudinary.com/dcrbeonr9/image/upload/v1700598678/image-placeholder_gmlf30.png"
+                           alt="Image coming soon placeholder" class="dish-image round-border transparent-image"
+                           style="width: 100%;">
+                     </div>
+                     <div class="col-12">
+                        <h2>Add Recipe Image Here:</h2>
+                        {{ form.featured_image }}
+                     </div>
+                  </div>
                </div>
                <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2">
                   <h2>Provide Short Description:</h2>
@@ -66,7 +73,7 @@
                <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2">
                   <h2>Publish or Save as Draft:</h2>
                   {{ form.status }}
-               </div>     
+               </div>
             </div>
             {% if form.errors %}
             <div class="alert alert-danger" role="alert">
@@ -80,14 +87,15 @@
                </ul>
             </div>
             {% endif %}
-            <div class="col-lg-8 offset-lg-2 col-12 my-lg-4 my-2">
+            <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2">
                <h2>Inngredients here:</h2>
                <div>
                   <div id="ingredient-formset-container">
-                     
+
                      <!-- Ingredient formset -->
                      {{ form.ingredient_formset.management_form }}
-                     <h3>{{ ingredient_formset.name.label_tag }} {{ form.quantity.label_tag }} {{ form.unit.label_tag }}</h3>
+                     <h3>{{ ingredient_formset.name.label_tag }} {{ form.quantity.label_tag }} {{ form.unit.label_tag }}
+                     </h3>
                      {% for form in form.ingredient_formset %}
                      <div class="formset-row show">
 
@@ -128,10 +136,12 @@
                {% endif %}
             </div>
             <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 py-4">
-               <button class="btn btn-primary btn-lg" type="submit" name="submit_action" value="save_recipe">Save Recipe</button>
-               <button class="btn btn-secondary btn-lg hide" type="submit" name="submit_action" value="save_draft">Save as Draft</button>
+               <button class="btn btn-primary btn-lg" type="submit" name="submit_action" value="save_recipe">Save
+                  Recipe</button>
+               <button class="btn btn-secondary btn-lg hide" type="submit" name="submit_action" value="save_draft">Save
+                  as Draft</button>
             </div>
-            
+
          </form>
 
 

@@ -209,6 +209,7 @@ class UpdateRecipeView(View):
         recipe = get_object_or_404(Recipe, slug=slug)
         update_recipe_form = UpdateRecipeForm(instance=recipe)
         ingredient_formset = self.IngredientFormSet(instance=recipe)
+        image = recipe.featured_image
 
         return render(
             request,
@@ -217,6 +218,7 @@ class UpdateRecipeView(View):
                 'update_recipe_form': update_recipe_form,
                 'ingredient_formset': ingredient_formset,
                 'recipe': recipe,
+                'image': image,
    
             }
         )
@@ -227,6 +229,7 @@ class UpdateRecipeView(View):
         ingredient_formset = self.IngredientFormSet(
             request.POST, instance=recipe, queryset=RecipeIngredient.objects.filter(recipe=recipe)
         )
+        image = recipe.featured_image
         for form in ingredient_formset:
             form.fields['name'].widget.attrs['class'] = 'ingredient-name'
             form.fields['quantity'].widget.attrs['class'] = 'ingredient-quantity'
@@ -239,6 +242,7 @@ class UpdateRecipeView(View):
 
             messages.success(request, f'Recipe "{recipe.title}" updated successfully.')
             return redirect('home')
+
         else:
             return render(
                 request,
@@ -247,6 +251,7 @@ class UpdateRecipeView(View):
                     'update_recipe_form': update_recipe_form,
                     'ingredient_formset': ingredient_formset,
                     'recipe': recipe,
+                    'image': image,
                 }
             )
 
