@@ -20,10 +20,19 @@ $(document).ready(function () {
     showModal('#delete-recipe-link', 'click', 'deleteRecipeModal');
 
     // django messages timeout source:https://api.jquery.com/hide/#hide
-    setTimeout(function () {
-        $('#msg').hide();
-        $('#alert-rated').hide();
-    }, 3000);
+    const hideButton = (message) => {
+        setTimeout(function () {
+            $(message).hide();
+        }, 3000);
+    }
+    // setTimeout(function () {
+    //     $('#msg').hide();
+    //     $('#alert-rated').hide();
+    // }, 3000);
+
+    hideButton('#msg');
+    hideButton('#alert-rated');
+    hideButton('#no-recipe-alert');
 
     // setting star rating 
     $('.star-rating i').on('click', function () {

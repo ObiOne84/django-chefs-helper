@@ -75,7 +75,10 @@ class AddRecipeForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['featured_image'].widget.attrs['accept'] = 'image/*'
+        self.fields['featured_image'].widget.attrs.update({
+            'accept': 'image/*',
+            'class': 'form-control',
+        })
         self.fields['title'].widget.attrs.update({
             'placeholder': 'Add unique recipe title...',
             'maxlength': 50,
@@ -208,7 +211,10 @@ class UpdateRecipeForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['featured_image'].widget.attrs['accept'] = 'image/*'
+        self.fields['featured_image'].widget.attrs.update({
+            'accept': 'image/*',
+            'class': 'form-control',
+        })
         self.fields['title'].widget.attrs.update({
             'placeholder': 'Add unique recipe title...',
             'maxlength': 50,

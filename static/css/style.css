@@ -31,9 +31,6 @@ footer ul {
 
 .author,
 a {
-    color: red;
-    margin: 4px;
-    text-transform: uppercase;
     text-decoration: none;
 }
 
@@ -184,14 +181,6 @@ form.signup ul li {
     color: rgb(233, 6, 6);
 }
 
-/* -------- STYLE INDEX PAGE ---------- */
-/* recipe card */
-.recipe-card:hover {
-    transform: scale(1.025);
-    filter: drop-shadow(0 0 8px #2759fc);
-    opacity: 1;
-}
-
 /* Add recipe style */
 /* Hide the checkbox */
 .formset-row input[type="checkbox"] {
@@ -210,12 +199,48 @@ form.signup ul li {
     display: block;
 }
 
-
-
 /* style recipe instructions */
 .steps {
     font-size: large;
     font-weight: bold;
+}
+
+/* -------- STYLE INDEX PAGE ---------- */
+/* recipe card */
+.recipe-card:hover {
+    transform: scale(1.025);
+    filter: drop-shadow(0 0 8px #2759fc);
+    opacity: 1;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: #fff;
+}
+
+.image-container:hover .overlay {
+    opacity: 1;
+}
+
+#add-recipe-button {
+    color: #3bf83b;
+}
+
+#add-recipe-button:hover {
+    color: #000;
+    background-color: #3bf83b;
+}
+
+/* Custom CSS for collapsing on hover */
+.collapse-on-hover:hover .collapse {
+    display: block;
 }
 
 /* -----STYLE ADD RECIPE PAGE ---------- */
