@@ -278,14 +278,16 @@ ol {
     height: 25px;
 } */
 
-.ingredient-name {
-    color: #000
-}
+/* .ingredient-name {
+    width: 50%;
+} */
 
 .ingredient-quantity,
 .ingredient-unit {
     color: #000;
 }
+
+
 
 /* Styles for the printed version */
 

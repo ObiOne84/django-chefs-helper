@@ -25,7 +25,7 @@
                   <ol class="instruction-list">
                      <li class="my-1 instruction-list-item">
                         <input type="text" class="d-inline form-control instruction-input-field" required
-                           placeholder="Enter cooking instruction here.">
+                           placeholder="Add cooking instruction here...">
                         <button type="button" class="btn-like list-button remove-instruction">
                            <i class="fa-solid fa-circle-minus"></i>
                         </button>
@@ -128,7 +128,8 @@
                {% endif %}
             </div>
             <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 py-4">
-               <button class="btn btn-primary btn-lg" type="submit">Submit</button>
+               <button class="btn btn-primary btn-lg" type="submit" name="submit_action" value="save_recipe">Save Recipe</button>
+               <button class="btn btn-secondary btn-lg hide" type="submit" name="submit_action" value="save_draft">Save as Draft</button>
             </div>
             
          </form>

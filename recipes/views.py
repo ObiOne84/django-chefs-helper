@@ -223,7 +223,7 @@ class UpdateRecipeView(View):
 
     def post(self, request, slug):
         recipe = get_object_or_404(Recipe, slug=slug)
-        update_recipe_form = UpdateRecipeForm(request.POST, instance=recipe)
+        update_recipe_form = UpdateRecipeForm(request.POST, request.FILES, instance=recipe)
         ingredient_formset = self.IngredientFormSet(
             request.POST, instance=recipe, queryset=RecipeIngredient.objects.filter(recipe=recipe)
         )

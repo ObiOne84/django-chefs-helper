@@ -11,6 +11,7 @@
             <form method="post" enctype="multipart/form-data" action="{% url 'update_recipe' slug=recipe.slug %}"
                 id="udpate-recipe-form">
                 {% csrf_token %}
+
                 <p>
                     {{ update_recipe_form.title.label_tag }}
                     {{ update_recipe_form.title }}
@@ -94,10 +95,6 @@
                     </div>
                     {% endfor %}
                 </div>
-
-
-
-                <!-- {{ ingredient_formset.as_p }} -->
 
                 <div>
                     {% if ingredient_formset.errors %}
