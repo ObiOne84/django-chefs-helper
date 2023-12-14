@@ -255,6 +255,7 @@ $(document).ready(function () {
 
 
     // check current page
+    // source: https://stackoverflow.com/questions/33805766/detect-current-page-with-javascript
     var pathname = window.location.pathname;
     switch (pathname) {
         case "/add_recipe":
