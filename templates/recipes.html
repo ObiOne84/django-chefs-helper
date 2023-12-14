@@ -26,12 +26,12 @@
             <div class="row">
                 <div class="col-12 mb-3">
 
-                    <form action="{% url 'home' %}" method="GET" class="form-inline my-2 my-lg-0">
+                    <form action="{% url 'recipe_images' %}" method="GET" class="form-inline my-2 my-lg-0">
                         <div class="input-group mb-3">
                             <input class="form-control mr-sm-2 d-inline" type="text" name="recipe_name"
                                 placeholder="Search by Recipe Name" aria-label="Search">
                             {% if request.GET.recipe_name %}
-                            <button action="{% url 'home' %}" class="btn btn-outline-success my-2 my-sm-0 d-inline">All
+                            <button action="{% url 'recipe_images' %}" class="btn btn-outline-success my-2 my-sm-0 d-inline">All
                                 Recipes</button>
                             {% endif %}
                             <button class="btn btn-outline-success my-2 my-sm-0 d-inline" type="submit">Search</button>
