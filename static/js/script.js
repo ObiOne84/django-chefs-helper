@@ -54,7 +54,7 @@ $(document).ready(function () {
         let roundedRating = Math.round(aveRatingNum * 2) / 2;
 
         // Clear existing stars
-        // $('#rating-container').html('');
+        $('#rating-container').html('');
 
         // Add full stars
         for (let i = 0; i < Math.floor(roundedRating); i++) {
@@ -100,6 +100,7 @@ $(document).ready(function () {
 
     // // Add ingredient
     $("#ingredient-formset-container").on("click", ".add-ingredient", function () {
+        // remove test console log
         console.log("Clicked plus");
         var formsetContainer = $("#ingredient-formset-container");
         var formsetRow = formsetContainer.find(".formset-row.hide:first");
@@ -168,7 +169,7 @@ $(document).ready(function () {
     // function creates an input field with defined value
     function createInputField(data) {
         return `<li class="my-1 instruction-list-item">
-        <input type="text" class="d-inline form-control instruction-input-field instruction-steps" required value="${data}">
+        <input type="text" class="d-inline form-control instruction-input-field instruction-steps" required value="${data}" placeholder="Add cooking instruction here...">
         <button type="button" class="btn-like list-button remove-instruction">
             <i class="fa-solid fa-circle-minus"></i>
         </button>
@@ -244,7 +245,7 @@ $(document).ready(function () {
             console.log(inputValue);
             console.log(instructionValue);
         });
-        
+
         // $('textarea[name="instructions"]').val('');
         console.log(instructionValue);
         $('textarea[name="instructions"]').val(instructionValue.trim());
@@ -252,6 +253,21 @@ $(document).ready(function () {
         $(this).unbind('submit').submit();
     });
 
+
+    // check current page
+    var pathname = window.location.pathname;
+    switch (pathname) {
+        case "/add_recipe":
+            window.addEventListener('beforeunload', function (event) {
+                if (1 === 1) {
+                    // Display a confirmation message
+                    var confirmationMessage = 'You have unsaved changes. Are you sure you want to leave?';
+                    event.returnValue = confirmationMessage;
+                    return confirmationMessage;
+                }
+            });
+            break;
+    }
 
 
 
