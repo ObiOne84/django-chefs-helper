@@ -318,6 +318,37 @@ ol {
 }
 
 
+/* -----Style home page --------- */
+
+.background-image {
+    background-image: url('https://res.cloudinary.com/dcrbeonr9/image/upload/v1702512691/spices-370114_1920_c3fplv.jpg');
+    height: 100%;
+    width: 100%;
+}
+
+/* #backgroundCarousel {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.container-carousel {
+    position: relative;
+    z-index: 1;
+
+}
+.overlay-carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 2; 
+} */
 
 /* Styles for the printed version */
 

@@ -41,6 +41,11 @@ class RecipeList(generic.ListView):
         return queryset.order_by('-status', '-created_on')
 
 
+class RecipeImages(RecipeList, generic.ListView):
+    template_name = 'new_index.html'
+    context_object_name = 'recipes'
+
+
 class RecipeDetails(LoginRequiredMixin, View):
     def get(self, request, slug, *arg, **kwargs):
 
