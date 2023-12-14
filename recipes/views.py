@@ -160,7 +160,13 @@ class AddRecipeView(FormView):
         form.instance.email = self.request.user.email
         form.instance.name = self.request.user.username
         self.formset = form.ingredient_formset
-        messages.success(self.request, f'Recipe "{form.instance.title}" added successfully.')
+        # message for added recipe draft or published
+        self.status = self.request.POST.get('status')
+        if self.status == '0':
+            messages.success(self.request, f'Recipe "{form.instance.title}" draft added successfully.')
+        else:
+            messages.success(self.request, f'Recipe "{form.instance.title}" added successfully.')
+
         return super().form_valid(form)
 
     def form_invalid(self, form):
