@@ -17,7 +17,7 @@ class RecipeList(generic.ListView):
     model = Recipe
     
     # queryset = Recipe.objects.filter(status=1).order_by('-created_on')
-    template_name = 'index.html'
+    template_name = 'recipes.html'
     paginate_by = 8
 
     def get_queryset(self):
@@ -42,7 +42,7 @@ class RecipeList(generic.ListView):
 
 
 class RecipeImages(RecipeList, generic.ListView):
-    template_name = 'new_index.html'
+    template_name = 'index.html'
     context_object_name = 'recipes'
 
 
