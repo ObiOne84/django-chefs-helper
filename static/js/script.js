@@ -254,17 +254,39 @@ $(document).ready(function () {
     });
 
 
-    // check current page
+    // Check if on add_recipe.html page, and if the form has any values entered,
+    // and when user try to leave before saving, warn about loosing any information entered
     // source: https://stackoverflow.com/questions/33805766/detect-current-page-with-javascript
     var pathname = window.location.pathname;
+
     switch (pathname) {
         case "/add_recipe":
+
+            let formSubmitted = false;
+            $('#add-recipe-form').on('submit', function () {
+                formSubmitted = true;
+            });
+
             window.addEventListener('beforeunload', function (event) {
-                if (1 === 1) {
-                    // Display a confirmation message
-                    var confirmationMessage = 'You have unsaved changes. Are you sure you want to leave?';
-                    event.returnValue = confirmationMessage;
-                    return confirmationMessage;
+                if (!formSubmitted) {
+                    let formElements = document.querySelectorAll('.form-field');
+
+                    let hasValue = false;
+
+                    formElements.forEach(function (element) {
+                        if (!element.value.trim()) {
+                            console.log('Form element is empty');
+                        } else {
+                            console.log('Form element has value');
+                            hasValue = true;
+                        }
+                    });
+
+                    if (hasValue) {
+                        var confirmationMessage = 'You have unsaved changes. Are you sure you want to leave?';
+                        event.returnValue = confirmationMessage;
+                        return confirmationMessage;
+                    }
                 }
             });
             break;

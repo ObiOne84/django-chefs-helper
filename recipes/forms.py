@@ -77,26 +77,26 @@ class AddRecipeForm(forms.ModelForm):
 
         self.fields['featured_image'].widget.attrs.update({
             'accept': 'image/*',
-            'class': 'form-control',
+            'class': 'form-control form-field',
         })
         self.fields['title'].widget.attrs.update({
             'placeholder': 'Add unique recipe title...',
             'maxlength': 50,
-            'class': 'add-recipe-fields title-field',
+            'class': 'add-recipe-fields title-field form-field',
         })
         self.fields['excerpt'].widget.attrs.update({
             'placeholder': 'Provide short description...',
             'maxlength': 500,
-            'class': 'add-recipe-fields description-field',
+            'class': 'add-recipe-fields description-field form-field',
         })
         self.fields['prep_time'].widget.attrs.update({
-            'class': 'add-recipe-fields time-field',
+            'class': 'add-recipe-fields time-field form-field',
         })
         self.fields['cook_time'].widget.attrs.update({
-            'class': 'add-recipe-fields time-field',
+            'class': 'add-recipe-fields time-field form-field',
         })
         self.fields['servings'].widget.attrs.update({
-            'class': 'add-recipe-fields time-field',
+            'class': 'add-recipe-fields time-field form-field',
         })
 
         # Use inlineformset_factory to create the formset
@@ -116,8 +116,8 @@ class AddRecipeForm(forms.ModelForm):
 
          # Add class to the formset fields
         for form in self.ingredient_formset.forms:
-            form.fields['name'].widget.attrs['class'] = 'ingredient-name'
-            form.fields['quantity'].widget.attrs['class'] = 'ingredient-quantity'
+            form.fields['name'].widget.attrs['class'] = 'ingredient-name form-field'
+            form.fields['quantity'].widget.attrs['class'] = 'ingredient-quantity form-field'
             form.fields['unit'].widget.attrs['class'] = 'ingredient-unit'
             form.fields['DELETE'].required = False
         
