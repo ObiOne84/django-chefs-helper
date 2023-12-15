@@ -31,54 +31,26 @@
                             <input class="form-control mr-sm-2 d-inline" type="text" name="recipe_name"
                                 placeholder="Search by Recipe Name" aria-label="Search">
                             {% if request.GET.recipe_name %}
-                            <button action="{% url 'recipe_images' %}" class="btn btn-outline-success my-2 my-sm-0 d-inline">All
+                            <button action="{% url 'recipe_images' %}"
+                                class="btn btn-outline-success my-2 my-sm-0 d-inline">All
                                 Recipes</button>
                             {% endif %}
                             <button class="btn btn-outline-success my-2 my-sm-0 d-inline" type="submit">Search</button>
                         </div>
                     </form>
 
-
                     <h2 class="d-inline special-text">
-                        {% if query %}
-                        Search Results for "{{ query }}"
+                        {% if search_query %}
+                            Search Results for "{{ search_query }}"
                         {% else %}
-                        Body - Index Page! <i class="fa-solid fa-utensils"></i>
+                            Body - Index Page! <i class="fa-solid fa-utensils"></i>
                         {% endif %}
                     </h2>
 
-                    <!-- Message for search results -->
-                    {% if request.GET.recipe_name %}
-                    {% if not results_exist %}
-                    <div class="alert alert-info alert-dismissible fade show mt-3" role="alert" id="no-recipe-alert">
-                        No recipes found matching the search criteria.
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    {% endif %}
-                    {% endif %}
                 </div>
 
-                <!-- {% if is_paginated %}
-                <nav aria-label="Page navigation">
-                    <ul class="pagination justify-content-center">
-                        {% if page_obj.has_previous %}
-                        <li>
-                            <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a>
-                        </li>
-                        {% endif %}
-                        {% for i in paginator.page_range %}
-                        <li class="page-item {% if i == page_obj.number %}active{% endif %}">
-                            <a href="?page={{ i }}" class="page-link">{{ i }}</a>
-                        </li>
-                        {% endfor %}
 
-                        {% if page_obj.has_next %}
-                        <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-
-                        {% endif %}
-                    </ul>
-                </nav>
-                {% endif %} -->
+                {% if recipe_list %}
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     {% for recipe in recipe_list %}
 
@@ -95,7 +67,6 @@
                                         class="card-img-top image-fluid round-border">
                                     {% endif %}
                                     <div class="overlay round-border">
-                                        <!-- <h5 class="m-2">Recipe Name:</h5> -->
                                         <h4 class="m-2">
                                             {{ recipe.title }}
                                             {% if recipe.status == 0 %}
@@ -134,59 +105,18 @@
                         </a>
                     </div>
 
-                    <!-- Recipe entries columns -->
-                    <!-- <div class="col-lg-3 col-md-6 col-12 my-4">
-                        <div class="card mb-4 recipe-card h-100">
-                            <a href="{% url 'recipe_detail' recipe.slug %}" class="post-link">
-                                <div class="card-body">
-                                    <div class="image-container">
-                                        {% if "placeholder" in recipe.featured_image.url %}
-                                        <img src="https://res.cloudinary.com/dcrbeonr9/image/upload/v1700598678/image-placeholder_gmlf30.png"
-                                            alt="Image coming soon placeholder" class="card-img-top image-fluid">
-                                        {% else %}
-                                        <img src="{{ recipe.featured_image.url }}" alt="Image of {{ recipe.title}}"
-                                            class="card-img-top image-fluid">
-                                        {% endif %}
-                                    </div>
-
-                                    <h3 class="card-title">
-                                        {{ recipe.title }}
-                                        {% if recipe.status == 0 %}
-                                        <span class="badge bg-warning text-dark">Draft</span>
-                                        {% endif %}
-                                    </h3>
-
-                            </a>
-                            <div class="card-img-overlay">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to
-                                    additional content. This content is a little bit longer.</p>
-                                <p class="card-text"> {{ recipe.excerpt }}</p>
-                            </div>
-
-                            <p class="author">Author: {{ recipe.author }}</p>
-                            <div class="card-footer">
-                                <p class="card-text text-muted h6 d-inline">
-                                    {{ recipe.created_on}} <i class="fa-solid fa-heart like-heart"></i>
-                                    {{ recipe.number_of_likes }}
-                                </p>
-                                <span class="d-inline">
-                                    <i class="fa-solid fa-star full-stars"></i> {{ recipe.rating }}
-                                    {{ recipe.total_ratings }}
-                                </span>
-
-                            </div>
-                        </div>
-                    </div> -->
-                    <!-- </div> -->
                     {% if forloop.counter|divisibleby:4 %}
                 </div>
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     {% endif %}
                     {% endfor %}
                 </div>
-
+                {% else %}
+                <div class="alert alert-info alert-dismissible fade show mt-3" role="alert" id="no-recipe-alert">
+                    No recipes found matching the search criteria.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endif %}
             </div>
         </div>
         {% if is_paginated %}
@@ -212,5 +142,5 @@
         </nav>
         {% endif %}
     </div>
-
-    {% endblock content %}
+</div>
+{% endblock content %}

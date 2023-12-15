@@ -16,30 +16,37 @@ from django.forms import inlineformset_factory
 # Create your views here.
 class RecipeList(generic.ListView):
     model = Recipe
-    
-    # queryset = Recipe.objects.filter(status=1).order_by('-created_on')
     template_name = 'recipes.html'
     paginate_by = 8
+
 
     def get_queryset(self):
         user = self.request.user
         queryset_published = Recipe.objects.filter(status=1).order_by('-created_on')
 
-        search_query = self.request.GET.get('recipe_name', '')
-
-        if search_query:
-            # If there is a search query, filter the queryset based on the recipe name
-            queryset_published = queryset_published.filter(
-                Q(title__icontains=search_query) | Q(author__username__icontains=search_query)
-            )
+        search_query = self.request.GET.get('recipe_name', '').lower()
+        results_exist = True
         
         if user.is_authenticated:
             queryset_user_draft = Recipe.objects.filter(status=0, author=user)
             queryset = queryset_published | queryset_user_draft
+            if search_query:
+                queryset = queryset.filter(Q(title__icontains=search_query))
+                
         else:
             queryset = queryset_published
+            if search_query:
+                queryset = queryset.filter(Q(title__icontains=search_query))
+        
+        if not queryset.exists():
+            results_exist = False
 
         return queryset.order_by('-status', '-created_on')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_query'] = self.request.GET.get('recipe_name', '')
+        return context
 
 
 class RecipeImages(RecipeList, generic.ListView):

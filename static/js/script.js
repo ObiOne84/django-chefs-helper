@@ -82,16 +82,10 @@ $(document).ready(function () {
             var nameField = $(this).find('input[name$="name"]');
             var quantityField = $(this).find('input[name$="quantity"]');
 
-            // console.log('nameField value:', nameField.val());
-            // console.log('quantityField value:', quantityField.val());
-
             if (!quantityField.val()) {
-                console.log('No data');
-
                 $(this).removeClass('show').addClass('hide');
                 $(this).find("[name$='-DELETE']").prop('checked', true);
             } else {
-                console.log('Some data');
                 $(this).removeClass('hide').addClass('show');
             }
         });
@@ -130,6 +124,7 @@ $(document).ready(function () {
             console.log("Cannot hide the last row");
         }
     });
+
 
     // Add instruction
     $(document).on('click', '.add-instruction', function () {
@@ -182,7 +177,6 @@ $(document).ready(function () {
     // Edit user instructions
     let textareaContent = $('#id_instructions').html();
     let decodedContent = $('<div/>').html(textareaContent).text();
-    console.log(decodedContent);
     let $textInstruction = $(decodedContent);
 
     // Check if $textInstruction contains any content
@@ -207,26 +201,6 @@ $(document).ready(function () {
         console.log('No content found in #id_instructions');
 
     }
-
-    // $('#update-recipe-form').submit(function (event) {
-    //     console.log('Not submitted');
-    //     event.preventDefault();
-
-    //     $('#update-instruction-text textarea').val('');
-
-    //     let instructionValue = '';
-    //     let x = 1;
-    //     $('.instruction-list-item').each(function () {
-    //         let inputValue = $(this).find('input').val();
-    //         let step = '<p class="steps">' + 'Step ' + x + '. ' + inputValue + '</p>';
-    //         instructionValue += step;
-    //         $('#update-instruction-text textarea').val(instructionValue.trim());
-    //         x += 1
-    //     });
-
-
-    //     $(this).unbind('submit').submit();
-    // });
 
 
     $('#udpate-recipe-form').submit(function (event) {
