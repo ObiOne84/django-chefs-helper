@@ -19,6 +19,15 @@ h4,
     font-family: 'Pacifico', cursive;
 }
 
+/* Navbar */
+button.navbar-toggler {
+    border: none;
+}
+
+.hover-element:hover {
+    color: #630a0a;
+}
+
 /* Footer */
 footer ul {
     margin: 0;
@@ -32,6 +41,7 @@ footer ul {
 .author,
 a {
     text-decoration: none;
+    color: #161515;
 }
 
 .no-margin-or-padding {
@@ -205,8 +215,12 @@ form.signup ul li {
     font-weight: bold;
 }
 
-/* -------- STYLE INDEX PAGE ---------- */
+/* -------- STYLE RECIPES PAGE ---------- */
 /* recipe card */
+.recipe-card-container {
+    min-height: 400px;
+}
+
 .recipe-card:hover {
     transform: scale(1.025);
     filter: drop-shadow(0 0 8px #2759fc);
@@ -321,36 +335,49 @@ ol {
 /* -----Style home page --------- */
 
 .background-image {
-    background-image: url('https://res.cloudinary.com/dcrbeonr9/image/upload/v1702512691/spices-370114_1920_c3fplv.jpg');
-    height: 100%;
+    background-image: url('https://res.cloudinary.com/dcrbeonr9/image/upload/v1702825129/hero-image_hxgrwo.jpg');
+    height: 50vh;
     width: 100%;
-    object-fit: contain;
-    object-position: center;
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    /* position: relative; */
 }
 
-/* #backgroundCarousel {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
-.container-carousel {
-    position: relative;
-    z-index: 1;
-
-}
-.overlay-carousel {
+/* background image overlay */
+.hero.background-image::after {
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); 
-    z-index: 2; 
-} */
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.hero-text {
+    color: #f4fbfc;
+    text-shadow: 0 0 4px #000;
+    letter-spacing: 1px;
+}
+
+.hero-box {
+    z-index: 2;
+}
+
+.hero-box a {
+    border: 2px solid;
+    box-shadow: 0 4px 8px rgba(252, 252, 252, 0.315);
+}
+
+.info-text {
+    border: 2px solid red;
+    min-height: 150px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 8px rgba(252, 252, 252, 0.315);
+    min-width: 260px;
+}
 
 /* Styles for the printed version */
 
@@ -390,5 +417,42 @@ ol {
 
     .recipe-text {
         min-height: 15px;
+    }
+}
+
+/* Media query for screens 1000px and below */
+@media (max-width: 1440px) {
+    .background-image {
+        height: 40vh;
+    }
+}
+
+@media (max-width: 1200px) {
+    .recipe-card-container {
+        min-height: 350px;
+    }
+}
+
+
+@media (max-width: 992px) {
+    .recipe-card-container {
+        min-height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .recipe-card-container {
+        min-height: 350px;
+    }
+}
+
+@media (max-width: 576px) {
+    .recipe-card-container {
+        min-height: 300px;
+    }
+
+    .info-text {
+    margin-bottom: 25px;
+    margin-left: 5%;
     }
 }

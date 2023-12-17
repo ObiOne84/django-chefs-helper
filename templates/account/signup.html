@@ -6,36 +6,6 @@
 {% block content %}
 
 
-<!-- <form method="post" action="/accounts/signup/">
-    <input type="hidden" name="csrfmiddlewaretoken"
-        value="fh8DOywn40sujsUqs0JrJvIvKBda6A7HN74zOiR0yMxxYEgeZMuGJdYlgMPN2ZIK">
-    <p><label for="id_username">Username:</label> <input type="text" name="username" placeholder="Username"
-            autocomplete="username" minlength="1" maxlength="150" required="" id="id_username" fdprocessedid="0ycg7d">
-    </p>
-    <p><label for="id_email">Email (optional):</label> <input type="email" name="email" placeholder="Email address"
-            autocomplete="email" maxlength="320" id="id_email" fdprocessedid="gwkigh"></p>
-    <p>
-        <label for="id_password1">Password:</label>
-        <input type="password" name="password1" placeholder="Password" autocomplete="new-password" required=""
-            id="id_password1" fdprocessedid="lgmw">
-        <span class="helptext"></span>
-    </p>
-    <ul>
-        <li>Your password can’t be too similar to your other personal information.</li>
-        <li>Your password must contain at least 8 characters.</li>
-        <li>Your password can’t be a commonly used password.</li>
-        <li>Your password can’t be entirely numeric.</li>
-    </ul>
-    <p></p>
-    <p><label for="id_password2">Password (again):</label>
-        <input type="password" name="password2" placeholder="Password (again)" autocomplete="new-password" required=""
-            id="id_password2" fdprocessedid="6mtn05">
-    </p>
-    <button type="submit" fdprocessedid="s9vgw93">
-        Sign Up
-    </button>
-</form> -->
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-4 col-md-6 col-sm-8 col-12">
@@ -55,12 +25,6 @@
                     <form class="signup" method="POST" action="{% url 'account_signup' %}">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <!-- <ul>
-                    <li>Your password can’t be too similar to your other personal information.</li>
-                    <li>Your password must contain at least 8 characters.</li>
-                    <li>Your password can’t be a commonly used password.</li>
-                    <li>Your password can’t be entirely numeric.</li>
-                </ul> -->
 
                         {% if redirect_field_value %}
                         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
@@ -73,20 +37,5 @@
     </div>
 </div>
 
-<!-- {% element form form=form method="post" action=action_url tags="entrance,signup" %}
-{% slot body %}
-{% csrf_token %}
-{% element fields form=form unlabeled=True %}
-{% endelement %}
-{% if redirect_field_value %}
-<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-{% endif %}
-{% endslot %}
-{% slot actions %}
-{% element button tags="prominent,signup" type="submit" %}
-{% trans "Sign Up" %}
-{% endelement %}
-{% endslot %}
-{% endelement %} -->
 {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
 {% endblock content %}

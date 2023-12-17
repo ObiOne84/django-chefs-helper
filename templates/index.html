@@ -7,89 +7,99 @@
 {% endblock %}
 
 {% block content %}
-<div class="container-carousel background-image" style="height: 50vh;">
 
+<!-- Hero section -->
+<div class="container-fluid hero background-image position-relative">
+    <div class="row position-absolute top-50 start-50 translate-middle text-center hero-box" style="z-index: 2;">
+        <div class="col-12 text-center info-text round-border">
+            <h1 class="hero-text">
+                Chef's Helper
+            </h1>
+            <p class="hero-text fs-3">
+                Ultimate solution for your recipes!
+            </p>
+        </div>
+    </div>
+    <div class="row position-absolute bottom-0 start-50 translate-middle-x hero-box" style="z-index: 2;">
+        <a href="{% url 'account_signup' %}" type="button" class="btn btn-outline-danger btn-lg my-4 mx-2 p-2">Join
+            Now!</a>
+    </div>
 </div>
-<div class="container">
-    <!-- <div class="container-carousel background-image" style="height: 50vh;">
 
-    </div> -->
+<!-- About Info section -->
+<div class="container">
     <div class="container-lg">
         <div class="row my-4">
             <div class="col-md-8 offset-md-2 col-12">
 
-                <h1>About Chef's Helper</h1>
-                <div>
+                <h2>About Chef's Helper</h2>
+
+                <div class="fs-md-5 fs-6">
+                    <p class="mb-2">
+                        Discover the ultimate solution for your culinary adventures! Our application empowers you to
+                        create,
+                        store, and explore a world of recipes, all in one place. Whether you're a seasoned chef or a
+                        home cook, our platform is designed to enhance your cooking experience.
+                        <br>
+                        Join our thriving culinary community today and elevate your cooking journey with our
+                        feature-rich, user-friendly application. It's not just a recipe app; it's your culinary
+                        companion. Start creating, exploring, and savoring the joy of cooking!
+                    </p>
                     <p><strong>Cook delicious dishes easily and reliably.</strong></p>
-                    <p>On each recipe you can select the number of required portions from 2 to 30, the site will
-                        calculate
-                        the
-                        right
-                        amount of quantities you will need.
-                        You can filer food types like Vegan, Vegetarian, Seafood or Meat dishes.
-                        Also, the most popular, by author (display name), most recent or country cuisine like Indian or
-                        British
-                        etc.
+                    <p class="mb-2">
+                        On each recipe you can select the number of required portions from 1 to 10, the site
+                        will calculate the right amount of quantities you will need. You can search your favourite food
+                        by recipe name. Also, you can print your favourite recipes and save them as the PDF file.
                     </p>
-                    <p><strong>Please Register & Use all our facilities totally for Free.</strong></p>
-                    <p>Write, and Store your own recipe/s here using our easy Recipe upload template Add a Recipe.
-                        You have a choice to either place on the public list and share your delicious food with all of
-                        us,
-                        or
-                        keep
-                        privately accessed via your free account login info in My Recipes. All your recipes will be
-                        added to
-                        your My
-                        Recipes.
-                        Re-write and modify listed recipes Write My Version.
-                    </p>
-                    <p><strong>Make a Comment</strong></p>
                     <p>
-                        At the bottom right of each recipe there is a green button, here you can leave a comment about
-                        the
-                        recipe.
-                        These
-                        comments will appear at the bottom of the recipe. The author of the recipe will need to approve
-                        comments
-                        before
-                        it is published. The author can also reply to your comments. The latest comments will populate
-                        at
-                        the
-                        top.
+                        <strong>Please Register & Use all our facilities totally for Free.</strong>
+                    </p>
+                    <p class="mb-2">
+                        Write, and Store your own recipe/s here using our easy to use template Add a
+                        Recipe. You have a choice to either place on the public list and share your delicious food with
+                        all of
+                        us, or keep privately saved as draft and accessed via your free account. All your recipes will
+                        be
+                        added to your Recipes. Re-write and modify your own listed recipes.
+                    </p>
+                    <p><strong>Review, rate and like recipes.</strong></p>
+                    <p class="mb-2">
+                        At the bottom right of each recipe there is a review box, here you can leave a comment about
+                        the recipe. These comments will appear at the bottom of the recipe. The latest reviews will
+                        populate at the top. All comments are moderated for quality and relevance. You can rate and like
+                        recips to help other users to find theri perfect dish.
                     </p>
                     <p><strong>Weighing out ingredients</strong></p>
-                    <p>
+                    <p class="mb-2">
                         We highly recommend but is not compulsory to convert all ingredients into gram measurements
-                        wherever
-                        possible,
-                        you can do this with 2 sets of accurate electronic kitchen scales, one from 10k to 1g and a fine
-                        set
-                        of
-                        accurate
-                        scales to 0.01g, for 1/8 or 1/4 tsp measurements, this helps with consistency, ease and any
-                        future
-                        modifications.
+                        wherever possible, you can do this with 2 sets of accurate electronic kitchen scales, one from
+                        10k to 1g and a fine set of accurate scales to 0.01g, for 1/8 or 1/4 tsp measurements, this
+                        helps with consistency, ease and any future modifications. However, our application allows you
+                        to build your recipes with precision using various units such as grams (GM), kilograms (KG),
+                        milliliters (ML), liters (LTR), and units (UNIT).
                     </p>
-                </div>
-            </div>
-        </div>
-        <!-- <div class="overlay-carousel"></div> -->
-        <div class="row my-4">
-            <div class="col-sm-6 offset-sm-3 col-12">
-                <div id="backgroundCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner bg-warning">
-                        {% for recipe in recipes %}
-                        {% if "placeholder" not in recipe.featured_image.url %}
-                        <div class="carousel-item {% if forloop.first %}active{% endif %} round-border">
-                            <img src="{{ recipe.featured_image.url }}" class="d-block w-100 round-border"
-                                alt="Image of {{ recipe.title }}">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>{{ recipe.title }}</h5>
-                            </div>
-                        </div>
-                        {% endif %}
-                        {% endfor %}
-                    </div>
+                    <p>
+                        <strong>Coming Soon:</strong>
+                    </p>
+                    <ul>
+                        <li>
+                            Expanded Categories:
+                            <br>
+                            Explore a diverse range of recipe categories, including options to add
+                            your own custom categories.
+                        </li>
+                        <li>
+                            Allergen Information:
+                            <br>
+                            Access detailed allergen information for each recipe.
+                        </li>
+                        <li>
+                            Advanced Filtering:
+                            <br>
+                            Easily filter recipes by categories, the highest rated, the most liked, making it simpler to
+                            find exactly what you're looking for.
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
