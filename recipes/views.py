@@ -8,7 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Recipe, Review, RecipeIngredient
 from .forms import ReviewForm, RecipeForm, AddRecipeForm, AddIngredientForm, UpdateRecipeForm
 from django.db.models import Q
-from django.http import HttpResponseForbidden
+# from django.http import HttpResponseForbidden
 import logging
 from django.forms import inlineformset_factory
 
@@ -219,6 +219,7 @@ class UpdateRecipeView(LoginRequiredMixin, View):
             return redirect('recipe_images')
         update_recipe_form = UpdateRecipeForm(instance=recipe)
         ingredient_formset = self.IngredientFormSet(instance=recipe)
+
         image = recipe.featured_image
 
         return render(

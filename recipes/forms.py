@@ -33,7 +33,7 @@ class AddIngredientForm(forms.ModelForm):
         required=True,
         widget=forms.TextInput(attrs={
             'class': 'add-recipe-fields ingredient-name-field bm-1',
-            'placeholder': 'Ingredient name...'
+            'placeholder': 'Ingredient name...',
         }),
     )
 
@@ -48,7 +48,7 @@ class AddIngredientForm(forms.ModelForm):
     quantity = forms.DecimalField(
         widget=forms.NumberInput(attrs={
             'class': 'positive-number bm-1',
-            'placeholder': 'Quantity...'
+            'placeholder': 'Quantity...',
         }),
         min_value=0,
         max_digits=6,
@@ -116,7 +116,9 @@ class AddRecipeForm(forms.ModelForm):
 
          # Add class to the formset fields
         for form in self.ingredient_formset.forms:
-            form.fields['name'].widget.attrs['class'] = 'ingredient-name form-field'
+            form.fields['name'].widget.attrs.update({
+                'class': 'ingredient-name form-field',
+            })
             form.fields['quantity'].widget.attrs['class'] = 'ingredient-quantity form-field'
             form.fields['unit'].widget.attrs['class'] = 'ingredient-unit'
             form.fields['DELETE'].required = False
@@ -234,6 +236,7 @@ class UpdateRecipeForm(forms.ModelForm):
         self.fields['servings'].widget.attrs.update({
             'class': 'add-recipe-fields time-field',
         })
+        
     
     def clean_featured_image(self):
         featured_image = self.cleaned_data.get('featured_image', False)

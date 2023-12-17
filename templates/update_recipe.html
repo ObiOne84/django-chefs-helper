@@ -27,18 +27,19 @@
                             </ol>
                         </div>
                     </div>
-                    <!-- Recipe image section -->
                     <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 add-image">
-                        <div class="row">
-                            <div class="col-md-8 offset-md-2 col-12 my-2">
-                                <img src="{{ image.url }}" alt="{{ recipe.title }} image" class="img-fluid d-block">
-                            </div>
-                            <div class="col-12">
-                                <h2>Update Recipe Image Here:</h2>
-                                {{ update_recipe_form.featured_image.label_tag }}
-                                {{ update_recipe_form.featured_image }}
-                            </div>
-                        </div>
+                        <h2>Update Recipe Image Here:</h2>
+                        <label for="id_featured_image">
+                            {% if not "placeholder" in recipe.featured_image.url %}
+                            <img src="{{ image.url }}" alt="{{ recipe.title }} image"
+                                class="img-fluid d-block round-border update-image">
+                            {% else %}
+                            <img src="https://res.cloudinary.com/dcrbeonr9/image/upload/v1702837530/add-image_dybsov.png"
+                                alt="Add image placeholder" class="img-fluid d-block round-border update-image">
+                            {% endif %}
+                        </label>
+                        <br>
+                        {{ update_recipe_form.featured_image }}
                     </div>
                     <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2">
                         <h2>Recipe Description:</h2>
@@ -92,17 +93,18 @@
                         <div class="formset-row show">
                             <!-- {{ form.name.label_tag }} -->
                             {{ form.name }}
-                            {{ form.name.errors }}
+                            <!-- {{ form.name.errors }} -->
                             <!-- {{ form.quantity.label_tag }} -->
                             {{ form.quantity }}
-                            {{ form.quantity.errors }}
+                            <!-- {{ form.quantity.errors }} -->
                             <!-- {{ form.unit.label_tag }} -->
                             {{ form.unit }}
-                            {{ form.unit.errors }}
+                            <!-- {{ form.unit.errors }} -->
                             {{ form.DELETE }} {# Include the DELETE input for each formset row #}
                             {{ form.id }}
 
-                            <button type="button" name="remove-ingredient" class="btn-like list-button remove-ingredient">
+                            <button type="button" name="remove-ingredient"
+                                class="btn-like list-button remove-ingredient">
                                 <i class="fa-solid fa-circle-minus"></i>
                             </button>
                             <button type="button" name="add-ingredient" class="btn-like list-button add-ingredient">
@@ -114,8 +116,8 @@
                     <div>
                         {% if ingredient_formset.errors %}
 
-                        <div class="alert alert-danger" role="alert">
-                            <strong>Formset Errors:</strong>
+                        <div class="alert alert-danger recipe-form-error-alert" role="alert">
+                            <strong>Form error, ingredient:</strong>
                             <ul>
                                 {% for error in ingredient_formset.errors %}
                                 <li>{{ error }}</li>

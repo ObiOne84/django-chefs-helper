@@ -103,6 +103,7 @@ $(document).ready(function () {
             formsetRow.removeClass('hide');
             formsetRow.addClass('show');
             formsetRow.find("[name$='-DELETE']").prop('checked', false);
+            formsetRow.find("[name$='-name']").prop('required', true);
         } else {
             // If no hidden rows are available, you can choose to do nothing or provide some feedback
             console.log("No hidden rows available");
@@ -120,6 +121,7 @@ $(document).ready(function () {
             formsetRow.removeClass('show');
             formsetRow.addClass('hide');
             formsetRow.find("[name$='-DELETE']").prop('checked', true);
+            formsetRow.find("[name$='-name']").prop('required', false);
         } else {
             console.log("Cannot hide the last row");
         }

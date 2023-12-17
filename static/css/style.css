@@ -260,7 +260,6 @@ form.signup ul li {
 /* -----STYLE ADD RECIPE PAGE ---------- */
 
 .title-box input {
-    font-family: 'Pacifico', cursive;
     padding: 5px;
     display: block;
 }
@@ -327,10 +326,14 @@ ol {
     color: #000;
 }
 
-.time-field {
-    width: 25%;
+.update-image {
+    max-height: 300px;
+    width: auto;
 }
 
+.recipe-form-error-alert ul {
+    list-style: none;
+}
 
 /* -----Style home page --------- */
 
