@@ -6,6 +6,10 @@ p {
     margin: 0;
 }
 
+body {
+    background-color: #cff4fc;
+}
+
 h1,
 h2,
 h3,
@@ -49,7 +53,7 @@ a {
     padding: 0;
 }
 
-/* Style login page */
+/* Style login / signup page */
 form.login span.helptext {
     display: none;
 }
@@ -75,6 +79,16 @@ form.login p label {
 
 .form-button {
     width: 100%;
+    background-color: #3b3a3a;
+    color: #faebd7;
+}
+
+.form-button:hover {
+    background-color: #faebd7;
+    color: #000;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 2px solid #000;
 }
 
 .errorlist {
@@ -90,12 +104,21 @@ form.login p label {
 }
 
 form.signup p input {
-    width: 80%;
+    width: 100%;
 }
 
-form.signup ul li {
+form.signup ul {
     font-size: small;
     list-style-type: none;
+    margin-top: 15px;
+}
+
+.signup p label {
+    display: block;
+}
+
+.login-signup-link {
+    color: #2759fc;
 }
 
 /* ----STYLE RECIPE DETAIL PAGE ---------- */
@@ -133,11 +156,8 @@ form.signup ul li {
     font-weight: bold;
     letter-spacing: 1px;
     width: 30%;
-    /* Set the width to 33% of the parent container */
     box-sizing: border-box;
-    /* Include border in the width calculation */
     display: inline-block;
-    /* Ensure the buttons appear on the same line */
     margin-right: 1%;
 }
 
@@ -264,6 +284,8 @@ form.signup ul li {
     display: block;
 }
 
+.signup p input,
+.login p input,
 .recipe-form input,
 .recipe-form textarea,
 .recipe-form select {
@@ -310,13 +332,6 @@ ol {
     color: green;
 }
 
-/* .instruction-box>input[name="featured_image"] {
-    border-radius: 8px;
-    padding: 5px;
-    color: blue;
-    height: 25px;
-} */
-
 .ingredient-name-field {
     width: 50%;
 }
@@ -344,7 +359,6 @@ ol {
     background-size: cover;
     background-position: bottom;
     background-repeat: no-repeat;
-    /* position: relative; */
 }
 
 /* background image overlay */
@@ -423,7 +437,7 @@ ol {
     }
 }
 
-/* Media query for screens 1000px and below */
+/* Media query for screens 1440px and below */
 @media (max-width: 1440px) {
     .background-image {
         height: 40vh;
@@ -455,7 +469,7 @@ ol {
     }
 
     .info-text {
-    margin-bottom: 25px;
-    margin-left: 5%;
+        margin-bottom: 25px;
+        margin-left: 5%;
     }
 }
