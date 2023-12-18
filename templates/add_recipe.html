@@ -58,14 +58,21 @@
                <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 add-image">
                   <div class="row">
                      <div class="col-md-8 offset-md-2 col-12 my-2">
+                        <label for="id_featured_image">
                         <img
-                           src="https://res.cloudinary.com/dcrbeonr9/image/upload/v1700598678/image-placeholder_gmlf30.png"
-                           alt="Image coming soon placeholder" class="dish-image round-border transparent-image"
+                           src="https://res.cloudinary.com/dcrbeonr9/image/upload/v1702837530/add-image_dybsov.png"
+                           alt="Add image placeholder" class="dish-image round-border transparent-image"
                            style="width: 100%;">
+                        </label>
                      </div>
                      <div class="col-12">
                         <h2>Add Recipe Image Here:</h2>
                         {{ form.featured_image }}
+                        {% if form.featured_image.errors %}
+                        <div class="alert alert-danger">
+                           {{ form.featured_image.errors.0 }}
+                        </div>
+                        {% endif %}
                      </div>
                   </div>
                </div>
@@ -155,9 +162,11 @@
                {% endif %}
             </div>
             <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 py-4">
-               <button class="btn btn-primary btn-lg save-recipe-btn" type="submit" name="submit_action" value="save_recipe">Save
+               <button class="btn btn-primary btn-lg save-recipe-btn" type="submit" name="submit_action"
+                  value="save_recipe">Save
                   Recipe</button>
-               <button class="btn btn-secondary btn-lg hide save-recipe-btn" type="submit" name="submit_action" value="save_draft">Save
+               <button class="btn btn-secondary btn-lg hide save-recipe-btn" type="submit" name="submit_action"
+                  value="save_draft">Save
                   as Draft</button>
             </div>
 

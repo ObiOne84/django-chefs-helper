@@ -96,7 +96,7 @@
         <div class="col-md-6 col-12 print-size">
             <div class="pt-2 my-3 print-margin">
                 <h1 class="special-text">
-                    {{ recipe.title }}
+                    {{ recipe.title|title }}
                     {% if recipe.status == 0 %}
                     <span class="badge bg-warning text-dark">Draft</span>
                     {% endif %}

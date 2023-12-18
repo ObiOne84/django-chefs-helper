@@ -197,6 +197,17 @@ class AddRecipeForm(forms.ModelForm):
         # Your custom validation or cleaning logic here
 
         return cleaned_data
+    
+    def clean_featured_image(self):
+        featured_image = self.cleaned_data.get('featured_image', None)
+
+        if featured_image is None or isinstance(featured_image, str):
+            print("There is not image provided")
+        else:
+            max_size = 5 * 1024 * 1024
+            if featured_image.size > max_size:
+                raise ValidationError('Image size must be no more than 5 MB.')
+        return featured_image
 
 
 class UpdateRecipeForm(forms.ModelForm):
