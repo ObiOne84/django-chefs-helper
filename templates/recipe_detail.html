@@ -84,9 +84,9 @@
                     </span>
                     <span id="average-rating" class="fw-bold">
                         {% if recipe.total_ratings > 0 %}
-                            {{ recipe.calculate_average_rating|floatformat:1 }}
+                        {{ recipe.calculate_average_rating|floatformat:1 }}
                         {% else %}
-                            0
+                        0
                         {% endif %}
                     </span>
                 </p>
@@ -134,11 +134,6 @@
                     <span class="d-inline">{{ recipe.servings }}</span>
                 </h5>
             </div>
-            <!-- <div class="mt-2 pb-4">
-                <h5 class="d-inline">
-                    <i class="fa-solid fa-print no-print" type="button" id="print-button"></i>
-                </h5>
-            </div> -->
         </div>
     </div>
 
@@ -184,7 +179,13 @@
     <div class="row no-print box-holder-background round-border mb-4 special-background">
         <div class="col-md-6 col-12 mb-3 py-3">
             <h3><i class="far fa-comments "></i> Reviews ({{ recipe.number_of_reviews }})</h3>
-            <div class="card-body">
+            {% if recipe.has_unapproved_reviews %}
+            <div class="alert alert-info">
+                <strong>Thank you for your reviews!</strong> We appreciate your feedback. Please note that all reviews
+                are moderated and will be published shortly.
+            </div>
+            {% endif %}
+            <div class="card-body overflow-auto review-container">
                 {% for review in reviews %}
                 <div class="mb-2 p-2 round-border" style="border: 1px solid #929292;">
                     <p>By: <strong>{{ review.name }}</strong>, on:
@@ -196,7 +197,7 @@
             </div>
         </div>
 
-        <!-- <div class="row"> -->
+
         <div class="col-md-6 col-12 mb-3 py-3">
             <div class="card-body mb-3`">
                 {% if reviewed %}
@@ -235,8 +236,6 @@
                 {% endif %}
             </div>
         </div>
-        <!-- </div> -->
-        <!-- </div> -->
     </div>
 </div>
 

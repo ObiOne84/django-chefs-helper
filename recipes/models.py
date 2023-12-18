@@ -69,6 +69,9 @@ class Recipe(models.Model):
     def calculate_average_rating(self):
         return self.sum_of_rating / self.total_ratings
     
+    def has_unapproved_reviews(self):
+        return self.reviews.filter(approved=False).exists()
+    
     # Source: https://studygyaan.com/django/how-to-create-a-unique-slug-in-django 
     def save(self, *args, **kwargs):
         if not self.slug:

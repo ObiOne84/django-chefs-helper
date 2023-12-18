@@ -10,14 +10,12 @@
 <!-- Authenticated user taskbar -->
 <div class="container-lg min-vh-100">
     {% if user.is_authenticated %}
-    <!--add class below collapse -->
     <div class="row taskbar no-print">
         <div class="col-lg-6 offset-lg-6 col-12 py-2 no-print d-flex justify-content-center">
             <a class="btn btn-outline-success btn-sm control-button" id="add-recipe-button" role="button"
                 href="{% url 'add_recipe' %}">
                 <i class="fa-regular fa-plus"></i> New <span class="d-none d-xl-inline">Recipe</span>
             </a>
-            <!-- <span><a href="{% url 'add_recipe' %}"><i class="fa-solid fa-square-plus"></i> Add Recipe</a></span> -->
         </div>
     </div>
     {% endif %}
@@ -105,15 +103,11 @@
                                         {% else %}
                                             0
                                         {% endif %}
-                                        <!-- <p>Total ratings:{{ recipe.total_ratings }}</p>
-                                        <P>average_rating: {{ recipe.average_rating }}</P> -->
-
                                     </span>
                                 </div>
                             </div>
                         </a>
                     </div>
-
                     {% if forloop.counter|divisibleby:4 %}
                 </div>
                 <div class="row row-cols-1 row-cols-md-3 g-4">

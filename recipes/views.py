@@ -102,15 +102,6 @@ class RecipeDetails(LoginRequiredMixin, View):
         # Create an instance of the inline formset for RecipeIngredient
         IngredientFormSet = inlineformset_factory(Recipe, RecipeIngredient, form=AddIngredientForm, extra=0)
         ingredient_formset = IngredientFormSet(request.POST, instance=recipe)
-
-        if review_form.is_valid():
-            review_form.instance.email = request.user.email
-            review_form.instance.name = request.user.username
-            review = review_form.save(commit=False)
-            review.recipe = recipe
-            review.save()
-        else:
-            review_form = ReviewForm()
       
         recipe_form = RecipeForm(data=request.POST, instance=recipe)
 
@@ -122,6 +113,19 @@ class RecipeDetails(LoginRequiredMixin, View):
             rating.save()
         else:
             recipe_form = RecipeForm()
+
+        if review_form.is_valid():
+            review_form.instance.email = request.user.email
+            review_form.instance.name = request.user.username
+            review = review_form.save(commit=False)
+            review.recipe = recipe
+            review.save()
+
+            messages.success(request, 'Review submitted successfully.')
+
+            return redirect('recipe_images')
+        else:
+            review_form = ReviewForm()
 
         return render(
             request,
@@ -190,14 +194,12 @@ class AddRecipeView(LoginRequiredMixin, FormView):
 
             self.formset.instance = form.instance
 
-            # Save the formset with commit=False to delay saving to the database
             instances = self.formset.save(commit=False)
 
             for instance in instances:
                 instance.recipe = form.instance
                 instance.save()
 
-            # Save the formset again with the correct recipe instance
             self.formset.save()
 
             return self.form_valid(form)
