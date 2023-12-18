@@ -236,10 +236,17 @@ form.signup ul {
     display: block;
 }
 
+/* Set max width for textarea */
+
 /* style recipe instructions */
+/* source: https://www.geeksforgeeks.org/how-to-set-indent-the-second-line-of-paragraph-using-css/ */
 .steps {
-    font-size: large;
-    font-weight: bold;
+    /* font-size: large;
+    font-weight: bold; */
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    text-indent: -36px;
+    padding-left: 36px;
 }
 
 /* -------- STYLE RECIPES PAGE ---------- */
@@ -413,6 +420,20 @@ ol {
 
     .print-size {
         width: 50%;
+    }
+
+    .container-lg {
+        overflow: auto;
+    }
+
+    .print-instructions {
+        float: left;
+        width: 45%;
+    }
+
+    .print-ingredients {
+        float: right;
+        width: 45%;
     }
 
     h1 {

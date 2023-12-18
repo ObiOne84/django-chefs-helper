@@ -139,14 +139,14 @@
 
     <hr>
     <div class="row box-holder-background round-border d-flex">
-        <div class="col-md-6 col-12 print-size py-3 d-flex flex-column">
+        <div class="col-md-6 col-12 print-instructions py-3 d-flex flex-column">
             <h3><i class="fa-solid fa-list-check"></i> Instructions:</h3>
             <div class="p-2 inner-holder-box round-border flex-fill">
                 {{ recipe.instructions | safe }}
             </div>
         </div>
-        <hr class="d-block d-md-none">
-        <div class="col-md-6 col-12 print-size py-3 d-flex flex-column">
+        <!-- <hr class="d-block d-md-none no-print"> -->
+        <div class="col-md-6 col-12 print-ingredients py-3 d-flex flex-column">
             <h3><i class="fa-solid fa-file-pen"></i> Ingredients:</h3>
             <div class="p-2 inner-holder-box round-border flex-fill">
                 <div class="table-responsive">
@@ -161,8 +161,8 @@
                         <tbody>
                             {% for form in ingredient_formset %}
                             <tr>
-                                <td class="px-2">{{ form.name.value }}</td>
-                                <td class="px-2">{{ form.quantity.value }}</td>
+                                <td class="px-2">{{ form.name.value|title }}</td>
+                                <td class="px-2">{{ form.quantity.value|floatformat }}</td>
                                 <td class="px-2">{{ form.unit.value }}</td>
                             </tr>
                             {% endfor %}
@@ -173,7 +173,7 @@
         </div>
     </div>
 
-    <hr>
+    <hr class="no-print">
 
     <!-- Review section -->
     <div class="row no-print box-holder-background round-border mb-4 special-background">

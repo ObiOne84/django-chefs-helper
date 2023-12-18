@@ -18,11 +18,13 @@ class RecipeForm(forms.ModelForm):
 class AddIngredientForm(forms.ModelForm):
 
     UNIT_CHOICES = [
-        ("gram", "GM"),
-        ("kilogram", "KG"),
-        ("mililiter", "ML"),
-        ("liter", "LTR"),
-        ("unit", "UNIT"),
+        ("gram", "gm"),
+        ("kilogram", "Kg"),
+        ("mililiter", "ml"),
+        ("liter", "Ltr"),
+        ("unit", "unit"),
+        ("teaspoon", "tsp"),
+        ("tablespoon", "Tbsp"),
     ]
     class Meta:
         model = RecipeIngredient
@@ -118,6 +120,7 @@ class AddRecipeForm(forms.ModelForm):
         for form in self.ingredient_formset.forms:
             form.fields['name'].widget.attrs.update({
                 'class': 'ingredient-name form-field',
+                'maxlength': 50,
             })
             form.fields['quantity'].widget.attrs['class'] = 'ingredient-quantity form-field'
             form.fields['unit'].widget.attrs['class'] = 'ingredient-unit'

@@ -154,7 +154,7 @@ $(document).ready(function () {
         let x = 1;
         $('.instruction-list-item').each(function () {
             let inputValue = $(this).find('input').val();
-            let step = '<p class="steps">' + 'Step ' + x + '. ' + inputValue + '</p>';
+            let step = '<p class="steps">' + '<strong>Step ' + x + '</strong>. ' + inputValue + '</p>';
             instructionValue += step;
             x += 1
         });
@@ -215,7 +215,7 @@ $(document).ready(function () {
         let x = 1;
         $('.instruction-list-item').each(function () {
             let inputValue = $(this).find('input').val();
-            let step = '<p class="steps">' + 'Step ' + x + '. ' + inputValue + '</p>';
+            let step = '<p class="steps">' + '<strong>Step ' + x + '</strong>. ' + inputValue + '</p>';
             instructionValue += step;
             x += 1
             console.log(inputValue);
