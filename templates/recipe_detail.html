@@ -70,18 +70,25 @@
                     <button type="submit" name="recipelike_id" value="{{ recipe.slug }}" class="btn-like"><i
                             class="fa-regular fa-heart"></i></button>
                     {% endif %}
-                    {{ recipe.number_of_likes }}
+                    <span class="fw-bold"> {{ recipe.number_of_likes }}</span>
                 </form>
                 {% else %}
                 <div class="d-inline">
-                    <i class="fa-solid fa-heart"></i> {{ recipe.number_of_likes }}
+                    <i class="fa-solid fa-heart"></i>
+                    <span class="fw-bold"> {{ recipe.number_of_likes }}</span>
                 </div>
                 {% endif %}
                 <!-- Source: https://docs.djangoproject.com/en/4.2/ref/templates/builtins/#floatformat -->
                 <p class="d-inline">
                     <span id="rating-container">
                     </span>
-                    <span id="average-rating" style="font-size: large;">{{ recipe.rating|floatformat }}</span>
+                    <span id="average-rating" class="fw-bold">
+                        {% if recipe.total_ratings > 0 %}
+                            {{ recipe.calculate_average_rating|floatformat:1 }}
+                        {% else %}
+                            0
+                        {% endif %}
+                    </span>
                 </p>
             </div>
             <!-- </div> -->

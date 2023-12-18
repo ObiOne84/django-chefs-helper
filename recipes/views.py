@@ -116,7 +116,7 @@ class RecipeDetails(LoginRequiredMixin, View):
 
         if recipe_form.is_valid():
             rating_value = recipe_form.cleaned_data.get('rating')
-            recipe.rate_recipe(request.user.id, rating_value)
+            recipe.rate_recipe(request.user, rating_value)
             rating = recipe_form.save(commit=False)
             rating.recipe = recipe
             rating.save()

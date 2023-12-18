@@ -99,7 +99,15 @@
                                     <span class="d-inline">
                                         <i class="fa-solid fa-heart like-heart"></i>
                                         {{ recipe.number_of_likes }}
-                                        <i class="fa-solid fa-star full-stars"></i> {{ recipe.rating }}
+                                        <i class="fa-solid fa-star full-stars"></i>
+                                        {% if recipe.total_ratings > 0 %}
+                                            {{ recipe.calculate_average_rating|floatformat:1 }}
+                                        {% else %}
+                                            0
+                                        {% endif %}
+                                        <!-- <p>Total ratings:{{ recipe.total_ratings }}</p>
+                                        <P>average_rating: {{ recipe.average_rating }}</P> -->
+
                                     </span>
                                 </div>
                             </div>

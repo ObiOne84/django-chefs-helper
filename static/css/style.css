@@ -162,20 +162,23 @@ form.signup ul {
 }
 
 /* Rating stars style */
+.empty-stars,
 .star-rating i:hover,
 .star-rating i.active,
 .full-stars,
-.half-stars {
+.fa-star-half-stroke {
     color: #dfb705;
     transition: all 3s ease-in-out;
     opacity: 1;
 
 }
 
+.empty-stars,
+.like-heart,
 .full-stars,
-.half-stars {
-    color: #dfb705;
-    text-shadow: 0 0 3px #000;
+.fa-star-half-stroke {
+    /* color: #dfb705; */
+    text-shadow: 0 0 1px #000;
 }
 
 #id_body {
@@ -203,9 +206,9 @@ form.signup ul {
     background: transparent;
 }
 
-.like-heart {
+/* .like-heart {
     text-shadow: 0 0 3px #000;
-}
+} */
 
 .fa-heart {
     color: rgb(233, 6, 6);
