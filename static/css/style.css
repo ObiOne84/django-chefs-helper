@@ -414,8 +414,21 @@ ol {
 
 @media print {
 
+    /* @page {
+        size: auto;
+        margin: 5mm;
+      } */
+
+    /* body {
+        height: 100vh;
+    } */
     .no-print {
         display: none;
+    }
+
+    .print-image {
+        width: 80%;
+        height: auto;
     }
 
     .print-size {

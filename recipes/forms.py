@@ -2,6 +2,7 @@ from .models import Review, Recipe, RecipeIngredient
 from django import forms
 from django.core.exceptions import ValidationError
 from django.forms import inlineformset_factory
+from cloudinary.models import CloudinaryResource
 
 
 class ReviewForm(forms.ModelForm):
@@ -252,12 +253,27 @@ class UpdateRecipeForm(forms.ModelForm):
         })
         
     
+    # def clean_featured_image(self):
+    #     featured_image = self.cleaned_data.get('featured_image', False)
+    #     if featured_image:
+    #         return featured_image
+    #     else:
+    #         return self.instance.featured_image
+    
     def clean_featured_image(self):
-        featured_image = self.cleaned_data.get('featured_image', False)
-        if featured_image:
-            return featured_image
-        else:
-            return self.instance.featured_image
+        featured_image = self.cleaned_data.get('featured_image', None)
+
+        # Check if a new image is provided and it's not an empty CloudinaryResource
+        if featured_image and not isinstance(featured_image, str):
+            # Check if the CloudinaryResource is not empty
+            if hasattr(featured_image, 'file') and not featured_image.file.closed:
+                # New image is provided, perform additional checks (e.g., size)
+                max_size = 5 * 1024 * 1024
+
+                if featured_image.size > max_size:
+                    raise ValidationError('Image size must be no more than 5 MB.')
+
+        return featured_image
     
     instructions = forms.CharField(widget=forms.Textarea(attrs={'class': 'instruction-steps hide'}))
 
@@ -278,8 +294,17 @@ class UpdateRecipeForm(forms.ModelForm):
         max_value = 10,
     )
 
+    def clean_title(self):
+        title = self.cleaned_data.get('title')
+        instance = getattr(self, 'instance', None)
 
-# class UpdateRecipeForm(AddRecipeForm):
+        if instance and title != instance.title:
+            if Recipe.objects.filter(title=title).exists():
+                raise forms.ValidationError("The recipe name already exists. Please provide a different name!")
+        return title
+
+
+# class UpdateRecipeForm(AddRecipeForm, forms.ModelForm):
 #     class Meta:
 #         model = Recipe
 #         fields = [

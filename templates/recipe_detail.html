@@ -49,7 +49,7 @@
     </div>
 
     <!-- Recipe card details -->
-    <div class="row box-holder-background round-border">
+    <div class="row box-holder-background round-border print-margin">
         <div class="col-md-6 col-12 print-size py-3">
             <!-- <div class="recipe-card-info bg-info"> -->
             {% if "placeholder" in recipe.featured_image.url %}
@@ -93,7 +93,7 @@
             </div>
             <!-- </div> -->
         </div>
-        <div class="col-md-6 col-12 print-size">
+        <div class="col-md-6 col-12 print-size print-margin">
             <div class="pt-2 my-3 print-margin">
                 <h1 class="special-text">
                     {{ recipe.title|title }}
@@ -113,7 +113,7 @@
             </div>
             <div class="mt-4 print-margin">
                 <h4><i class="fa-regular fa-file-lines"></i> Description:</h4>
-                <div class="p-1 inner-holder-box round-border">
+                <div class="p-1 inner-holder-box round-border print-margin">
                     <p class="recipe-text">{{ recipe.excerpt }}</p>
                 </div>
             </div>
@@ -130,7 +130,7 @@
                 </h5>
             </div>
             <div class="mt-4 pb-2 print-margin">
-                <h5 class="d-inline"><i class="fa-solid fa-users"></i> Servings:
+                <h5 class="d-inline print-margin"><i class="fa-solid fa-users"></i> Servings:
                     <span class="d-inline">{{ recipe.servings }}</span>
                 </h5>
             </div>
@@ -139,7 +139,7 @@
 
     <hr>
     <div class="row box-holder-background round-border d-flex">
-        <div class="col-md-6 col-12 print-instructions py-3 d-flex flex-column">
+        <div class="col-md-6 col-12 print-instructions py-3 d-flex flex-column print-margin">
             <h3><i class="fa-solid fa-list-check"></i> Instructions:</h3>
             <div class="p-2 inner-holder-box round-border flex-fill">
                 {{ recipe.instructions | safe }}
