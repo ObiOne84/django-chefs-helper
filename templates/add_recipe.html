@@ -36,6 +36,11 @@
                <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 title-box">
                   <h2>{{ form.title.label_tag }}</h2>
                   {{ form.title }}
+                  {% if form.title.errors %}
+                  <div class="alert alert-danger">
+                     {{ form.title.errors.0 }}
+                  </div>
+                  {% endif %}
                </div>
                <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 form-group instruction-box flex-fill">
                   <h2>Instructions:</h2>
@@ -44,7 +49,7 @@
                   <ol class="instruction-list">
                      <li class="my-1 instruction-list-item">
                         <input type="text" class="d-inline form-control instruction-input-field" required
-                           placeholder="Add cooking instruction here..." maxlength="350">
+                           placeholder="Add cooking instruction here..." maxlength="350" name="instruction-step">
                         <button type="button" class="btn-like list-button remove-instruction">
                            <i class="fa-solid fa-circle-minus"></i>
                         </button>
@@ -54,6 +59,11 @@
                      </li>
                   </ol>
                </div>
+               {% if form.instructions.errors %}
+                  <div class="alert alert-danger">
+                     {{ form.instructions.errors.0 }}
+                  </div>
+                  {% endif %}
                <!-- Recipe image section -->
                <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 add-image">
                   <div class="row">
@@ -78,6 +88,11 @@
                <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2">
                   <h2>Provide Short Description:</h2>
                   {{ form.excerpt }}
+                  {% if form.excerpt.errors %}
+                  <div class="alert alert-danger">
+                     {{ form.excerpt.errors.0 }}
+                  </div>
+                  {% endif %}
                </div>
                <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2">
                   <div class="row">
@@ -85,35 +100,39 @@
                         <h2>Prep Time:</h2>
                         {{ form.prep_time }} <span>minutes</span>
                      </div>
+                     {% if form.prep_time.errors %}
+                     <div class="alert alert-danger">
+                        {{ form.prep_time.errors.0 }}
+                     </div>
+                     {% endif %}
                      <div class="col-md-6 col-12">
                         <h2>Cook Time: </h2>
                         {{ form.cook_time }} <span>minutes</span>
                      </div>
+                     {% if form.cook_time.errors %}
+                     <div class="alert alert-danger">
+                        {{ form.cook_time.errors.0 }}
+                     </div>
+                     {% endif %}
                   </div>
                </div>
                <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2">
                   <h2>Number Of Servings:</h2>
                   {{ form.servings }}
+                  {% if form.servings.errors %}
+                  <div class="alert alert-danger">
+                     {{ form.servings.errors.0 }}
+                  </div>
+                  {% endif %}
                </div>
                <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2">
                   <h2>Publish or Save as Draft:</h2>
                   {{ form.status }}
                </div>
             </div>
-            {% if form.errors %}
-            <div class="alert alert-danger" role="alert">
-               <strong>Form Errors:</strong>
-               <ul>
-                  {% for field, errors in form.errors.items %}
-                  {% for error in errors %}
-                  <li>{{ error }}</li>
-                  {% endfor %}
-                  {% endfor %}
-               </ul>
-            </div>
-            {% endif %}
+
             <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2">
-               <h2>Inngredients here:</h2>
+               <h2>Ingredients here:</h2>
                <div>
                   <div id="ingredient-formset-container">
 
@@ -148,7 +167,7 @@
                   </button> -->
                   </div>
                </div>
-               {% if form.ingredient_formset.errors %}
+               <!-- {% if form.ingredient_formset.errors %}
 
                <div class="alert alert-danger" role="alert">
                   <strong>Formset Errors:</strong>
@@ -158,7 +177,7 @@
                      {% endfor %}
                   </ul>
                </div>
-               {% endif %}
+               {% endif %} -->
             </div>
             <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 py-4">
                <button class="btn btn-primary btn-lg save-recipe-btn" type="submit" name="submit_action"
