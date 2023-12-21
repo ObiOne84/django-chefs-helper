@@ -23,7 +23,17 @@
                         </div>
                         {% endif %}
                     </div>
-                    <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 form-group instruction-box flex-fill">
+                    <!-- <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 form-group instruction-box flex-fill">
+                        <h2>Instructions:</h2>
+                        <div class="#" id="update-instruction-text">
+                            {{ update_recipe_form.instructions|safe }}
+                            <ol class="instruction-list" id="update-instruction-list">
+                                Input fields are created here
+                            </ol>
+                        </div>
+                    </div> -->
+                    <!-- updated instruction box -->
+                    <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 form-group instruction-box">
                         <h2>Instructions:</h2>
                         <div class="#" id="update-instruction-text">
                             {{ update_recipe_form.instructions|safe }}
@@ -126,7 +136,7 @@
                         {% for form in ingredient_formset %}
                         <div class="formset-row show">
 
-                            {{ form.name }}
+                            <!-- {{ form.name }}
                             {% if form.name.errors %}
                             <div class="alert alert-danger">
                                 {{ form.name.errors.0 }}
@@ -150,7 +160,32 @@
                             </button>
                             <button type="button" name="add-ingredient" class="btn-like list-button add-ingredient">
                                 <i class="fa-solid fa-circle-plus"></i>
-                            </button>
+                            </button> -->
+
+                            <!-- updated form.units and delete with buttons -->
+                            <div class="input-group my-1">
+                                {{ form.name }}
+                                {% if form.name.errors %}
+                                <div class="alert alert-danger">
+                                    {{ form.name.errors.0 }}
+                                </div>
+                                {% endif %}
+    
+                                {{ form.quantity }}
+                                {% if form.quantity.errors %}
+                                <div class="alert alert-danger">
+                                    {{ form.quantity.errors.0 }}
+                                </div>
+                                {% endif %}
+                                {{ form.unit }}
+                                {{ form.DELETE }} {# Include the DELETE input for each formset row #}
+                                {{ form.id }}
+                                <button class="btn btn-outline-secondary remove-ingredient" type="button"
+                                    name="remove-ingredient"><i class="fa-solid fa-minus"></i></button>
+                                <button class="btn btn-outline-secondary add-ingredient" type="button"
+                                    name="add-ingredient"><i class="fa-regular fa-plus"></i></button>
+                            </div>
+
                         </div>
                         {% endfor %}
                     </div>

@@ -308,10 +308,10 @@ form.signup ul {
     resize: vertical;
 }
 
-.instruction-input-field {
+/* .instruction-input-field {
     width: 80%;
     border: 1px solid gray;
-}
+} */
 
 .title-box input {
     width: 100%;
