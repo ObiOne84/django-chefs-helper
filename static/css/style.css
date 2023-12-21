@@ -323,7 +323,7 @@ form.signup ul {
 
 .recipe-form textarea {
     width: 100%;
-    max-height: 75px;
+    max-height: 100px;
 }
 
 .list-button {
@@ -339,14 +339,33 @@ ol {
 .remove-instruction,
 .remove-ingredient {
     color: red;
+    border: 1px solid red;
+}
+
+.remove-instruction:hover,
+.remove-ingredient:hover,
+.remove-instruction:active,
+.remove-ingredient:active {
+    color: white;
+    border: 1px solid white;
+    background-color: red;
 }
 
 .add-instruction,
 .add-ingredient {
     color: green;
+    border: 1px solid green;
 }
 
-.ingredient-name-field {
+.add-instruction:hover,
+.add-instruction:active,
+.add-ingredient:hover,
+.add-ingredient:active {
+    color: white;
+    border: 1px solid white;
+    background-color: green;
+}
+.ingredient-name {
     width: 50%;
 }
 

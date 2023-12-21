@@ -62,27 +62,29 @@
 
                <!-- textarea input field replacement test below -->
                <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 form-group instruction-box">
-     
-                     <h2>Instructions:</h2>
-                     <textarea name="instructions" cols="40" rows="10" class="instruction-steps" id="id_instructions"
-                        style="display: none;"></textarea>
-                     <ol class="instruction-list">
-                        <li class="my-1 instruction-list-item ">
-                           <div class="input-group instruction-textarea-field my-1">
-                              <textarea name="instruction-step" cols="40" rows="2"
-                                 class="d-inline form-control instruction-input-field" required
-                                 placeholder="Add cooking instruction here..." maxlength="350"
-                                 name="instruction-step"></textarea>
-                              <button class="btn btn-outline-secondary remove-instruction" type="button"><i class="fa-solid fa-minus"></i></button>
-                              <button class="btn btn-outline-secondary add-instruction" type="button"><i class="fa-regular fa-plus"></i></button>
-                           </div>
-                        </li>
-                     </ol>
-            
+
+                  <h2>Instructions:</h2>
+                  <textarea name="instructions" cols="40" rows="10" class="instruction-steps" id="id_instructions"
+                     style="display: none;"></textarea>
+                  <ol class="instruction-list">
+                     <li class="my-1 instruction-list-item ">
+                        <div class="input-group instruction-textarea-field my-1">
+                           <textarea name="instruction-step" cols="40" rows="2"
+                              class="d-inline form-control instruction-input-field" required
+                              placeholder="Add cooking instruction here..." maxlength="350"
+                              name="instruction-step"></textarea>
+                           <button class="btn btn-outline-secondary remove-instruction" type="button"><i
+                                 class="fa-solid fa-minus"></i></button>
+                           <button class="btn btn-outline-secondary add-instruction" type="button"><i
+                                 class="fa-regular fa-plus"></i></button>
+                        </div>
+                     </li>
+                  </ol>
+                  <div class="empty-error alert alert-danger hide">
+                     <!-- error message goes here -->
+                  </div>
                </div>
-               <div class="empty-error alert alert-danger hide">
-                  <!-- error message goes here -->
-              </div>
+
                <!-- end of the test -->
                {% if form.instructions.errors %}
                <div class="alert alert-danger">
@@ -168,13 +170,10 @@
                      {% for form in form.ingredient_formset %}
                      <div class="formset-row show">
 
-                        <!-- {{ form.name.label_tag }} -->
-                        {{ form.name }}
+                        <!-- {{ form.name }}
                         {{ form.name.errors }}
-                        <!-- {{ form.quantity.label_tag }} -->
                         {{ form.quantity }}
                         {{ form.quantity.errors }}
-                        <!-- {{ form.unit.label_tag }} -->
                         {{ form.unit }}
                         {{ form.unit.errors }}
                         {{ form.DELETE }} {# Include the DELETE input for each formset row #}
@@ -184,7 +183,32 @@
                         </button>
                         <button type="button" name="add-ingredient" class="btn-like list-button add-ingredient">
                            <i class="fa-solid fa-circle-plus"></i>
-                        </button>
+                        </button> -->
+                        <!-- updated formset style -->
+                        <!-- updated form.units and delete with buttons -->
+                        <div class="input-group my-1">
+                           {{ form.name }}
+                           {% if form.name.errors %}
+                           <div class="alert alert-danger">
+                               {{ form.name.errors.0 }}
+                           </div>
+                           {% endif %}
+
+                           {{ form.quantity }}
+                           {% if form.quantity.errors %}
+                           <div class="alert alert-danger">
+                               {{ form.quantity.errors.0 }}
+                           </div>
+                           {% endif %}
+                           {{ form.unit }}
+                           {{ form.DELETE }} {# Include the DELETE input for each formset row #}
+                           {{ form.id }}
+                           <button class="btn btn-outline-secondary remove-ingredient" type="button"
+                               name="remove-ingredient"><i class="fa-solid fa-minus"></i></button>
+                           <button class="btn btn-outline-secondary add-ingredient" type="button"
+                               name="add-ingredient"><i class="fa-regular fa-plus"></i></button>
+                       </div>
+
                      </div>
                      {% endfor %}
                      <!-- <button type="button" name="add-ingredient" class="btn-like list-button add-ingredient">

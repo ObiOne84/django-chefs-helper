@@ -78,6 +78,7 @@ $(document).ready(function () {
 
     // Hides empty ingredient fields except the first row or fields with values
     $(document).ready(function () {
+        $('.positive-number:first').attr('required', 'required');
         $("#ingredient-formset-container").find('.formset-row:not(:first)').each(function () {
             var nameField = $(this).find('input[name$="name"]');
             var quantityField = $(this).find('input[name$="quantity"]');
@@ -302,34 +303,51 @@ $(document).ready(function () {
     $('#add-recipe-form').submit(function (event) {
         console.log('Not submitted');
         event.preventDefault();
-        let instructionValue = '';
-        let x = 1;
-        $('.instruction-list-item').each(function () {
-            let inputValue = $(this).find('textarea').val();
-            let step = '<p class="steps">' + '<strong>Step ' + x + '</strong>. ' + inputValue + '</p>';
-            instructionValue += step;
-            x += 1
-        });
+        if (validateReviewForm('.instruction-input-field')) {
+            let instructionValue = '';
+            let x = 1;
+            $('.instruction-list-item').each(function () {
+                let inputValue = $(this).find('textarea').val();
+                let step = '<p class="steps">' + '<strong>Step ' + x + '</strong>. ' + inputValue + '</p>';
+                instructionValue += step;
+                x += 1
+            });
 
-        console.log('Instruction Value:', instructionValue);
+            console.log('Instruction Value:', instructionValue);
 
-        $('textarea[name="instructions"]').val(instructionValue.trim());
-        $(this).unbind('submit').submit();
+            $('textarea[name="instructions"]').val(instructionValue.trim());
+            $(this).unbind('submit').submit();
+        }
     });
 
     // function creates an input field with defined value
+    // function createInputField(data) {
+    //     return `<li class="my-1 instruction-list-item instruction-textarea-field">
+    //         <div class="input-group my-1">
+    //         <textarea name="instruction-step" cols="40" rows="2" class="d-inline form-control instruction-input-field instruction-steps" required placeholder="Add cooking instruction here...">${data}</textarea>
+    //         <button type="button" class="btn-like list-button remove-instruction">
+    //             <i class="fa-solid fa-circle-minus"></i>
+    //         </button>
+    //         <button type="button" name="add-instruction" class="btn-like list-button add-instruction">
+    //             <i class="fa-solid fa-circle-plus d-inline"></i>
+    //         </button>
+    //         </div>
+    //     </li>`;
+    // }
+
     function createInputField(data) {
-        return `<li class="my-1 instruction-list-item instruction-textarea-field">
-            <div class="input-group my-1">
-            <textarea name="instruction-step" cols="40" rows="1" class="d-inline form-control instruction-input-field instruction-steps" required placeholder="Add cooking instruction here...">${data}</textarea>
-            <button type="button" class="btn-like list-button remove-instruction">
-                <i class="fa-solid fa-circle-minus"></i>
-            </button>
-            <button type="button" name="add-instruction" class="btn-like list-button add-instruction">
-                <i class="fa-solid fa-circle-plus d-inline"></i>
-            </button>
-            </div>
-        </li>`;
+        return `<li class="my-1 instruction-list-item ">
+        <div class="input-group instruction-textarea-field my-1">
+           <textarea name="instruction-step" cols="40" rows="2"
+              class="d-inline form-control instruction-input-field instruction-steps" required
+              placeholder="Add cooking instruction here..." maxlength="350"
+              name="instruction-step">${data}</textarea>
+           <button class="btn btn-outline-secondary remove-instruction" type="button"><i
+                 class="fa-solid fa-minus"></i></button>
+           <button class="btn btn-outline-secondary add-instruction" type="button"><i
+                 class="fa-regular fa-plus"></i></button>
+        </div>
+     </li>`;
     }
 
     // Edit user instructions
@@ -364,25 +382,26 @@ $(document).ready(function () {
     $('#udpate-recipe-form').submit(function (event) {
         console.log('Form submitted');
         event.preventDefault();
+        if (validateReviewForm('.instruction-input-field')) {
+            // Clear the current textarea content
+            $('textarea[name="instructions"]').val('');
+            let instructionValue = '';
+            let x = 1;
+            $('.instruction-list-item').each(function () {
+                let inputValue = $(this).find('textarea').val();
+                let step = '<p class="steps">' + '<strong>Step ' + x + '</strong>. ' + inputValue + '</p>';
+                instructionValue += step;
+                x += 1
+                console.log(inputValue);
+                console.log(instructionValue);
+            });
 
-        // Clear the current textarea content
-        $('textarea[name="instructions"]').val('');
-        let instructionValue = '';
-        let x = 1;
-        $('.instruction-list-item').each(function () {
-            let inputValue = $(this).find('textarea').val();
-            let step = '<p class="steps">' + '<strong>Step ' + x + '</strong>. ' + inputValue + '</p>';
-            instructionValue += step;
-            x += 1
-            console.log(inputValue);
+            // $('textarea[name="instructions"]').val('');
             console.log(instructionValue);
-        });
-
-        // $('textarea[name="instructions"]').val('');
-        console.log(instructionValue);
-        $('textarea[name="instructions"]').val(instructionValue.trim());
-        console.log(instructionValue);
-        $(this).unbind('submit').submit();
+            $('textarea[name="instructions"]').val(instructionValue.trim());
+            console.log(instructionValue);
+            $(this).unbind('submit').submit();
+        }
     });
 
     function validateReviewForm(field) {
@@ -396,7 +415,7 @@ $(document).ready(function () {
             // Remove the error message after 5 seconds
             setTimeout(function () {
                 $('.empty-error').empty().hide();
-            }, 5000);
+            }, 8000);
             return false;
         }
 
@@ -407,6 +426,8 @@ $(document).ready(function () {
     $('#review-form').submit(function () {
         return validateReviewForm('.review-body-holder textarea');
     });
+
+
 
 
 
