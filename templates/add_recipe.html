@@ -28,12 +28,12 @@
       <div class="col-12 text-center py-4">
          <h1 class="special-text">Add New Recipe:</h1>
       </div>
-      <div class="col-md-8 offset-md-2 col-12 print-size">
+      <div class="col-lg-8 offset-lg-2 col-12 print-size">
          <form method="post" enctype="multipart/form-data" action="{% url 'add_recipe' %}" id="add-recipe-form"
             class="recipe-form">
             {% csrf_token %}
             <div class="row">
-               <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 title-box">
+               <div class="col-lg-8 offset-lg-2 col-12 my-lg-4 my-2 title-box">
                   <h2>{{ form.title.label_tag }}</h2>
                   {{ form.title }}
                   {% if form.title.errors %}
@@ -61,7 +61,7 @@
                </div> -->
 
                <!-- textarea input field replacement test below -->
-               <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 form-group instruction-box">
+               <div class="col-lg-8 offset-lg-2 col-12 my-lg-4 my-2 form-group instruction-box">
 
                   <h2>Instructions:</h2>
                   <textarea name="instructions" cols="40" rows="10" class="instruction-steps" id="id_instructions"
@@ -92,16 +92,16 @@
                </div>
                {% endif %}
                <!-- Recipe image section -->
-               <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 add-image">
+               <div class="col-lg-8 offset-lg-2 col-12 my-lg-4 my-2 add-image">
                   <div class="row">
-                     <div class="col-md-8 offset-md-2 col-12 my-2">
+                     <div class="col-md-6 offset-md-3 col-8 offset-2 my-2">
                         <label for="id_featured_image">
                            <img src="https://res.cloudinary.com/dcrbeonr9/image/upload/v1702837530/add-image_dybsov.png"
                               alt="Add image placeholder" class="dish-image round-border transparent-image"
                               style="width: 100%;">
                         </label>
                      </div>
-                     <div class="col-12">
+                     <div class="col-12 add-image">
                         <h2>Add Recipe Image Here:</h2>
                         {{ form.featured_image }}
                         {% if form.featured_image.errors %}
@@ -112,7 +112,7 @@
                      </div>
                   </div>
                </div>
-               <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2">
+               <div class="col-lg-8 offset-lg-2 col-12 my-lg-4 my-2">
                   <h2>Provide Short Description:</h2>
                   {{ form.excerpt }}
                   {% if form.excerpt.errors %}
@@ -121,9 +121,9 @@
                   </div>
                   {% endif %}
                </div>
-               <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2">
+               <div class="col-lg-8 offset-lg-2 col-12 my-lg-4 my-2">
                   <div class="row">
-                     <div class="col-md-6 col-12">
+                     <div class="col-lg-6 col-12">
                         <h2>Prep Time:</h2>
                         {{ form.prep_time }} <span>minutes</span>
                      </div>
@@ -132,7 +132,7 @@
                         {{ form.prep_time.errors.0 }}
                      </div>
                      {% endif %}
-                     <div class="col-md-6 col-12">
+                     <div class="col-lg-6 col-12">
                         <h2>Cook Time: </h2>
                         {{ form.cook_time }} <span>minutes</span>
                      </div>
@@ -143,7 +143,7 @@
                      {% endif %}
                   </div>
                </div>
-               <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2">
+               <div class="col-lg-8 offset-lg-2 col-12 my-lg-4 my-2">
                   <h2>Number Of Servings:</h2>
                   {{ form.servings }}
                   {% if form.servings.errors %}
@@ -152,13 +152,13 @@
                   </div>
                   {% endif %}
                </div>
-               <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2">
+               <div class="col-lg-8 offset-lg-2 col-12 my-lg-4 my-2">
                   <h2>Publish or Save as Draft:</h2>
                   {{ form.status }}
                </div>
             </div>
 
-            <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2">
+            <div class="col-lg-8 offset-lg-2 col-12 my-lg-4 my-2">
                <h2>Ingredients here:</h2>
                <div>
                   <div id="ingredient-formset-container">
@@ -228,7 +228,7 @@
                </div>
                {% endif %} -->
             </div>
-            <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 py-4">
+            <div class="col-lg-8 offset-lg-2 col-12 my-lg-4 my-2 py-4">
                <button class="btn btn-primary btn-lg save-recipe-btn" type="submit" name="submit_action"
                   value="save_recipe">Save
                   Recipe</button>

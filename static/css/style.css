@@ -308,10 +308,9 @@ form.signup ul {
     resize: vertical;
 }
 
-/* .instruction-input-field {
-    width: 80%;
+.instruction-input-field {
     border: 1px solid gray;
-} */
+}
 
 .title-box input {
     width: 100%;
@@ -340,6 +339,7 @@ ol {
 .remove-ingredient {
     color: red;
     border: 1px solid red;
+    background-color: #f5dde0;
 }
 
 .remove-instruction:hover,
@@ -355,6 +355,7 @@ ol {
 .add-ingredient {
     color: green;
     border: 1px solid green;
+    background-color: #d9f3d9;
 }
 
 .add-instruction:hover,
@@ -374,6 +375,10 @@ ol {
     color: #000;
 }
 
+.add-image input {
+    border: 1px solid gray;
+}
+
 .update-image {
     max-height: 300px;
     width: auto;
@@ -383,6 +388,9 @@ ol {
     list-style: none;
 }
 
+.time-field {
+    width: 40%;
+}
 /* -----Style home page --------- */
 
 .background-image {
@@ -535,5 +543,10 @@ ol {
     .info-text {
         margin-bottom: 25px;
         margin-left: 5%;
+    }
+
+    .ingredient-name {
+        width: 100%;
+        margin-bottom: 2px;
     }
 }
