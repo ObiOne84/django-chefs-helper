@@ -24,7 +24,7 @@ Join our thriving culinary community today and elevate your cooking journey with
 
 ![Home Screen](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703265189/responsivness-screenshot_vikgke.png)
 
-[Chef's Helper live website here](https://woodland-whispers-retreat.herokuapp.com/)
+[Chef's Helper live website here](https://django-chefs-helper-90ca65af05b0.herokuapp.com/)
 - - -
 
 ## Table of Contents
@@ -37,7 +37,7 @@ Join our thriving culinary community today and elevate your cooking journey with
 * [Admin user](#admin-user)
 ### [Design](#design-1)
 * [Color Scheme](#color-scheme)
-* [Cabin Images](#cabin-images)
+* [Recipe Images](#recipe-images)
 * [Wireframes](#wireframes)
 * [Data Model](#data-models)
 * [User Journey](#user-journey)
@@ -253,7 +253,7 @@ Recipe Cards:
 
 * Recipe cards are styled with a hover effect to enhance the user's interaction. On hover, the card scales slightly increasing the size for a subtle animation. Additionally, a drop shadow is applied ![#2759fc](https://placehold.co/15x15/2759fc/2759fc.png) `#2759fc` to create depth and highlight the selected card.
 
-### Food Images
+### Recipe Images
 
 * Various high-quality images of delectable foods are strategically placed to evoke the essence of culinary delight. These images contribute to an immersive and engaging visual experience. All recipe images were created using [Canva](https://www.canva.com/) software.
 <!-- AI image generator [Craiyon](https://www.craiyon.com/). -->
