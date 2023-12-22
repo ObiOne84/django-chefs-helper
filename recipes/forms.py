@@ -35,7 +35,7 @@ class AddIngredientForm(forms.ModelForm):
         max_length=50,
         required=True,
         widget=forms.TextInput(attrs={
-            'class': 'add-recipe-fields ingredient-name-field bm-1',
+            'class': 'add-recipe-fields ingredient-name',
             'placeholder': 'Ingredient name...',
         }),
     )

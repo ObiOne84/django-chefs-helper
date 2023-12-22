@@ -77,22 +77,22 @@ $(document).ready(function () {
     }
 
     // Hides empty ingredient fields except the first row or fields with values
-    $(document).ready(function () {
-        $('.positive-number:first').attr('required', 'required');
-        $("#ingredient-formset-container").find('.formset-row:not(:first)').each(function () {
-            var nameField = $(this).find('input[name$="name"]');
-            var quantityField = $(this).find('input[name$="quantity"]');
+    $('.ingredient-name:first').attr('required', 'required');
+    $('.ingredient-quantity:first').attr('required', 'required');
+    $("#ingredient-formset-container").find('.formset-row:not(:first)').each(function () {
+        var nameField = $(this).find('input[name$="name"]');
+        var quantityField = $(this).find('input[name$="quantity"]');
 
-            if (!quantityField.val()) {
-                $(this).removeClass('show').addClass('hide');
-                $(this).find("[name$='-DELETE']").prop('checked', true);
-            } else {
-                $(this).removeClass('hide').addClass('show');
-                nameField.prop('required', true);
-                quantityField.prop('required', true); // Fix the typo here
-            }
-        });
+        if (!quantityField.val()) {
+            $(this).removeClass('show').addClass('hide');
+            $(this).find("[name$='-DELETE']").prop('checked', true);
+        } else {
+            $(this).removeClass('hide').addClass('show');
+            nameField.prop('required', true);
+            quantityField.prop('required', true); // Fix the typo here
+        }
     });
+
 
 
     // // Add ingredient
@@ -124,12 +124,18 @@ $(document).ready(function () {
         console.log("Clicked minus");
         var formsetRow = $(this).closest(".formset-row");
         var formsetRows = $('.formset-row.show'); // Get all visible rows
+        var nameField = formsetRow.find('input[name$="name"]');
+        var quantityField = formsetRow.find('input[name$="quantity"]');
 
         if (formsetRows.length > 1) {
+            nameField.val('');
+            quantityField.val('');
             formsetRow.removeClass('show');
             formsetRow.addClass('hide');
             formsetRow.find("[name$='-DELETE']").prop('checked', true);
-            formsetRow.find("[name$='-name']").prop('required', false);
+            // formsetRow.find("[name$='-name']").prop('required', false);
+            nameField.prop('required', false);
+            quantityField.prop('required', false);
         } else {
             console.log("Cannot hide the last row");
         }
