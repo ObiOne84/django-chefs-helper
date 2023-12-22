@@ -6,6 +6,724 @@
 
 - <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fdjango-chefs-helper-90ca65af05b0.herokuapp.com%2Faccounts%2Fsignup%2F" target="_blank">Validation result for signup.html</a> .
 
-- <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fdjango-chefs-helper-90ca65af05b0.herokuapp.com%2Faccounts%2Fsignup%2F" target="_blank">Validation result for signup.html</a> .
+- <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fdjango-chefs-helper-90ca65af05b0.herokuapp.com%2Faccounts%2Flogin%2F%3Fnext%3D%2Fbeef-and-bean-burrito%2F" target="_blank">Validation result for recipe-detail.html</a> .
+
+- <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fdjango-chefs-helper-90ca65af05b0.herokuapp.com%2Faccounts%2Flogin%2F%3Fnext%3D%2Fupdate_recipe%2Fbeef-and-bean-burrito%2F" target="_blank">Validation result for update_recipe.html</a> .
+
+- <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fdjango-chefs-helper-90ca65af05b0.herokuapp.com%2Faccounts%2Flogin%2F%3Fnext%3D%2Fadd_recipe" target="_blank">Validation result for add_recipe.html</a> .
+
+- <a href="https://jigsaw.w3.org/css-validator/validator" target="_blank">Validation result for CSS</a> .
+
+---
+
+# Chef's Helper
 
 
+Discover the ultimate solution for your culinary adventures! Our application empowers you to create, store, and explore a world of recipes, all in one place. Whether you're a seasoned chef or a home cook, our platform is designed to enhance your cooking experience.
+Join our thriving culinary community today and elevate your cooking journey with our feature-rich, user-friendly application. It's not just a recipe app; it's your culinary companion. Start creating, exploring, and savoring the joy of cooking!
+
+![Home Screen](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703265189/responsivness-screenshot_vikgke.png)
+
+[Chef's Helper live website here](https://woodland-whispers-retreat.herokuapp.com/)
+- - -
+
+## Table of Contents
+### [User Experience](#user-experience-ux)
+* [Project Goals](#project-goals)
+* [Agile Methodology](#agile-methodology)
+* [Target Audience](#target-audience)
+* [First time user](#first-time-user)
+* [Registered user](#registered-user)
+* [Admin user](#admin-user)
+### [Design](#design-1)
+* [Color Scheme](#color-scheme)
+* [Cabin Images](#cabin-images)
+* [Wireframes](#wireframes)
+* [Data Model](#data-models)
+* [User Journey](#user-journey)
+* [Database Scheme](#database-scheme)
+### [Security Features](#security-features-1)
+### [Features](#features-1)
+* [Existing Features](#existing-features)
+* [Features Left to Implement](#features-left-to-implement)
+### [Technologies Used](#technologies-used-1)
+* [Languages Used](#languages-used)
+* [Databases Used](#databases-used)
+* [Frameworks Used](#frameworks-used)
+* [Programs Used](#programs-used)
+### [Deployment and Local developement](#deployment-and-local-developement-1)
+* [Local Developement](#local-developement)
+* [ElephantSQL Database](#elephantsql-database)
+* [Cloudinary](#cloudinary)
+* [Heroku Deployment](#heroku-deployment)
+### [Testing](#testing-1)
+### [References](#references-1)
+* [Docs](#docs)
+* [Content](#content)
+* [Acknowledgments](#acknowledgments)
+
+---
+
+## User Experience (UX)
+
+Dive into an immersive culinary journey with Chef's Helper's Recipe Management feature. Our platform offers a seamless and engaging user experience, ensuring effortless organization and exploration of your favorite recipes. Experience the convenience of storing, viewing, and managing your own culinary creations, alongside the ability to discover, review, rate, and like recipes contributed by fellow users.
+
+The Recipe Management system is designed with user-friendly navigation, providing a visually stunning interface for an enjoyable and hassle-free experience. Whether you're a seasoned chef or a home cook, our personalized recommendations and comprehensive information cater to your unique preferences, making each step of your culinary adventure delightful.
+
+Create a personalized collection of recipes, easily accessible from any device with our mobile-friendly design. Edit your recipes with ease, add new ingredients, and share your culinary masterpieces with the Chef's Helper community. Explore a treasure trove of diverse recipes contributed by others, offering inspiration for your next kitchen endeavor.
+
+Feel the satisfaction of not only managing your culinary creations but also engaging with a community passionate about food. Leave reviews, rate recipes, and show appreciation by liking outstanding dishes. For those cherished favorites, the option to print your recipes ensures they are always at your fingertips, ready to impress friends and family.
+
+Chef's Helper's Recipe Management is more than just a tool; it's a culinary haven where your cooking journey transforms into a delightful and enriching experience. Join us in celebrating the art of cooking, sharing, and savoring the flavors of a vibrant and thriving culinary community.
+
+### Project Goals
+
+Chef's Helper aims to create a user-friendly online platform for culinary enthusiasts. The project focuses on:
+
+* Seamless Experience: Provide an intuitive interface for effortless recipe storage, management, and exploration.
+
+* Community Engagement: Foster a vibrant community where users can view, review, rate, and like recipes shared by fellow enthusiasts.
+
+* Effortless Management: Simplify the process of editing recipes, adding ingredients, and navigating through collections.
+
+* Print and Share: Enhance the joy of sharing culinary creations by allowing users to print their favorite recipes.
+
+* Mobile Accessibility: Prioritize accessibility with a mobile-friendly design for planning and managing recipes on any device.
+
+### Agile Methodology
+
+Agile Methodology served as the guiding framework for prioritizing and organizing tasks in the Chef's Helper app development process. The workflow included:
+
+* User Story Creation: Utilizing the Agile approach, user stories were meticulously crafted, and a template was established to streamline the process. This allowed for a clear definition of project goals and user requirements.
+* Epics Development: Epics, each containing potential user stories, were formulated. These epics served as overarching themes, providing a foundation for the subsequent development of the Chef's Helper website.
+* Iterative Progression: User stories were generated by analyzing and refining the epics. Through iterative cycles, the project steadily advanced, ensuring that each user story contributed to the overall development goals.
+* Public Project Board on Github: A Project Board, accessible to the public, was implemented on Github. This board acted as a centralized hub for task tracking, employing columns such as Todo, In Progress, and Done.
+* Progress Tracking: The Project Board played a pivotal role in tracking the progression of tasks. Issues smoothly transitioned through the different columns, providing a visual representation of the project's status.
+* Labeling for Priority: Labels were strategically added to categorize issues based on their importance. This labeling system facilitated a systematic organization of tasks, allowing the team to focus on critical aspects and prioritize accordingly.
+
+In essence, the Agile Methodology, coupled with Github's Project Boards and a structured template for user stories and epics, ensured an efficient and collaborative approach to Chef's Helper app development. This methodology allowed for flexibility, adaptability, and continuous improvement throughout the project lifecycle.
+
+<details>
+<summary> User Stories Template
+</summary>
+
+![User Stories, Template](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703267830/user-story-template_rxbcec.jpg)
+</details>
+
+<details>
+<summary> User Stories, Issues
+</summary>
+
+![User Stories, Issues](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703268178/project-issues_akl87g.png)
+</details>
+
+<details>
+<summary> Project Milestones
+</summary>
+
+![Project Milestones](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703268372/project-milestones_xpcjup.png)
+</details>
+
+<details>
+<summary> Project Board
+</summary>
+
+![Project Board](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703268621/project-board_cjwceh.png)
+
+- <a href="https://github.com/users/ObiOne84/projects/4" target="_blank">Visit project GitHub page here.</a>
+
+</details>
+
+### User Stories
+
+#### Epics
+* Project Setup and Initialization
+* Website Admin Management
+* Recipe Management System
+* Frontend Refinement and Content Enrichment
+* Comprehensive Documentation Enhancement
+
+#### User Stories
+1. Project set up
+* Develop wireframes for the user interface of the application.
+* Design Entity-Relationship Diagrams (ERD).
+* Create new Heroku application.
+* Link Github repository to the Heroku app.
+2. Site Navigation
+* Create base.html file.
+* Create Navigation tabs for the site header.
+* Create links for navigation tabs on each page.
+3. Social network bar
+* Create footer
+* Create link for social sites on each page.
+4. User Registration
+* Sign Up page.
+* User registration, log in, log out.
+* Display users name.
+5. Manage recipes
+* Admin panel.
+* Crud functionality
+* Admin dashboard functionality.
+6. Create drafts
+* Add ingredients in admin panel to the recipe.
+* Recipe can be saved as draft.
+7. Approve reviews
+* Allow admin to approve reviews
+* Allow admin to crate reviews through the admin panel
+8. Review a recipe
+* Create form to allow user review the recipe
+* Allow user to rate recipe only once
+9. Like a recipe
+* Allow user to like recipe only once
+10. View reviews
+* Allow users to view approved reviews.
+* Create mechanism to calculate average rating.
+11. Add a recipe
+* Create a recipe form
+* Create a recipe template
+12. Open a recipe
+* Create a recipe card template
+13. Add an ingredient to the recipe
+* Create an ingredient form.
+14. View likes
+* Display the like count next to the recipe.
+15. Online recipe book
+* Add recipe content to the page.
+16. Enhance Frontend Styling and Responsiveness
+* Create a home page.
+* Maintain consistent design.
+* Test responsiveness.
+17. Readme file
+* Create comprehensive application's documentation.
+
+Detailed look can be found in the [project board](https://github.com/users/ObiOne84/projects/4)
+
+### Target Audience
+
+* Home Cooks and Chefs: Individuals passionate about cooking, seeking a platform to store, manage, and share their recipes.
+* Recipe Enthusiasts: Those who enjoy discovering and trying out new recipes, leaving reviews, and engaging with a culinary community.
+* Tech-Savvy Foodies: Users who appreciate a seamless and user-friendly digital experience for managing their culinary creations.
+* Mobile Users: Individuals who prefer the convenience of accessing recipe management tools from their mobile devices.
+* Community-Driven Individuals: Those interested in engaging with a community of like-minded individuals, sharing culinary tips and inspiration.
+* Culinary Creatives: Home cooks, aspiring chefs, and culinary artists looking for a platform to showcase their creativity.
+* Families: Families who want to collect and manage their favorite recipes for shared meals and special occasions.
+* Healthy Lifestyle Enthusiasts: Individuals interested in maintaining a healthy lifestyle through diverse and nutritious recipes.
+Chef's Helper caters to a diverse audience of culinary enthusiasts, providing a hub for creativity, community, and culinary exploration.
+
+### First time user
+
+* Simple and intuitive website navigation for easy exploration and discovery.
+* Engaging visuals showcasing the various dishes of public recipes.
+* Informative content providing an overview of application functionality and future updates.
+* Search bar, to allow user find their favourite dishes.
+* Easy Registration process.
+
+### Registered User
+
+* Seamless login process with a secure and personalized user account.
+* Browsing recipe details.
+* Printing.
+* Adding new recipes.
+* Updating own recipes.
+* Reviewing, rating and liking recipes.
+
+### Admin user
+
+* Secure and separate login portal for admin users with appropriate access control.
+* Access to an admin dashboard for recipes, reviews and ingredients.
+* Ability to add, edit, or delete recipes, including ingredients, reviews and likes.
+* Management of recipe options, such as adding, updating, or removing ingredients and reviews.
+* Ability to delete user accounts, providing the necessary control for managing user data and accounts.
+* Management of recipes, including the ability to view, modify, or delete recipes as needed.
+
+## Design
+
+The design of Chef's Helper platform is carefully crafted to provide a visually appealing and user-friendly experience. The design strikes a balance between simplicity and sophistication, ensuring a clean and modern appearance. The light blue background creates a harmonious backdrop for the culinary-focused content. The design emphasizes user interaction, with hover styles applied to key elements such as navigation, social links, and recipe cards. This provides users with a responsive and dynamic experience as they navigate through the platform. The consistent use of the color scheme, fonts, and styling elements across the platform creates a cohesive and unified visual identity. The design of Chef's Helper is tailored to appeal to users seeking a seamless and visually delightful experience while exploring and managing their recipes.
+
+
+### Color Scheme
+* The predominant color is a soothing light blue background ![#cff4fc](https://placehold.co/15x15/cff4fc/cff4fc.png) `#cff4fc` , creating a calm and inviting atmosphere for users.
+
+* The CH logo is elegantly presented in gold letters ![#dfb705](https://placehold.co/15x15/dfb705/dfb705.png) `#dfb705`, adding a touch of sophistication to the overall design.
+
+* The font choice is a classic black ![#000](https://placehold.co/15x15/000/000.png) `#000`, ensuring readability and a timeless aesthetic.
+
+* Navigation elements, including the nav bar and social links, are designed to respond dynamically to user interaction. On hover, the color transitions to a rich burgundy ![#630a0a](https://placehold.co/15x15/630a0a/630a0a.png) `#630a0a`, providing visual feedback.
+Recipe Cards:
+
+* Recipe cards are styled with a hover effect to enhance the user's interaction. On hover, the card scales slightly increasing the size for a subtle animation. Additionally, a drop shadow is applied ![#2759fc](https://placehold.co/15x15/2759fc/2759fc.png) `#2759fc` to create depth and highlight the selected card.
+
+### Food Images
+
+* Various high-quality images of delectable foods are strategically placed to evoke the essence of culinary delight. These images contribute to an immersive and engaging visual experience. All recipe images were created using [Canva](https://www.canva.com/) software.
+<!-- AI image generator [Craiyon](https://www.craiyon.com/). -->
+
+### Logo
+
+* Logo was also created using [Canva](https://www.canva.com/) software.
+<!-- AI image generator [Craiyon](https://www.craiyon.com/). -->
+
+### Typography
+
+* Lato is a modern and versatile sans-serif font. With a clean and friendly appearance, it ensures readability across various platforms. Ideal for paragraphs and body text, Lato provides a contemporary and professional look. 
+
+* Roboto Slab is a serif font with a stylish and sophisticated feel. It adds a touch of elegance to headings and subheadings, making it suitable for conveying a sense of formality and structure in your design.
+
+* Pacifico is a lively and casual cursive font that brings a playful and handwritten charm to your special text. Perfect for creating a personalized and whimsical touch, Pacifico adds character and warmth to headings or elements you want to highlight.
+
+---
+<!-- ___________________________________________________________ -->
+START HERE UPDATES
+<!-- __________________________________________________________ -->
+---
+
+### Wireframes
+
+<details>
+<summary> Home Page
+</summary>
+
+![Home Page](documentation/wireframes/home-page.PNG)
+</details>
+
+<details>
+<summary> Home Page when logged in
+</summary>
+
+![Home Page when logged in](documentation/wireframes/home-page-logged-in.PNG)
+</details>
+
+<details>
+<summary> Contact Page
+</summary>
+
+![Contact Page](documentation/wireframes/contact-page.PNG)
+</details>
+
+<details>
+<summary> Cabin Booking Page
+</summary>
+
+![Cabin Booking Page](documentation/wireframes/cabin-booking-page.PNG)
+</details>
+
+<details>
+<summary> Make a Booking Page
+</summary>
+
+![Make a Booking Page](documentation/wireframes/make-a-booking-page.PNG)
+</details>
+
+<details>
+<summary> My Booking Page
+</summary>
+
+![My Booking Page](documentation/wireframes/my-booking-page.PNG)
+</details>
+
+<details>
+<summary> Edit Booking Page
+</summary>
+
+![Edit Booking Page](documentation/wireframes/edit-booking-page.PNG)
+</details>
+
+<details>
+<summary> Delete Booking Page
+</summary>
+
+![Delete Booking Page](documentation/wireframes/delete-booking-page.PNG)
+</details>
+
+<details>
+<summary> User Login Page
+</summary>
+
+![User Login Page](documentation/wireframes/user-login-page.PNG)
+</details>
+
+<details>
+<summary> User Logout Page
+</summary>
+
+![User Logout Page](documentation/wireframes/user-logout-page.PNG)
+</details>
+
+<details>
+<summary> User Sign Up Page
+</summary>
+
+![User Sign Up Page](documentation/wireframes/user-sign-up-page.PNG)
+</details>
+
+### Data Models
+
+1. AllAuth User Model
+    * Django Allauth, the User model is the default user model provided by the Django authentication system
+    * The User entity has a one-to-many relationship with the Booking entity. This means that a User can have multiple Bookings, but each Booking is associated with only one User.
+---
+2. Amenity Model
+    * Data model created so admin can add amenities to the cabin booking, and regulate the name and price of the amenities
+    * Only Admin can change the data in the backend.
+    * User can book those amenities through the Booking Model
+    * An Amenity can be associated with multiple Cabins, and a Cabin can have multiple Amenities. This is represented by the many-to-many relationship between Amenity and Cabin.
+    * There are two amenites set up, which are cave exploration and kayak rental
+---
+3. Cabin Model
+    * A Cabin can have multiple Bookings, but each Booking is associated with only one Cabin. This is represented by the foreign key relationship between Cabin and Booking.
+    * Admin can add cabins through djangos admin panel.
+    * Only Admin can change the data in the backend.
+    * User can see the cabin information and image based on the chosen cabin.
+    * Information provided is price, image, description, number of bedrooms, maximum guests, amenities
+---
+4. Booking Model
+    * A User can have multiple Bookings, but each Booking is associated with only one User. This is represented by the foreign key relationship between User and Booking.
+    * Booking model has a feature that prevents overlapping bookings, so users dont book on the same dates
+    * Total price is also calculated in the backend that is then displayed to user to show the total price of the booking, that includes if a user also adds amenities to the booking.
+    * Full CRUD functionality is available to the user.
+    * User in order to book has to fill check-in, check-out dates, number of guests and optional amenities
+    ---
+
+### User Journey 
+
+![User Journey](documentation/readme_images/user-journey.PNG)
+
+### Database Scheme
+
+Entity Relationship Diagram (ERD)
+
+![DataScheme](documentation/readme_images/data-scheme.PNG)
+
+* The Amenity entity represents amenities that can be associated with cabins, with fields id as the primary key, name for the amenity's name, and price for the amenity's price.
+* The Cabin entity represents individual cabin listings, with fields id as the primary key, name for the cabin's name, description for the cabin's description, price for the cabin's price, image for the cabin's image, max_guests for the maximum number of guests allowed, and bedrooms for the number of bedrooms in the cabin.
+* The Booking entity represents a booking made by a user for a specific cabin, with fields id as the primary key, cabin_id as a foreign key referencing the Cabin entity, user_id as a foreign key referencing the User entity, check_in_date for the booking's check-in date, check_out_date for the booking's check-out date, num_guests for the number of guests in the booking, cave_exploration_tickets for the optional quantity of cave exploration tickets, kayak_rentals for the optional quantity of kayak rentals, and total_price for the total price of the booking.
+
+This data scheme allows for the management of users, amenities, cabins, and bookings. Users can make bookings for specific cabins, and each booking can have associated details such as the check-in and check-out dates, number of guests, and optional extras.
+
+## Security Features
+
+### User Authentication
+
+* Django Allauth is a popular authentication and authorization library for Django, which provides a set of features for managing user authentication, registration, and account management.
+
+### Login Decorator
+
+* booking_create, booking_success, booking_overview, edit_booking, and delete_booking: These views involve operations related to user bookings and require authentication with the login_required decorator.
+* This ensures that only authenticated users can access these views.
+
+### CSRF Protection
+
+* Django provides built-in protection against Cross-Site Request Forgery (CSRF) attacks. CSRF tokens are generated for each user session, and they are required to submit forms or perform state-changing actions. When a user logs out, the session and associated CSRF token are invalidated, making it difficult for an attacker to forge a valid request using a copied URL.
+
+### Form Validation
+
+* The booking_create view validates form input using the BookingForm class. It checks for various validation errors, such as the number of guests, check-in and check-out dates, overlapping bookings, and additional validations for cave exploration tickets and kayak rentals.
+
+### Overlapping Booking
+
+* In the booking_create view, the code checks for overlapping bookings by querying the database for existing bookings that match certain conditions. It compares the selected check-in and check-out dates with the dates of existing bookings for the same cabin. If any overlapping bookings are found, an error message is added to the form, and a warning message is displayed to the user.
+
+### Custom error pages
+
+* 404 Error Page, provides user with a button the redirect to home page.
+* 500 Error Page, provides user with a button the redirect to home page.
+
+## Features
+
+* Home page showcases a rotating carousel that contains available cabins
+* The website features a comprehensive list of amenities accompanied by detailed descriptions for each one.
+* User can make an account and login
+* When logged in, users get access to the cabin overview and are able to book cabins
+* Users can edit and delete their bookings
+* Every user action is accompanied by a corresponding message to ensure that users are promptly notified of any changes or updates.
+* Total price of booking is displayed to users.
+
+### Existing Features
+
+* Home Page
+    * Displays a navigation bar with logo, main heading, amenities details, carousel cabin view, about section, footer with socials
+
+![Home Page](documentation/readme_images/home-page.PNG)
+
+* Once logged in the Sign Up button changes to Book Now button
+
+![Book Now](documentation/readme_images/book-now.PNG)
+
+
+* Logo
+    * Logo was created using [Craiyon](https://www.craiyon.com/) AI image generator, in which I used words to describe the logo and then it was generated.
+
+![Logo](documentation/readme_images/logo.PNG)
+
+* Navigation Bar
+    * It differs if its a user, admin or just a visitor
+
+    * Navigation bar for a visitor
+
+    ![Visitor](documentation/readme_images/navigation-bar.PNG)
+
+    * Navigation bar for a user
+    ![User](documentation/readme_images/user-navigation-bar.PNG)
+    ![User Dropdown](documentation/readme_images/user-dropdown.PNG)
+
+    * Navigation bar for admin
+    ![Admin](documentation/readme_images/admin-navigation-bar.PNG)
+    ![Admin Dropdown](documentation/readme_images/admin-dropdown.PNG)
+
+* Amenities
+    * Description of the amenities which user might like to experience.
+
+![Amenities](documentation/readme_images/amenities.PNG)
+
+* Cabin Carousel
+    * When on home page there is a carousel that displays all available cabins for booking, it also has controls to move left or right, name and description of the cabin, when its clicked it redirects users to cabin overview page and visitors are asked to create an account or login in order to view the cabins in greater detail.
+
+![Cabin Carousel](documentation/readme_images/carousel.PNG)
+
+* About Section
+    * It contains a short description of Woodland Whispers Retreat and a short lake tale
+
+![About](documentation/readme_images/about.PNG)
+
+* Footer
+    * Contains copyright information, creator and social links which are all linked to the creator of the website, becuase purpouse of this website is educational.
+
+![Footer](documentation/readme_images/footer.PNG)
+
+* Contact Page
+    * For educational purposes, the website includes fictional contact information such as an address, phone number, and email. It also includes social links, which are all linked to developer for educational purposes.
+
+![Contact](documentation/readme_images/contact.PNG)
+
+* Sign up
+    * User can create an account
+
+![Sign Up](documentation/readme_images/sign-up.PNG)
+
+* Login
+    * User can login into an account, if they have created one
+
+![Login](documentation/readme_images/login.PNG)
+![Login Message](documentation/readme_images/login-message.PNG)
+
+* Browse Available Cabins
+    * Admin can create cabins through django admin panel
+    * Cabins are paginated to display 6 cabins per page
+
+![Browse Cabins](documentation/readme_images/browse-cabins.PNG)
+
+* Cabin pagination
+    * On the bottom of the page
+
+![Pagination](documentation/readme_images/pagination.PNG)
+
+* Logout
+    * User can logout
+
+![Logout](documentation/readme_images/logout.PNG)
+
+* Make a Booking
+    * Users can make a booking by clicking the cabin they want and then read details and fill in the booking form.
+    * Form validation is implemented to make sure form are submitted correctly and if there is an error user will be notified with alert message, also if everything is good, user gets a message to notifiy them.
+    * Form contains amenities which are completely optional and they dont have to be selected.
+
+    ![Message](documentation/readme_images/alert-message.PNG)
+
+![Make a Booking](documentation/readme_images/make-a-booking.PNG)
+
+* Booking Succesful
+    * If booking is succesfull, user gets a notified message and an overview of the booking they just made, which includes all the details and a total price of the booking, also there is a button for contact page and my booking button that leads to all of the users bookings.
+
+![Booking Succesful](documentation/readme_images/booking-successful.PNG)
+
+* Booking Overview
+    * Includes all of the user bookings, which have buttons to edit or delete bookings.
+
+![Booking Overview](documentation/readme_images/my-bookings.PNG)
+
+* Already booked dates
+    * User won't be able to book dates that are already booked.
+    * Dates in the past are unavailable.
+
+![Booked Dates](documentation/readme_images/booked-dates.PNG)
+
+* Edit Booking
+    * User can change their booking and save changes
+
+![Edit Booking](documentation/readme_images/edit-booking.PNG)
+
+* Delete Booking
+    * User can delete their booking, before it is deleted it has to be confirmed.
+
+![Delete Booking](documentation/readme_images/delete-booking.PNG)
+
+* Alert messages
+    * For every action there is an alert message to notify user
+    * Here is one example
+
+![Alert Message](documentation/readme_images/delete-message.PNG)
+
+* Admin Features
+    * Django built in admin panel allows admin control over the website.
+    * Admin can access admin panel through his navigation bar
+    * Can add, update, delete cabins.
+    * Create amenities, update existing amenities which are connected to the cabins.
+    * Delete accounts, verifiy emails, delete bookings...
+
+* Error Pages
+    * There are custom 404 and 500 error pages set up.
+    * They contain buttons to redirect to home page if there is an error.
+
+![Error 404](documentation/readme_images/error.PNG)
+![Error 500](documentation/readme_images/500-error-page.PNG)
+
+### Features Left to Implement 
+
+* User Reviews: Allow users to leave reviews and ratings for cabins they have booked, providing valuable feedback for other users.
+* Advanced Search: Implement an advanced search functionality, enabling users to search for cabins based on specific criteria such as price range, amenities, and availability.
+* Cabin Recommendations: Develop a recommendation engine that suggests cabins to users based on their previous bookings, interests, or preferences.
+* Online Payment: Implement an online payment system to allow users to securely make payments for their bookings directly through the website.
+* For the purposes of this project these implemenation were not necessary.
+
+## Technologies Used
+
+### Languages Used
+
+* [HTML5](https://en.wikipedia.org/wiki/HTML5)
+* [CSS3](https://en.wikipedia.org/wiki/CSS)
+* [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+* [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
+
+### Databases Used
+
+* [ElephantSQL](https://www.elephantsql.com/) - Postgres database
+* [Cloudinary](https://cloudinary.com/) - Online static file storage
+
+### Frameworks Used
+
+* [Django](https://www.djangoproject.com/) - Python framework
+* [Bootstrap 4.6.1](https://getbootstrap.com/docs/4.6/getting-started/introduction/) - CSS framework
+
+### Programs Used
+
+* [Github](https://github.com/) - Storing the code online
+* [Gitpod](https://www.gitpod.io/) - To write the code.
+* [Heroku](https://www.heroku.com/) - Used as the cloud-based platform to deploy the site.
+* [Google Fonts](https://fonts.google.com/) - Import main font the website.
+* [Figma](https://www.figma.com/) - Used to create wireframes and schemes
+* [Craiyon](https://www.craiyon.com/) - Generate AI images of cabins and logo based on my words descriptions
+* [Am I Responsive](https://ui.dev/amiresponsive) - To show the website image on a range of devices.
+* [Git](https://git-scm.com/) - Version control
+* [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) - Templating engine
+* [Favicon Generator](https://realfavicongenerator.net/) - Used to create a favicon
+* [JSHint](https://jshint.com/) - Used to validate JavaScript
+* [W3C Markup Validation Service](https://validator.w3.org/) - Used to validate HTML
+* [CSS Validation Service](https://jigsaw.w3.org/css-validator/) - Used to validate CSS
+* [CI Python Linter](https://pep8ci.herokuapp.com/#) - Used to validate Python
+* [Colormind](http://colormind.io/) - Color Scheme
+
+## Deployment and Local Developement
+
+Live deployment can be found on this [View Woodland Whispers Retreat live website here](https://woodland-whispers-retreat.herokuapp.com/)
+
+### Local Developement
+
+#### How to Fork
+1. Log in(or Sign Up) to Github
+2. Go to repository for this project [Woodland Whispers Retreat](https://github.com/Thomas-Tomo/woodland-whispers-retreat)
+3. Click the fork button in the top right corner
+
+#### How to Clone
+1. Log in(or Sign Up) to Github
+2. Go to repository for this project [Woodland Whispers Retreat](https://github.com/Thomas-Tomo/woodland-whispers-retreat)
+3. Click on the code button, select whether you would like to clone with HTTPS, SSH or GitHub CLI and copy the link shown.
+4. Open the terminal in your code editor and change the current working directory to the location you want to use for the cloned directory.
+5. Type the following command in the terminal (after the git clone you will need to paste the link you copied in step 3 above)
+6. Set up a virtual environment (this step is not required if you are using the Code Institute Template in GitPod as this will already be set up for you).
+7. Install the packages from the requirements.txt file - run Command pip3 install -r requirements.txt
+
+### ElephantSQL Database
+[Woodland Whispers Retreat](https://github.com/Thomas-Tomo/woodland-whispers-retreat) is using [ElephantSQL](https://www.elephantsql.com/) PostgreSQL Database
+
+1. Click Create New Instance to start a new database.
+2. Provide a name (this is commonly the name of the project: tribe).
+3. Select the Tiny Turtle (Free) plan.
+4. You can leave the Tags blank.
+5. Select the Region and Data Center closest to you.
+6. Once created, click on the new database name, where you can view the database URL and Password.
+
+### Cloudinary
+[Woodland Whispers Retreat](https://github.com/Thomas-Tomo/woodland-whispers-retreat) is using [Cloudinary](https://cloudinary.com/)
+1. For Primary interest, you can choose Programmable Media for image and video API.
+2. Optional: edit your assigned cloud name to something more memorable.
+3. On your Cloudinary Dashboard, you can copy your API Environment Variable.
+4. Be sure to remove the CLOUDINARY_URL= as part of the API value; this is the key.
+
+
+
+### Heroku Deployment
+* Log into [Heroku](https://www.heroku.com/) account or create an account.
+* Click the "New" button at the top right corner and select "Create New App".
+* Enter a unique application name
+* Select your region
+* Click "Create App"
+
+#### Prepare enviroment and settings.py
+* In your GitPod workspace, create an env.py file in the main directory.
+* Add the DATABASE_URL value and your chosen SECRET_KEY value to the env.py file.
+* Update the settings.py file to import the env.py file and add the SECRETKEY and DATABASE_URL file paths.
+* Comment out the default database configuration.
+* Save all files and make migrations.
+* Add the Cloudinary URL to env.py
+* Add the Cloudinary libraries to the list of installed apps.
+* Add the STATIC files settings - the url, storage path, directory path, root path, media url and default file storage path.
+* Link the file to the templates directory in Heroku.
+* Change the templates directory to TEMPLATES_DIR
+* Add Heroku to the ALLOWED_HOSTS list the format ['app_name.heroku.com', 'localhost']
+
+#### Add the following Config Vars in Heroku:
+
+* SECRET_KEY - This can be any Django random secret key
+* CLOUDINARY_URL - Insert your own Cloudinary API key
+* PORT = 8000
+* DISABLE_COLLECTSTATIC = 1 - this is temporary, and can be removed for the final deployment
+* DATABASE_URL - Insert your own ElephantSQL database URL here
+
+#### Heroku needs two additional files to deploy properly
+
+* requirements.txt
+* Procfile
+
+#### Deploy
+
+1. Make sure DEBUG = False in the settings.py
+2. Go to the deploy tab on Heroku and connect to GitHub, then to the required repository.
+3. Scroll to the bottom of the deploy page and either click Enable Automatic Deploys for automatic deploys or Deploy Branch to deploy manually. Manually deployed branches will need re-deploying each time the GitHub repository is updated.
+4. Click 'Open App' to view the deployed live site.
+
+Site is now live
+
+## Testing
+Please see  [TESTING.md](TESTING.md) for all the detailed testing performed.
+
+## References
+### Docs
+
+* [Stack Overflow](https://stackoverflow.com/)
+* [Code Institute](https://learn.codeinstitute.net/dashboard)
+* [Bootstrap 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
+* [Django docs](https://docs.djangoproject.com/en/4.2/releases/3.2/)
+* [Django Allauth](https://django-allauth.readthedocs.io/en/latest/)
+* [Django and Static Assets](https://devcenter.heroku.com/articles/django-assets)
+* [Cloudinary](https://cloudinary.com/documentation/diagnosing_error_codes_tutorial)
+* [Google](https://www.google.com/)
+
+### Content
+
+* All of the content is imaginary and written by the developer, me, Thomas-Tomo Domitrovic.
+* All images were generated with Artificial intelligence (AI) based on my word input and description of the cabins and logo.
+
+### Acknowledgments
+
+* I would like to thank my mentor for support and feedback throughout this project, Mitko Bachvarov.
+* I would also like to extend my appreciation to the Slack community for their continuous engagement and willingness to share knowledge. The collaborative environment provided a platform for learning, troubleshooting, and gaining inspiration from fellow developers.
