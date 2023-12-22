@@ -184,7 +184,9 @@ class AddRecipeForm(forms.ModelForm):
     
     def clean_title(self):
         title = self.cleaned_data.get('title')
-        if Recipe.objects.filter(title=title).exists():
+        title_lower = title.lower()
+
+        if Recipe.objects.filter(title__iexact=title_lower).exists():
             raise forms.ValidationError("The recipe name already exists. Please provide a different name!")
         return title
 

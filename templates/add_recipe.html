@@ -21,13 +21,17 @@
       </div>
    </div>
 </div> -->
-{% if messages %}
-  <ul class="messages">
-    {% for message in messages %}
 
-    {% endfor %}
-  </ul>
-{% endif %}
+<div class="container">
+   <div class="row">
+      <div class="col-md-8 offset-md-2">
+         {% for message in messages %}
+
+         {% endfor%}
+      </div>
+   </div>
+</div>
+
 <div class="container-lg">
 
    <div class="row">
@@ -42,9 +46,11 @@
                <div class="col-lg-8 offset-lg-2 col-12 my-lg-4 my-2 title-box">
                   <h2>{{ form.title.label_tag }}</h2>
                   {{ form.title }}
+
                   {% if form.title.errors %}
-                  <div class="alert alert-danger">
+                  <div class="alert alert-danger alert-dismissible fade show form-alert" id="title-error">
                      {{ form.title.errors.0 }}
+                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
                   {% endif %}
                </div>
@@ -93,8 +99,9 @@
 
                <!-- end of the test -->
                {% if form.instructions.errors %}
-               <div class="alert alert-danger">
+               <div class="alert alert-danger alert-dismissible fade show form-alert">
                   {{ form.instructions.errors.0 }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                </div>
                {% endif %}
                <!-- Recipe image section -->
@@ -111,8 +118,9 @@
                         <h2>Add Recipe Image Here:</h2>
                         {{ form.featured_image }}
                         {% if form.featured_image.errors %}
-                        <div class="alert alert-danger">
+                        <div class="alert alert-danger alert-dismissible fade show form-alert">
                            {{ form.featured_image.errors.0 }}
+                           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                         {% endif %}
                      </div>
@@ -122,8 +130,9 @@
                   <h2>Provide Short Description:</h2>
                   {{ form.excerpt }}
                   {% if form.excerpt.errors %}
-                  <div class="alert alert-danger">
+                  <div class="alert alert-danger alert-dismissible fade show form-alert">
                      {{ form.excerpt.errors.0 }}
+                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
                   {% endif %}
                </div>
@@ -134,8 +143,9 @@
                         {{ form.prep_time }} <span>minutes</span>
                      </div>
                      {% if form.prep_time.errors %}
-                     <div class="alert alert-danger">
+                     <div class="alert alert-danger alert-dismissible fade show form-alert">
                         {{ form.prep_time.errors.0 }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                      </div>
                      {% endif %}
                      <div class="col-lg-6 col-12">
@@ -143,8 +153,9 @@
                         {{ form.cook_time }} <span>minutes</span>
                      </div>
                      {% if form.cook_time.errors %}
-                     <div class="alert alert-danger">
+                     <div class="alert alert-danger alert-dismissible fade show form-alert">
                         {{ form.cook_time.errors.0 }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                      </div>
                      {% endif %}
                   </div>
@@ -153,8 +164,9 @@
                   <h2>Number Of Servings:</h2>
                   {{ form.servings }}
                   {% if form.servings.errors %}
-                  <div class="alert alert-danger">
+                  <div class="alert alert-danger alert-dismissible fade show form-alert">
                      {{ form.servings.errors.0 }}
+                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
                   {% endif %}
                </div>
@@ -195,25 +207,27 @@
                         <div class="input-group my-1">
                            {{ form.name }}
                            {% if form.name.errors %}
-                           <div class="alert alert-danger">
-                               {{ form.name.errors.0 }}
+                           <div class="alert alert-danger alert-dismissible fade show form-alert">
+                              {{ form.name.errors.0 }}
+                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                            </div>
                            {% endif %}
 
                            {{ form.quantity }}
                            {% if form.quantity.errors %}
-                           <div class="alert alert-danger">
-                               {{ form.quantity.errors.0 }}
+                           <div class="alert alert-danger alert-dismissible fade show form-alert">
+                              {{ form.quantity.errors.0 }}
+                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                            </div>
                            {% endif %}
                            {{ form.unit }}
                            {{ form.DELETE }} {# Include the DELETE input for each formset row #}
                            {{ form.id }}
                            <button class="btn btn-outline-secondary remove-ingredient" type="button"
-                               name="remove-ingredient"><i class="fa-solid fa-minus"></i></button>
+                              name="remove-ingredient"><i class="fa-solid fa-minus"></i></button>
                            <button class="btn btn-outline-secondary add-ingredient" type="button"
-                               name="add-ingredient"><i class="fa-regular fa-plus"></i></button>
-                       </div>
+                              name="add-ingredient"><i class="fa-regular fa-plus"></i></button>
+                        </div>
 
                      </div>
                      {% endfor %}

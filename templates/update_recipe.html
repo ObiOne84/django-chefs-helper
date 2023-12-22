@@ -18,8 +18,9 @@
                         <h2>{{ update_recipe_form.title.label_tag }}</h2>
                         {{ update_recipe_form.title }}
                         {% if update_recipe_form.title.errors %}
-                        <div class="alert alert-danger">
+                        <div class="alert alert-danger alert-dismissible fade show form-alert" id="title-error-update">
                             {{ update_recipe_form.title.errors.0 }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                         {% endif %}
                     </div>
@@ -43,7 +44,7 @@
                         </div>
                         <div class="empty-error alert alert-danger hide">
                             <!-- error message goes here -->
-                         </div>
+                        </div>
                     </div>
                     <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 add-image">
                         <h2>Update Recipe Image Here:</h2>
@@ -62,8 +63,9 @@
                         <br>
                         {{ update_recipe_form.featured_image }}
                         {% if update_recipe_form.featured_image.errors %}
-                        <div class="alert alert-danger">
+                        <div class="alert alert-danger alert-dismissible fade show form-alert">
                             {{ update_recipe_form.featured_image.errors.0 }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                         {% endif %}
                     </div>
@@ -76,8 +78,9 @@
                             {{ update_recipe_form.excerpt }}
                         </p>
                         {% if update_recipe_form.excerpt.errors %}
-                        <div class="alert alert-danger">
+                        <div class="alert alert-danger alert-dismissible fade show form-alert">
                             {{ update_recipe_form.excerpt.errors.0 }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                         {% endif %}
                     </div>
@@ -87,8 +90,9 @@
                                 <h2>Prep Time:</h2>
                                 {{ update_recipe_form.prep_time }} <span>minutes</span>
                                 {% if update_recipe_form.prep_time.errors %}
-                                <div class="alert alert-danger">
+                                <div class="alert alert-danger alert-dismissible fade show form-alert">
                                     {{ update_recipe_form.prep_time.errors.0 }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                                 {% endif %}
                             </div>
@@ -97,8 +101,9 @@
                                 <h2>Cook Time: </h2>
                                 {{ update_recipe_form.cook_time }} <span>minutes</span>
                                 {% if update_recipe_form.cook_time.errors %}
-                                <div class="alert alert-danger">
+                                <div class="alert alert-danger alert-dismissible fade show form-alert">
                                     {{ update_recipe_form.cook_time.errors.0 }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                                 {% endif %}
                             </div>
@@ -108,8 +113,9 @@
                         <h2>Number Of Servings:</h2>
                         {{ update_recipe_form.servings }}
                         {% if update_recipe_form.servings.errors %}
-                        <div class="alert alert-danger">
+                        <div class="alert alert-danger alert-dismissible fade show form-alert">
                             {{ update_recipe_form.servings.errors.0 }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                         {% endif %}
                     </div>
@@ -169,15 +175,17 @@
                             <div class="input-group my-1">
                                 {{ form.name }}
                                 {% if form.name.errors %}
-                                <div class="alert alert-danger">
+                                <div class="alert alert-danger alert-dismissible fade show form-alert">
                                     {{ form.name.errors.0 }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                                 {% endif %}
-    
+
                                 {{ form.quantity }}
                                 {% if form.quantity.errors %}
-                                <div class="alert alert-danger">
+                                <div class="alert alert-danger alert-dismissible fade show form-alert">
                                     {{ form.quantity.errors.0 }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                                 {% endif %}
                                 {{ form.unit }}

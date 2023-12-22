@@ -33,6 +33,15 @@ $(document).ready(function () {
     hideButton('#msg');
     hideButton('#alert-rated');
     hideButton('#no-recipe-alert');
+    hideButton('#title-error');
+
+    const hideAlert = (alert) => {
+        setTimeout(function () {
+            $(alert).hide();
+        }, 9000);
+    }
+
+    hideAlert('.form-alert');
 
     // setting star rating 
     $('.star-rating i').on('click', function () {
