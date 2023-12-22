@@ -176,6 +176,7 @@ class AddRecipeView(LoginRequiredMixin, FormView):
         return super().form_valid(form)
 
     def form_invalid(self, form):
+        messages.error(self.request, 'There was an error in the form submission. Please check the errors.')
         print("Form or Formset is invalid")
         print("Form errors:", form.errors)
         print("Formset errors:", self.formset.errors)

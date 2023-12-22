@@ -21,7 +21,13 @@
       </div>
    </div>
 </div> -->
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
 
+    {% endfor %}
+  </ul>
+{% endif %}
 <div class="container-lg">
 
    <div class="row">
