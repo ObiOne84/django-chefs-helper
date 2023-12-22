@@ -1,11 +1,5 @@
 {% extends "base.html" %}
 
-{% block head %}
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon"
-    href="https://res.cloudinary.com/dcrbeonr9/image/upload/v1700594313/favicon-app_qs3q5b.ico">
-{% endblock %}
-
 {% block content %}
 
 <!-- Hero section -->
@@ -23,7 +17,7 @@
     {% if user.is_authenticated %}
     {% else %}
     <div class="row position-absolute bottom-0 start-50 translate-middle-x hero-box" style="z-index: 2;">
-        <a href="{% url 'account_signup' %}" type="button" class="btn btn-outline-danger btn-lg my-4 mx-2 p-2">Join
+        <a href="{% url 'account_signup' %}" class="btn btn-outline-danger btn-lg my-4 mx-2 p-2">Join
             Now!</a>
     </div>
     {% endif %}
