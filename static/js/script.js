@@ -431,6 +431,10 @@ $(document).ready(function () {
             setTimeout(function () {
                 $('.empty-error').empty().hide();
             }, 8000);
+
+            // Focus on the empty field
+            reviewField.focus();
+            
             return false;
         }
 
