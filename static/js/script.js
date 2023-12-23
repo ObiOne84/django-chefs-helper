@@ -112,8 +112,10 @@ $(document).ready(function () {
         var formsetRow = formsetContainer.find(".formset-row.hide:first");
         var nameField = formsetRow.find('input[name$="name"]');
         var quantityField = formsetRow.find('input[name$="quantity"]');
+        var alertContainer = formsetRow.find('.ingredient-alert');
 
         if (formsetRow.length) {
+            alertContainer.hide();
             formsetRow.removeClass('hide');
             formsetRow.addClass('show');
             formsetRow.find("[name$='-DELETE']").prop('checked', false);
@@ -135,6 +137,7 @@ $(document).ready(function () {
         var formsetRows = $('.formset-row.show'); // Get all visible rows
         var nameField = formsetRow.find('input[name$="name"]');
         var quantityField = formsetRow.find('input[name$="quantity"]');
+
 
         if (formsetRows.length > 1) {
             nameField.val('');
@@ -434,7 +437,7 @@ $(document).ready(function () {
 
             // Focus on the empty field
             reviewField.focus();
-            
+
             return false;
         }
 

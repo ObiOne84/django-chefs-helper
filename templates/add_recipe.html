@@ -207,7 +207,7 @@
                         <div class="input-group my-1">
                            {{ form.name }}
                            {% if form.name.errors %}
-                           <div class="alert alert-danger alert-dismissible fade show form-alert">
+                           <div class="alert alert-danger alert-dismissible fade show form-alert ingredient-alert">
                               {{ form.name.errors.0 }}
                               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                            </div>
@@ -215,7 +215,7 @@
 
                            {{ form.quantity }}
                            {% if form.quantity.errors %}
-                           <div class="alert alert-danger alert-dismissible fade show form-alert">
+                           <div class="alert alert-danger alert-dismissible fade show form-alert ingredient-alert">
                               {{ form.quantity.errors.0 }}
                               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                            </div>
