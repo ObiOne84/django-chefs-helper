@@ -37,11 +37,12 @@
                         </div>
                     </form>
 
-                    <h2 class="d-inline special-text">
+                    <h2 class="d-inline">
                         {% if search_query %}
-                            Search Results for "{{ search_query }}"
+                        Search Results for "{{ search_query }}"
                         {% else %}
-                            Body - Index Page! <i class="fa-solid fa-utensils"></i>
+                        Explore Our Culinary Collection: A Feast of Delicious Recipes!
+                        <i class="fa-solid fa-utensils"></i>
                         {% endif %}
                     </h2>
 
@@ -99,9 +100,9 @@
                                         {{ recipe.number_of_likes }}
                                         <i class="fa-solid fa-star full-stars"></i>
                                         {% if recipe.total_ratings > 0 %}
-                                            {{ recipe.calculate_average_rating|floatformat:1 }}
+                                        {{ recipe.calculate_average_rating|floatformat:1 }}
                                         {% else %}
-                                            0
+                                        0
                                         {% endif %}
                                     </span>
                                 </div>

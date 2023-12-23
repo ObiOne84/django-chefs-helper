@@ -8,9 +8,10 @@ from django.db.models import Avg
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
+
 class RecipeIngredient(models.Model):
     name = models.CharField(max_length=300)
-    quantity=models.DecimalField(max_digits=6, decimal_places=2)
+    quantity = models.DecimalField(max_digits=6, decimal_places=2)
     unit = models.CharField(max_length=50)
     recipe = models.ForeignKey('Recipe', on_delete=models.CASCADE)
 
@@ -21,14 +22,20 @@ class RecipeIngredient(models.Model):
 class Recipe(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True, blank=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="recipes")
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="recipes"
+        )
     created_on = models.DateTimeField(auto_now=True)
     updated_on = models.DateTimeField(auto_now=True)
     instructions = models.TextField()
-    ingredients = models.ManyToManyField(RecipeIngredient, related_name='ingredients')
+    ingredients = models.ManyToManyField(
+        RecipeIngredient, related_name='ingredients'
+        )
     featured_image = CloudinaryField('image', default='placeholder')
     excerpt = models.TextField(blank=True)
-    likes = models.ManyToManyField(User, related_name="liked_recipes", blank=True)
+    likes = models.ManyToManyField(
+        User, related_name="liked_recipes", blank=True
+        )
     prep_time = models.IntegerField(blank=True, null=True)
     cook_time = models.IntegerField(blank=True, null=True)
     servings = models.IntegerField(default=1)
@@ -41,12 +48,14 @@ class Recipe(models.Model):
         )
     total_ratings = models.IntegerField(default=0)
     status = models.IntegerField(choices=STATUS, default=0)
-    rated_users = models.ManyToManyField(User, related_name="rated_recipes", blank=True)
+    rated_users = models.ManyToManyField(
+        User, related_name="rated_recipes", blank=True
+        )
     sum_of_rating = models.FloatField(default=0)
 
     class Meta:
         ordering = ['-title']
-    
+
     def __str__(self):
         return self.title
 
@@ -68,11 +77,11 @@ class Recipe(models.Model):
 
     def calculate_average_rating(self):
         return self.sum_of_rating / self.total_ratings
-    
+
     def has_unapproved_reviews(self):
         return self.reviews.filter(approved=False).exists()
-    
-    # Source: https://studygyaan.com/django/how-to-create-a-unique-slug-in-django 
+
+# source: https://studygyaan.com/django/how-to-create-a-unique-slug-in-django
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
@@ -86,7 +95,9 @@ class Recipe(models.Model):
 
 
 class Review(models.Model):
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='reviews')
+    recipe = models.ForeignKey(
+            Recipe, on_delete=models.CASCADE, related_name='reviews'
+            )
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField(max_length=500)

@@ -39,9 +39,10 @@ Join our thriving culinary community today and elevate your cooking journey with
 * [Color Scheme](#color-scheme)
 * [Recipe Images](#recipe-images)
 * [Wireframes](#wireframes)
+* [Database Scheme](#database-scheme)
 * [Data Model](#data-models)
 * [User Journey](#user-journey)
-* [Database Scheme](#database-scheme)
+
 ### [Security Features](#security-features-1)
 ### [Features](#features-1)
 * [Existing Features](#existing-features)
@@ -256,12 +257,10 @@ Recipe Cards:
 ### Recipe Images
 
 * Various high-quality images of delectable foods are strategically placed to evoke the essence of culinary delight. These images contribute to an immersive and engaging visual experience. All recipe images were created using [Canva](https://www.canva.com/) software.
-<!-- AI image generator [Craiyon](https://www.craiyon.com/). -->
 
 ### Logo
 
 * Logo was also created using [Canva](https://www.canva.com/) software.
-<!-- AI image generator [Craiyon](https://www.craiyon.com/). -->
 
 ### Typography
 
@@ -271,319 +270,415 @@ Recipe Cards:
 
 * Pacifico is a lively and casual cursive font that brings a playful and handwritten charm to your special text. Perfect for creating a personalized and whimsical touch, Pacifico adds character and warmth to headings or elements you want to highlight.
 
----
-<!-- ___________________________________________________________ -->
-START HERE UPDATES
-<!-- __________________________________________________________ -->
----
-
 ### Wireframes
 
 <details>
 <summary> Home Page
 </summary>
 
-![Home Page](documentation/wireframes/home-page.PNG)
-</details>
-
-<details>
-<summary> Home Page when logged in
-</summary>
-
-![Home Page when logged in](documentation/wireframes/home-page-logged-in.PNG)
-</details>
-
-<details>
-<summary> Contact Page
-</summary>
-
-![Contact Page](documentation/wireframes/contact-page.PNG)
-</details>
-
-<details>
-<summary> Cabin Booking Page
-</summary>
-
-![Cabin Booking Page](documentation/wireframes/cabin-booking-page.PNG)
-</details>
-
-<details>
-<summary> Make a Booking Page
-</summary>
-
-![Make a Booking Page](documentation/wireframes/make-a-booking-page.PNG)
-</details>
-
-<details>
-<summary> My Booking Page
-</summary>
-
-![My Booking Page](documentation/wireframes/my-booking-page.PNG)
-</details>
-
-<details>
-<summary> Edit Booking Page
-</summary>
-
-![Edit Booking Page](documentation/wireframes/edit-booking-page.PNG)
-</details>
-
-<details>
-<summary> Delete Booking Page
-</summary>
-
-![Delete Booking Page](documentation/wireframes/delete-booking-page.PNG)
-</details>
-
-<details>
-<summary> User Login Page
-</summary>
-
-![User Login Page](documentation/wireframes/user-login-page.PNG)
-</details>
-
-<details>
-<summary> User Logout Page
-</summary>
-
-![User Logout Page](documentation/wireframes/user-logout-page.PNG)
+![Home Page](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703345763/wireframe-home-page_qobymk.png)
 </details>
 
 <details>
 <summary> User Sign Up Page
 </summary>
 
-![User Sign Up Page](documentation/wireframes/user-sign-up-page.PNG)
+![User Sign Up Page](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703345881/wireframe-registration-page_i3wdcc.png)
 </details>
 
-### Data Models
+<details>
+<summary> User Login Page
+</summary>
 
-1. AllAuth User Model
-    * Django Allauth, the User model is the default user model provided by the Django authentication system
-    * The User entity has a one-to-many relationship with the Booking entity. This means that a User can have multiple Bookings, but each Booking is associated with only one User.
----
-2. Amenity Model
-    * Data model created so admin can add amenities to the cabin booking, and regulate the name and price of the amenities
-    * Only Admin can change the data in the backend.
-    * User can book those amenities through the Booking Model
-    * An Amenity can be associated with multiple Cabins, and a Cabin can have multiple Amenities. This is represented by the many-to-many relationship between Amenity and Cabin.
-    * There are two amenites set up, which are cave exploration and kayak rental
----
-3. Cabin Model
-    * A Cabin can have multiple Bookings, but each Booking is associated with only one Cabin. This is represented by the foreign key relationship between Cabin and Booking.
-    * Admin can add cabins through djangos admin panel.
-    * Only Admin can change the data in the backend.
-    * User can see the cabin information and image based on the chosen cabin.
-    * Information provided is price, image, description, number of bedrooms, maximum guests, amenities
----
-4. Booking Model
-    * A User can have multiple Bookings, but each Booking is associated with only one User. This is represented by the foreign key relationship between User and Booking.
-    * Booking model has a feature that prevents overlapping bookings, so users dont book on the same dates
-    * Total price is also calculated in the backend that is then displayed to user to show the total price of the booking, that includes if a user also adds amenities to the booking.
-    * Full CRUD functionality is available to the user.
-    * User in order to book has to fill check-in, check-out dates, number of guests and optional amenities
-    ---
+![User Login Page](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703345864/wireframe-login-page_y3q8gi.png)
+</details>
 
-### User Journey 
+<details>
+<summary> Add Recipe Page / Update Recipe Page
+</summary>
 
-![User Journey](documentation/readme_images/user-journey.PNG)
+![Add and Update Recipe Page](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703346206/wireframe-add-recipe_qj9ury.png)
+</details>
+
+<details>
+<summary> Recipe Detail View Page
+</summary>
+
+![Recipe Detail View Page](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703346404/wireframe-recipe-view_qjkzsd.png)
+</details>
+
+<details>
+<summary> Recipe Images Page
+</summary>
+
+![Recipe Images Page](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703346478/wireframe-recipes-page_ovghpm.png)
+</details>
 
 ### Database Scheme
 
 Entity Relationship Diagram (ERD)
 
-![DataScheme](documentation/readme_images/data-scheme.PNG)
+> The current data scheme comprises models essential for the Minimum Viable Product (MVP) of the recipe management system. However, future updates are planned to enhance the application's functionality. The upcoming features include the addition of Categories to recipes, enabling users to better organize and filter recipes by category and allergens. This enhancement ensures that the system accommodates dietary needs and provides nutritional information for each ingredient and meal created using the recipes.
+>
+> In subsequent phases, the system will introduce a Supplier model to transform the application into a comprehensive tool for the hospitality sector. This addition will facilitate inventory management, catering to the specific needs of commercial users. The planned updates align with a strategic roadmap, progressively expanding the capabilities of the recipe management system to meet evolving user requirements and industry demands.
 
-* The Amenity entity represents amenities that can be associated with cabins, with fields id as the primary key, name for the amenity's name, and price for the amenity's price.
-* The Cabin entity represents individual cabin listings, with fields id as the primary key, name for the cabin's name, description for the cabin's description, price for the cabin's price, image for the cabin's image, max_guests for the maximum number of guests allowed, and bedrooms for the number of bedrooms in the cabin.
-* The Booking entity represents a booking made by a user for a specific cabin, with fields id as the primary key, cabin_id as a foreign key referencing the Cabin entity, user_id as a foreign key referencing the User entity, check_in_date for the booking's check-in date, check_out_date for the booking's check-out date, num_guests for the number of guests in the booking, cave_exploration_tickets for the optional quantity of cave exploration tickets, kayak_rentals for the optional quantity of kayak rentals, and total_price for the total price of the booking.
+<details>
+<summary> Data Scheme
+</summary>
 
-This data scheme allows for the management of users, amenities, cabins, and bookings. Users can make bookings for specific cabins, and each booking can have associated details such as the check-in and check-out dates, number of guests, and optional extras.
+![Data Scheme](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703347474/Database_ER_diagram_crow_s_foot_-_Database_ER_diagram_crow_s_foot_bowogm.png)
+</details>
+
+### Data Models
+
+1. Allauth User Model
+
+* Django Allauth is a third-party Django package that provides a set of authentication, registration, and account management functionality for Django web applications. It's designed to handle various aspects of user authentication, including login, registration, and more.
+* Django Allauth provides the default User model for authentication within the recipe management system.
+* The User etnity has one-to-many relationship with the Recipe entity, allowing each User to create a multiple recipes. Also, each individual recipe is associated with only one User, this means that users can create and manage their own collection of recipes, and each recipe is attributed to a specific user..
+
+---
+
+2. Recipe Model
+
+* The Recipe model in the system represents a culinary recipe and encapsulates various attributes, including the recipe's title, author, creation/update timestamps, instructions, ingredients, featured image, and additional details related to preparation and user interactions.
+
+* Fields:
+    * title: CharField for the title of the recipe, ensuring uniqueness.
+    * slug: SlugField for a URL-friendly version of the title.
+    * author: ForeignKey to the User model, establishing a many-to-one relationship.
+    * created_on: DateTimeField for the creation timestamp.
+    * updated_on: DateTimeField for the last update timestamp.
+    * instructions: TextField for the detailed recipe instructions.
+    * ingredients: ManyToManyField to the RecipeIngredient model, forming a many-to-many relationship.
+    * featured_image: CloudinaryField for storing images, with a default placeholder image.
+    * excerpt: TextField for a brief description or summary (optional).
+    * likes: ManyToManyField to the User model, allowing users to express their liking for a recipe.
+    * prep_time: IntegerField for the preparation time in minutes (optional).
+    * cook_time: IntegerField for the cooking time in minutes (optional).
+    * servings: IntegerField for the default number of servings.
+    * rating: FloatField for the overall rating, constrained between 1 and 5.
+    * total_ratings: IntegerField for the total number of ratings.
+    * status: IntegerField with choices representing the status of the recipe (Draft or Published).
+    * rated_users: ManyToManyField to the User model, tracking users who have rated the recipe.
+    * sum_of_rating: FloatField for the cumulative sum of all ratings.
+
+* Meta specifies the default ordering based on the recipe title in descending order.
+
+* Methods:
+    * `__str__(self):` Returns the title of the recipe when converted to a string.
+    * `number_of_likes(self):` Returns the count of likes for the recipe.
+    * `number_of_reviews(self):` Returns the count of reviews for the recipe.
+    * `rate_recipe(self, user, user_rating):` Records a user's rating for the recipe, updating the total rating and user rating history.
+    * `calculate_average_rating(self):` Calculates and returns the average rating for the recipe.
+    * `has_unapproved_reviews(self):` Checks if there are unapproved reviews for the recipe.
+    * Custom save method to create a unique slug for each recipe, ensuring a URL-friendly representation.
+
+* This model empowers the system to manage and present a diverse array of recipes, supporting interactions such as liking, rating, and reviewing. The inclusion of features like unique slugs and status tracking enhances the robustness of the recipe management system.
+
+---
+
+3. RecipeIngredient Model
+
+* The RecipeIngredient model represents an individual ingredient used in a recipe. It encapsulates information such as the ingredient's name, quantity, unit of measurement, and the recipe to which it belongs.
+
+* Fields:
+    * name: CharField for the name of the ingredient.
+    * quantity: DecimalField for the quantity of the ingredient.
+    * unit: CharField for the unit of measurement.
+    * recipe: ForeignKey to the Recipe model, establishing a many-to-one relationship.
+
+* This model serves as a crucial component in the recipe system, allowing for the detailed specification of each ingredient within a recipe. The ForeignKey establishes a link to the associated recipe, facilitating the organization and retrieval of ingredient information when needed. The `__str__` method provides a readable string representation for ease of use and display.
+
+---
+
+4. Review Model
+
+* The Review model represents user reviews for a specific recipe within the recipe management system. It includes essential details such as the reviewer's name, email, the content of the review, creation timestamp, and an approval status.
+
+* Fields:
+
+    * recipe: ForeignKey to the Recipe model, establishing a many-to-one relationship.
+    * name: CharField for the name of the reviewer.
+    * email: EmailField for the email of the reviewer.
+    * body: TextField for the content of the review.
+    * created_on: DateTimeField for the creation timestamp.
+    * approved: BooleanField indicating whether the review has been approved (default is False).
+
+* Meta specifies the default ordering based on the creation timestamp in ascending order.
+
+* This model plays a crucial role in collecting and managing user feedback for recipes. The ForeignKey establishes a link to the associated recipe, allowing for easy retrieval and organization of reviews. The approval status (approved) provides a mechanism to control the visibility of reviews, with the default set to False. The `__str__` method ensures a meaningful and readable representation of reviews when converted to a string. The ordering meta attribute ensures that reviews are sorted based on their creation timestamp.
+
+---
+
+### User Journey 
+
+![User Journey](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703352336/user-journey_qhdoqh.png)
+
 
 ## Security Features
 
 ### User Authentication
 
-* Django Allauth is a popular authentication and authorization library for Django, which provides a set of features for managing user authentication, registration, and account management.
+* Django Allauth is a powerful and comprehensive third-party package for handling authentication, registration, and account management in Django applications. It provides several security features to help protect user accounts and sensitive information.
 
-### Login Decorator
+### LoginRequiredMixin
 
-* booking_create, booking_success, booking_overview, edit_booking, and delete_booking: These views involve operations related to user bookings and require authentication with the login_required decorator.
-* This ensures that only authenticated users can access these views.
+* In Django, LoginRequiredMixin is a mixin class provided by the django.contrib.auth.mixins module. It is used in class-based views to require that the user making the request must be authenticated. If the user is not authenticated, the mixin will automatically redirect the user to the login page.
+
+* You can use LoginRequiredMixin by inheriting it in your class-based views. Typically, it's used as the leftmost mixin in the inheritance chain to ensure that authentication checks are performed before any other mixins. If the user is authenticated, the view proceeds as normal. If the user is not authenticated, the LoginRequiredMixin automatically redirects them to the login page. 
+
+* Using LoginRequiredMixin helps in enforcing authentication requirements for views where you want to ensure that only authenticated users have access. It simplifies the process of handling authentication checks and redirects in class-based views.
 
 ### CSRF Protection
 
-* Django provides built-in protection against Cross-Site Request Forgery (CSRF) attacks. CSRF tokens are generated for each user session, and they are required to submit forms or perform state-changing actions. When a user logs out, the session and associated CSRF token are invalidated, making it difficult for an attacker to forge a valid request using a copied URL.
+* In Django, CSRF (Cross-Site Request Forgery) protection is implemented using a CSRF token. The CSRF token is a unique value associated with a user's session, and it is used to verify the legitimacy of a form submission. When a user logs in or visits a page with a form, Django generates a unique CSRF token for that user's session. Django provides built-in middleware (django.middleware.csrf.CsrfViewMiddleware) that automatically checks and enforces CSRF protection for all incoming POST requests.
+The middleware ensures that each form submission includes a valid CSRF token.
+By incorporating these CSRF protection mechanisms, Django helps prevent attackers from executing malicious actions on behalf of authenticated users. The use of unique tokens tied to user sessions adds an additional layer of security, ensuring that form submissions are authorized and originate from legitimate sources.
+
+* When rendering an HTML form, Django includes the CSRF token as a hidden input field within the form. The {% csrf_token %} template tag is used to include the CSRF token in the form. See example below:
+
+```html
+<form method="post" action="{% url 'custom_view' %}">
+    {% csrf_token %}
+    {% form.as_p %}
+
+    <button type="submit">Submit</button>
+</form>
+```
+
+### Custom Views Security Measures
+
+* Overall, views incorporate authentication checks, form validation, and ownership verification to secure various operations. It's important to note that Django's built-in features, such as the authentication system, contribute to the overall security of the application.
+RecipeList:
+
+    * The RecipeDetails view requires authentication (LoginRequiredMixin) to access recipe details. It includes forms for adding reviews and ratings. Security measures include validating user input using Django forms (ReviewForm and RecipeForm), ensuring that only authenticated users can submit reviews and ratings.
+    * The RecipeLike view handles user likes for a recipe. It toggles whether a user has liked a recipe. The security measure includes checking if the user is authenticated before allowing them to like or unlike a recipe.
+    * The AddRecipeView view allows authenticated users to add new recipes. Security measures include using LoginRequiredMixin to ensure that only authenticated users can add recipes. It also validates user input using Django forms (AddRecipeForm and AddIngredientForm). The view handles both the recipe and its associated ingredients.
+    * The UpdateRecipeView view allows authenticated users to update their recipes. It includes security measures such as using LoginRequiredMixin to ensure only authenticated users can update recipes and validating user input using forms (UpdateRecipeForm and AddIngredientForm). It checks if the user trying to update the recipe is the actual owner.
+    * The DeleteRecipeView view allows authenticated users to delete their recipes. Security measures include using LoginRequiredMixin to ensure only authenticated users can delete recipes. It checks if the user trying to delete the recipe is the actual owner.
 
 ### Form Validation
 
-* The booking_create view validates form input using the BookingForm class. It checks for various validation errors, such as the number of guests, check-in and check-out dates, overlapping bookings, and additional validations for cave exploration tickets and kayak rentals.
+* ReviewForm and RecipeForm is a basic form, and validation is handled by the default behavior of Django's ModelForm.
 
-### Overlapping Booking
-
-* In the booking_create view, the code checks for overlapping bookings by querying the database for existing bookings that match certain conditions. It compares the selected check-in and check-out dates with the dates of existing bookings for the same cabin. If any overlapping bookings are found, an error message is added to the form, and a warning message is displayed to the user.
-
-### Custom error pages
+* AddIngredientForm uses Django form field types to ensure correct data types for name, quantity, and unit. Also, it specifies the available choices for the unit field and u tilizes attributes to control the appearance of form fields. Moreover, it sets specific constraints on the quantity field, limiting it to positive numbers and defining the maximum and minimum values. Uses the max_digits and decimal_places attributes for the quantity field to handle decimal precision.
+AddRecipeForm and UpdateRecipeForm ensure that the title is unique using a custom clean_title method. Also, they set specific constraints on the prep_time, cook_time, and servings fields, limiting them to positive numbers and defining maximum and minimum values. Furthermore, validate the size of the featured_image to ensure it is no larger than 5 MB. Next, customizes the appearance and behavior of form fields using widget attributes. Finally, the form methods checks for the uniqueness of the recipe title to prevent duplicate entries.
+ 
+<!-- ### Custom error pages
 
 * 404 Error Page, provides user with a button the redirect to home page.
-* 500 Error Page, provides user with a button the redirect to home page.
+* 500 Error Page, provides user with a button the redirect to home page. -->
 
 ## Features
 
-* Home page showcases a rotating carousel that contains available cabins
-* The website features a comprehensive list of amenities accompanied by detailed descriptions for each one.
-* User can make an account and login
-* When logged in, users get access to the cabin overview and are able to book cabins
-* Users can edit and delete their bookings
-* Every user action is accompanied by a corresponding message to ensure that users are promptly notified of any changes or updates.
-* Total price of booking is displayed to users.
+* The home page contains a hero section, with the Join Now button, that allows unregistered users to go directly to the sign-up page. Also, the About section lists the main features of the application's future updates and invites users to register.
+* The application consists of a comprehensive list of recipes.
+* Users can sign up for an account and log in.
+* Once logged in, the user can gain access to:
+    * detailed recipe overview
+    * add a new recipe
+    * update own recipes
+    * delete own recipes
+    * like the recipes (all - only once, and can change)
+    * rate the recipes (all - only once, and cannot change)
+    * leave a review (all, unlimited times)
+* User receives feedback upon completion of the above-listed actions.
+* Average recipe rating is displayed for the user underneath the recipe image.
+* Total number of likes is displayed for the user underneath the recipe image.
+* Total number of reviews and approved reviews are displayed for each recipe, for registered users only.
 
 ### Existing Features
 
 * Home Page
-    * Displays a navigation bar with logo, main heading, amenities details, carousel cabin view, about section, footer with socials
+    * Displays a navigation bar with logo, main heading, hero section, about section, footer with social links.
 
-![Home Page](documentation/readme_images/home-page.PNG)
+![Home Page](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703355820/home-page_o8kxlx.png)
 
-* Once logged in the Sign Up button changes to Book Now button
+* Once logged in the Join Now button disappers.
 
-![Book Now](documentation/readme_images/book-now.PNG)
-
+![Logged in User Home Page](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703356009/django-project/home-page-logged_urehzy.png)
 
 * Logo
-    * Logo was created using [Craiyon](https://www.craiyon.com/) AI image generator, in which I used words to describe the logo and then it was generated.
+    * Logo was also created using [Canva](https://www.canva.com/) software. It is the abbreviation of the Chef's Helper name.
 
-![Logo](documentation/readme_images/logo.PNG)
+        <details>
+        <summary> Logo
+        </summary>
 
-* Navigation Bar
-    * It differs if its a user, admin or just a visitor
+        ![Logo](https://res.cloudinary.com/dcrbeonr9/image/upload/v1700595942/favicon_lr4ymg.ico)
+        </details>
+
+* Navigation Bar differs for visitors, and logged in users.
 
     * Navigation bar for a visitor
 
-    ![Visitor](documentation/readme_images/navigation-bar.PNG)
+        <details>
+        <summary> Navigation bar for website visitors.
+        </summary>
+
+        ![Visitor's Navigation Bar](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703358255/django-project/visitior-nav-bar_vj275d.png)
+        </details>
 
     * Navigation bar for a user
-    ![User](documentation/readme_images/user-navigation-bar.PNG)
-    ![User Dropdown](documentation/readme_images/user-dropdown.PNG)
 
-    * Navigation bar for admin
-    ![Admin](documentation/readme_images/admin-navigation-bar.PNG)
-    ![Admin Dropdown](documentation/readme_images/admin-dropdown.PNG)
+        <details>
+        <summary> Navigation bar for logged in users.
+        </summary>
 
-* Amenities
-    * Description of the amenities which user might like to experience.
-
-![Amenities](documentation/readme_images/amenities.PNG)
-
-* Cabin Carousel
-    * When on home page there is a carousel that displays all available cabins for booking, it also has controls to move left or right, name and description of the cabin, when its clicked it redirects users to cabin overview page and visitors are asked to create an account or login in order to view the cabins in greater detail.
-
-![Cabin Carousel](documentation/readme_images/carousel.PNG)
+        ![Visitor's Navigation Bar](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703358359/django-project/user-nav-bar_bdliwc.png)
+        </details>
 
 * About Section
-    * It contains a short description of Woodland Whispers Retreat and a short lake tale
+    * It contains a description of the main function of the application, and future updates.
 
-![About](documentation/readme_images/about.PNG)
+        <details>
+        <summary> About Us Section.
+        </summary>
+
+        ![About Us Section](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703358749/django-project/about-us_eusr88.png)
+        </details>
 
 * Footer
-    * Contains copyright information, creator and social links which are all linked to the creator of the website, becuase purpouse of this website is educational.
+    * The website contains copyright information, creator details, and social links. The website includes links to the creator's LinkedIn and GitHub profiles. These links serve as a means for users to connect with the creator on professional and collaborative platforms.
 
-![Footer](documentation/readme_images/footer.PNG)
+        <details>
+        <summary> Footer.
+        </summary>
 
-* Contact Page
-    * For educational purposes, the website includes fictional contact information such as an address, phone number, and email. It also includes social links, which are all linked to developer for educational purposes.
+        ![About Us Section](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703361653/django-project/footer_jw6gu9.png)
+        </details>
 
-![Contact](documentation/readme_images/contact.PNG)
+* Sign up Page
+    * The user can sign up by providing a username, and password and repeating the password again. After successful sign-up, the user will be logged in and redirected to the home page.
 
-* Sign up
-    * User can create an account
+        <details>
+        <summary> Sign-up page.
+        </summary>
 
-![Sign Up](documentation/readme_images/sign-up.PNG)
+        ![Sign Up](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703362666/django-project/sign-up-page_eni0dp.png)
+        </details>
 
-* Login
-    * User can login into an account, if they have created one
+        <details>
+        <summary> Success message, user logged in after sign-up completed.
+        </summary>
 
-![Login](documentation/readme_images/login.PNG)
-![Login Message](documentation/readme_images/login-message.PNG)
+        ![Login Message](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703363273/django-project/sign-up-message_ludyix.png)
+        </details>
+        
 
-* Browse Available Cabins
-    * Admin can create cabins through django admin panel
-    * Cabins are paginated to display 6 cabins per page
+* Login Page
+    * Once the user successfully completes signing up for the application, the user can safely log into their own account by providing a username and associated password.
 
-![Browse Cabins](documentation/readme_images/browse-cabins.PNG)
+        <details>
+        <summary> Sign-in page.
+        </summary>
 
-* Cabin pagination
-    * On the bottom of the page
+        ![Sign In](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703363499/django-project/login-page_xvmmsi.png)
+        </details>
 
-![Pagination](documentation/readme_images/pagination.PNG)
+* Browse Available Recipes
+    * Visitors, as well as logged-in users, have the ability to browse through our extensive collection of available recipes. The search functionality allows users to find specific recipes by providing either the complete name or a partial name. Each recipe is accompanied by essential information displayed under the recipe image or image placeholder. This information includes the recipe name, the author, the date when the recipe was added or last updated, the number of likes, and the average rating.
+
+    * Additionally, when hovering over a recipe, users can access a short description (if provided), offering a glimpse into what makes each recipe special.
+
+        <details>
+        <summary> Recipes page.
+        </summary>
+
+        ![Recipes Page](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703364760/django-project/recipes-page-min_b2yo32.png)
+        </details>
+
+        <details>
+        <summary> Search results.
+        </summary>
+
+        ![Search Results](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703365351/django-project/search-results_ziwigt.png)
+        </details>
+
+        <details>
+        <summary> Recipe description on hover.
+        </summary>
+
+        ![Recipe Description](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703365349/django-project/recipe-on-hover_snmqkw.png)
+        </details>
+
+
+* Recipe pagination
+    * Recipes are displayed in four columns on large screens, two on medium, and one column on small. The application displays up to eight recipes per page.
+
+        <details>
+        <summary> Recipe description on hover.
+        </summary>
+
+        ![Pagination](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703365689/django-project/pagination_pbqhs4.png)
+        </details>
+<!-- -------------------------------------------------------------------- -->
+---
+
+ADD MORE CONTENT HERE
+
+---
 
 * Logout
     * User can logout
 
 ![Logout](documentation/readme_images/logout.PNG)
 
-* Make a Booking
-    * Users can make a booking by clicking the cabin they want and then read details and fill in the booking form.
-    * Form validation is implemented to make sure form are submitted correctly and if there is an error user will be notified with alert message, also if everything is good, user gets a message to notifiy them.
-    * Form contains amenities which are completely optional and they dont have to be selected.
+* Add a recipe
+    * Users can make a booking by clicking the cabin they want and then read
 
-    ![Message](documentation/readme_images/alert-message.PNG)
+* Edit the recipe
+    * If booking is succesfull, user gets a notified message and an overview of 
 
-![Make a Booking](documentation/readme_images/make-a-booking.PNG)
+* Rate and review recipe
+    * Includes all of the user bookings, which have buttons to edit or delete 
 
-* Booking Succesful
-    * If booking is succesfull, user gets a notified message and an overview of the booking they just made, which includes all the details and a total price of the booking, also there is a button for contact page and my booking button that leads to all of the users bookings.
-
-![Booking Succesful](documentation/readme_images/booking-successful.PNG)
-
-* Booking Overview
-    * Includes all of the user bookings, which have buttons to edit or delete bookings.
-
-![Booking Overview](documentation/readme_images/my-bookings.PNG)
-
-* Already booked dates
+* Like the recipe
     * User won't be able to book dates that are already booked.
-    * Dates in the past are unavailable.
 
-![Booked Dates](documentation/readme_images/booked-dates.PNG)
-
-* Edit Booking
+* Print the recipe
     * User can change their booking and save changes
 
-![Edit Booking](documentation/readme_images/edit-booking.PNG)
-
-* Delete Booking
+* Delete Recipe
     * User can delete their booking, before it is deleted it has to be confirmed.
 
-![Delete Booking](documentation/readme_images/delete-booking.PNG)
-
-* Alert messages
+* Save recipe as draft
     * For every action there is an alert message to notify user
-    * Here is one example
 
-![Alert Message](documentation/readme_images/delete-message.PNG)
-
-* Admin Features
+<!-- * Admin Features
     * Django built in admin panel allows admin control over the website.
     * Admin can access admin panel through his navigation bar
     * Can add, update, delete cabins.
     * Create amenities, update existing amenities which are connected to the cabins.
-    * Delete accounts, verifiy emails, delete bookings...
-
-* Error Pages
-    * There are custom 404 and 500 error pages set up.
-    * They contain buttons to redirect to home page if there is an error.
-
-![Error 404](documentation/readme_images/error.PNG)
-![Error 500](documentation/readme_images/500-error-page.PNG)
-
+    * Delete accounts, verifiy emails, delete bookings... -->
+---
+<!-- ---------------------------------------------------------------------- -->
 ### Features Left to Implement 
 
-* User Reviews: Allow users to leave reviews and ratings for cabins they have booked, providing valuable feedback for other users.
-* Advanced Search: Implement an advanced search functionality, enabling users to search for cabins based on specific criteria such as price range, amenities, and availability.
-* Cabin Recommendations: Develop a recommendation engine that suggests cabins to users based on their previous bookings, interests, or preferences.
-* Online Payment: Implement an online payment system to allow users to securely make payments for their bookings directly through the website.
-* For the purposes of this project these implemenation were not necessary.
+I. Feature Left to Implement with the next update:
+
+*  Shopping List Functionality - *Allow users to add ingredients directly to their shopping list from a recipe.*
+Provide an interface for users to manage and view their shopping list.
+* Cross-Off Steps and Ingredients - *Enable users to mark off completed steps and ingredients while following a recipe.*
+* Dynamic Serving Size Adjustment -*Allow users to adjust the ingredient quantities for a recipe based on the desired number of servings.*
+* Uploaded Recipe Image Preview - *Allow users to upload an image preview for their recipes, enhancing the visual appeal.*
+* Image Cropping - *Implement image cropping functionality to enhance control over the appearance of uploaded images.*
+* Allergen Information - *Include allergen information for each recipe, ensuring users are aware of potential allergens.*
+* Recipe Categories - *Implement a categorization system for recipes, enabling better organization and filtering.*
+* Nutritional Information - *Provide detailed nutritional information for each ingredient and the overall recipe.*
+* Saved Ingredients Library - *Allow users to save and reuse ingredients, streamlining the recipe creation process.*
+
+II. Transformation into Inventory Application:
+
+*Supplier Management - *Enable users to add and manage suppliers for ingredients.*
+*Ordering System - *Implement a system for creating and managing ingredient orders.*
+* Order Tracking - *Allow users to send and receive orders, with tracking capabilities.*
+* Stock Management - *Provide tools to update and monitor current stock levels.*
+* Data Analytics - *Offer data analytics features to highlight stock numbers, usage patterns, and order trends.*
+* Compatibility with POS Applications - *Ensure compatibility with popular Point of Sale (POS) applications used by restaurants and takeaways.*
+
+By incorporating these features, Chef's Helper will not only enhance the user experience but also position itself as a versatile tool catering to both home cooks and the hospitality sector. The inclusion of advanced inventory management features and compatibility with POS systems will make it a comprehensive solution for the culinary industry.
 
 ## Technologies Used
 
@@ -601,65 +696,79 @@ This data scheme allows for the management of users, amenities, cabins, and book
 
 ### Frameworks Used
 
-* [Django](https://www.djangoproject.com/) - Python framework
-* [Bootstrap 4.6.1](https://getbootstrap.com/docs/4.6/getting-started/introduction/) - CSS framework
+* [Django](https://www.djangoproject.com/) - Python framework. Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. Built by experienced developers, it takes care of much of the hassle of web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source. (Source: [Django](https://www.djangoproject.com/))
+* [Bootstrap 5.3](https://getbootstrap.com/docs/5.3/getting-started/introduction//) - CSS framework. Bootstrap is a popular open-source front-end framework that provides a collection of tools, styles, and components to simplify the process of designing and building responsive and mobile-first web pages.
+* [jQuery 3.7.1](https://code.jquery.com/jquery-3.7.1.js) - jQuery is a fast, small, and feature-rich JavaScript library. It simplifies things like HTML document traversal and manipulation, event handling, and animation for web development. jQuery is open-source and designed to make things like HTML document traversal and manipulation, event handling, and animation much simpler with an easy-to-use API that works across a multitude of browsers. (Source: [jQuery](https://api.jquery.com/))
 
 ### Programs Used
 
-* [Github](https://github.com/) - Storing the code online
-* [Gitpod](https://www.gitpod.io/) - To write the code.
+* [Github](https://github.com/) - Used for creating application reposistory, version control, organising workflow utilising agile functionality of GitHub project, issues and milestones.
+* [Gitpod](https://www.gitpod.io/) - Used as a coding eviroment.
 * [Heroku](https://www.heroku.com/) - Used as the cloud-based platform to deploy the site.
-* [Google Fonts](https://fonts.google.com/) - Import main font the website.
-* [Figma](https://www.figma.com/) - Used to create wireframes and schemes
-* [Craiyon](https://www.craiyon.com/) - Generate AI images of cabins and logo based on my words descriptions
-* [Am I Responsive](https://ui.dev/amiresponsive) - To show the website image on a range of devices.
-* [Git](https://git-scm.com/) - Version control
+* [Canva](https://www.canva.com/) - Used to create logo, and recipe images.
+* [Google Fonts](https://fonts.google.com/) - Used for the typography.
+* [Figma](https://www.figma.com/) - Used for creation of wireframes.
+* [Lucidchart](https://www.lucidchart.com/pages/) - Used for creation of ERD.
+* [Am I Responsive](https://ui.dev/amiresponsive) - Used for obtaining screenshot of the application on various devices.
 * [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) - Templating engine
-* [Favicon Generator](https://realfavicongenerator.net/) - Used to create a favicon
+* [Compress.png](https://compresspng.com/) - Used to reduce the size of images.
+* [favicon.io](https://favicon.io/) - Used to convert images into icons.
 * [JSHint](https://jshint.com/) - Used to validate JavaScript
 * [W3C Markup Validation Service](https://validator.w3.org/) - Used to validate HTML
 * [CSS Validation Service](https://jigsaw.w3.org/css-validator/) - Used to validate CSS
 * [CI Python Linter](https://pep8ci.herokuapp.com/#) - Used to validate Python
-* [Colormind](http://colormind.io/) - Color Scheme
+
 
 ## Deployment and Local Developement
-
-Live deployment can be found on this [View Woodland Whispers Retreat live website here](https://woodland-whispers-retreat.herokuapp.com/)
 
 ### Local Developement
 
 #### How to Fork
-1. Log in(or Sign Up) to Github
-2. Go to repository for this project [Woodland Whispers Retreat](https://github.com/Thomas-Tomo/woodland-whispers-retreat)
-3. Click the fork button in the top right corner
+To fork the repository, follow the steps below:
+1. Log in to your [GitHub](https://github.com).
+2. Navigate to the repository for this project [Chef's Helper](https://github.com/ObiOne84/django-chefs-helper)
+3. In the top right corner of the window, click on the Fork button.
+4. The process will start, and you will see the message confirming the start.
+
+Remember that if you forked the repository, none of the updates made to the source repo would be reflected in your forked repo.
 
 #### How to Clone
-1. Log in(or Sign Up) to Github
-2. Go to repository for this project [Woodland Whispers Retreat](https://github.com/Thomas-Tomo/woodland-whispers-retreat)
-3. Click on the code button, select whether you would like to clone with HTTPS, SSH or GitHub CLI and copy the link shown.
-4. Open the terminal in your code editor and change the current working directory to the location you want to use for the cloned directory.
-5. Type the following command in the terminal (after the git clone you will need to paste the link you copied in step 3 above)
-6. Set up a virtual environment (this step is not required if you are using the Code Institute Template in GitPod as this will already be set up for you).
-7. Install the packages from the requirements.txt file - run Command pip3 install -r requirements.txt
+To bring down project for local development, it is possible to clone a repository by following steps below:
+1. Log in(or Sign Up) to [GitHub](https://github.com).
+2. Navigate to the repository for this project [Chef's Helper](https://github.com/ObiOne84/django-chefs-helper)
+3. Above the list of files, click the green button Code.
+4. Select Local tab.
+5. Copy to HTTPS code.
+6. In your local IDE open terminal, choose the location where you want to clone the directory.
+7. Type `git clone` and then paste the URL you copied from GitHub in step 5.
+8. Set up a virtual environment (not required if you are using the Code Institute template and GitPod or Codeanywhere - this will be already set up).
+9. Press Enter to create the clone.
+10. Install packages by running command `pip3 install -r requirements.txt`
 
-### ElephantSQL Database
-[Woodland Whispers Retreat](https://github.com/Thomas-Tomo/woodland-whispers-retreat) is using [ElephantSQL](https://www.elephantsql.com/) PostgreSQL Database
+### ElephantSQL Database - PostgreSQL Database set up
 
-1. Click Create New Instance to start a new database.
-2. Provide a name (this is commonly the name of the project: tribe).
-3. Select the Tiny Turtle (Free) plan.
-4. You can leave the Tags blank.
-5. Select the Region and Data Center closest to you.
-6. Once created, click on the new database name, where you can view the database URL and Password.
+1. Login to [ElephantSQL](https://www.elephantsql.com/) PostgreSQL Database.
+2. Click Create New Instance..
+3. Set up your plan:
+* give your plan name - commonly project name
+* select Tiny Turtle (Free) plan
+* you can leave the tags blank
+4. Select the Region and data center near you.
+5. Click Review.
+6. Chek you details are correct and then click Create instance.
+7. Return to the ElephantSQL dashboard and click the database name you just created.
+8. In the URL section, click and copy icon to copy the database URL (you will need this for you **env.py** file)
 
-### Cloudinary
-[Woodland Whispers Retreat](https://github.com/Thomas-Tomo/woodland-whispers-retreat) is using [Cloudinary](https://cloudinary.com/)
-1. For Primary interest, you can choose Programmable Media for image and video API.
-2. Optional: edit your assigned cloud name to something more memorable.
-3. On your Cloudinary Dashboard, you can copy your API Environment Variable.
-4. Be sure to remove the CLOUDINARY_URL= as part of the API value; this is the key.
+### Cloudinary - set up
 
-
+1. Visit [Cloudinary](https://cloudinary.com/) and click on Sing Up For Free.
+2. Provide your name, email address and choose a password
+3. For Primary interest, you can choose Programmable Media for image and video API
+4. Optional: edit your assigned cloud name to something more memorable
+5. Click Create Account
+5. Verify your email and you will be brought to the dashboard
+6. On your Cloudinary Dashboard, you can copy your API key.
+7. Add `CLOUDINARY_URL` to **env.py** and Heroku app variables. Make sure that env.py is added to .gitignore to not share you security key.
 
 ### Heroku Deployment
 * Log into [Heroku](https://www.heroku.com/) account or create an account.
@@ -669,30 +778,148 @@ Live deployment can be found on this [View Woodland Whispers Retreat live websit
 * Click "Create App"
 
 #### Prepare enviroment and settings.py
-* In your GitPod workspace, create an env.py file in the main directory.
-* Add the DATABASE_URL value and your chosen SECRET_KEY value to the env.py file.
-* Update the settings.py file to import the env.py file and add the SECRETKEY and DATABASE_URL file paths.
-* Comment out the default database configuration.
-* Save all files and make migrations.
-* Add the Cloudinary URL to env.py
-* Add the Cloudinary libraries to the list of installed apps.
-* Add the STATIC files settings - the url, storage path, directory path, root path, media url and default file storage path.
+* In your workspace (GitPod) create an **env.py** file and add it to **.gitignore**
+* Add the **DATABASE_URL** value and your chosen **SECRET_KEY** value to the **env.py file**.
+* Update the **settings.py** file to import the **env.py** file and add the SECRET-KEY and DATABASE_URL file paths.
+    <details>
+    <summary> See the code sample
+    </summary>
+
+    ```python
+    from pathlib import Path
+    import os
+    import dj_database_url
+    if os.path.isfile('env.py'):
+        import env
+    ```
+    </details>
+
+* Comment out the original DATABASES variable and add the code below.
+
+    <details>
+    <summary> See the code sample
+    </summary>
+
+    ```python
+    # DATABASES = {
+    #     'default': {
+    #         'ENGINE': 'django.db.backends.sqlite3',
+    #         'NAME': BASE_DIR / 'db.sqlite3',
+    #     }
+    # }
+        
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    }
+    ```
+    </details>
+
+* Don't forget to makemigrations and migrate to update your database.
+* Add the **CLOUDINARY_URL** to **env.py**
+* Add cloudinary to **INSTALLED_APPS** in **settings.py**.
+
+     <details>
+    <summary> See the code sample
+    </summary>
+
+    ```python
+    INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'cloudinary',
+    'blog',
+    ]
+    ```
+    </details>
+
+* Add cloudinary to the static files in settings.py
+
+    <details>
+    <summary> See the code sample
+    </summary>
+
+    ```python
+    STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    MEDIA_URL = '/media/'
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+    ```
+    </details>
+
 * Link the file to the templates directory in Heroku.
+* Add TEMPLATES_DIR in settings.py
+
+    <details>
+    <summary> See the code sample
+    </summary>
+
+    ```python
+    TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+    ```
+    </details>
+
 * Change the templates directory to TEMPLATES_DIR
-* Add Heroku to the ALLOWED_HOSTS list the format ['app_name.heroku.com', 'localhost']
 
-#### Add the following Config Vars in Heroku:
+    <details>
+    <summary> See the code sample
+    </summary>
 
-* SECRET_KEY - This can be any Django random secret key
-* CLOUDINARY_URL - Insert your own Cloudinary API key
-* PORT = 8000
-* DISABLE_COLLECTSTATIC = 1 - this is temporary, and can be removed for the final deployment
-* DATABASE_URL - Insert your own ElephantSQL database URL here
+    ```python
+    TEMPLATES = [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [TEMPLATES_DIR],
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',
+                    'django.contrib.messages.context_processors.messages',
+                ],
+            },
+        },
+    ]
+    ```
+    </details>
 
-#### Heroku needs two additional files to deploy properly
+* Add Heroku to the ALLOWED_HOSTS in settings.py
 
-* requirements.txt
-* Procfile
+    <details>
+    <summary> See the code sample
+    </summary>
+
+    ```python
+    ALLOWED_HOSTS = [
+    'your-app-name.herokuapp.com/',
+    ]
+    ```
+    </details>
+
+* Add the following Config Vars in Heroku:
+    * `SECRET_KEY` (Any Django random secret key).
+    * `CLOUDINARY_URL` (Insert your Cloudinary API key).
+    * `PORT` = 8000.
+    * `DISABLE_COLLECTSTATIC` = 1 (temporary and can be removed once static files are created).
+    * `DATABASE_URL` (paste ElephantSQL database URL here).
+
+* Heroku Additional Files:
+    * Create requirements.txt
+    * Create Procfile.
+
+    <details>
+    <summary> See the code sample (for gunicorn)
+    </summary>
+
+    ```python
+    web: gunicorn codestar.wsgi
+    ```
+    </details>
 
 #### Deploy
 
@@ -703,27 +930,28 @@ Live deployment can be found on this [View Woodland Whispers Retreat live websit
 
 Site is now live
 
+You can visit deployed application at [Chef's Helper](https://django-chefs-helper-90ca65af05b0.herokuapp.com/)
+
 ## Testing
 Please see  [TESTING.md](TESTING.md) for all the detailed testing performed.
 
 ## References
 ### Docs
 
+* [jQuery](https://api.jquery.com/)
+* [Bootstrap 5.3](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+* [Django docs](https://docs.djangoproject.com/en/5.0/)
+* [Django Allauth](https://docs.allauth.org/en/latest/)
 * [Stack Overflow](https://stackoverflow.com/)
-* [Code Institute](https://learn.codeinstitute.net/dashboard)
-* [Bootstrap 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
-* [Django docs](https://docs.djangoproject.com/en/4.2/releases/3.2/)
-* [Django Allauth](https://django-allauth.readthedocs.io/en/latest/)
-* [Django and Static Assets](https://devcenter.heroku.com/articles/django-assets)
-* [Cloudinary](https://cloudinary.com/documentation/diagnosing_error_codes_tutorial)
-* [Google](https://www.google.com/)
+* [GeeksforGeeks](https://www.geeksforgeeks.org/)
+* [GitHub Markdown Cheet Sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 ### Content
 
-* All of the content is imaginary and written by the developer, me, Thomas-Tomo Domitrovic.
-* All images were generated with Artificial intelligence (AI) based on my word input and description of the cabins and logo.
+* [Canva](https://www.canva.com/) - all images for the recipes where created with the software utilising available templates and photos.
+* [Woodland Whispers Retreat](https://github.com/Thomas-Tomo/woodland-whispers-retreat?tab=readme-ov-file#user-journey) - the structure of the readme file.
 
 ### Acknowledgments
 
-* I would like to thank my mentor for support and feedback throughout this project, Mitko Bachvarov.
-* I would also like to extend my appreciation to the Slack community for their continuous engagement and willingness to share knowledge. The collaborative environment provided a platform for learning, troubleshooting, and gaining inspiration from fellow developers.
+* My sincere gratitude goes to my mentor, Mitko Bachvarov, for providing unwavering support and valuable feedback throughout the entire project.
+* I extend my heartfelt thanks to my college colleagues for their invaluable feedback on the application, which has been instrumental in its development.
