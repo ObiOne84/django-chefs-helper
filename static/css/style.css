@@ -366,6 +366,7 @@ ol {
     border: 1px solid white;
     background-color: green;
 }
+
 .ingredient-name {
     width: 50%;
 }
@@ -391,6 +392,7 @@ ol {
 .time-field {
     width: 40%;
 }
+
 /* -----Style home page --------- */
 
 .background-image {
@@ -546,6 +548,11 @@ ol {
     }
 
     .ingredient-name {
+        width: 100%;
+        margin-bottom: 2px;
+    }
+
+    textarea.d-inline.form-control.instruction-input-field {
         width: 100%;
         margin-bottom: 2px;
     }
