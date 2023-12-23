@@ -18,11 +18,13 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <a href="{% url 'delete' slug=recipe.slug %}">
+                    <a href="{% url 'delete' slug=recipe.slug %}" class="btn btn-danger" role="button">Delete</a>
+                    <!-- <form method="post" action="{% url 'delete' slug=recipe.slug %}">
+                        {% csrf_token %}
                         <button type="submit" class="btn btn-danger">
                             Delete
                         </button>
-                    </a>
+                    </form> -->
                 </div>
             </div>
         </div>
@@ -42,7 +44,7 @@
             </a>
             {% endif %}
             <a class="btn btn-outline-warning btn-sm control-button" role="button" href="#" id="print-button">
-                <i class="fa-solid fa-print no-print" type="button"></i>
+                <i class="fa-solid fa-print no-print"></i>
                 <span class="d-none d-sm-inline"> Print</span><span class="d-none d-xl-inline"> Recipe</span>
             </a>
         </div>
@@ -225,9 +227,9 @@
                         </div>
                     </div>
                     {% endif %}
-                    <span class="review-body-holder">
+                    <div class="review-body-holder">
                         {{ review_form | crispy | safe }}
-                    </span>
+                    </div>
                     <div id="review-error" class="empty-error alert alert-danger hide">
                         <!-- error message goes here -->
                     </div>
