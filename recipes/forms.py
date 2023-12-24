@@ -10,6 +10,7 @@ class ReviewForm(forms.ModelForm):
         model = Review
         fields = ('body',)
 
+
 class RecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe
@@ -27,10 +28,11 @@ class AddIngredientForm(forms.ModelForm):
         ("teaspoon", "tsp"),
         ("tablespoon", "Tbsp"),
     ]
+
     class Meta:
         model = RecipeIngredient
         fields = ['name', 'quantity', 'unit']
-    
+
     name = forms.CharField(
         max_length=50,
         required=True,
@@ -60,6 +62,7 @@ class AddIngredientForm(forms.ModelForm):
         required=True,
     )
 
+
 class AddRecipeForm(forms.ModelForm):
 
     class Meta:
@@ -74,7 +77,7 @@ class AddRecipeForm(forms.ModelForm):
             'servings',
             'status',
             ]
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -111,83 +114,78 @@ class AddRecipeForm(forms.ModelForm):
             min_num=1,
             validate_min=True,
             can_delete=True,
-            can_delete_extra = True,
+            can_delete_extra=True,
         )
 
-        # Pass instance=self.instance to formset to link it to the Recipe instance
-        self.ingredient_formset = IngredientFormSet(*args, **kwargs, instance=self.instance)
+        # Pass instance=self.instance to formset to link to the Recipe instance
+        self.ingredient_formset = IngredientFormSet(
+            *args,
+            **kwargs,
+            instance=self.instance,
+            )
 
-         # Add class to the formset fields
+        # Add class to the formset fields
         for form in self.ingredient_formset.forms:
             form.fields['name'].widget.attrs.update({
                 'class': 'ingredient-name form-field',
                 'maxlength': 50,
             })
-            form.fields['quantity'].widget.attrs['class'] = 'ingredient-quantity form-field'
+            form.fields['quantity'].widget.attrs['class'] = (
+                'ingredient-quantity form-field'
+            )
             form.fields['unit'].widget.attrs['class'] = 'ingredient-unit'
             form.fields['DELETE'].required = False
-        
-
-    # instruction_step = forms.CharField(
-    #     widget=forms.TextInput(attrs={'class': 'steps'})
-    # )
-
-    # instructions = forms.CharField(
-    #     widget=forms.TextInput(attrs={'class': 'instruction-steps', 'type': 'hidden'})
-    # )
-    # instructions = forms.CharField(
-    #     widget=forms.Textarea(attrs={'class': 'instruction-steps hide'})
-    # )
-
-    # def clean_instructions(self):
-    #     instruction_step = self.cleaned_data['instruction_step']
-    #     instruction_text = self.cleaned_data['instruction_text']
-
-    #     instructions = f'{instruction_step} {instruction_text}'
-    #     return instructions
-    # ---------------------------------------------->
 
     prep_time = forms.IntegerField(
         widget=forms.NumberInput(attrs={'class': 'positive-number'}),
         min_value=0,
-        max_value = 600,
+        max_value=600,
     )
     cook_time = forms.IntegerField(
         widget=forms.NumberInput(attrs={'class': 'positive-number'}),
         min_value=0,
-        max_value = 600,
+        max_value=600,
     )
 
     servings = forms.IntegerField(
         widget=forms.NumberInput(attrs={'class': 'positive-number'}),
         min_value=1,
-        max_value = 10,
+        max_value=10,
     )
 
-    # def clean_prep_time(self):
-    #     prep_time = self.cleaned_data['prep_time']
-    #     if prep_time < 0:
-    #         raise forms.ValidationError("Prep time must be a positive number.")
-    #     return prep_time
+    def clean_prep_time(self):
+        prep_time = self.cleaned_data['prep_time']
+        if prep_time < 0:
+            raise forms.ValidationError(
+                "Prep time must be a positive number."
+            )
+        return prep_time
 
-    # def clean_cook_time(self):
-    #     cook_time = self.cleaned_data['cook_time']
-    #     if cook_time < 0:
-    #         raise forms.ValidationError("Cook time must be a positive number.")
-    #     return cook_time
+    def clean_cook_time(self):
+        cook_time = self.cleaned_data['cook_time']
+        if cook_time < 0:
+            raise forms.ValidationError(
+                "Cook time must be a positive number."
+            )
+        return cook_time
 
-    # def clean_servings(self):
-    #     servings = self.cleaned_data['servings']
-    #     if servings < 0:
-    #         raise forms.ValidationError("Servings must be a positive number.")
-    #     return servings
-    
+    def clean_servings(self):
+        servings = self.cleaned_data['servings']
+        if servings < 0:
+            raise forms.ValidationError(
+                "Servings must be a positive number."
+            )
+        return servings
+
     def clean_title(self):
         title = self.cleaned_data.get('title')
         title_lower = title.lower()
 
         if Recipe.objects.filter(title__iexact=title_lower).exists():
-            raise forms.ValidationError("The recipe name already exists. Please provide a different name!")
+            raise forms.ValidationError(
+                "The recipe name already exists."
+                " Please provide a different name!"
+            )
         return title
 
     def clean(self):
@@ -195,12 +193,9 @@ class AddRecipeForm(forms.ModelForm):
 
         title = cleaned_data.get('title')
         instructions = cleaned_data.get('instructions')
-        # Add more fields as needed
-
-        # Your custom validation or cleaning logic here
 
         return cleaned_data
-    
+
     def clean_featured_image(self):
         featured_image = self.cleaned_data.get('featured_image', None)
 
@@ -226,7 +221,7 @@ class UpdateRecipeForm(forms.ModelForm):
             'servings',
             'status',
             ]
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -253,47 +248,45 @@ class UpdateRecipeForm(forms.ModelForm):
         self.fields['servings'].widget.attrs.update({
             'class': 'add-recipe-fields time-field',
         })
-        
-    
-    # def clean_featured_image(self):
-    #     featured_image = self.cleaned_data.get('featured_image', False)
-    #     if featured_image:
-    #         return featured_image
-    #     else:
-    #         return self.instance.featured_image
-    
+
     def clean_featured_image(self):
         featured_image = self.cleaned_data.get('featured_image', None)
 
-        # Check if a new image is provided and it's not an empty CloudinaryResource
+        # Check if a new image is provided and it's not an empty
         if featured_image and not isinstance(featured_image, str):
             # Check if the CloudinaryResource is not empty
-            if hasattr(featured_image, 'file') and not featured_image.file.closed:
+            if hasattr(
+                    featured_image, 'file') and not featured_image.file.closed:
                 # New image is provided, perform additional checks (e.g., size)
                 max_size = 5 * 1024 * 1024
 
                 if featured_image.size > max_size:
-                    raise ValidationError('Image size must be no more than 5 MB.')
+                    raise ValidationError(
+                        'Image size must be no more than 5 MB.'
+                    )
 
         return featured_image
-    
-    instructions = forms.CharField(widget=forms.Textarea(attrs={'class': 'instruction-steps hide'}))
+
+    instructions = forms.CharField(
+        widget=forms.Textarea(attrs={
+            'class': 'instruction-steps hide'
+        }))
 
     prep_time = forms.IntegerField(
         widget=forms.NumberInput(attrs={'class': 'positive-number'}),
         min_value=0,
-        max_value = 600,
+        max_value=600,
     )
     cook_time = forms.IntegerField(
         widget=forms.NumberInput(attrs={'class': 'positive-number'}),
         min_value=0,
-        max_value = 600,
+        max_value=600,
     )
 
     servings = forms.IntegerField(
         widget=forms.NumberInput(attrs={'class': 'positive-number'}),
         min_value=1,
-        max_value = 10,
+        max_value=10,
     )
 
     def clean_title(self):
@@ -302,23 +295,7 @@ class UpdateRecipeForm(forms.ModelForm):
 
         if instance and title != instance.title:
             if Recipe.objects.filter(title=title).exists():
-                raise forms.ValidationError("The recipe name already exists. Please provide a different name!")
+                raise forms.ValidationError(
+                    "The recipe name already exists."
+                    " Please provide a different name!")
         return title
-
-
-# class UpdateRecipeForm(AddRecipeForm, forms.ModelForm):
-#     class Meta:
-#         model = Recipe
-#         fields = [
-#             'title',
-#             'instructions',
-#             'featured_image',
-#             'excerpt',
-#             'prep_time',
-#             'cook_time',
-#             'servings',
-#             'status',
-#         ]
-
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)

@@ -22,5 +22,3 @@ urlpatterns = [
     path('', include('recipes.urls'), name='recipes_urls'),
     path('accounts/', include('allauth.urls')),
 ]
-
-    

@@ -136,30 +136,30 @@ Device testing encompassed a diverse range of devices, including iPhone 12 Pro, 
 <summary> Recipe Detail View Page
 </summary>
 
-![Recipe Detail View Page](documentation/validation/make-booking-html-validation.PNG)
+![Recipe Detail View Page](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703436376/django-project/recipe-view-validation_nqatn4.webp)
 </details>
 
 ### CSS Validation
 
 <details>
-<summary> Custom CSS (style.css)
+<summary> Custom CSS - style.css
 </summary>
 
-![Custom CSS (style.css)](documentation/validation/css-validation.PNG)
+![Custom CSS](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703436749/django-project/css-validation_upqggg.webp)
 </details>
 
 ### JavaScript Validation
 
 <details>
-<summary> Custom JS (script.js)
+<summary> Custom JS script.js
 </summary>
 
-![Custom JS (script.js)](documentation/validation/js-validation.PNG)
+![Custom JS](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703437613/django-project/js-validation_ezfcj2.webp)
 </details>
 
 ### Python
 
-#### cabin_bookings app
+#### recipes app
 
 <details>
 <summary> admin.py
@@ -196,20 +196,20 @@ Device testing encompassed a diverse range of devices, including iPhone 12 Pro, 
 ![urls.py](documentation/validation/urls-python-validation.PNG)
 </details>
 
-#### woodland_retreat app
+#### chefshelper
 
 <details>
 <summary> settings.py
 </summary>
 
-![settings.py](documentation/validation/settings-python-validation.PNG)
+![settings.py](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703438756/django-project/settings.py-validator_koh00o.webp)
 </details>
 
 <details>
 <summary> urls.py
 </summary>
 
-![urls.py](documentation/validation/urls-woodland-python-validation.PNG)
+![urls.py](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703438755/django-project/urls.py-validation_j9pk9y.webp)
 </details>
 
 ## Lighthouse Report
