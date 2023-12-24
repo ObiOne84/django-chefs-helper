@@ -358,8 +358,7 @@ $(document).ready(function () {
         <div class="input-group instruction-textarea-field my-1">
            <textarea name="instruction-step" cols="40" rows="2"
               class="d-inline form-control instruction-input-field instruction-steps" required
-              placeholder="Add cooking instruction here..." maxlength="350"
-              name="instruction-step">${data}</textarea>
+              placeholder="Add cooking instruction here..." maxlength="350">${data}</textarea>
            <button class="btn btn-outline-secondary remove-instruction" type="button"><i
                  class="fa-solid fa-minus"></i></button>
            <button class="btn btn-outline-secondary add-instruction" type="button"><i

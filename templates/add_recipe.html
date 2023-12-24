@@ -83,8 +83,7 @@
                         <div class="input-group instruction-textarea-field my-1">
                            <textarea name="instruction-step" cols="40" rows="2"
                               class="d-inline form-control instruction-input-field" required
-                              placeholder="Add cooking instruction here..." maxlength="350"
-                              name="instruction-step"></textarea>
+                              placeholder="Add cooking instruction here..." maxlength="350"></textarea>
                            <button class="btn btn-outline-secondary remove-instruction" type="button"><i
                                  class="fa-solid fa-minus"></i></button>
                            <button class="btn btn-outline-secondary add-instruction" type="button"><i
@@ -183,8 +182,8 @@
 
                      <!-- Ingredient formset -->
                      {{ form.ingredient_formset.management_form }}
-                     <h3>{{ ingredient_formset.name.label_tag }} {{ form.quantity.label_tag }} {{ form.unit.label_tag }}
-                     </h3>
+                     <!-- <h3>{{ ingredient_formset.name.label_tag }} {{ form.quantity.label_tag }} {{ form.unit.label_tag }}
+                     </h3> -->
                      {% for form in form.ingredient_formset %}
                      <div class="formset-row show">
 
@@ -209,7 +208,8 @@
                            {% if form.name.errors %}
                            <div class="alert alert-danger alert-dismissible fade show form-alert ingredient-alert">
                               {{ form.name.errors.0 }}
-                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                              <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                 aria-label="Close"></button>
                            </div>
                            {% endif %}
 
@@ -217,7 +217,8 @@
                            {% if form.quantity.errors %}
                            <div class="alert alert-danger alert-dismissible fade show form-alert ingredient-alert">
                               {{ form.quantity.errors.0 }}
-                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                              <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                 aria-label="Close"></button>
                            </div>
                            {% endif %}
                            {{ form.unit }}

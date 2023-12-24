@@ -1,8 +1,7 @@
-# Woodland Whispers Retreat | Testing
+# Chef's Helper | Testing
 
 Return to [README](README.md)
 - - -
-Comprehensive testing has been performed to ensure the website's seamless and optimal functionality.
 
 ## Table of Contents
 
