@@ -283,68 +283,54 @@ Device testing encompassed a diverse range of devices, including iPhone 12 Pro, 
 |---------------|---------------|------------------|------------------|
 | Home Page     |               |                  |                  |
 |               | Click on Logo | Redirect to Home Page | PASS        |
-|               | Click on Sign Up button | Redirect to Sign Up page | PASS |
-|               | Click on Sign Up button (Navigation bar) | Redirect to Sign Up page | PASS |
-|               | Click on About (Navigation bar) | Move to about section | PASS |
-|               | Click on carousel | Redirect to sign up page | PASS |
-|               | Click on carousel control | Move left, move right | PASS |
-|               | Click on social links in footer | Open new tab with appropriate link | PASS |
-|               | Click on Contact (Navigation bar) | Redirect to Contact page | PASS |
-|               | Click on Login (Navigation bar) | Redirect to Login page | PASS |
+|               | Click on Register - Navigation Bar | Redirect to Sign Up page | PASS |
+|               | Click on Join Now button - Hero Section | Redirect to Sign Up page | PASS |
+|               | Click on Recipes - Navigation Bar | Redirect to Recipes page | PASS |
+|               | Click on Home - Navigation Bar | Redirect to Home Page | PASS |
+|               | Click on GitHub icon - Footer | Open a new tab to project GitHub reposistory | PASS |
+|               | Click on LinkedIn icon - Footer | Open a new tab with developer account | PASS |
+|               | Hover over Navigation bar elemenets | Change colour | PASS |
 | Home Page (Logged In - User)  |                 |          |  |
-|               | After Login | Sign Up button is now Book Now button | PASS |
-|               | Click on Book Now | Redirect to browse cabins | PASS |
-|               | Click on carousel | Redirects to browse cabins | PASS |
-|               | After Login | Users name is displayed in navigation bar | PASS |
+|               | After Login/Sign Up | Join Now button is not visible | PASS |
+|               | After Login/Sign Up | Navigation Bar change (Logout option available) | PASS |
+|               | After Login/Sign Up | Confirmation message is displayed above Hero section | PASS |
 |               | Click on users name | Open dropdown menu | PASS |
-|               | Click on My Booking in dropdown | Redirect to Booking Overview page | PASS |
-|               | Click on Make a Booking in dropdown | Redirect to browse cabins | PASS |
-|               | Click on Logout | Redirect to Logout Page | PASS |
-| Home Page (Logged In - Admin)    |               |                  |                  |
-|               | Click on admin name | Open dropdown menu | PASS |
-|               | Click on My Booking in dropdown | Redirect to Booking Overview page | PASS |
-|               | Click on Admin Panel | Redirect to Django Admin Panel | PASS |
-| Contact Page     |               |                  |                  |
-|               | Click on social links | Open new tab with appropriate link | PASS |
+|               | Click on Logout | Open confirmation modal | PASS |
+|               | Click on Sign Out - Modal | User received confirmation message | PASS |
+|               | Click on Sign Out - Modal | Redirect to Home page | PASS |
 | Sign Up Page  |                  |                  |                  |
-|               | Enter invalid email | Field will only accept email address format | PASS |
-|               | Enter valid email | No error | PASS |
-|               | Email field left empty | Email is optional | PASS |
-|               | Type invalid password | Must contain atleast 8 char | PASS |
-|               | Type valid password | No error | PASS |
-|               | Type password again (different) | Password must be the same | PASS |
-|               | Click Sign Up with empty form | Fill in the form fields | PASS |
-|               | Click Sign In if you have an account | Redirect to Login page | PASS |
-|               | Fill all the form fields | Account created, alert message that you Signed in | PASS |
+|               | Enter not valid email | Form will not submit, request valid email format | PASS |
+|               | Enter valid email | No request | PASS |
+|               | No email provided | Form will submit, email is optional | PASS |
+|               | Type invalid password | Error will inform user about incorrect password | PASS |
+|               | Type valid password | Form will submit | PASS |
+|               | Type different second password | Form will not submit, error will inform about incorrect password | PASS |
+|               | Click Sign Up when form is blank | Required form fields message appears | PASS |
+|               | Click Sign In | Redirect to Login page | PASS |
+|               | Provide all correct information and click Sign Up | Account is created, user is logged in, redirected to home page and success message appears | PASS |
 | Login Page  |                  |                  |                  |
-|               | Click on Sign Up, if you don't have an account | Redirect to Sign Up page | PASS |
+|               | Click on Sign Up | Redirect to Sign Up page | PASS |
 |               | Try invalid username | Username is not correct | PASS |
 |               | Try invalid password | Password is not correct | PASS |
-|               | Valid password and username | Logs in, message that you signed in | PASS |
-|               | Click Sign In with empty form | Fill in the form fields | PASS |
+|               | Valid password and username | User is logged in and success message displayed | PASS |
+|               | Click Sign In when form is blank | Required form fields message appears | PASS |
 | Logout Page  |                  |                  |                  |
-|               | Click on Sign Out button | Sign user out, message that user signed out | PASS |
-| Browse Cabins Page  |                  |                  |                  |
-|               | Click on Book Now on any Cabin | Redirects to selected cabin booking form | PASS |
-|               | Click on Next button | Moves to another page, displays different cabins | PASS |
-|               | Click on Previous button | Goes back to previous page | PASS |
-| Make a Booking Page  |                  |                  |                  |
-|               | Click on Book Now button while form is empty | Fill in the form fields, alert message | PASS |
-|               | Try to select dates in the past | They are disabled | PASS |
-|               | Try to select already booked dates | They are disabled, unavailable until dates become available is someone deletes their booking         | PASS |
-|               | Try to overlap your booking around the already booked dates | Cabins already booked for those dates, alert message | PASS |
-|               | Input more guests than maximum guests | Can't exceed maximum guests, alert message | PASS |
-|               | Input 0 or less than 0 guests | Guests can't be less than 0, alert message | PASS |
-|               | Input more tickets than number of guests | Can't buy more tickets than number of guests | PASS |
-|               | Input less than 0 tickets | Can't select less than 0 tickets, alert message | PASS |
-|               | Input less than 0 kayaks | Can't select less than 0 kayaks, alert message | PASS |
-|               | Input 0 kayaks | kayaks are optional, no error | PASS |
-|               | Input 0 tickets | tickets are optional, no error | PASS |
-|               | maximum kayak rental is 10 | Anything over 10 throws an error, alert message | PASS |
-|               | Try to make check out date be before check in date | Check out can't be before check in, alert message | PASS |
-|               | Enter valid form data | Booking Succesful, alert message and a total price is calculated based on the booking | PASS |
-|               | User fills in only check in, check out and num of guests | Booking Succesful, amenities are optional | PASS |
-| Booking Succesful Page |  |    |    |
+|               | Click on Logout button | Opens logout confirmation modal | PASS |
+|               | Click on Logout button (Modal) | User is logged out, success message appears, redirects to home page | PASS |
+| Browse Recipes Page (Unregister User) |                  |                  |                  |
+|               | Hover over recipe cards | Recipe name and partial description appears | PASS |
+|               | Enter recipe name in the search box | Recipe exsist, recipe displays below | PASS |
+|               | Enter recipe name in the search box | Recipe exsist, heading changes to search results | PASS |
+|               | Enter recipe name in the search box | Recipe do not exsist, message appears, no recipes found | PASS |
+|               | Enter partial recipe name in the search box | Recipe do not exsist, recipes containig search fraze in the name appear | PASS |
+|               | Click on the recipe card | Redirect to login page | PASS |
+|               | Click on the Next button | Redirect to the next page | PASS |
+|               | Click on the Prev button | Redirect to the previous page | PASS |
+|               | Click on the page number | Redirect to the page with that number | PASS |
+| Browse Recipes Page (Registered User)  |                 |                  |                  |
+|               | All actions as per Unregister User | All correct | PASS |
+|               | Click on the recipe card | Redirect to recipe detail view page | PASS |
+| Recipe Detail View Page |  |    |    |
 |               | Read the booking details | Details are as expected, match users booking | PASS |
 |               | Total price check | Total price is calculated correctly | PASS |
 |               | Click on Contact Us button | Redirect to Contact page | PASS |
