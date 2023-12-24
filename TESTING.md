@@ -330,42 +330,55 @@ Device testing encompassed a diverse range of devices, including iPhone 12 Pro, 
 | Browse Recipes Page (Registered User)  |                 |                  |                  |
 |               | All actions as per Unregister User | All correct | PASS |
 |               | Click on the recipe card | Redirect to recipe detail view page | PASS |
+|               | Visible Add Recipe button | Button is visible underneath nav-bar | PASS |
+|               | Click Add Recipe button | Redirect to add recipe page page | PASS |
 | Recipe Detail View Page |  |    |    |
-|               | Read the booking details | Details are as expected, match users booking | PASS |
-|               | Total price check | Total price is calculated correctly | PASS |
-|               | Click on Contact Us button | Redirect to Contact page | PASS |
-|               | Click on My Booking button | Redirects to Booking Overview page | PASS |
-| Booking Overview Page |  |    |    |
-|               | Read the bookings | Results match users bookings and details of bookings | PASS |
-|               | Click on Edit button | Redirect to Edit Booking page | PASS |
-|               | Click on Delete button | Redirect to Delete Booking page | PASS |
-| Edit Booking Page |  |    |    |
-|               | Try to select dates in the past | They are disabled | PASS |
-|               | Try to select already booked dates | They are disabled, unavailable until dates become available is someone deletes their booking         | PASS |
-|               | Try to overlap your booking around the already booked dates | Cabins already booked for those dates, alert message | PASS |
-|               | Input more guests than maximum guests | Can't exceed maximum guests, alert message | PASS |
-|               | Input 0 or less than 0 guests | Guests can't be less than 0, alert message | PASS |
-|               | Input more tickets than number of guests | Can't buy more tickets than number of guests | PASS |
-|               | Input less than 0 tickets | Can't select less than 0 tickets, alert message | PASS |
-|               | Input less than 0 kayaks | Can't select less than 0 kayaks, alert message | PASS |
-|               | Input 0 kayaks | kayaks are optional, no error | PASS |
-|               | Input 0 tickets | tickets are optional, no error | PASS |
-|               | maximum kayak rental is 10 | Anything over 10 throws an error, alert message | PASS |
-|               | Try to make check out date be before check in date | Check out can't be before check in, alert message | PASS |
-|               | Click on Save Changes button | Booking updated succesfully | PASS |
-|               | Enter valid form data | Booking succesfully updated, alert message and a total price is calculated based on the booking | PASS |
-|               | User fills in only check in, check out and num of guests | Booking succesfully updated, amenities are optional | PASS |
-| Delete Booking Page |  |    |    |
-|               | Read the booking ID number | It displays correct Id number of chosen cabin user wants to delete | PASS |
-|               | Click on Confirm Delete button | Booking is deleted, alert message | PASS |
-|               | Click on Cancel button | Redirect back to Booking Overview page | PASS |
-| 404 Error Page |  |    |    |
-|               | Type in URL that does not exists | Custom 404 Error page is displayed | PASS |
-|               | Click on Take Me Home button | Redirect to Home page | PASS |
-| 500 Error Page |  |    |    |
-|               | Admin raise exception in views.py | Custom 500 Error page is displayed, local development testing | PASS |
-|               | Click on Go to Homepage button | Redirect to Home page | PASS |
-| Admin Panel |  |    |    |
-|               | CRUD functionality | Working as expected | PASS |
+|               | Read the recipe details | All recipe details provided by author are visible to user | PASS |
+|               | Submit empty review field | The error message will appear | PASS |
+|               | Submit review withour rating | The review submits, rating is not required | PASS |
+|               | Submit review with rating | Review submits, average rating changes, success message appears and redirect to recipes page | PASS |
+|               | Return to rated recipe detail page | Message appears to inform, recipe was rated already | PASS |
+|               | Return to rated recipe detail page | Message appears to inform, reviews are moderated | PASS |
+|               | Return to rated recipe detail page | User can submit another review | PASS |
+|               | Submit review | Total number of reviews updates | PASS |
+|               | Click on heart | Total number of likes changes, heart change to full | PASS |
+|               | Click on heart to unlike | Total number of likes changes, heart change to empty | PASS |
+|               | Visible Edit button | Only for recipes where user is author | PASS |
+|               | Click on Edit button | Redirect to update recipe page | PASS |
+|               | Click on Print button | Opens print menu, reviews are hidden | PASS |
+|               | Visible Delete button | Only for recipes where user is author | PASS |
+|               | Click on Delete button | Opens delete recipe confirmation modal | PASS |
+|               | Click on Delete button | Deletes the recipe, confirmation message | PASS |
+| Add Recipe Page |  |    |    |
+|               | Add recipe with the same title | The recipe name already exist message | PASS |
+|               | Remove all instruction | This field cannot be empty | PASS |
+|               | Click plus | Add new instruction field | PASS |
+|               | Click minus | Remove instruction field | PASS |
+|               | Instruction > 350 length | The text is cropped at 350 characters | PASS |
+|               | Instruction field | The scroll bar appear for longer text | PASS |
+|               | Add image above 5MB | Image cannot be above 5MB | PASS |
+|               | No image provided | Form submits, image is not required | PASS |
+|               | No prep time | Field is required message | PASS |
+|               | Prep time above 600 | Alert message, value must be equal or less to 600 | PASS |
+|               | Prep time is negative | Alert message, value must be greater or equal to 0 | PASS |
+|               | Prep time left empty | Alert message, please fill in this field | PASS |
+|               | Prep time accepts only numbers | Field do not accept other values | PASS |
+|               | Cook time | All tests as per prep time | PASS |
+|               | Number of Servings equal 0 | Alert message, value must be greater or equal to 1 | PASS |
+|               | Number of Servings equal 0 | Alert message, value must be less than or equal to 10 | PASS |
+|               | Number of Servings is negative | Alert message, value must be greater or equal to 1 | PASS |
+|               | Ingredients fields is empty | Alert message, Please fill in this field | PASS |
+|               | Ingredients fields is space bar | Alert message, This field is required | PASS |
+|               | Ingredients quantity value < 0 | Alert message, value must be greater or equal to 0 | PASS |
+|               | Ingredients quantity value > 9999.99 | Alert message, value must be greater or equal to 0 | PASS |
+|               | Click plus | Add new ingredient field | PASS |
+|               | Click minus | Remove ingredient field | PASS |
+|               | Publish or Save as Draft | Alert message, value must be less than or equal to 9999.99 | PASS |
+|               | When submitted as draft | Redirect to recipes page, success message displayed, recipe is placed behind published recipes, recipe is marked as draft, recipe is not visible to other users | PASS |
+|               | When submitted as published | Redirect to recipes page, success message displayed, recipe is placed at the begining of the recipes, recipe is visible to other users  | PASS |
+| Edit Recipe Page |  |    |    |
+|               | As Add Recipe | All test as for add recipe page | PASS |
+|               | Exisiting fields content | All content displays correctly | PASS |
+|               | Change Exisiting fields content | All content can be modified | PASS |
 
 Return to [README](README.md)
