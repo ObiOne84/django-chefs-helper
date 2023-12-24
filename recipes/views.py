@@ -10,7 +10,6 @@ from .forms import (
     ReviewForm, RecipeForm, AddRecipeForm, AddIngredientForm, UpdateRecipeForm
 )
 from django.db.models import Q
-# from django.http import HttpResponseForbidden
 import logging
 from django.forms import inlineformset_factory
 

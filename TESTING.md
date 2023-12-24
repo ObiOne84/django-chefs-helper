@@ -186,14 +186,14 @@ Device testing encompassed a diverse range of devices, including iPhone 12 Pro, 
 <summary> views.py
 </summary>
 
-![views.py](#)
+![views.py](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703443092/django-project/views.py-validation_ptpsob.webp)
 </details>
 
 <details>
 <summary> urls.py
 </summary>
 
-![urls.py](#)
+![urls.py](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703443091/django-project/user-urls.py-validation_x4qqg5.webp)
 </details>
 
 #### chefshelper
