@@ -94,42 +94,42 @@ Device testing encompassed a diverse range of devices, including iPhone 12 Pro, 
 <summary> Home Page
 </summary>
 
-![Home Page](documentation/validation/home-html-validation.PNG)
+![Home Page](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703435437/django-project/home-validation_gcf6lh.webp)
 </details>
 
 <details>
 <summary> Recipes Page
 </summary>
 
-![Recipes Page](documentation/validation/contact-html-validation.PNG)
+![Recipes Page](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703435442/django-project/recipe-validation_fqmzcp.webp)
 </details>
 
 <details>
 <summary> Sign Up Page
 </summary>
 
-![Sign Up Page](documentation/validation/sign-up-html-validation.PNG)
+![Sign Up Page](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703435441/django-project/singup-validation_szghx1.webp)
 </details>
 
 <details>
 <summary> Login Page
 </summary>
 
-![Login Page](documentation/validation/login-html-validation.PNG)
+![Login Page](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703435435/django-project/login-validation_ytgqd1.webp)
 </details>
 
 <details>
 <summary> Add Recipe Page
 </summary>
 
-![Add Recipe Page](documentation/validation/logout-html-validation.PNG)
+![Add Recipe Page](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703435440/django-project/add-recipe-validation_clrzt1.webp)
 </details>
 
 <details>
 <summary> Update Recipe Page
 </summary>
 
-![Update Recipe Page](documentation/validation/cabin-booking-html-validation.PNG)
+![Update Recipe Page](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703435438/django-project/update-recipe-validation_hhieem.webp)
 </details>
 
 <details>
