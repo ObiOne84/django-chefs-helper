@@ -4,7 +4,8 @@
 {% load crispy_forms_tags %}
 
 <div class="container-lg">
-    <!-- Delete recipe modal -->
+
+    <!-- Delete recipe - Confirmation Modal -->
     <div id="deleteRecipeModal" class="modal" tabindex="-1" aria-labelledby="deleteRecipeModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -17,14 +18,8 @@
                     <p>This action is irreversible!</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <a href="{% url 'delete' slug=recipe.slug %}" class="btn btn-danger" role="button">Delete</a>
-                    <!-- <form method="post" action="{% url 'delete' slug=recipe.slug %}">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">
-                            Delete
-                        </button>
-                    </form> -->
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Cancel">Cancel</button>
+                    <a href="{% url 'delete' slug=recipe.slug %}" class="btn btn-danger" role="button" aria-label="Delete">Delete</a>
                 </div>
             </div>
         </div>
@@ -53,7 +48,6 @@
     <!-- Recipe card details -->
     <div class="row box-holder-background round-border print-margin">
         <div class="col-md-6 col-12 print-size py-3">
-            <!-- <div class="recipe-card-info bg-info"> -->
             {% if "placeholder" in recipe.featured_image.url %}
             <img src="https://res.cloudinary.com/dcrbeonr9/image/upload/v1700598678/image-placeholder_gmlf30.png"
                 alt="Image coming soon placeholder" class="dish-image round-border">
@@ -66,10 +60,10 @@
                 <form action="{% url 'recipe_like' recipe.slug %}" class="d-inline" method="POST">
                     {% csrf_token %}
                     {% if liked %}
-                    <button type="submit" name="recipelike_id" value="{{ recipe.slug }}" class="btn-like"><i
+                    <button type="submit" name="recipelike_id" value="{{ recipe.slug }}" class="btn-like" aria-label="Liked Recipe Heart"><i
                             class="fa-solid fa-heart like-heart"></i></button>
                     {% else %}
-                    <button type="submit" name="recipelike_id" value="{{ recipe.slug }}" class="btn-like"><i
+                    <button type="submit" name="recipelike_id" value="{{ recipe.slug }}" class="btn-like" aria-label="Unlike the Recipe"><i
                             class="fa-regular fa-heart"></i></button>
                     {% endif %}
                     <span class="fw-bold"> {{ recipe.number_of_likes }}</span>
@@ -93,7 +87,6 @@
                     </span>
                 </p>
             </div>
-            <!-- </div> -->
         </div>
         <div class="col-md-6 col-12 print-size print-margin">
             <div class="pt-2 my-3 print-margin">
@@ -140,6 +133,7 @@
     </div>
 
     <hr>
+
     <div class="row box-holder-background round-border d-flex">
         <div class="col-md-6 col-12 print-instructions py-3 d-flex flex-column print-margin">
             <h3><i class="fa-solid fa-list-check"></i> Instructions:</h3>
@@ -147,7 +141,6 @@
                 {{ recipe.instructions | safe }}
             </div>
         </div>
-        <!-- <hr class="d-block d-md-none no-print"> -->
         <div class="col-md-6 col-12 print-ingredients py-3 d-flex flex-column">
             <h3><i class="fa-solid fa-file-pen"></i> Ingredients:</h3>
             <div class="p-2 inner-holder-box round-border flex-fill">
@@ -219,12 +212,11 @@
                         <p class="requiredField">Rating</p>
                         <div class="star-rating">
                             <input name="rating" type="hidden" value="0" id="id_rating">
-                            <!-- fdprocessedid="t2k2ph" -->
-                            <i class="fa-regular fa-star" data-value="1"></i>
-                            <i class="fa-regular fa-star" data-value="2"></i>
-                            <i class="fa-regular fa-star" data-value="3"></i>
-                            <i class="fa-regular fa-star" data-value="4"></i>
-                            <i class="fa-regular fa-star" data-value="5"></i>
+                            <i class="fa-regular fa-star" data-value="1" aria-label="Rate Recipe One Star"></i>
+                            <i class="fa-regular fa-star" data-value="2" aria-label="Rate Recipe Two Stars"></i>
+                            <i class="fa-regular fa-star" data-value="3" aria-label="Rate Recipe Three Stars"></i>
+                            <i class="fa-regular fa-star" data-value="4" aria-label="Rate Recipe Four Stars"></i>
+                            <i class="fa-regular fa-star" data-value="5" aria-label="Rate Recipe Five Stars"></i>
                         </div>
                     </div>
                     {% endif %}
@@ -234,7 +226,7 @@
                     <div id="review-error" class="empty-error alert alert-danger hide">
                         <!-- error message goes here -->
                     </div>
-                    <button type="submit" class="btn btn-primary" id="review-button">SUBMIT</button>
+                    <button type="submit" class="btn btn-primary" id="review-button" aria-label="Submit">SUBMIT</button>
                 </form>
                 {% endif %}
                 {% endif %}

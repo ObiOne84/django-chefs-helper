@@ -24,19 +24,11 @@
                         </div>
                         {% endif %}
                     </div>
-                    <!-- <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 form-group instruction-box flex-fill">
-                        <h2>Instructions:</h2>
-                        <div class="#" id="update-instruction-text">
-                            {{ update_recipe_form.instructions|safe }}
-                            <ol class="instruction-list" id="update-instruction-list">
-                                Input fields are created here
-                            </ol>
-                        </div>
-                    </div> -->
+
                     <!-- updated instruction box -->
                     <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 form-group instruction-box">
                         <h2>Instructions:</h2>
-                        <div class="#" id="update-instruction-text">
+                        <div id="update-instruction-text">
                             {{ update_recipe_form.instructions|safe }}
                             <ol class="instruction-list" id="update-instruction-list">
                                 <!-- Input fields are created here -->
@@ -92,7 +84,8 @@
                                 {% if update_recipe_form.prep_time.errors %}
                                 <div class="alert alert-danger alert-dismissible fade show form-alert">
                                     {{ update_recipe_form.prep_time.errors.0 }}
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
                                 </div>
                                 {% endif %}
                             </div>
@@ -103,7 +96,8 @@
                                 {% if update_recipe_form.cook_time.errors %}
                                 <div class="alert alert-danger alert-dismissible fade show form-alert">
                                     {{ update_recipe_form.cook_time.errors.0 }}
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
                                 </div>
                                 {% endif %}
                             </div>
@@ -124,18 +118,7 @@
                         {{ update_recipe_form.status }}
                     </div>
                 </div>
-                <!-- {% if update_recipe_form.errors %}
-                <div class="alert alert-danger" role="alert">
-                    <strong>Form Errors:</strong>
-                    <ul>
-                        {% for field, errors in update_recipe_form.errors.items %}
-                        {% for error in errors %}
-                        <li>{{ error }}</li>
-                        {% endfor %}
-                        {% endfor %}
-                    </ul>
-                </div>
-                {% endif %} -->
+
                 <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2">
                     <h2>Ingredients:</h2>
                     <div id="ingredient-formset-container">
@@ -144,40 +127,13 @@
 
                         {% for form in ingredient_formset %}
                         <div class="formset-row show">
-
-                            <!-- {{ form.name }}
-                            {% if form.name.errors %}
-                            <div class="alert alert-danger">
-                                {{ form.name.errors.0 }}
-                            </div>
-                            {% endif %}
-
-                            {{ form.quantity }}
-                            {% if form.quantity.errors %}
-                            <div class="alert alert-danger">
-                                {{ form.quantity.errors.0 }}
-                            </div>
-                            {% endif %}
-
-                            {{ form.unit }}
-                            {{ form.DELETE }} {# Include the DELETE input for each formset row #}
-                            {{ form.id }}
-
-                            <button type="button" name="remove-ingredient"
-                                class="btn-like list-button remove-ingredient">
-                                <i class="fa-solid fa-circle-minus"></i>
-                            </button>
-                            <button type="button" name="add-ingredient" class="btn-like list-button add-ingredient">
-                                <i class="fa-solid fa-circle-plus"></i>
-                            </button> -->
-
-                            <!-- updated form.units and delete with buttons -->
                             <div class="input-group my-1">
                                 {{ form.name }}
                                 {% if form.name.errors %}
                                 <div class="alert alert-danger alert-dismissible fade show form-alert ingredient-alert">
                                     {{ form.name.errors.0 }}
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
                                 </div>
                                 {% endif %}
 
@@ -185,45 +141,32 @@
                                 {% if form.quantity.errors %}
                                 <div class="alert alert-danger alert-dismissible fade show form-alert ingredient-alert">
                                     {{ form.quantity.errors.0 }}
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
                                 </div>
                                 {% endif %}
+
                                 {{ form.unit }}
                                 {{ form.DELETE }} {# Include the DELETE input for each formset row #}
                                 {{ form.id }}
                                 <button class="btn btn-outline-secondary remove-ingredient" type="button"
-                                    name="remove-ingredient"><i class="fa-solid fa-minus"></i></button>
+                                    name="remove-ingredient" arial-label="Remove Ingredient"><i
+                                        class="fa-solid fa-minus"></i></button>
                                 <button class="btn btn-outline-secondary add-ingredient" type="button"
-                                    name="add-ingredient"><i class="fa-regular fa-plus"></i></button>
+                                    name="add-ingredient" aria-label="Add Ingredient"><i
+                                        class="fa-regular fa-plus"></i></button>
                             </div>
-
                         </div>
                         {% endfor %}
                     </div>
-                    <div>
-                        <!-- {% if ingredient_formset.errors %}
-
-                        <div class="alert alert-danger recipe-form-error-alert" role="alert">
-                            <strong>Form error, ingredient:</strong>
-                            <ul>
-                                {% for error in ingredient_formset.errors %}
-                                <li>{{ error }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        {% endif %} -->
-                    </div>
                 </div>
                 <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 py-4">
-                    <button class="btn btn-primary btn-lg" type="submit" name="submit_action" value="save_recipe">Save
-                        Recipe</button>
-                    <button class="btn btn-secondary btn-lg hide" type="submit" name="submit_action"
-                        value="save_draft">Save
-                        as Draft</button>
+                    <button class="btn btn-primary btn-lg" type="submit" name="submit_action" value="save_recipe"
+                        aria-label="Update Recipe">
+                        Save Recipe
+                    </button>
                 </div>
-
             </form>
-
         </div>
     </div>
 </div>

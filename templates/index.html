@@ -17,7 +17,7 @@
     {% if user.is_authenticated %}
     {% else %}
     <div class="row position-absolute bottom-0 start-50 translate-middle-x hero-box" style="z-index: 2;">
-        <a href="{% url 'account_signup' %}" class="btn btn-outline-danger btn-lg my-4 mx-2 p-2">Join
+        <a href="{% url 'account_signup' %}" class="btn btn-outline-danger btn-lg my-4 mx-2 p-2" aria-label="Join Now">Join
             Now!</a>
     </div>
     {% endif %}
@@ -102,7 +102,5 @@
         </div>
     </div>
 </div>
-
-
 
 {% endblock content %}

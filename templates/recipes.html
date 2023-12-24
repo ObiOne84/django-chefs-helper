@@ -1,12 +1,7 @@
 {% extends "base.html" %}
 
-{% block head %}
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon"
-    href="https://res.cloudinary.com/dcrbeonr9/image/upload/v1700594313/favicon-app_qs3q5b.ico">
-{% endblock %}
-
 {% block content %}
+
 <!-- Authenticated user taskbar -->
 <div class="container-lg min-vh-100">
     {% if user.is_authenticated %}
@@ -27,13 +22,18 @@
                     <form action="{% url 'recipe_images' %}" method="GET" class="form-inline my-2 my-lg-0">
                         <div class="input-group mb-3">
                             <input class="form-control mr-sm-2 d-inline" type="text" name="recipe_name"
-                                placeholder="Search by Recipe Name" aria-label="Search">
+                                placeholder="Search by Recipe Name" aria-label="Search Field">
                             {% if request.GET.recipe_name %}
                             <button action="{% url 'recipe_images' %}"
-                                class="btn btn-outline-success my-2 my-sm-0 d-inline">All
-                                Recipes</button>
+                                class="btn btn-outline-success my-2 my-sm-0 d-inline"
+                                aria-label="Return to recipes page">
+                                All Recipes
+                            </button>
                             {% endif %}
-                            <button class="btn btn-outline-success my-2 my-sm-0 d-inline" type="submit">Search</button>
+                            <button class="btn btn-outline-success my-2 my-sm-0 d-inline" type="submit"
+                                aria-label="Search">
+                                Search
+                            </button>
                         </div>
                     </form>
 
@@ -45,16 +45,14 @@
                         <i class="fa-solid fa-utensils"></i>
                         {% endif %}
                     </h2>
-
                 </div>
 
                 <!-- Recipe cards -->
                 {% if recipe_list %}
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     {% for recipe in recipe_list %}
-
                     <div class="col-lg-3 col-md-6 col-12 recipe-card-container">
-                        <a href="{% url 'recipe_detail' recipe.slug %}" class="post-link">
+                        <a href="{% url 'recipe_detail' recipe.slug %}" class="post-link" aria-label="Go To Recipe Details Page">
                             <div class="card recipe-card h-100 round-border d-flex flex-column position-relative">
                                 <div class="d-flex justify-content-center image-container">
                                     {% if "placeholder" in recipe.featured_image.url %}
