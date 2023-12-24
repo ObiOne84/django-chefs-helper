@@ -165,35 +165,35 @@ Device testing encompassed a diverse range of devices, including iPhone 12 Pro, 
 <summary> admin.py
 </summary>
 
-![admin.py](documentation/validation/admin-python-validation.PNG)
+![admin.py](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703440908/django-project/admin.py-validation_lzk27g.webp)
 </details>
 
 <details>
 <summary> forms.py
 </summary>
 
-![forms.py](documentation/validation/forms-python-validation.PNG)
+![forms.py](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703440910/django-project/forms.py-validation_aka7ac.webp)
 </details>
 
 <details>
 <summary> models.py
 </summary>
 
-![models.py](documentation/validation/models-python-validation.PNG)
+![models.py](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703440907/django-project/models.py-validation_yrsjis.webp)
 </details>
 
 <details>
 <summary> views.py
 </summary>
 
-![views.py](documentation/validation/views-python-validation.PNG)
+![views.py](#)
 </details>
 
 <details>
 <summary> urls.py
 </summary>
 
-![urls.py](documentation/validation/urls-python-validation.PNG)
+![urls.py](#)
 </details>
 
 #### chefshelper
@@ -218,49 +218,49 @@ Device testing encompassed a diverse range of devices, including iPhone 12 Pro, 
 <summary> Home Page
 </summary>
 
-![Home Page](documentation/validation/home-html-validation.PNG)
+![Home Page](#)
 </details>
 
 <details>
 <summary> Recipes Page
 </summary>
 
-![Recipes Page](documentation/validation/contact-html-validation.PNG)
+![Recipes Page](#)
 </details>
 
 <details>
 <summary> Sign Up Page
 </summary>
 
-![Sign Up Page](documentation/validation/sign-up-html-validation.PNG)
+![Sign Up Page](#)
 </details>
 
 <details>
 <summary> Login Page
 </summary>
 
-![Login Page](documentation/validation/login-html-validation.PNG)
+![Login Page](#)
 </details>
 
 <details>
 <summary> Add Recipe Page
 </summary>
 
-![Add Recipe Page](documentation/validation/logout-html-validation.PNG)
+![Add Recipe Page](#)
 </details>
 
 <details>
 <summary> Update Recipe Page
 </summary>
 
-![Update Recipe Page](documentation/validation/cabin-booking-html-validation.PNG)
+![Update Recipe Page](#)
 </details>
 
 <details>
 <summary> Recipe Detail View Page
 </summary>
 
-![Recipe Detail View Page](documentation/validation/make-booking-html-validation.PNG)
+![Recipe Detail View Page](#)
 </details>
 
 ## Bugs
