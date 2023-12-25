@@ -56,8 +56,14 @@
                                 class="fa-solid fa-book"></i>
                             Recipes</a></li>
                     {% if user.is_authenticated %}
+                        {% if user.is_staff %}
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-lg-1 hover-element"
+                                href="{% url 'admin:index' %}" aria-label="Admin Panel"><i class="fa-solid fa-user-tie"></i>
+                                Admin</a></li>
+                        {% endif %}
                     <li class="nav-item"><a class="nav-link px-lg-3 py-lg-1 hover-element" id="logout-link" href="#"
                             aria-label="Sign Out"><i class="fa-solid fa-right-to-bracket"></i> Logout</a></li>
+
                     {% else %}
                     <li class="nav-item"><a
                             class="nav-link px-lg-3 py-lg-1 {% if request.path == '/account/login/' %}active{% endif %} hover-element"
