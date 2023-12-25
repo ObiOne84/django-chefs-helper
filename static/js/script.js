@@ -296,9 +296,9 @@ function validateReviewForm(className) {
     $(className).each(function () {
         let reviewField = $(this);
         let reviewValue = reviewField.val().trim();
-        isValid = false;
 
         if (reviewValue === '') {
+            isValid = false;
 
             $('.empty-error').text('Text input cannot be empty').show();
             setTimeout(function () {
