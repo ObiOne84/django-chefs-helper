@@ -551,8 +551,17 @@ AddRecipeForm and UpdateRecipeForm ensure that the title is unique using a custo
     <summary> Navigation bar for logged in users.
     </summary>
 
-    ![Visitor's Navigation Bar](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703414610/django-project/user-nav-bar_lofpwu.webp)
+    ![User's Navigation Bar](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703414610/django-project/user-nav-bar_lofpwu.webp)
     </details>
+  
+    - Navigation bar for an admin
+
+    <details>
+    <summary> Navigation bar for logged in admin.
+    </summary>
+
+    ![Admin's Navigation Bar](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703523109/django-project/admin-navbar_tbgime.webp)
+    </detai
 
 - About Section
   - It contains a description of the main function of the application, and future updates.
@@ -736,6 +745,14 @@ AddRecipeForm and UpdateRecipeForm ensure that the title is unique using a custo
   - Admin can access admin panel through his navigation bar
   - Can add, update, delete recipes, ingredients.
   - Can approve reviews.
+  - Can read, add, edit and delete users, email and manage social acccounts.
+
+    <details>
+    <summary> Admin panel.
+    </summary>
+
+    ![Admin Panel](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703523440/django-project/admin-panel_xqgsan.webp)
+    </details>
 
 ### Features Left to Implement
 
