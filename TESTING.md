@@ -246,14 +246,14 @@ Device testing encompassed a diverse range of devices, including iPhone 12 Pro, 
 <summary> Add Recipe Page
 </summary>
 
-![Add Recipe Page](#)
+![Add Recipe Page](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703535015/django-project/add-recipe-lighthouse-test_ld5eyi.webp)
 </details>
 
 <details>
 <summary> Update Recipe Page
 </summary>
 
-![Update Recipe Page](#)
+![Update Recipe Page](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703535740/django-project/edit-recipe-lighthouse-test_k1obog.webp)
 </details>
 
 <details>
