@@ -39,8 +39,8 @@
                         </div>
                     </div>
                     <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 add-image">
-                        <h2>Update Recipe Image:</h2>
-                        <div class="col-md-8 offset-md-2 col-12 my-2">
+                        <h2>Update {{ update_recipe_form.featured_image.label_tag }}</h2>
+                        <!-- <div class="col-md-8 offset-md-2 col-12 my-2">
                             <label for="id_featured_image">
                                 {% if not "placeholder" in recipe.featured_image.url %}
                                 <img src="{{ image.url }}" alt="{{ recipe.title }} image"
@@ -51,7 +51,7 @@
                                     class="img-fluid d-block round-border update-image transparent-image">
                                 {% endif %}
                             </label>
-                        </div>
+                        </div> -->
                         <br>
                         {{ update_recipe_form.featured_image }}
                         {% if update_recipe_form.featured_image.errors %}
