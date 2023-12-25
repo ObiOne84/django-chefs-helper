@@ -40,7 +40,7 @@
                   <h2>{{ form.instructions.label_tag }}</h2>
                   <textarea name="instructions" cols="40" rows="10" class="instruction-steps" id="id_instructions"
                      style="display: none;"></textarea>
-                  <ol class="instruction-list">
+                  <ol class="instruction-list" id="add-instruction-list">
                      <li class="my-1 instruction-list-item ">
                         <div class="input-group instruction-textarea-field my-1">
                            <textarea name="instruction-step" cols="40" rows="2"
@@ -169,10 +169,9 @@
                            {{ form.DELETE }} {# Include the DELETE input for each formset row #}
                            {{ form.id }}
                            <button class="btn btn-outline-secondary remove-ingredient" type="button"
-                              name="remove-ingredient" aria-label="Remove Ingredient"><i
+                              name="remove-ingredient"><i
                                  class="fa-solid fa-minus"></i></button>
-                           <button class="btn btn-outline-secondary add-ingredient" type="button" name="add-ingredient"
-                              aria-label="Add Ingredient"><i class="fa-regular fa-plus"></i></button>
+                           <button class="btn btn-outline-secondary add-ingredient" type="button" name="add-ingredient"><i class="fa-regular fa-plus"></i></button>
                         </div>
                      </div>
                      {% endfor %}
@@ -181,7 +180,7 @@
             </div>
             <div class="col-lg-8 offset-lg-2 col-12 my-lg-4 my-2 py-4">
                <button class="btn btn-primary btn-lg save-recipe-btn" type="submit" name="submit_action"
-                  value="save_recipe" aria-label="Add Recipe">Save
+                  value="save_recipe" id="save-recipe">Save
                   Recipe</button>
             </div>
          </form>

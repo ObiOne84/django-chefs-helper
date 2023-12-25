@@ -7,7 +7,7 @@
 
     <div class="row">
         <div class="col-12 text-center py-4">
-            <h1>Update Recipe: <span class="special-text d-block">{{ recipe.title }}</span></h1>
+            <h1>Update Recipe: <span class="special-text d-block">{{ recipe.title|title }}</span></h1>
         </div>
         <div class="col-md-8 offset-md-2 col-12 print-size">
             <form method="post" enctype="multipart/form-data" action="{% url 'update_recipe' slug=recipe.slug %}"
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 add-image">
-                        <h2>Update Recipe Image Here:</h2>
+                        <h2>Update Recipe Image:</h2>
                         <div class="col-md-8 offset-md-2 col-12 my-2">
                             <label for="id_featured_image">
                                 {% if not "placeholder" in recipe.featured_image.url %}
@@ -62,10 +62,8 @@
                         {% endif %}
                     </div>
                     <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2">
-                        <h2>Recipe Description:</h2>
-                        <p>
-                            {{ update_recipe_form.excerpt.label_tag }}
-                        </p>
+                        <h2>Update Description {{ update_recipe_form.excerpt.label_tag }}</h2>
+
                         <p>
                             {{ update_recipe_form.excerpt }}
                         </p>
@@ -79,7 +77,7 @@
                     <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2">
                         <div class="row">
                             <div class="col-md-6 col-12">
-                                <h2>Prep Time:</h2>
+                                <h2>{{ update_recipe_form.prep_time.label_tag }}</h2>
                                 {{ update_recipe_form.prep_time }} <span>minutes</span>
                                 {% if update_recipe_form.prep_time.errors %}
                                 <div class="alert alert-danger alert-dismissible fade show form-alert">
@@ -91,7 +89,7 @@
                             </div>
 
                             <div class="col-md-6 col-12">
-                                <h2>Cook Time: </h2>
+                                <h2>{{ update_recipe_form.cook_time.label_tag }}</h2>
                                 {{ update_recipe_form.cook_time }} <span>minutes</span>
                                 {% if update_recipe_form.cook_time.errors %}
                                 <div class="alert alert-danger alert-dismissible fade show form-alert">
@@ -104,7 +102,7 @@
                         </div>
                     </div>
                     <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2">
-                        <h2>Number Of Servings:</h2>
+                        <h2>Number Of {{ update_recipe_form.servings.label_tag }}</h2>
                         {{ update_recipe_form.servings }}
                         {% if update_recipe_form.servings.errors %}
                         <div class="alert alert-danger alert-dismissible fade show form-alert">
@@ -114,7 +112,7 @@
                         {% endif %}
                     </div>
                     <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2">
-                        <h2>Publish or Save as Draft:</h2>
+                        <h2>{{ update_recipe_form.status.label_tag }}</h2>
                         {{ update_recipe_form.status }}
                     </div>
                 </div>
@@ -128,6 +126,7 @@
                         {% for form in ingredient_formset %}
                         <div class="formset-row show">
                             <div class="input-group my-1">
+                                <h3 class="visually-hidden">{{ form.name.label_tag }}</h3>
                                 {{ form.name }}
                                 {% if form.name.errors %}
                                 <div class="alert alert-danger alert-dismissible fade show form-alert ingredient-alert">
@@ -136,7 +135,7 @@
                                         aria-label="Close"></button>
                                 </div>
                                 {% endif %}
-
+                                <h3 class="visually-hidden">{{ form.quantity.label_tag }}</h3>
                                 {{ form.quantity }}
                                 {% if form.quantity.errors %}
                                 <div class="alert alert-danger alert-dismissible fade show form-alert ingredient-alert">
@@ -150,10 +149,10 @@
                                 {{ form.DELETE }} {# Include the DELETE input for each formset row #}
                                 {{ form.id }}
                                 <button class="btn btn-outline-secondary remove-ingredient" type="button"
-                                    name="remove-ingredient" arial-label="Remove Ingredient"><i
+                                    name="remove-ingredient"><i
                                         class="fa-solid fa-minus"></i></button>
                                 <button class="btn btn-outline-secondary add-ingredient" type="button"
-                                    name="add-ingredient" aria-label="Add Ingredient"><i
+                                    name="add-ingredient"><i
                                         class="fa-regular fa-plus"></i></button>
                             </div>
                         </div>
