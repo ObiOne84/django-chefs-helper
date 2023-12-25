@@ -1,20 +1,3 @@
-
-- <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fdjango-chefs-helper-90ca65af05b0.herokuapp.com%2Faccounts%2Flogin%2F" target="_blank">Validation result for login.html</a> .
-
-- <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fdjango-chefs-helper-90ca65af05b0.herokuapp.com%2Frecipe_images%2F" target="_blank">Validation result for recipes.html</a> .
-
-- <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fdjango-chefs-helper-90ca65af05b0.herokuapp.com%2Faccounts%2Fsignup%2F" target="_blank">Validation result for signup.html</a> .
-
-- <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fdjango-chefs-helper-90ca65af05b0.herokuapp.com%2Faccounts%2Flogin%2F%3Fnext%3D%2Fbeef-and-bean-burrito%2F" target="_blank">Validation result for recipe-detail.html</a> .
-
-- <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fdjango-chefs-helper-90ca65af05b0.herokuapp.com%2Faccounts%2Flogin%2F%3Fnext%3D%2Fupdate_recipe%2Fbeef-and-bean-burrito%2F" target="_blank">Validation result for update_recipe.html</a> .
-
-- <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fdjango-chefs-helper-90ca65af05b0.herokuapp.com%2Faccounts%2Flogin%2F%3Fnext%3D%2Fadd_recipe" target="_blank">Validation result for add_recipe.html</a> .
-
-- <a href="https://jigsaw.w3.org/css-validator/validator" target="_blank">Validation result for CSS</a> .
-
----
-
 # Chef's Helper
 
 Discover the ultimate solution for your culinary adventures! Our application empowers you to create, store, and explore a world of recipes, all in one place. Whether you're a seasoned chef or a home cook, our platform is designed to enhance your cooking experience.

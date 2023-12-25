@@ -377,7 +377,7 @@ Device testing encompassed a diverse range of devices, including iPhone 12 Pro, 
 |               | When submitted as draft | Redirect to recipes page, success message displayed, recipe is placed behind published recipes, recipe is marked as draft, recipe is not visible to other users | PASS |
 |               | When submitted as published | Redirect to recipes page, success message displayed, recipe is placed at the begining of the recipes, recipe is visible to other users  | PASS |
 | Edit Recipe Page |  |    |    |
-|               | As Add Recipe | All test as for add recipe page | PASS |
+|               | As per Add Recipe | All test as for add recipe page | PASS |
 |               | Exisiting fields content | All content displays correctly | PASS |
 |               | Change Exisiting fields content | All content can be modified | PASS |
 
