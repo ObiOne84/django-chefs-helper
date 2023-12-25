@@ -291,9 +291,12 @@ function createInputField(data) {
  */
 function validateReviewForm(className) {
 
+    let isValid = true;
+
     $(className).each(function () {
         let reviewField = $(this);
         let reviewValue = reviewField.val().trim();
+        isValid = false;
 
         if (reviewValue === '') {
 
@@ -303,12 +306,9 @@ function validateReviewForm(className) {
             }, 8000);
 
             reviewField.focus();
-
-            return false;
         }
-
     });
-    return true;
+    return isValid;
 }
 
 /**
