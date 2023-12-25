@@ -14,6 +14,7 @@ h1,
 h2,
 h3,
 h4,
+.label-font,
 .heading-one {
     font-family: 'Roboto Slab', Georgia, serif;
 }
@@ -226,6 +227,17 @@ form.signup ul {
 
 .show {
     display: block;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }
 
 /* style recipe instructions */

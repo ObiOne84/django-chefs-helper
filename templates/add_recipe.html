@@ -37,7 +37,7 @@
                <!-- Instruction go here -->
                <div class="col-lg-8 offset-lg-2 col-12 my-lg-4 my-2 form-group instruction-box">
 
-                  <h2>Instructions:</h2>
+                  <h2>{{ form.instructions.label_tag }}</h2>
                   <textarea name="instructions" cols="40" rows="10" class="instruction-steps" id="id_instructions"
                      style="display: none;"></textarea>
                   <ol class="instruction-list">
@@ -75,7 +75,7 @@
                         </label>
                      </div>
                      <div class="col-12 add-image">
-                        <h2>Add Recipe Image Here:</h2>
+                        <h2>Add {{ form.featured_image.label_tag }}</h2>
                         {{ form.featured_image }}
                         {% if form.featured_image.errors %}
                         <div class="alert alert-danger alert-dismissible fade show form-alert">
@@ -87,7 +87,7 @@
                   </div>
                </div>
                <div class="col-lg-8 offset-lg-2 col-12 my-lg-4 my-2">
-                  <h2>Provide Short Description:</h2>
+                  <h2>Provide Description {{ form.excerpt.label_tag }}</h2>
                   {{ form.excerpt }}
                   {% if form.excerpt.errors %}
                   <div class="alert alert-danger alert-dismissible fade show form-alert">
@@ -99,7 +99,7 @@
                <div class="col-lg-8 offset-lg-2 col-12 my-lg-4 my-2">
                   <div class="row">
                      <div class="col-lg-6 col-12">
-                        <h2>Prep Time:</h2>
+                        <h2>{{ form.prep_time.label_tag }}</h2>
                         {{ form.prep_time }} <span>minutes</span>
                      </div>
                      {% if form.prep_time.errors %}
@@ -109,7 +109,7 @@
                      </div>
                      {% endif %}
                      <div class="col-lg-6 col-12">
-                        <h2>Cook Time: </h2>
+                        <h2>{{ form.cook_time.label_tag }}</h2>
                         {{ form.cook_time }} <span>minutes</span>
                      </div>
                      {% if form.cook_time.errors %}
@@ -121,7 +121,7 @@
                   </div>
                </div>
                <div class="col-lg-8 offset-lg-2 col-12 my-lg-4 my-2">
-                  <h2>Number Of Servings:</h2>
+                  <h2>Number Of {{ form.servings.label_tag }}</h2>
                   {{ form.servings }}
                   {% if form.servings.errors %}
                   <div class="alert alert-danger alert-dismissible fade show form-alert">
@@ -131,7 +131,7 @@
                   {% endif %}
                </div>
                <div class="col-lg-8 offset-lg-2 col-12 my-lg-4 my-2">
-                  <h2>Publish or Save as Draft:</h2>
+                  <h2>{{ form.status.label_tag }}</h2>
                   {{ form.status }}
                </div>
             </div>
@@ -147,6 +147,7 @@
                      {% for form in form.ingredient_formset %}
                      <div class="formset-row show">
                         <div class="input-group my-1">
+                           <h3 class="visually-hidden">{{ form.name.label_tag }}</h3>
                            {{ form.name }}
                            {% if form.name.errors %}
                            <div class="alert alert-danger alert-dismissible fade show form-alert ingredient-alert">
@@ -155,7 +156,7 @@
                                  aria-label="Close"></button>
                            </div>
                            {% endif %}
-
+                           <h3 class="visually-hidden">{{ form.quantity.label_tag }}</h3>
                            {{ form.quantity }}
                            {% if form.quantity.errors %}
                            <div class="alert alert-danger alert-dismissible fade show form-alert ingredient-alert">

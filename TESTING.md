@@ -218,28 +218,28 @@ Device testing encompassed a diverse range of devices, including iPhone 12 Pro, 
 <summary> Home Page
 </summary>
 
-![Home Page](#)
+![Home Page](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703526648/django-project/home-lighthouse-test_yxdyii.webp)
 </details>
 
 <details>
 <summary> Recipes Page
 </summary>
 
-![Recipes Page](#)
+![Recipes Page](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703526648/django-project/recipes-lighthouse-test_kxll43.webp)
 </details>
 
 <details>
 <summary> Sign Up Page
 </summary>
 
-![Sign Up Page](#)
+![Sign Up Page](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703526649/django-project/sign-up-lighthouse-test_vyehxz.webp)
 </details>
 
 <details>
 <summary> Login Page
 </summary>
 
-![Login Page](#)
+![Login Page](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703526649/django-project/sign-in-lighthouse-test_k4uqxk.webp)
 </details>
 
 <details>
@@ -260,7 +260,7 @@ Device testing encompassed a diverse range of devices, including iPhone 12 Pro, 
 <summary> Recipe Detail View Page
 </summary>
 
-![Recipe Detail View Page](#)
+![Recipe Detail View Page](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703526648/django-project/recipe-view-lighthouse-test_ehxdjn.webp)
 </details>
 
 ## Bugs
