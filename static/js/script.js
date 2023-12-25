@@ -289,22 +289,25 @@ function createInputField(data) {
  * Function  checks field for empty value, and if empty it displays
  * error message to the user
  */
-function validateReviewForm(field) {
-    let reviewField = $(field);
-    let reviewValue = reviewField.val().trim();
+function validateReviewForm(className) {
 
-    if (reviewValue === '') {
+    $(className).each(function () {
+        let reviewField = $(this);
+        let reviewValue = reviewField.val().trim();
 
-        $('.empty-error').text('Text input cannot be empty').show();
-        setTimeout(function () {
-            $('.empty-error').empty().hide();
-        }, 8000);
+        if (reviewValue === '') {
 
-        reviewField.focus();
+            $('.empty-error').text('Text input cannot be empty').show();
+            setTimeout(function () {
+                $('.empty-error').empty().hide();
+            }, 8000);
 
-        return false;
-    }
+            reviewField.focus();
 
+            return false;
+        }
+
+    });
     return true;
 }
 
