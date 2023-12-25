@@ -146,9 +146,7 @@ form.signup ul {
 
 .taskbar {
     background-color: #3b3a3a;
-    /* Dark color for taskbar background */
     color: white;
-    /* Light color for text/icons */
 }
 
 .control-button {
@@ -177,7 +175,7 @@ form.signup ul {
 .like-heart,
 .full-stars,
 .fa-star-half-stroke {
-    /* color: #dfb705; */
+
     text-shadow: 0 0 1px #000;
 }
 
@@ -200,7 +198,6 @@ form.signup ul {
 
 .review-body-holder textarea:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    /* Adjust values as needed */
     transition: box-shadow 0.3s ease;
 }
 
@@ -210,16 +207,11 @@ form.signup ul {
     background: transparent;
 }
 
-/* .like-heart {
-    text-shadow: 0 0 3px #000;
-} */
-
 .fa-heart {
     color: rgb(233, 6, 6);
 }
 
 /* Add recipe style */
-/* Hide the checkbox */
 .formset-row input[type="checkbox"] {
     display: none;
 }
@@ -236,13 +228,9 @@ form.signup ul {
     display: block;
 }
 
-/* Set max width for textarea */
-
 /* style recipe instructions */
 /* source: https://www.geeksforgeeks.org/how-to-set-indent-the-second-line-of-paragraph-using-css/ */
 .steps {
-    /* font-size: large;
-    font-weight: bold; */
     margin-bottom: 10px;
     word-wrap: break-word;
     text-indent: -36px;
@@ -394,7 +382,6 @@ ol {
 }
 
 /* -----Style home page --------- */
-
 .background-image {
     background-image: url('https://res.cloudinary.com/dcrbeonr9/image/upload/v1702825129/hero-image_hxgrwo.jpg');
     height: 50vh;
@@ -443,14 +430,6 @@ ol {
 
 @media print {
 
-    /* @page {
-        size: auto;
-        margin: 5mm;
-      } */
-
-    /* body {
-        height: 100vh;
-    } */
     .no-print {
         display: none;
     }

@@ -380,5 +380,17 @@ Device testing encompassed a diverse range of devices, including iPhone 12 Pro, 
 |               | As per Add Recipe | All test as for add recipe page | PASS |
 |               | Exisiting fields content | All content displays correctly | PASS |
 |               | Change Exisiting fields content | All content can be modified | PASS |
+| Admin Panel |  |    |    |
+|               | Add Recipe | Admin can build the recipe | PASS |
+|               | Add Ingredient | Admin can add ingredient | PASS |
+|               | Edit Recipe | Admin can edit recipe | PASS |
+|               | Edit Ingredient | Admin can edit ingredient | PASS |
+|               | CRUD Review | Admin can read, add, edit and delete reviews | PASS |
+|               | Approve Review | Admin aprrove one or selected reviews | PASS |
+|               | Delete Recipe| Admin can delete one or selected reviews | PASS |
+|               | Filter/Sort Recipe | Admin can filter/sort recipes | PASS |
+|               | Filter/Sort Review | Admin can filter/sort reviews | PASS |
+|               | Search Review | Admin can search reviews | PASS |
+|               | Search Recipe | Admin can search recipe | PASS |
 
 Return to [README](README.md)
