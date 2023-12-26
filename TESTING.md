@@ -267,11 +267,140 @@ Device testing encompassed a diverse range of devices, including iPhone 12 Pro, 
 
 ### Resolved Bugs
 
-#### bug1
+#### Form Not Submitting
 
-#### bug2
+* Javascript code prevents adding recipe form from being submitted by always returning a false value.
 
-#### bug3
+<details>
+<summary> Code changes
+</summary>
+
+```javascript
+
+function validateReviewForm(className) {
+
+    let isValid = true;
+
+    $(className).each(function () {
+        let reviewField = $(this);
+        let reviewValue = reviewField.val().trim();
+        isValid = false; // Before, isValid inside loop, always return false
+
+        if (reviewValue === '') {
+            isValid = false; // After, isValid placed outside loop
+
+            $('.empty-error').text('Text input cannot be empty').show();
+            setTimeout(function () {
+                $('.empty-error').empty().hide();
+            }, 8000);
+
+            reviewField.focus();
+        }
+    });
+    return isValid;
+}
+
+```
+
+</details>
+
+#### Add Recipe Page - HTML validation errors
+
+* The HTML page was missing aria labels for some buttons and links. Also, form needed form labels for some fields. Missing labels were added, and the code passed the test.
+
+#### Update Recipe Page - HTML validation errors
+
+* The update_recipe.html had three errors when validating the HTML code. The `button` was wrapped in the `a` element, the `i` element had `type="button"` attribute added, and the `div` element was wrapped in `span`. All errors were corrected by removing not allowed elements`button, type="button" and span` and changing them to `a` with Bootstrap class btn, and `span` element to `div`.
+
+#### Index Page - HTML validation errors
+
+* The page failed the validator test due to the `a` element containing attribute `type="button"`. The issue was resolved by removing the attribute.
+
+#### Print button not visible for all recipes
+
+* Users could not print recipes created by others. This was due to the template code issue; the print button was inside the if statement, which checks if the user is the recipe's author, hiding the print button for all recipes not created by the user. The function was fixed by moving the `{% endif %}` statement before the print button.
+
+<details>
+<summary> Code changes
+</summary>
+
+```html
+
+<div class="row taskbar no-print">
+        <div class="col-lg-6 offset-lg-6 col-12 py-2 no-print d-flex justify-content-center">
+            {% if request.user == recipe.author %}
+            <a class="btn btn-outline-info btn-sm control-button" role="button"
+                href="{% url 'update_recipe' slug=recipe.slug %}">
+                <i class="fa-regular fa-pen-to-square"></i> Edit <span class="d-none d-xl-inline">Recipe</span>
+            </a>
+            <a class="btn btn-outline-danger btn-sm control-button" role="button" href="#" id="delete-recipe-link">
+                <i class="fa-regular fa-trash-can"></i>
+                <span class="d-none d-sm-inline"> Delete</span><span class="d-none d-xl-inline"> Recipe</span>
+            </a>
+            {% endif %}
+            <a class="btn btn-outline-warning btn-sm control-button" role="button" href="#" id="print-button">
+                <i class="fa-solid fa-print no-print"></i>
+                <span class="d-none d-sm-inline"> Print</span><span class="d-none d-xl-inline"> Recipe</span>
+            </a>
+            <!-- {% endif %} Before -->
+        </div>
+    </div>
+
+```
+
+</details>
+
+#### Search field do not display results
+
+* The issue was caused by incorrect `url` for the form used to submit User search request. The issue was fixed by providing the correct `url`.
+
+<details>
+<summary> Code changes
+</summary>
+
+```html
+
+<!-- <form action="{% url 'home' %}" method="GET" class="form-inline my-2 my-lg-0"> -->
+<form action="{% url 'recipe_images' %}" method="GET" class="form-inline my-2 my-lg-0">
+
+```
+
+</details>
+
+#### User could remove all ingredients
+
+* The script allowed Users to remove all ingredients fields. This was causing form to be invalid and preventing submitting. The code was fixed by adding `not(:first)`.
+
+<details>
+<summary> Code changes
+</summary>
+
+```javascript
+
+const hideEmptyIngredientFieldsExceptFirst = () => {
+
+    $('.ingredient-name:first').attr('required', 'required');
+    $('.ingredient-quantity:first').attr('required', 'required');
+    //  $("#ingredient-formset-container").find('.formset-row').each(function () {
+    $("#ingredient-formset-container").find('.formset-row:not(:first)').each(function () {
+        var nameField = $(this).find('input[name$="name"]');
+        var quantityField = $(this).find('input[name$="quantity"]');
+
+        if (!quantityField.val()) {
+            $(this).removeClass('show').addClass('hide');
+            $(this).find("[name$='-DELETE']").prop('checked', true);
+        } else {
+            $(this).removeClass('hide').addClass('show');
+            nameField.prop('required', true);
+            quantityField.prop('required', true);
+        }
+    });
+};
+
+
+```
+
+</details>
 
 ### Unresolved Bug
 
