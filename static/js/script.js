@@ -51,6 +51,12 @@ $(document).ready(function () {
         return validateReviewForm('.review-body-holder textarea');
     });
 
+    saveInstructionToLocalStorage('add-instruction-list');
+    saveInstructionToLocalStorage('update-instruction-list');
+    if (localStorage.length > 0) {
+        clearLocalStorage();
+    }
+
 });
 
 /**
@@ -361,5 +367,83 @@ const putRecipeInstructionIntoSeparateFields = () => {
             let inputField = createInputField(instruction);
             instructionList.append(inputField);
         });
+    }
+};
+
+/**
+ * Function to populate textarea fields with content from an array.
+ */
+function populateTextareasFromArray(list, contentArray) {
+    let instructionList = document.getElementById(list);
+    let textareaFields = instructionList.querySelectorAll('textarea');
+
+    if (textareaFields.length === contentArray.length) {
+        textareaFields.forEach((textarea, index) => {
+            textarea.value = contentArray[index];
+        });
+    }
+}
+
+/**
+ * Function to get instruction field saved in local storage.
+ */
+const saveInstructionToLocalStorage = (list) => {
+    let instructionList = document.getElementById(list);
+    if (instructionList) {
+        const savedContent = localStorage.getItem('instructionListContent');
+        if (savedContent) {
+            instructionList.innerHTML = savedContent;
+
+            const loadedArray = JSON.parse(localStorage.getItem('instructionContentArray'));
+            if (loadedArray) {
+                populateTextareasFromArray(list, loadedArray);
+            }
+        }
+
+    }
+
+    // Save content to local storage on button click
+    $('#save-recipe').on('click', function () {
+        let olContent = instructionList.innerHTML;
+
+        localStorage.setItem('instructionListContent', olContent);
+
+        let instructionContentArray = getInstructionContent(list);
+        localStorage.setItem('instructionContentArray', JSON.stringify(instructionContentArray));
+    });
+};
+
+/**
+ * Function get content of textarea fields created by the user
+ */
+function getInstructionContent(list) {
+    let instructionList = document.getElementById(list);
+    let textareaFields = instructionList.querySelectorAll('textarea');
+
+    let instructionContent = Array.from(textareaFields).map(textarea => textarea.value);
+
+    return instructionContent;
+}
+
+/**
+ * Function clear instructions created by user once user leaves recipe form
+ */
+const clearLocalStorage = () => {
+
+    var pathname = window.location.pathname;
+    switch (pathname) {
+        case "/recipe_images/":
+            localStorage.removeItem('instructionListContent');
+            localStorage.removeItem('instructionContentArray');
+            break;
+
+        case "/admin/":
+            localStorage.removeItem('instructionListContent');
+            localStorage.removeItem('instructionContentArray');
+            break;
+        case '/':
+            localStorage.removeItem('instructionListContent');
+            localStorage.removeItem('instructionContentArray');
+            break;
     }
 };
