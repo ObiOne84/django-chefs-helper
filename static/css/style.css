@@ -1,4 +1,4 @@
-/* --------- GENERAL STYLE ---------- */
+/* --------- General style ---------- */
 body,
 p {
     font-family: 'Lato', Arial, sans-serif;
@@ -19,12 +19,11 @@ h4,
     font-family: 'Roboto Slab', Georgia, serif;
 }
 
-/* Optional: Accent Font */
 .special-text {
     font-family: 'Pacifico', cursive, sans-serif;
 }
 
-/* Navbar */
+/* -----Navbar --------------- */
 button.navbar-toggler {
     border: none;
 }
@@ -33,7 +32,7 @@ button.navbar-toggler {
     color: #630a0a;
 }
 
-/* Footer */
+/* ------- Footer ------------ */
 footer ul {
     margin: 0;
     padding-top: 1rem;
@@ -54,7 +53,7 @@ a {
     padding: 0;
 }
 
-/* Style login / signup page */
+/*-------- Style Login/Singup page ------ */
 form.login span.helptext {
     display: none;
 }
@@ -122,8 +121,7 @@ form.signup ul {
     color: #2759fc;
 }
 
-/* ----STYLE RECIPE DETAIL PAGE ---------- */
-/* General recipe detail styles */
+/* ----Style recipe detail page ---------- */
 .box-holder-background {
     background-color: white;
 }
@@ -160,7 +158,6 @@ form.signup ul {
     margin-right: 1%;
 }
 
-/* Rating stars style */
 .empty-stars,
 .star-rating i:hover,
 .star-rating i.active,
@@ -202,7 +199,6 @@ form.signup ul {
     transition: box-shadow 0.3s ease;
 }
 
-/* Style likes */
 .btn-like {
     border: none;
     background: transparent;
@@ -212,7 +208,7 @@ form.signup ul {
     color: rgb(233, 6, 6);
 }
 
-/* Add recipe style */
+/* ------ Style Ingredients formset ----------- */
 .formset-row input[type="checkbox"] {
     display: none;
 }
@@ -229,18 +225,7 @@ form.signup ul {
     display: block;
 }
 
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-}
-
-/* style recipe instructions */
+/* Style recipe instructions */
 /* source: https://www.geeksforgeeks.org/how-to-set-indent-the-second-line-of-paragraph-using-css/ */
 .steps {
     margin-bottom: 10px;
@@ -249,8 +234,7 @@ form.signup ul {
     padding-left: 36px;
 }
 
-/* -------- STYLE RECIPES PAGE ---------- */
-/* recipe card */
+/* -------- Style Recipes page ---------- */
 .recipe-card-container {
     min-height: 400px;
 }
@@ -291,8 +275,7 @@ form.signup ul {
     display: block;
 }
 
-/* -----STYLE ADD RECIPE PAGE ---------- */
-
+/* -----Style Add Recipe page ---------- */
 .title-box input {
     padding: 5px;
     display: block;
@@ -393,7 +376,7 @@ ol {
     width: 40%;
 }
 
-/* -----Style home page --------- */
+/* ----- Style Home page --------- */
 .background-image {
     background-image: url('https://res.cloudinary.com/dcrbeonr9/image/upload/v1702825129/hero-image_hxgrwo.jpg');
     height: 50vh;
@@ -403,7 +386,6 @@ ol {
     background-repeat: no-repeat;
 }
 
-/* background image overlay */
 .hero.background-image::after {
     content: "";
     position: absolute;
@@ -439,7 +421,6 @@ ol {
 }
 
 /* Styles for the printed version */
-
 @media print {
 
     .no-print {
@@ -498,7 +479,7 @@ ol {
     }
 }
 
-/* Media query for screens 1440px and below */
+/* Media query for various screen sizes */
 @media (max-width: 1440px) {
     .background-image {
         height: 40vh;

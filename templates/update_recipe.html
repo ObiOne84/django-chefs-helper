@@ -40,18 +40,6 @@
                     </div>
                     <div class="col-md-8 offset-md-2 col-12 my-lg-4 my-2 add-image">
                         <h2>Update {{ update_recipe_form.featured_image.label_tag }}</h2>
-                        <!-- <div class="col-md-8 offset-md-2 col-12 my-2">
-                            <label for="id_featured_image">
-                                {% if not "placeholder" in recipe.featured_image.url %}
-                                <img src="{{ image.url }}" alt="{{ recipe.title }} image"
-                                    class="img-fluid d-block round-border update-image">
-                                {% else %}
-                                <img src="https://res.cloudinary.com/dcrbeonr9/image/upload/v1702837530/add-image_dybsov.png"
-                                    alt="Add image placeholder"
-                                    class="img-fluid d-block round-border update-image transparent-image">
-                                {% endif %}
-                            </label>
-                        </div> -->
                         <br>
                         {{ update_recipe_form.featured_image }}
                         {% if update_recipe_form.featured_image.errors %}
@@ -144,15 +132,15 @@
                                         aria-label="Close"></button>
                                 </div>
                                 {% endif %}
-
+                                <h3 class="visually-hidden">{{ form.unit.label_tag }}</h3>
                                 {{ form.unit }}
                                 {{ form.DELETE }} {# Include the DELETE input for each formset row #}
                                 {{ form.id }}
                                 <button class="btn btn-outline-secondary remove-ingredient" type="button"
-                                    name="remove-ingredient"><i
+                                    name="remove-ingredient" aria-label="Minus"><i
                                         class="fa-solid fa-minus"></i></button>
                                 <button class="btn btn-outline-secondary add-ingredient" type="button"
-                                    name="add-ingredient"><i
+                                    name="add-ingredient" aria-label="Add"><i
                                         class="fa-regular fa-plus"></i></button>
                             </div>
                         </div>

@@ -68,12 +68,6 @@
                <!-- Recipe image section -->
                <div class="col-lg-8 offset-lg-2 col-12 my-lg-4 my-2 add-image">
                   <div class="row">
-                     <div class="col-md-6 offset-md-3 col-8 offset-2 my-2">
-                        <label for="id_featured_image">
-                           <img src="https://res.cloudinary.com/dcrbeonr9/image/upload/v1702837530/add-image_dybsov.png"
-                              alt="Add image placeholder" class="dish-image round-border transparent-image">
-                        </label>
-                     </div>
                      <div class="col-12 add-image">
                         <h2>Add {{ form.featured_image.label_tag }}</h2>
                         {{ form.featured_image }}
@@ -165,13 +159,14 @@
                                  aria-label="Close"></button>
                            </div>
                            {% endif %}
+                           <h3 class="visually-hidden">{{ form.unit.label_tag }}</h3>
                            {{ form.unit }}
                            {{ form.DELETE }} {# Include the DELETE input for each formset row #}
                            {{ form.id }}
                            <button class="btn btn-outline-secondary remove-ingredient" type="button"
-                              name="remove-ingredient"><i
+                              name="remove-ingredient" aria-label="Minus"><i
                                  class="fa-solid fa-minus"></i></button>
-                           <button class="btn btn-outline-secondary add-ingredient" type="button" name="add-ingredient"><i class="fa-regular fa-plus"></i></button>
+                           <button class="btn btn-outline-secondary add-ingredient" type="button" name="add-ingredient" aria-label="Add"><i class="fa-regular fa-plus"></i></button>
                         </div>
                      </div>
                      {% endfor %}

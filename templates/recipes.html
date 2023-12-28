@@ -24,15 +24,16 @@
                             <input class="form-control mr-sm-2 d-inline" type="text" name="recipe_name"
                                 placeholder="Search by Recipe Name" aria-label="Search Field">
                             {% if request.GET.recipe_name %}
-                            <button action="{% url 'recipe_images' %}"
-                                class="btn btn-outline-success my-2 my-sm-0 d-inline"
-                                aria-label="Return to recipes page">
-                                All Recipes
-                            </button>
+                            <a href="{% url 'recipe_images' %}"
+                                class="btn btn-outline-success my-2 my-sm-0 d-inline fw-bold"
+                                aria-label="Return to recipes page"><i class="fa-solid fa-xmark"></i>
+                                <span class="d-none d-xl-inline"> Clear</span>
+                            </a>
                             {% endif %}
-                            <button class="btn btn-outline-success my-2 my-sm-0 d-inline" type="submit"
+                            <button class="btn btn-outline-success my-2 my-sm-0 d-inline fw-bold" type="submit"
                                 aria-label="Search">
-                                Search
+                                <i class="fa-solid fa-magnifying-glass"></i> <span class="d-none d-xl-inline">
+                                    Search</span>
                             </button>
                         </div>
                     </form>
@@ -52,7 +53,8 @@
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     {% for recipe in recipe_list %}
                     <div class="col-lg-3 col-md-6 col-12 recipe-card-container">
-                        <a href="{% url 'recipe_detail' recipe.slug %}" class="post-link" aria-label="Go To {{ recipe.title|title }} Details Page">
+                        <a href="{% url 'recipe_detail' recipe.slug %}" class="post-link"
+                            aria-label="Go To {{ recipe.title|title }} Details Page">
                             <div class="card recipe-card h-100 round-border d-flex flex-column position-relative">
                                 <div class="d-flex justify-content-center image-container">
                                     {% if "placeholder" in recipe.featured_image.url %}
