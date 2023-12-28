@@ -283,9 +283,9 @@ function createInputField(data) {
            <textarea name="instruction-step" cols="40" rows="2"
               class="d-inline form-control instruction-input-field instruction-steps" required
               placeholder="Add cooking instruction here..." maxlength="350">${data}</textarea>
-           <button class="btn btn-outline-secondary remove-instruction" type="button"><i
+           <button class="btn btn-outline-secondary remove-instruction" type="button" aria-label="Remove Instruction"><i
                  class="fa-solid fa-minus"></i></button>
-           <button class="btn btn-outline-secondary add-instruction" type="button"><i
+           <button class="btn btn-outline-secondary add-instruction" type="button" aria-label="Add Instruction"><i
                  class="fa-regular fa-plus"></i></button>
         </div>
      </li>`;
