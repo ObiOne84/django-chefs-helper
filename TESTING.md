@@ -27,6 +27,8 @@ Return to [README](README.md)
 
 ### [Features Testing](#features-testing-1)
 
+### [Django Framework Testing](#django-framework-testing-1)
+
 - - -
 
 ## Responsiveness Testing
@@ -521,5 +523,18 @@ const hideEmptyIngredientFieldsExceptFirst = () => {
 |               | Filter/Sort Review | Admin can filter/sort reviews | PASS |
 |               | Search Review | Admin can search reviews | PASS |
 |               | Search Recipe | Admin can search recipe | PASS |
+
+## Django Framework Testing
+
+* Django Automated Testing added to test basic functionality of Django models and views.
+
+<details>
+<summary> Django Coverage
+</summary>
+
+![Django Coverage](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703877076/django-project/django-testing_njzgit.webp)
+</details>
+
+- - -
 
 Return to [README](README.md)

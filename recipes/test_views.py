@@ -17,20 +17,54 @@ class RecipeListViewTest(TestCase):
 
 class RecipeDetailsViewTest(TestCase):
     def setUp(self):
-        # Create a recipe and a user for testing
-        self.user = User.objects.create_user(username='testuser', password='testpass')
-        self.recipe = Recipe.objects.create(title='Test Recipe', author=self.user)
+        self.user = User.objects.create_user(
+            username='testuser',
+            password='testpass'
+        )
+        self.recipe = Recipe.objects.create(
+            title='Test Recipe',
+            author=self.user
+        )
 
-    def test_recipe_details_view_post(self):
+    # Test for user reviews
+    def test_recipe_details_view_reviews(self):
         self.client.login(username='testuser', password='testpass')
-        response = self.client.post(reverse('recipe_detail', args=[self.recipe.slug]), {'body': 'Great recipe!'})
-        
-        # Check for a redirect (status code 302)
+        response = self.client.post(reverse(
+            'recipe_detail', args=[self.recipe.slug]),
+            {'body': 'Great recipe!'}
+            )
         self.assertEqual(response.status_code, 302)
-
-        # You can also check the redirect target if needed
         self.assertRedirects(response, reverse('recipe_images'))
+        self.assertTrue(
+            self.recipe.reviews.filter(body='Great recipe!').exists()
+            )
 
-        # Add more specific tests for post request behavior
-        self.assertTrue(self.recipe.reviews.filter(body='Great recipe!').exists())
-        # Add similar tests for messages and other behavior
+    # Test user likes recipe
+    def test_like_recipe(self):
+        self.client.login(username='testuser', password='testpass')
+        response = self.client.post(reverse(
+            'recipe_like',
+            args=[self.recipe.slug]
+            )
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue(self.recipe.likes.filter(id=self.user.id).exists())
+
+    # Test user rates recipe
+    def test_rate_recipe(self):
+        self.client.login(username='testuser', password='testpass')
+        response = self.client.post(reverse(
+            'recipe_detail',
+            args=[self.recipe.slug]),
+            {'rating': 4}
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(self.recipe.rated_users.filter(
+            id=self.user.id).exists()
+        )
+
+    def test_unregistered_user_redirect_to_login(self):
+        response = self.client.get(reverse(
+            'recipe_detail', args=[self.recipe.slug])
+            )
+        self.assertEqual(response.status_code, 302)

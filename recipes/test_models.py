@@ -5,7 +5,6 @@ from django.db import IntegrityError
 from decimal import Decimal
 
 
-# Make sure to switch to local database to perform automated tests (setting.py)
 class RecipeModelTestCase(TestCase):
     def setUp(self):
         # Create Test User

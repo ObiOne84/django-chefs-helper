@@ -89,10 +89,9 @@ class RecipeDetails(LoginRequiredMixin, View):
 
     def post(self, request, slug, *arg, **kwargs):
         queryset = Recipe.objects.all()
-        # queryset = Recipe.objects.filter(status=1)
         recipe = get_object_or_404(queryset, slug=slug)
         reviews = recipe.reviews.filter(approved=True).order_by('created_on')
-        # ingredients = recipe.ingredients
+
         liked = False
         if recipe.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -170,7 +169,6 @@ class AddRecipeView(LoginRequiredMixin, FormView):
         form.instance.email = self.request.user.email
         form.instance.name = self.request.user.username
         self.formset = form.ingredient_formset
-        # message for added recipe draft or published
         self.status = self.request.POST.get('status')
         if self.status == '0':
             messages.success(
@@ -191,13 +189,10 @@ class AddRecipeView(LoginRequiredMixin, FormView):
             'There was an error in the form submission.'
             ' Please check the error field.'
         )
-        print("Form or Formset is invalid")
-        print("Form errors:", form.errors)
-        print("Formset errors:", self.formset.errors)
+
         return self.render_to_response(self.get_context_data(form=form))
 
     def post(self, request, *args, **kwargs):
-        print("Entering post method")
         form = self.get_form()
         self.formset = form.ingredient_formset
 
@@ -219,7 +214,6 @@ class AddRecipeView(LoginRequiredMixin, FormView):
 
             return self.form_valid(form)
         else:
-            print("Form is invalid")
             return self.form_invalid(form)
 
 
