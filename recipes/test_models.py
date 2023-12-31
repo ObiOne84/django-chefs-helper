@@ -5,15 +5,14 @@ from django.db import IntegrityError
 from decimal import Decimal
 
 
+# source: CI - django testing module
 class RecipeModelTestCase(TestCase):
     def setUp(self):
-        # Create Test User
         self.user = User.objects.create_user(
             username="John",
             password='john&2023!'
             )
 
-        # Create Test Recipe
         self.recipe = Recipe.objects.create(
             title='Recipe Test',
             slug='recipe-test',
@@ -30,11 +29,9 @@ class RecipeModelTestCase(TestCase):
             status=0,
         )
 
-    # Test recipe name
     def test_title(self):
         self.assertEqual(self.recipe.title, 'Recipe Test')
 
-    # Test unique title and slug fields
     def test_unique_title_and_slug(self):
         with self.assertRaises(IntegrityError):
             copy_recipe = Recipe.objects.create(
@@ -52,30 +49,24 @@ class RecipeModelTestCase(TestCase):
                 status=1,
             )
 
-    # Test if the recipe deletes with the author
     def test_recipe_deleted_with_author(self):
         self.assertTrue(Recipe.objects.filter(title='Recipe Test').exists())
         self.user.delete()
         self.assertFalse(Recipe.objects.filter(title='Recipe Test').exists())
 
-    # Test number of likes
     def test_number_of_likes(self):
         self.assertEqual(self.recipe.number_of_likes(), 0)
         self.recipe.likes.add(self.user)
         self.assertEqual(self.recipe.number_of_likes(), 1)
 
-    # Test rate the recipe
     def test_rate_recipe(self):
-        # Test that the rate_recipe method updates the recipe's ratings
         self.recipe.rate_recipe(self.user, 4)
         self.assertEqual(self.recipe.total_ratings, 2)
         self.assertEqual(self.recipe.sum_of_rating, 9)
 
-    # Test the string method __str__
     def test_recipe_string_method_returns_name(self):
         self.assertEqual(str(self.recipe), 'Recipe Test')
 
-    # Test number of reviews method
     def test_number_of_reviews(self):
         self.assertEqual(self.recipe.number_of_reviews(), 0)
         review1 = Review.objects.create(
@@ -101,7 +92,6 @@ class RecipeModelTestCase(TestCase):
         )
         self.assertEqual(self.recipe.number_of_reviews(), 3)
 
-    # Test __str__ for reviews
     def test_review_string_method_returns_body_and_name(self):
         review = Review.objects.create(
             recipe=self.recipe,
@@ -112,9 +102,7 @@ class RecipeModelTestCase(TestCase):
         )
         self.assertEqual(str(review), 'Review First review by Adam')
 
-    # Test __str__ for RercipeIngredient
     def test_ingredient_string_method_returns_body_and_name(self):
-        # Creat test ingredient variable
         ingredient = RecipeIngredient.objects.create(
             recipe=self.recipe,
             name='Black Pepper',
@@ -123,7 +111,6 @@ class RecipeModelTestCase(TestCase):
         )
         self.assertEqual(str(ingredient), '100 grams Black Pepper')
 
-    # Test calculate_average_rating with some sample ratings
     def test_calculate_average_rating_with_ratings(self):
         self.recipe.rate_recipe(self.user, 3)
         self.assertEqual(self.recipe.calculate_average_rating(), 4)

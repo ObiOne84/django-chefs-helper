@@ -101,7 +101,6 @@ class RecipeDetails(LoginRequiredMixin, View):
 
         review_form = ReviewForm(data=request.POST)
 
-        # Create an instance of the inline formset for RecipeIngredient
         IngredientFormSet = inlineformset_factory(
             Recipe, RecipeIngredient, form=AddIngredientForm, extra=0)
         ingredient_formset = IngredientFormSet(request.POST, instance=recipe)
@@ -147,6 +146,7 @@ class RecipeDetails(LoginRequiredMixin, View):
 
 
 class RecipeLike(View):
+    # source: CI - Django Blog Walkthrough
     def post(self, request, slug):
         recipe = get_object_or_404(Recipe, slug=slug)
 
@@ -164,6 +164,7 @@ class AddRecipeView(LoginRequiredMixin, FormView):
     template_name = 'add_recipe.html'
     success_url = reverse_lazy('recipe_images')
 
+    # source: completed with the help of tutor Joanna
     def form_valid(self, form):
         form.instance.author = self.request.user
         form.instance.email = self.request.user.email
@@ -195,7 +196,7 @@ class AddRecipeView(LoginRequiredMixin, FormView):
     def post(self, request, *args, **kwargs):
         form = self.get_form()
         self.formset = form.ingredient_formset
-
+        # source: see formset forms
         if form.is_valid() and self.formset.is_valid():
             form.instance.author = self.request.user
             form.instance.email = self.request.user.email
@@ -229,13 +230,11 @@ class UpdateRecipeView(LoginRequiredMixin, View):
 
     def get(self, request, slug):
         recipe = get_object_or_404(Recipe, slug=slug)
-        # Check if the current user is the owner of the recipe
         if request.user != recipe.author:
             messages.error(
                 request,
                 "You don't have permission to update this recipe."
             )
-            # Redirect to recipes for unauthorized access
             return redirect('recipe_images')
         update_recipe_form = UpdateRecipeForm(instance=recipe)
         ingredient_formset = self.IngredientFormSet(instance=recipe)
@@ -255,13 +254,11 @@ class UpdateRecipeView(LoginRequiredMixin, View):
 
     def post(self, request, slug):
         recipe = get_object_or_404(Recipe, slug=slug)
-        # Check if the current user is the owner of the recipe
         if request.user != recipe.author:
             messages.error(
                 request,
                 "You don't have permission to update this recipe."
             )
-            # Redirect to home page for unauthorized access
             return redirect('recipe_images')
         update_recipe_form = UpdateRecipeForm(
             request.POST,
@@ -306,7 +303,7 @@ class UpdateRecipeView(LoginRequiredMixin, View):
 
 
 class DeleteRecipeView(LoginRequiredMixin, View):
-
+    # source: CI - Django Blog Walkthrough
     template_name = 'recipe_detail.html'
 
     def get(self, request, slug):
@@ -316,7 +313,6 @@ class DeleteRecipeView(LoginRequiredMixin, View):
                 request,
                 "You don't have permission to delete this recipe."
             )
-            # Redirect to recipes page for unauthorized access
             return redirect('recipe_images')
         recipe_name = recipe.title
         recipe.delete()

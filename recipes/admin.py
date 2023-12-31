@@ -3,6 +3,7 @@ from .models import Recipe, Review, RecipeIngredient
 from django_summernote.admin import SummernoteModelAdmin
 
 
+# source: CI - Django Blog Walkthrough
 @admin.register(Recipe)
 class RecipeAdmin(SummernoteModelAdmin):
 

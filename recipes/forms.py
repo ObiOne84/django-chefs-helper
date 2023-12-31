@@ -117,14 +117,15 @@ class AddRecipeForm(forms.ModelForm):
             can_delete_extra=True,
         )
 
-        # Pass instance=self.instance to formset to link to the Recipe instance
+        # Source:https://docs.djangoproject.com/en/4.2/topics/forms/formsets/
+        # Source:https://www.geeksforgeeks.org/django-formsets/
+        # Source:https://justdjango.com/blog/dynamic-forms-in-django-htmx
         self.ingredient_formset = IngredientFormSet(
             *args,
             **kwargs,
             instance=self.instance,
             )
 
-        # Add class to the formset fields
         for form in self.ingredient_formset.forms:
             form.fields['name'].widget.attrs.update({
                 'class': 'ingredient-name form-field',
@@ -252,12 +253,9 @@ class UpdateRecipeForm(forms.ModelForm):
     def clean_featured_image(self):
         featured_image = self.cleaned_data.get('featured_image', None)
 
-        # Check if a new image is provided and it's not an empty
         if featured_image and not isinstance(featured_image, str):
-            # Check if the CloudinaryResource is not empty
             if hasattr(
                     featured_image, 'file') and not featured_image.file.closed:
-                # New image is provided, perform additional checks (e.g., size)
                 max_size = 5 * 1024 * 1024
 
                 if featured_image.size > max_size:

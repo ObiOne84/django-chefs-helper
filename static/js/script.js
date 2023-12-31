@@ -325,7 +325,6 @@ const addInstructionFieldToInstructionListTwo = (form) => {
     $(form).submit(function (event) {
         event.preventDefault();
         if (validateReviewForm('.instruction-input-field')) {
-            // Clear the current textarea content
             $('textarea[name="instructions"]').val('');
             let instructionValue = '';
             let x = 1;

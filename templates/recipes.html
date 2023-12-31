@@ -18,6 +18,7 @@
         <div class="col-12 mt-3 left">
             <div class="row">
                 <div class="col-12 mb-3">
+                    <!-- Source: https://stackoverflow.com/questions/72134808/adding-search-bar-function-into-a-django-project -->
                     <!-- Search bar -->
                     <form action="{% url 'recipe_images' %}" method="GET" class="form-inline my-2 my-lg-0">
                         <div class="input-group mb-3">
@@ -126,6 +127,7 @@
             </div>
         </div>
 
+        <!-- source: https://docs.djangoproject.com/en/5.0/topics/pagination/ -->
         <!-- Pagination navigation bar -->
         {% if is_paginated %}
         <nav aria-label="Page navigation">

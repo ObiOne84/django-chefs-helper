@@ -134,6 +134,7 @@
                                 {% endif %}
                                 <h3 class="visually-hidden">{{ form.unit.label_tag }}</h3>
                                 {{ form.unit }}
+                                <!-- source:https://docs.djangoproject.com/en/4.2/topics/forms/formsets/ -->
                                 {{ form.DELETE }} {# Include the DELETE input for each formset row #}
                                 {{ form.id }}
                                 <button class="btn btn-outline-secondary remove-ingredient" type="button"
