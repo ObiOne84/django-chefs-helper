@@ -1,7 +1,7 @@
 # Chef's Helper
 
 Discover the ultimate solution for your culinary adventures! Our application empowers you to create, store, and explore a world of recipes, all in one place. Whether you're a seasoned chef or a home cook, our platform is designed to enhance your cooking experience.
-Join our thriving culinary community today and elevate your cooking journey with our feature-rich, user-friendly application. It's not just a recipe app; it's your culinary companion. Start creating, exploring, and savoring the joy of cooking!
+Join our thriving culinary community today and elevate your cooking journey with our feature-rich, user-friendly application. It's not just a recipe app; it's your culinary companion. Start creating, exploring, and savouring the joy of cooking!
 
 ![Home Screen](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703414611/django-project/responsivness-screenshot_maftgr.webp)
 
@@ -49,9 +49,9 @@ Join our thriving culinary community today and elevate your cooking journey with
 - [Frameworks Used](#frameworks-used)
 - [Programs Used](#programs-used)
 
-### [Deployment and Local developement](#deployment-and-local-developement-1)
+### [Deployment and Local development](#deployment-and-local-development-1)
 
-- [Local Developement](#local-developement)
+- [Local Development](#local-development)
 - [ElephantSQL Database](#elephantsql-database)
 - [Cloudinary](#cloudinary)
 - [Heroku Deployment](#heroku-deployment)
@@ -62,21 +62,21 @@ Join our thriving culinary community today and elevate your cooking journey with
 
 - [Docs](#docs)
 - [Content](#content)
-- [Acknowledgments](#acknowledgments)
+- [Acknowledgements](#acknowledgements)
 
 ---
 
 ## User Experience (UX)
 
-Dive into an immersive culinary journey with Chef's Helper's Recipe Management feature. Our platform offers a seamless and engaging user experience, ensuring effortless organization and exploration of your favorite recipes. Experience the convenience of storing, viewing, and managing your own culinary creations, alongside the ability to discover, review, rate, and like recipes contributed by fellow users.
+Dive into an immersive culinary journey with Chef's Helper's Recipe Management feature. Our platform offers a seamless and engaging user experience, ensuring effortless organization and exploration of your favourite recipes. Experience the convenience of storing, viewing, and managing your own culinary creations, alongside the ability to discover, review, rate, and like recipes contributed by fellow users.
 
 The Recipe Management system is designed with user-friendly navigation, providing a visually stunning interface for an enjoyable and hassle-free experience. Whether you're a seasoned chef or a home cook, our personalized recommendations and comprehensive information cater to your unique preferences, making each step of your culinary adventure delightful.
 
-Create a personalized collection of recipes, easily accessible from any device with our mobile-friendly design. Edit your recipes with ease, add new ingredients, and share your culinary masterpieces with the Chef's Helper community. Explore a treasure trove of diverse recipes contributed by others, offering inspiration for your next kitchen endeavor.
+Create a personalized collection of recipes, easily accessible from any device with our mobile-friendly design. Edit your recipes with ease, add new ingredients, and share your culinary masterpieces with the Chef's Helper community. Explore a treasure trove of diverse recipes contributed by others, offering inspiration for your next kitchen endeavour.
 
-Feel the satisfaction of not only managing your culinary creations but also engaging with a community passionate about food. Leave reviews, rate recipes, and show appreciation by liking outstanding dishes. For those cherished favorites, the option to print your recipes ensures they are always at your fingertips, ready to impress friends and family.
+Feel the satisfaction of not only managing your culinary creations but also engaging with a community passionate about food. Leave reviews, rate recipes, and show appreciation by liking outstanding dishes. For those cherished favourites, the option to print your recipes ensures they are always at your fingertips, ready to impress friends and family.
 
-Chef's Helper's Recipe Management is more than just a tool; it's a culinary haven where your cooking journey transforms into a delightful and enriching experience. Join us in celebrating the art of cooking, sharing, and savoring the flavors of a vibrant and thriving culinary community.
+Chef's Helper's Recipe Management is more than just a tool; it's a culinary haven where your cooking journey transforms into a delightful and enriching experience. Join us in celebrating the art of cooking, sharing, and savouring the flavour of a vibrant and thriving culinary community.
 
 ### Project Goals
 
@@ -88,7 +88,7 @@ Chef's Helper aims to create a user-friendly online platform for culinary enthus
 
 - Effortless Management: Simplify the process of editing recipes, adding ingredients, and navigating through collections.
 
-- Print and Share: Enhance the joy of sharing culinary creations by allowing users to print their favorite recipes.
+- Print and Share: Enhance the joy of sharing culinary creations by allowing users to print their favourite  recipes.
 
 - Mobile Accessibility: Prioritize accessibility with a mobile-friendly design for planning and managing recipes on any device.
 
@@ -152,25 +152,25 @@ In essence, the Agile Methodology, coupled with Github's Project Boards and a st
 
     - Develop wireframes for the user interface of the application.
     - Design Entity-Relationship Diagrams (ERD).
-    - Create new Heroku application.
-    - Link Github repository to the Heroku app.
+    - Create a new Heroku application.
+    - Link the Github repository to the Heroku app.
 
 2. Site Navigation
 
-    - Create base.html file.
-    - Create Navigation tabs for the site header.
+    - Create a base.html file.
+    - Create the Navigation tabs for the site header.
     - Create links for navigation tabs on each page.
 
 3. Social network bar
 
-    - Create footer
-    - Create link for social sites on each page.
+    - Create the footer
+    - Create a link for social sites on each page.
 
 4. User Registration
 
     - Sign Up page.
     - User registration, log in, log out.
-    - Display users name.
+    - Display the users' name.
 
 5. Manage recipes
 
@@ -180,17 +180,17 @@ In essence, the Agile Methodology, coupled with Github's Project Boards and a st
 
 6. Create drafts
 
-    - Add ingredients in admin panel to the recipe.
-    - Recipe can be saved as draft.
+    - Add ingredients in the admin panel to the recipe.
+    - Recipe can be saved as a draft.
 
 7. Approve reviews
 
     - Allow admin to approve reviews
-    - Allow admin to crate reviews through the admin panel
+    - Allow admin to create reviews through the admin panel
 
 8. Review a recipe
 
-    - Create form to allow user review the recipe
+    - Create a form to allow user review the recipe
     - Allow user to rate recipe only once
 
 9. Like a recipe
@@ -200,7 +200,7 @@ In essence, the Agile Methodology, coupled with Github's Project Boards and a st
 10. View reviews
 
     - Allow users to view approved reviews.
-    - Create mechanism to calculate average rating.
+    - Create a mechanism to calculate the average rating.
 
 11. Add a recipe
 
@@ -233,7 +233,7 @@ In essence, the Agile Methodology, coupled with Github's Project Boards and a st
 
     - Create comprehensive application's documentation.
 
-Detailed look can be found in the [project board](https://github.com/users/ObiOne84/projects/4)
+Detailed look can be found on the [project board](https://github.com/users/ObiOne84/projects/4)
 
 ### Target Audience
 
@@ -243,7 +243,7 @@ Detailed look can be found in the [project board](https://github.com/users/ObiOn
 - Mobile Users: Individuals who prefer the convenience of accessing recipe management tools from their mobile devices.
 - Community-Driven Individuals: Those interested in engaging with a community of like-minded individuals, sharing culinary tips and inspiration.
 - Culinary Creatives: Home cooks, aspiring chefs, and culinary artists looking for a platform to showcase their creativity.
-- Families: Families who want to collect and manage their favorite recipes for shared meals and special occasions.
+- Families: Families who want to collect and manage their favourite recipes for shared meals and special occasions.
 - Healthy Lifestyle Enthusiasts: Individuals interested in maintaining a healthy lifestyle through diverse and nutritious recipes.
 Chef's Helper caters to a diverse audience of culinary enthusiasts, providing a hub for creativity, community, and culinary exploration.
 
@@ -252,7 +252,7 @@ Chef's Helper caters to a diverse audience of culinary enthusiasts, providing a 
 - Simple and intuitive website navigation for easy exploration and discovery.
 - Engaging visuals showcasing the various dishes of public recipes.
 - Informative content providing an overview of application functionality and future updates.
-- Search bar, to allow user find their favourite dishes.
+- Search bar, to allow user to find their favourite dishes.
 - Easy Registration process.
 
 ### Registered User
@@ -424,7 +424,7 @@ Entity Relationship Diagram (ERD)
 
 4. Review Model
 
-    - The Review model represents user reviews for a specific recipe within the recipe management system. It includes essential details such as the reviewer's name, email, the content of the review, creation timestamp, and an approval status.
+    - The Review model represents user reviews for a specific recipe within the recipe management system. It includes essential details such as the reviewer's name, email, the content of the review, creation timestamp, and approval status.
 
     - Fields:
 
@@ -804,8 +804,8 @@ By incorporating these features, Chef's Helper will not only enhance the user ex
 
 ### Programs Used
 
-- [Github](https://github.com/) - Used for creating application reposistory, version control, organising workflow utilising agile functionality of GitHub project, issues and milestones.
-- [Gitpod](https://www.gitpod.io/) - Used as a coding eviroment.
+- [Github](https://github.com/) - Used for creating application repository, version control, organising workflow utilising agile functionality of GitHub project, issues and milestones.
+- [Gitpod](https://www.gitpod.io/) - Used as a coding environment.
 - [Heroku](https://www.heroku.com/) - Used as the cloud-based platform to deploy the site.
 - [Canva](https://www.canva.com/) - Used to create logo, and recipe images.
 - [Google Fonts](https://fonts.google.com/) - Used for the typography.
@@ -820,9 +820,9 @@ By incorporating these features, Chef's Helper will not only enhance the user ex
 - [CSS Validation Service](https://jigsaw.w3.org/css-validator/) - Used to validate CSS
 - [CI Python Linter](https://pep8ci.herokuapp.com/#) - Used to validate Python
 
-## Deployment and Local Developement
+## Deployment and Local Development
 
-### Local Developement
+### Local Development
 
 #### How to Fork
 
@@ -853,16 +853,16 @@ To bring down project for local development, it is possible to clone a repositor
 ### ElephantSQL Database
 
 1. Login to [ElephantSQL](https://www.elephantsql.com/) PostgreSQL Database.
-2. Click Create New Instance..
+2. Click Create New Instance.
 3. Set up your plan:
     - give your plan name - commonly project name
     - select Tiny Turtle (Free) plan
     - you can leave the tags blank
 4. Select the Region and data center near you.
 5. Click Review.
-6. Chek you details are correct and then click Create instance.
+6. Check your details are correct and then click Create instance.
 7. Return to the ElephantSQL dashboard and click the database name you just created.
-8. In the URL section, click and copy icon to copy the database URL (you will need this for you **env.py** file)
+8. In the URL section, click and copy icon to copy the database URL (you will need this for your **env.py** file)
 
 ### Cloudinary
 
@@ -1038,14 +1038,14 @@ To bring down project for local development, it is possible to clone a repositor
 
 #### Deploy
 
-1. Before deployment change DEBUG = False in the settings.py, to prevent sharing sensitive information to the public.
-2. Connect to GitHub in the deploy tab on Heroku app, and find your project reposistory.
-3. At the bottom of the page you can choose Enable Automatic Deploys for automatic deploys or Deploy Branch to deploy manually. Keep in mind that manually deployed branches will need to be re-deployed after each time the GitHub repository is updated.
+1. Before deployment change DEBUG = False in the settings.py, to prevent sharing sensitive information with the public.
+2. Connect to GitHub in the deploy tab on Heroku app, and find your project repository.
+3. At the bottom of the page you can choose Enable Automatic Deploys for automatic deployments or Deploy Branch to deploy manually. Keep in mind that manually deployed branches will need to be re-deployed after each time the GitHub repository is updated.
 4. Click 'Open App' to view the deployed live site.
 
 Site is now live
 
-You can visit deployed application at [Chef's Helper](https://django-chefs-helper-90ca65af05b0.herokuapp.com/)
+You can visit the deployed application at [Chef's Helper](https://django-chefs-helper-90ca65af05b0.herokuapp.com/)
 
 ## Testing
 
@@ -1068,7 +1068,7 @@ Please see  [TESTING.md](TESTING.md) for all the detailed testing performed.
 - [Canva](https://www.canva.com/) - all images for the recipes where created with the software utilising available templates and photos.
 - [Woodland Whispers Retreat](https://github.com/Thomas-Tomo/woodland-whispers-retreat?tab=readme-ov-file#user-journey) - the structure of the readme file.
 
-### Acknowledgments
+### Acknowledgements
 
 - My sincere gratitude goes to my mentor, Mitko Bachvarov, for providing unwavering support and valuable feedback throughout the entire project.
 - I extend my heartfelt thanks to my college colleagues for their invaluable feedback on the application, which has been instrumental in its development.

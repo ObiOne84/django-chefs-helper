@@ -71,22 +71,22 @@ The project was tested on multiple web browsers to check for compatibility issue
 </details>
 
 <details>
-<summary> Safari - Ipad
+<summary> Safari - iPad
 </summary>
 
-![Safari on Ipad](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703423939/django-project/ipad-screen_ypqp3t.webp)
+![Safari on iPad](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703423939/django-project/ipad-screen_ypqp3t.webp)
 </details>
 
 <details>
-<summary> Safari - Iphone
+<summary> Safari - iPhone
 </summary>
 
-![Safari on Iphone](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703423938/django-project/iphone-se-screen_o3gzzw.webp)
+![Safari on iPhone](https://res.cloudinary.com/dcrbeonr9/image/upload/v1703423938/django-project/iphone-se-screen_o3gzzw.webp)
 </details>
 
 ## Device Testing
 
-Device testing encompassed a diverse range of devices, including iPhone 12 Pro, iPad, MacBook Air, iPhone SE, Lenovo Yoga, Acer, Samsung A14, and Samsung S22. The collaboration with family members, friends, and college fellow students played a crucial role in executing these tests. This holistic approach ensured a comprehensive evaluation of the website's performance across various devices and screen sizes, contributing to the development of a more robust and user-friendly final product.
+Device testing encompassed various devices, including iPhone 12 Pro, iPad, MacBook Air, iPhone SE, Lenovo Yoga, Acer, Samsung A14, and Samsung S22. Collaboration with family members, friends, and fellow college students was crucial in executing these tests. This holistic approach ensured a comprehensive evaluation of the website's performance across various devices and screen sizes, contributing to developing a more robust and user-friendly final product.
 
 ## Code Validation
 
@@ -418,9 +418,9 @@ const hideEmptyIngredientFieldsExceptFirst = () => {
 |               | Click on Join Now button - Hero Section | Redirect to Sign Up page | PASS |
 |               | Click on Recipes - Navigation Bar | Redirect to Recipes page | PASS |
 |               | Click on Home - Navigation Bar | Redirect to Home Page | PASS |
-|               | Click on GitHub icon - Footer | Open a new tab to project GitHub reposistory | PASS |
+|               | Click on GitHub icon - Footer | Open a new tab to project GitHub repository | PASS |
 |               | Click on LinkedIn icon - Footer | Open a new tab with developer account | PASS |
-|               | Hover over Navigation bar elemenets | Change colour | PASS |
+|               | Hover over Navigation bar elements | Change colour | PASS |
 | Home Page (Logged In - User)  |                 |          |  |
 |               | After Login/Sign Up | Join Now button is not visible | PASS |
 |               | After Login/Sign Up | Navigation Bar change (Logout option available) | PASS |
@@ -450,10 +450,10 @@ const hideEmptyIngredientFieldsExceptFirst = () => {
 |               | Click on Logout button (Modal) | User is logged out, success message appears, redirects to home page | PASS |
 | Browse Recipes Page (Unregister User) |                  |                  |                  |
 |               | Hover over recipe cards | Recipe name and partial description appears | PASS |
-|               | Enter recipe name in the search box | Recipe exsist, recipe displays below | PASS |
-|               | Enter recipe name in the search box | Recipe exsist, heading changes to search results | PASS |
-|               | Enter recipe name in the search box | Recipe do not exsist, message appears, no recipes found | PASS |
-|               | Enter partial recipe name in the search box | Recipe do not exsist, recipes containig search fraze in the name appear | PASS |
+|               | Enter recipe name in the search box | Recipe exists, recipe displays below | PASS |
+|               | Enter recipe name in the search box | Recipe exists, heading changes to search results | PASS |
+|               | Enter recipe name in the search box | Recipe does not exist, message appears, no recipes found | PASS |
+|               | Enter partial recipe name in the search box | Recipe does not exist, recipes containing search fraze in the name appear | PASS |
 |               | Click on the recipe card | Redirect to login page | PASS |
 |               | Click on the Next button | Redirect to the next page | PASS |
 |               | Click on the Prev button | Redirect to the previous page | PASS |
@@ -466,7 +466,7 @@ const hideEmptyIngredientFieldsExceptFirst = () => {
 | Recipe Detail View Page |  |    |    |
 |               | Read the recipe details | All recipe details provided by author are visible to user | PASS |
 |               | Submit empty review field | The error message will appear | PASS |
-|               | Submit review withour rating | The review submits, rating is not required | PASS |
+|               | Submit review without rating | The review submits, rating is not required | PASS |
 |               | Submit review with rating | Review submits, average rating changes, success message appears and redirect to recipes page | PASS |
 |               | Return to rated recipe detail page | Message appears to inform, recipe was rated already | PASS |
 |               | Return to rated recipe detail page | Message appears to inform, reviews are moderated | PASS |
@@ -505,19 +505,19 @@ const hideEmptyIngredientFieldsExceptFirst = () => {
 |               | Click plus | Add new ingredient field | PASS |
 |               | Click minus | Remove ingredient field | PASS |
 |               | Publish or Save as Draft | Alert message, value must be less than or equal to 9999.99 | PASS |
-|               | When submitted as draft | Redirect to recipes page, success message displayed, recipe is placed behind published recipes, recipe is marked as draft, recipe is not visible to other users | PASS |
-|               | When submitted as published | Redirect to recipes page, success message displayed, recipe is placed at the begining of the recipes, recipe is visible to other users  | PASS |
+|               | When submitted as draft | Redirects to recipes page, success message displayed, recipe is placed behind published recipes, recipe is marked as draft, recipe is not visible to other users | PASS |
+|               | When submitted as published | Redirects to recipes page, success message displayed, recipe is placed at the beginning of the recipes, recipe is visible to other users  | PASS |
 | Edit Recipe Page |  |    |    |
 |               | As per Add Recipe | All test as for add recipe page | PASS |
-|               | Exisiting fields content | All content displays correctly | PASS |
-|               | Change Exisiting fields content | All content can be modified | PASS |
+|               | Existing fields content | All content displays correctly | PASS |
+|               | Change Existing fields content | All content can be modified | PASS |
 | Admin Panel |  |    |    |
 |               | Add Recipe | Admin can build the recipe | PASS |
 |               | Add Ingredient | Admin can add ingredient | PASS |
 |               | Edit Recipe | Admin can edit recipe | PASS |
 |               | Edit Ingredient | Admin can edit ingredient | PASS |
 |               | CRUD Review | Admin can read, add, edit and delete reviews | PASS |
-|               | Approve Review | Admin aprrove one or selected reviews | PASS |
+|               | Approve Review | Admin approve one or selected reviews | PASS |
 |               | Delete Recipe| Admin can delete one or selected reviews | PASS |
 |               | Filter/Sort Recipe | Admin can filter/sort recipes | PASS |
 |               | Filter/Sort Review | Admin can filter/sort reviews | PASS |
@@ -526,7 +526,7 @@ const hideEmptyIngredientFieldsExceptFirst = () => {
 
 ## Django Framework Testing
 
-* Django Automated Testing added to test basic functionality of Django models and views.
+* Django Automated Testing was added to test the basic functionality of Django models and views.
 
 <details>
 <summary> Django Coverage
